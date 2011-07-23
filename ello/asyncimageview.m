@@ -46,6 +46,7 @@
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)incrementalData {
 	if (data==nil) { data = [[NSMutableData alloc] initWithCapacity:2048]; } 
 	[data appendData:incrementalData];
+#warning CRUSH
 }
 
 //the URL connection calls this once all the data has downloaded

@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1024</int>
-		<string key="IBDocument.SystemVersion">10K540</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
-		<string key="IBDocument.AppKitVersion">1038.36</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.SystemVersion">11A511</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
+		<string key="IBDocument.AppKitVersion">1138</string>
+		<string key="IBDocument.HIToolboxVersion">566.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">300</string>
+			<string key="NS.object.0">534</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1223,11 +1223,6 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 						<reference key="parent" ref="785941374"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">181</int>
-						<reference key="object" ref="476348002"/>
-						<reference key="parent" ref="270856449"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">187</int>
 						<reference key="object" ref="694033765"/>
 						<reference key="parent" ref="1011807803"/>
@@ -1509,6 +1504,11 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 						<reference key="object" ref="667104909"/>
 						<reference key="parent" ref="380026005"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">181</int>
+						<reference key="object" ref="476348002"/>
+						<reference key="parent" ref="270856449"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1516,32 +1516,40 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 				<object class="NSArray" key="dict.sortedKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
+					<string>-1.IBPluginDependency</string>
 					<string>-2.CustomClassName</string>
-					<string>106.IBEditorWindowLastContentRect</string>
+					<string>-2.IBPluginDependency</string>
 					<string>106.IBPluginDependency</string>
 					<string>107.IBPluginDependency</string>
 					<string>125.IBPluginDependency</string>
 					<string>126.IBPluginDependency</string>
 					<string>127.CustomClassName</string>
 					<string>127.IBPluginDependency</string>
+					<string>128.IBPluginDependency</string>
+					<string>129.IBPluginDependency</string>
 					<string>130.IBPluginDependency</string>
 					<string>131.IBPluginDependency</string>
 					<string>132.CustomClassName</string>
 					<string>132.IBPluginDependency</string>
+					<string>133.IBPluginDependency</string>
+					<string>134.IBPluginDependency</string>
 					<string>135.IBPluginDependency</string>
 					<string>136.IBPluginDependency</string>
 					<string>137.CustomClassName</string>
 					<string>137.IBPluginDependency</string>
+					<string>138.IBPluginDependency</string>
 					<string>139.IBPluginDependency</string>
 					<string>140.IBPluginDependency</string>
 					<string>141.IBPluginDependency</string>
 					<string>142.CustomClassName</string>
 					<string>142.IBPluginDependency</string>
+					<string>143.IBPluginDependency</string>
 					<string>144.IBPluginDependency</string>
 					<string>145.IBPluginDependency</string>
 					<string>146.IBPluginDependency</string>
 					<string>147.CustomClassName</string>
 					<string>147.IBPluginDependency</string>
+					<string>148.IBPluginDependency</string>
 					<string>149.IBPluginDependency</string>
 					<string>150.IBPluginDependency</string>
 					<string>160.IBPluginDependency</string>
@@ -1555,26 +1563,30 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 					<string>190.IBPluginDependency</string>
 					<string>191.IBPluginDependency</string>
 					<string>192.IBPluginDependency</string>
+					<string>193.IBPluginDependency</string>
 					<string>194.IBPluginDependency</string>
 					<string>195.IBPluginDependency</string>
 					<string>196.IBPluginDependency</string>
 					<string>197.IBPluginDependency</string>
+					<string>198.IBPluginDependency</string>
 					<string>199.IBPluginDependency</string>
 					<string>2.IBAttributePlaceholdersKey</string>
-					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
 					<string>200.IBPluginDependency</string>
 					<string>201.IBPluginDependency</string>
 					<string>202.IBPluginDependency</string>
+					<string>203.IBPluginDependency</string>
 					<string>204.IBPluginDependency</string>
 					<string>205.IBPluginDependency</string>
 					<string>206.IBPluginDependency</string>
 					<string>207.IBPluginDependency</string>
 					<string>208.IBPluginDependency</string>
+					<string>209.IBPluginDependency</string>
 					<string>210.IBPluginDependency</string>
 					<string>211.IBPluginDependency</string>
 					<string>212.IBPluginDependency</string>
 					<string>213.IBPluginDependency</string>
+					<string>214.IBPluginDependency</string>
 					<string>216.IBPluginDependency</string>
 					<string>217.IBPluginDependency</string>
 					<string>218.IBPluginDependency</string>
@@ -1591,8 +1603,9 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>UIResponder</string>
-					<string>{{1323, 676}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1601,7 +1614,11 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>PlayListsViewController</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1610,7 +1627,9 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SubscriptionsViewController</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1635,12 +1654,17 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSMutableDictionary">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<reference key="dict.sortedKeys" ref="0"/>
 						<reference key="dict.values" ref="0"/>
 					</object>
-					<string>{{229, 373}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1680,7 +1704,7 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">234</int>
+			<int key="maxID">235</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -1710,6 +1734,6 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 				<string>{320, 290}</string>
 			</object>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">300</string>
+		<string key="IBCocoaTouchPluginVersion">534</string>
 	</data>
 </archive>

@@ -8,6 +8,9 @@
 
 #import "VideoViewController.h"
 
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData/CoreData.h>
+
 #import "Clip.h"
 #import "ClipsParser.h"
 #import "Artist.h"
@@ -36,15 +39,45 @@
 	[_clipsParser setDelegate:self];
 	[_clipsParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=clip&action=getLatestClips"]];
  
-	UISegmentedControl* tmp = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Hot", @"Premieres", @"New", nil]];
+//	UIView* bar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+//	[bar setBackgroundColor:[UIColor clearColor]];
+//	
+//	UISegmentedControl* tmp = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Hot", @"Premieres", @"New", nil]];
+////	[tmp setFrame:CGRectMake(40, 0, 200, 32)];
+//	[tmp setSegmentedControlStyle:UISegmentedControlStyleBar];
+//	[tmp setSelectedSegmentIndex:0];
+//	[tmp setTintColor:[UIColor blackColor]];
+//	[tmp addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
+//	[bar addSubview:tmp];
+//	[self.navigationItem setTitleView:tmp];
+////	UIBarButtonItem* barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tmp];	
+////	self.navigationItem.leftBarButtonItem = barButtonItem;
+////	[barButtonItem release];
+//	[tmp release];
+	
+	UISegmentedControl* tmp = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Топ ", @"Чарты", @"Мои артисты", nil]];
 	[tmp setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[tmp addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
-	
-	UIBarButtonItem* barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tmp];
-	
-	self.navigationItem.leftBarButtonItem = barButtonItem;
-	[barButtonItem release];
+	self.navigationItem.titleView = tmp; 
+	[tmp setSelectedSegmentIndex:0];
 	[tmp release];
+	
+	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+	
+	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	
+    RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Artist class]];
+    [mapping mapKeyPathsToAttributes:
+     @"id", @"accountID",
+     @"name", @"name",
+     @"balance", @"balance",
+     @"transactions.@count", @"transactionsCount",
+     @"transactions.@avg.amount", @"averageTransactionAmount",
+     @"transactions.@distinctUnionOfObjects.payee", @"distinctPayees",
+     nil];
+	
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?getAllArtists" objectMapping:mapping delegate:self];
+	
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -136,6 +169,16 @@
 	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[[error userInfo] valueForKey:NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+	
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
+	NSLog(@"ERROR %@", tmp);
+	
 }
 
 - (void)dealloc{

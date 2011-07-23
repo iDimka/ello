@@ -52,18 +52,18 @@
 	
     //	self.banner = [[AdView showInView:self.view withDelegate:self] retain]; 
 	
-	adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-	adView.frame = CGRectOffset(adView.frame, 0, -50);
-	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifierPortrait];
-	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
-	adView.delegate=self;
-	[self.view addSubview:adView];
+//	adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+//	adView.frame = CGRectOffset(adView.frame, 0, -50);
+//	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifierPortrait];
+//	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+//	adView.delegate=self;
+//	[self.view addSubview:adView];
 	
 }
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	
-	_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
+//	_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
 	_galleryDataSource = [[NSMutableArray alloc] init];
 	
 	[self fake];
@@ -115,14 +115,14 @@
 #pragma UIScrolViewDelgate
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView;{
-    if ([_slideshowTimer isValid])
-    {
-        [_slideshowTimer invalidate];
-    } 
+//    if ([_slideshowTimer isValid])
+//    {
+//        [_slideshowTimer invalidate];
+//    } 
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES]; 
+//    _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES]; 
     _prevPosition = _position;
     _position = ([_scrollView contentOffset].x/320); 
     

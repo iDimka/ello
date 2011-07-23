@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ArtistParser.h"
 
+
 @interface elloAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 
 	ArtistParser*		_artistParser;

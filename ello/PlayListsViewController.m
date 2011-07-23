@@ -8,6 +8,11 @@
 
 #import "PlayListsViewController.h"
 
+#import "PlayList.h"
+
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData/CoreData.h>
+
 #import "VideoTableViewCell.h"
 #import "Artist.h"
 #import "AsyncImageView.h"
@@ -16,7 +21,7 @@
 @interface PlayListsViewController()
 
 @property(nonatomic, retain)NSMutableArray* dataSource;
-	
+
 @end
 
 @implementation PlayListsViewController
@@ -31,25 +36,34 @@
     }
     return self;
 }
- 
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-  	
-	self.dataSource = [[__delegate artistParser] valueForKeyPath:@"_content"];
+	
+//	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+//	
+//    RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[PlayList class]];
+//    [mapping mapKeyPathsToAttributes:
+//     @"id", @"accountID",
+//     nil];
+//	
+//    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getAllArtists" objectMapping:mapping delegate:self];
+	
+	//	self.dataSource = [[__delegate artistParser] valueForKeyPath:@"_content"];
 	
 	UISegmentedControl* tmp = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Топ ", @"Чарты", @"Мои артисты", nil]];
 	[tmp setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[tmp addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
-	 	self.navigationItem.titleView = tmp; 
+	self.navigationItem.titleView = tmp; 
+	[tmp setSelectedSegmentIndex:0];
 	[tmp release];
 	
 	self.tableView.rowHeight = 154;
 	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-
+	
 }
 
 - (void)viewDidUnload
@@ -88,7 +102,7 @@
 }
 
 #pragma mark - Table view data source
- 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 { 
     return [_dataSoutce count];
@@ -103,26 +117,37 @@
         cell = [[[VideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	 
+	
 	Artist* artist = [_dataSoutce objectAtIndex:indexPath.row]; 
 	
 	[cell configCellByArtitst:artist];
     
     return cell;
 }
- 
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
-     PlayListViewController *detailViewController = [[PlayListViewController alloc] initWithNibName:@"PlayListViewController" bundle:nil]; 
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-  
+	
+	PlayListViewController *detailViewController = [[PlayListViewController alloc] initWithNibName:@"PlayListViewController" bundle:nil]; 
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	[detailViewController release];
+	
 }
 
 - (void)segmentTapped:(id)sender{
+}
+
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+	
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
+	NSLog(@"ERROR %@", tmp);
+	
 }
 
 - (void)dealloc {
