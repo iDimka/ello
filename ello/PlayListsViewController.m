@@ -28,8 +28,7 @@
 
 @synthesize dataSource = _dataSoutce;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -39,18 +38,17 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
 	
-//	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-//	
-//    RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[PlayList class]];
-//    [mapping mapKeyPathsToAttributes:
-//     @"id", @"accountID",
-//     nil];
-//	
-//    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getAllArtists" objectMapping:mapping delegate:self];
+	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	
+    RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[PlayList class]];
+    [mapping mapKeyPathsToAttributes:
+     @"id", @"accountID",
+     nil];
+	
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getAllArtists" objectMapping:mapping delegate:self];
 	
 	//	self.dataSource = [[__delegate artistParser] valueForKeyPath:@"_content"];
 	
@@ -58,58 +56,42 @@
 	[tmp setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[tmp addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = tmp; 
-	[tmp setSelectedSegmentIndex:0];
+	[tmp setSelectedSegmentIndex:1];
 	[tmp release];
 	
 	self.tableView.rowHeight = 154;
-	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
 	
 }
-
-- (void)viewDidUnload
-{
+- (void)viewDidUnload{
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 	
 	
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 }
-
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }
-
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{ 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
     return [_dataSoutce count];
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     
     VideoTableViewCell *cell = (VideoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -127,8 +109,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	PlayListViewController *detailViewController = [[PlayListViewController alloc] initWithNibName:@"PlayListViewController" bundle:nil]; 
 	[self.navigationController pushViewController:detailViewController animated:YES];
@@ -139,11 +120,9 @@
 - (void)segmentTapped:(id)sender{
 }
 
-
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	
 }
-
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
 	NSLog(@"ERROR %@", tmp);

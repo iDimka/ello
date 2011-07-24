@@ -38,32 +38,15 @@
 	_clipsParser = [[ClipsParser alloc] init];
 	[_clipsParser setDelegate:self];
 	[_clipsParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=clip&action=getLatestClips"]];
- 
-//	UIView* bar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-//	[bar setBackgroundColor:[UIColor clearColor]];
-//	
-//	UISegmentedControl* tmp = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Hot", @"Premieres", @"New", nil]];
-////	[tmp setFrame:CGRectMake(40, 0, 200, 32)];
-//	[tmp setSegmentedControlStyle:UISegmentedControlStyleBar];
-//	[tmp setSelectedSegmentIndex:0];
-//	[tmp setTintColor:[UIColor blackColor]];
-//	[tmp addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
-//	[bar addSubview:tmp];
-//	[self.navigationItem setTitleView:tmp];
-////	UIBarButtonItem* barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tmp];	
-////	self.navigationItem.leftBarButtonItem = barButtonItem;
-////	[barButtonItem release];
-//	[tmp release];
+
 	
-	UISegmentedControl* tmp = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Топ ", @"Чарты", @"Мои артисты", nil]];
+	UISegmentedControl* tmp = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Популярные ", @"Премеры", @"Артисты", nil]];
 	[tmp setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[tmp addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = tmp; 
-	[tmp setSelectedSegmentIndex:0];
+	[tmp setSelectedSegmentIndex:1];
 	[tmp release];
-	
-	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-	
+
 	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
 	
     RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Artist class]];

@@ -188,7 +188,7 @@
 - (void) SlideToLeft{
     if ((_leftImage.frame.origin.x > _centerImage.frame.origin.x) && (_leftImage.frame.origin.x > _rightImage.frame.origin.x))
     {  if (_rightImage.frame.origin.x < _centerImage.frame.origin.x)
-    {  
+    {
         [_leftImage setFrame:centrFrame];
         [_centerImage setFrame:leftFrame];
     }

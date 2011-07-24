@@ -12,7 +12,9 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface PlayerViewController : MPMoviePlayerViewController {
-    
+	UIView*	_topControl;
+	UIView* _bottomControl;
+	
 }
 
 @end

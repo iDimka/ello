@@ -51,12 +51,12 @@ typedef void (^CloseBlock)(NSString *inputString);
 - (void)viewDidLoad{
     [super viewDidLoad];
 	 
-	[self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-	
-	UIImageView* titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarTimeCard.png"]];
-	[self.navigationItem setTitleView:titleView];
-	[titleView release];
-	
+	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
+//	
+//	UIImageView* titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarTimeCard.png"]];
+//	[self.navigationItem setTitleView:titleView];
+//	[titleView release];
+//	
 } 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{ 
