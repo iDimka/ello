@@ -19,6 +19,7 @@
 		EE4E256C13DB1FD2003005D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E256B13DB1FD2003005D6 /* MobileCoreServices.framework */; };
 		EE4E256D13DB2037003005D6 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E253F13DB1BC4003005D6 /* libRestKitJSONParserJSONKit.a */; };
 		EE4E257013DB2676003005D6 /* PlayList.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4E256F13DB2676003005D6 /* PlayList.m */; };
+		EE5CDFCB13DE25F200B60CC1 /* Clips.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5CDFCA13DE25F200B60CC1 /* Clips.m */; };
 		EE6D04F413CCD3420076850F /* SubscriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D04F313CCD3420076850F /* SubscriptionsViewController.m */; };
 		EE6D04FC13CCD7DD0076850F /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D04FA13CCD7DD0076850F /* PreviewViewController.m */; };
 		EE6D04FD13CCD7DD0076850F /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6D04FB13CCD7DD0076850F /* PreviewViewController.xib */; };
@@ -159,6 +160,8 @@
 		EE4E256B13DB1FD2003005D6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EE4E256E13DB2676003005D6 /* PlayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayList.h; sourceTree = "<group>"; };
 		EE4E256F13DB2676003005D6 /* PlayList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayList.m; sourceTree = "<group>"; };
+		EE5CDFC913DE25F200B60CC1 /* Clips.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clips.h; sourceTree = "<group>"; };
+		EE5CDFCA13DE25F200B60CC1 /* Clips.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clips.m; sourceTree = "<group>"; };
 		EE6D04F213CCD3420076850F /* SubscriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionsViewController.h; sourceTree = "<group>"; };
 		EE6D04F313CCD3420076850F /* SubscriptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionsViewController.m; sourceTree = "<group>"; };
 		EE6D04F913CCD7DD0076850F /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
@@ -369,8 +372,6 @@
 				EE6D059713CF8FD30076850F /* Artist.m */,
 				EE6D058113CF88820076850F /* ArtistParser.h */,
 				EE6D058213CF88830076850F /* ArtistParser.m */,
-				EE001B0D13D04BB100A7D719 /* Clip.h */,
-				EE001B0E13D04BB100A7D719 /* Clip.m */,
 				EE001B1113D04D0300A7D719 /* ClipsParser.h */,
 				EE001B1213D04D0300A7D719 /* ClipsParser.m */,
 				EE6D059313CF89080076850F /* XMLDataLoader.h */,
@@ -443,6 +444,10 @@
 			children = (
 				EEF2274A13C7A68E004731BE /* VideoViewController.h */,
 				EEF2274B13C7A68E004731BE /* VideoViewController.m */,
+				EE5CDFC913DE25F200B60CC1 /* Clips.h */,
+				EE5CDFCA13DE25F200B60CC1 /* Clips.m */,
+				EE001B0D13D04BB100A7D719 /* Clip.h */,
+				EE001B0E13D04BB100A7D719 /* Clip.m */,
 				EECAB46213CB95D900EE96B5 /* VideoTableViewCell.h */,
 				EECAB46313CB95D900EE96B5 /* VideoTableViewCell.m */,
 				EECAB46813CB999000EE96B5 /* VideoObject.h */,
@@ -634,6 +639,7 @@
 				EE001B0F13D04BB100A7D719 /* Clip.m in Sources */,
 				EE001B1313D04D0300A7D719 /* ClipsParser.m in Sources */,
 				EE4E257013DB2676003005D6 /* PlayList.m in Sources */,
+				EE5CDFCB13DE25F200B60CC1 /* Clips.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
