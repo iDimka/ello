@@ -6,18 +6,15 @@
 //  Copyright 2011 iDimka. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "ArtistParser.h"
+#import <UIKit/UIKit.h> 
 
 
 @interface elloAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
-
-	ArtistParser*		_artistParser;
+ 
 	
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, readonly)ArtistParser*	artistParser;
+@property (nonatomic, retain) IBOutlet UIWindow *window; 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 @end

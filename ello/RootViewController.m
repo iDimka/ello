@@ -52,31 +52,9 @@ typedef void (^CloseBlock)(NSString *inputString);
     [super viewDidLoad];
 	 
 	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-//	
-//	UIImageView* titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBarTimeCard.png"]];
-//	[self.navigationItem setTitleView:titleView];
-//	[titleView release];
-//	
+ 
 } 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{ 
-	
-	if (UIInterfaceOrientationIsLandscape(interfaceOrientation))
-		{
-//		[self setHiddenTabbar:YES];
-//		[[__delegate tabBar] setHidden:YES]; 
-		}
-	else 
-		{
-//		[self setHiddenTabbar:NO];
-		[[__delegate tabBar] setHidden:NO];
-			}
-	
-    return [__delegate canRotate];
-}
-//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-//	[[__delegate tabBar] resize];
-//}
+ 
 
 - (UIBarButtonItem *) barButtonItemWithSel:(SEL)selector target:(id)target image:(UIImage*)image {
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

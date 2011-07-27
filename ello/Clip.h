@@ -10,17 +10,32 @@
 
 
 @interface Clip : NSObject {
-    
+  
+	NSNumber*		clipID;
+	NSNumber*		artistId;
+	NSString*		artistName;
+	NSNumber*		viewCount;
+	NSNumber*		clipGanre;
+	NSString*		clipName;
+	NSString*		clipGanreName;
+	NSString*		clipImageURL;
+	NSString*		clipVideoURL;	
+	NSString*		label;
+	
+	
+	
 }
 
-@property(nonatomic, assign)NSInteger	clipID;
-@property(nonatomic, assign)NSInteger	artistID;
-@property(nonatomic, copy)NSString*		artistName;
-@property(nonatomic, assign)NSInteger	viewCount;
-@property(nonatomic, assign)NSInteger	clipGanre;
-@property(nonatomic, copy)NSString*		clipName;
-@property(nonatomic, copy)NSString*		clipGanreName;
-@property(nonatomic, copy)NSURL*		clipImageURL;
-@property(nonatomic, copy)NSURL*		clipVideoURL;
+@property(nonatomic, retain)UIImage*	thumb;
+@property(nonatomic, retain)NSString*	label;
+@property(nonatomic, retain)NSNumber*	clipID;
+@property(nonatomic, retain)NSNumber*	artistId;
+@property(nonatomic, retain)NSString*	artistName;
+@property(nonatomic, retain)NSNumber*	viewCount;
+@property(nonatomic, retain)NSNumber*	clipGanre;
+@property(nonatomic, retain)NSString*	clipName;
+@property(nonatomic, retain)NSString*	clipGanreName;
+@property(nonatomic, retain)NSString*	clipImageURL;
+@property(nonatomic, retain)NSString*	clipVideoURL;
 
 @end

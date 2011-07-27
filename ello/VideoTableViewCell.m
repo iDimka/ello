@@ -8,12 +8,15 @@
 
 #import "VideoTableViewCell.h"
 
+#import "PlayList.h"
 #import "asyncimageview.h"
 #import "Artist.h"
 #import "Clip.h"
 #import "VideoObject.h"
 
 @implementation VideoTableViewCell
+
+@synthesize dataObject;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -35,6 +38,7 @@
 		[_viewCount setBackgroundColor:[UIColor clearColor]];
 		
 		_videoThumb = [[AsyncImageView alloc] initWithFrame:CGRectMake(2, 2, 150, 150)];
+		_videoThumb.delegate = self;
 
 		[self addSubview:_videoThumb];
 		[self addSubview:_title];
@@ -50,6 +54,10 @@
     return self;
 }
 
+- (void)imageDidLoad:(UIImage*)image{
+	[dataObject setThumb:image];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
@@ -58,19 +66,31 @@
 }
 
 - (void)configCellByArtitst:(Artist*)object{
-	_title.text = @"Video name";
+	self.dataObject = object;
+//	_title.text = object.clipName;
 	_artist.text = object.artistName;
-	_viewCount.text = [NSString stringWithFormat:@"%D views", 7];
-	[_videoThumb loadImageFromURL:object.artistImage];
+	if (object.thumb)  _videoThumb.image = object.thumb;
+	else [_videoThumb loadImageFromURL:[NSURL URLWithString:object.artistImage]];
 }
 
 - (void)configCellByClip:(Clip*)object{
+	self.dataObject = object;
 	_title.text = object.clipName;
 	_artist.text = object.artistName;
-	_viewCount.text = [NSString stringWithFormat:@"%D views", object.viewCount];
-	[_videoThumb loadImageFromURL:object.clipImageURL];
+	_viewCount.text = [NSString stringWithFormat:@"%D views", [object.viewCount intValue]];
+	[_videoThumb setImage:nil];
+	if (object.thumb)  _videoThumb.image = object.thumb;
+	else [_videoThumb loadImageFromURL:[NSURL URLWithString:object.clipImageURL]];
 }
-
+- (void)configCellByPlayList:(PlayList*)object{
+	self.dataObject = object;
+	_title.text = object.name;
+	_artist.text = object.artistName;
+	_viewCount.text = [NSString stringWithFormat:@"%D views", [object.viewCount intValue]];
+	[_videoThumb setImage:nil];
+	if (object.thumb)  _videoThumb.image = object.thumb;
+	else [_videoThumb loadImageFromURL:[NSURL URLWithString:object.imageURLString]];
+}
 - (void)configCell:(VideoObject*)videoObject{
 	_title.text = videoObject.title;
 	_artist.text = videoObject.artist;
@@ -80,6 +100,8 @@
 
 - (void)dealloc
 {
+	self.dataObject = nil;
+	
     [super dealloc];
 }
 

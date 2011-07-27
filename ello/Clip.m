@@ -11,8 +11,10 @@
 
 @implementation Clip
 
+@synthesize thumb;
+@synthesize label;
 @synthesize clipID;
-@synthesize artistID;
+@synthesize artistId;
 @synthesize artistName;
 @synthesize viewCount;
 @synthesize clipName;
@@ -20,5 +22,10 @@
 @synthesize clipVideoURL; 
 @synthesize clipGanre;
 @synthesize clipGanreName;
+
+
+- (NSString*)description{
+	return clipName;
+}
 
 @end

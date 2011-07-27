@@ -10,17 +10,19 @@
 
 @class Clip;
 @class AsyncImageView;
+@class PlayerViewController;
 
 @interface PreviewViewController : UIViewController {
-    
+    PlayerViewController*	_moviePlayer;
 }
 
+@property(nonatomic, retain)IBOutlet UIActivityIndicatorView*	sun;
 @property(nonatomic, retain)IBOutlet AsyncImageView*	thumbView;
 @property(nonatomic, retain)IBOutlet UILabel*		artistName;
 @property(nonatomic, retain)IBOutlet UILabel*		clipName;
 @property(nonatomic, retain)IBOutlet UILabel*		viewCount;
 @property(nonatomic, retain)Clip*					clip;
 
-- (IBAction)play;
+- (IBAction)push4play;
 
 @end

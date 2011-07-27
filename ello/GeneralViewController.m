@@ -22,6 +22,7 @@
 @property(nonatomic, retain)UIImageView* centerImage;
 
 - (void)slideshow:(NSTimer*)timer;
+- (void)InesrtViewInCantainer;
 - (void)fake;
 @end
 
@@ -51,34 +52,36 @@
     [super viewDidLoad];
 	
     //	self.banner = [[AdView showInView:self.view withDelegate:self] retain]; 
-	
-//	adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-//	adView.frame = CGRectOffset(adView.frame, 0, -50);
-//	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifierPortrait];
-//	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
-//	adView.delegate=self;
-//	[self.view addSubview:adView];
-	
+    _galleryDataSource = [[NSMutableArray alloc] init];
+    _ViewDataContainer = [[NSMutableArray alloc] init];
+    
+	[self fake];
+	[self InesrtViewInCantainer];
+    
+	adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+	adView.frame = CGRectOffset(adView.frame, 0, -50);
+	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifierPortrait];
+	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+	adView.delegate=self;
+	[self.view addSubview:adView]; 
+	[_scrollView setContentSize:CGSizeMake(320 * 3, 290)];
+    [_scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
 }
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	
-//	_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
-	_galleryDataSource = [[NSMutableArray alloc] init];
-	
-	[self fake];
-	[_pageControl setNumberOfPages:[_galleryDataSource count]];
-	
-	[_scrollView setContentSize:CGSizeMake(320 * 3, 290)];
-	
-	[_leftImage setFrame:CGRectMake(0, 0, 320, 290)];
-	[_centerImage setFrame:CGRectMake(320, 0, 320, 290)];
-	[_rightImage setFrame:CGRectMake(640, 0, 320, 290)];
+	_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
     
-//    self.leftImage = _leftImage;
-//    self.centerImage = _centerImage;
-//    self.rightImage = _rightImage;
-    //    _tmpInt = -1;
+	[_pageControl setNumberOfPages:[_galleryDataSource count]];
+
+}
+- (void)viewDidDisappear:(BOOL)animated{
+	[super viewDidDisappear:animated];
+	
+	if ([_slideshowTimer isValid])
+		{
+        [_slideshowTimer invalidate];
+		} 
 }
 
 #pragma mark -
@@ -115,172 +118,158 @@
 #pragma UIScrolViewDelgate
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView;{
-//    if ([_slideshowTimer isValid])
-//    {
-//        [_slideshowTimer invalidate];
-//    } 
+    if ([_slideshowTimer isValid])
+    {
+        [_slideshowTimer invalidate];
+    } 
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-//    _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES]; 
-    _prevPosition = _position;
-    _position = ([_scrollView contentOffset].x/320); 
+    _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES]; 
+        if ([_scrollView contentOffset].x == 320) return;
     
-    if (_prevPosition > _prevPosition )
+    if (([_scrollView contentOffset].x == 0) )
     {
-        [self SlideToLeft];    
-        [_pageControl setCurrentPage:[_pageControl currentPage]-1];
+        if ([_pageControl currentPage] == 0) {
+            [_pageControl setCurrentPage:[_galleryDataSource count]];
+        }
+        else {
+            [_pageControl setCurrentPage:[_pageControl currentPage]-1];   
+        }
+        [self SlideToLeft];
     }
     else
     {
+        if ([_pageControl currentPage] == [_galleryDataSource count] - 1) {
+            [_pageControl setCurrentPage:0];            
+        }
+        else 
+        {
+            [_pageControl setCurrentPage:[_pageControl currentPage]+1];   
+        }
         [self SlideToRight];
-        [_pageControl setCurrentPage:[_pageControl currentPage]+1];
     }
-	
-}
-
-- (void)fake{
-	for (int ind = 0; ind < 10; ind++) 
-    {
-		UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"photo%i.png", ind % 3]]];
-		[_galleryDataSource addObject:tmp];
-		[tmp release];
-	}
-}
-- (void)slideshow:(NSTimer*)timer{
-//    if ([_pageControl currentPage] < [_galleryDataSource count]-1) {
-//        if (_prevPosition <= _position) {
-//            [_pageControl setCurrentPage:[_scrollView contentOffset].x/320+1];
-//            [_scrollView setContentOffset:CGPointMake([_scrollView contentOffset].x +320, 0) animated:YES];
-//            [self SlideToRight];
-//        } else _position = _prevPosition;
-//    } else {
-//        [_scrollView setContentOffset:CGPointMake(0, 0)];
-//        [_pageControl setCurrentPage:0];
-//        [self slideshow:timer];
-//        
-//    }  
-	
-    
-    //    if (([_scrollView contentOffset].x / 320) < [_galleryDataSource count]-1) 
-    //
-    //    {
-    //		
-    //		if (_tmpInt <= _position)  {
-    //            
-    //            [_pageControl setCurrentPage:[_scrollView contentOffset].x / 320 + 1];
-    //            
-    //            [_scrollView setContentOffset:CGPointMake([_scrollView contentOffset].x + 320, 0)  animated:YES];
-    //        } else _position= _tmpInt;   
-    //    }else{
-    //        [_scrollView setContentOffset:CGPointMake(0, 0)];
-    //        [_pageControl setCurrentPage:0];
-    //        [self slideshow:timer];
-    //        
-    //    }
     
 } 
+
+
+- (void)slideshow:(NSTimer*)timer{
+    if ([_pageControl currentPage] < [_galleryDataSource count]-1)
+    {
+        if (1) {
+            [_pageControl setCurrentPage:[_pageControl currentPage]+1];   
+            [UIView animateWithDuration:0.6 animations:^(void) {
+                [_scrollView setContentOffset:CGPointMake([_scrollView contentOffset].x +320, 0) animated:0];
+            } completion:^(BOOL finished) {
+                [self SlideToRight];
+            }];
+        }
+    } else {
+        [_pageControl setCurrentPage:0];
+        [UIView animateWithDuration:1 animations:^(void) {
+            [_scrollView setContentOffset:CGPointMake([_scrollView contentOffset].x +320, 0) animated:0];
+        } completion:^(BOOL finished) {
+            [self SlideToRight];
+        }];
+    }  
+    
+}
+-(void)InesrtViewInCantainer{
+    for (int ind = 0; ind < 3; ind++) 
+    {
+	    UIImageView* tmp = [[UIImageView alloc] initWithFrame:CGRectMake(ind * 320, 0, 320, 290)];
+        [tmp setBackgroundColor:[UIColor redColor]] ;//] colorWithRed:(float)(arc4random() % 100 /100) green:(float)(arc4random() % 100 /100) blue:(float)(arc4random() % 100 /100) alpha:1]];
+        if (ind == 0) {
+            [tmp setImage:[_galleryDataSource objectAtIndex:[_galleryDataSource count]-1]];
+        }
+        else if (ind == 1){
+            [tmp setImage:[_galleryDataSource objectAtIndex:0]];
+        }
+        else if (ind == 2){
+            [tmp setImage:[_galleryDataSource objectAtIndex:1]];
+        }
+		[_ViewDataContainer addObject:tmp];
+        [_scrollView addSubview:tmp];
+		[tmp release];
+	}  
+}
+
+
+- (void)fake{
+	for (int ind = 0; ind < 12; ind++) 
+    {
+        NSString* imageName = [NSString stringWithFormat:@"photo%i.png", ind % 3 + 1];
+		[_galleryDataSource addObject:[UIImage imageNamed:imageName]];
+        
+	}
+}
 - (void)search{
 	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }
-- (void) SlideToLeft{
-    if ((_leftImage.frame.origin.x > _centerImage.frame.origin.x) && (_leftImage.frame.origin.x > _rightImage.frame.origin.x))
-    {  if (_rightImage.frame.origin.x < _centerImage.frame.origin.x)
-    {
-        [_leftImage setFrame:centrFrame];
-        [_centerImage setFrame:leftFrame];
+
+-(void) SlideToLeft{    
+    int leftPage;
+    int rightPage;
+    
+    leftPage = ([_pageControl currentPage]-1);
+    if (leftPage == -1) leftPage = [_galleryDataSource count] -1;
+    
+    rightPage = ([_pageControl currentPage]+1);
+    if (rightPage==[_galleryDataSource count]) {
+        rightPage = 0;
     }
-    else 
-    {
-        [_leftImage setFrame:centrFrame];
-        [_rightImage setFrame:leftFrame];
-    };
-    }
-    else if (((_rightImage.frame.origin.x > _centerImage.frame.origin.x) && (_rightImage.frame.origin.x > _leftImage.frame.origin.x)))
-    { 
-        if (_leftImage.frame.origin.x < _centerImage.frame.origin.x)
-        {  
-            [_rightImage setFrame:centrFrame];
-            [_centerImage setFrame:leftFrame];
-        }
-        else 
-        {
-            [_rightImage setFrame:centrFrame];
-            [_leftImage setFrame:leftFrame];
-        };
-    }
-    else if (((_centerImage.frame.origin.x > _rightImage.frame.origin.x) && (_centerImage.frame.origin.x > _leftImage.frame.origin.x)))
-    {
-        if (_leftImage.frame.origin.x < _rightImage.frame.origin.x)
-        {  
-            [_centerImage setFrame:centrFrame];
-            [_rightImage setFrame:leftFrame];
-        }
-        else 
-        {
-            [_centerImage setFrame:centrFrame];
-            [_leftImage setFrame:leftFrame];
-        };
-    };    
+
+    [_pageControl setCurrentPage:_pageControl.currentPage % [_galleryDataSource count]];
+    
+    UIImageView* tmp;
+    [_scrollView setContentOffset:CGPointMake(320, 0)  animated:NO];
+    [_ViewDataContainer exchangeObjectAtIndex:0 withObjectAtIndex:1];
+    
+    tmp = [_ViewDataContainer objectAtIndex:0];
+    [tmp setFrame:CGRectMake(0, 0, 320, 290)];
+    [tmp setImage:[_galleryDataSource objectAtIndex:leftPage]];
+    
+    tmp = [_ViewDataContainer objectAtIndex:1];  
+    [tmp setFrame:CGRectMake(320, 0, 320, 290)];
+    [tmp setImage:[_galleryDataSource objectAtIndex:_pageControl.currentPage]];
+    
+    tmp = [_ViewDataContainer objectAtIndex:2];
+    [tmp setImage:[_galleryDataSource objectAtIndex:rightPage]];
+    [tmp setFrame:CGRectMake(640, 0, 320, 290)];
+    
 }
 
-- (void) SlideToRight{
-
-    self.rightImage = self.centerImage;
+-(void) SlideToRight{
+    int leftPage;
+    int rightPage;
     
-    self.centerImage = _rightImage;
+    leftPage = ([_pageControl currentPage]-1);
+    if (leftPage == -1) leftPage = [_galleryDataSource count] -1;
     
+    rightPage = ([_pageControl currentPage]+1);
+    if (rightPage==[_galleryDataSource count]) {
+        rightPage = 0;
+    }
     
-//    if (CGRectEqualToRect(_leftImage.frame, centrFrame)) {
-//        _leftImage.frame = leftFrame;
-//        switch ((int)_centerImage.frame.origin.x) {
-//            case 0:
-//                __centerImage.frame = centrFrame;
-//                break;
-//                case 320:
-//        }
-//    }
+    [_pageControl setCurrentPage:_pageControl.currentPage % [_galleryDataSource count]];
+    UIImageView* tmp;
+    [_scrollView setContentOffset:CGPointMake(320, 0)  animated:NO];
+    [_ViewDataContainer exchangeObjectAtIndex:1 withObjectAtIndex:2];
     
-//    if ((_leftImage.frame.origin.x > _centerImage.frame.origin.x) && (_leftImage.frame.origin.x > _rightImage.frame.origin.x))
-//    {  if (_rightImage.frame.origin.x < _centerImage.frame.origin.x)
-//    {  
-//        [_rightImage setFrame:centrFrame];
-//        [_centerImage setFrame:rightFrame];
-//    }
-//    else 
-//    {
-//        [_rightImage setFrame:rightFrame];
-//        [_centerImage setFrame:centrFrame];
-//    };
-//    }
-//    else if (((_rightImage.frame.origin.x > _centerImage.frame.origin.x) && (_rightImage.frame.origin.x > _leftImage.frame.origin.x)))
-//    { 
-//        if (_leftImage.frame.origin.x < _centerImage.frame.origin.x)
-//        {  
-//            [_leftImage setFrame:centrFrame];
-//            [_centerImage setFrame:rightFrame];
-//        }
-//        else 
-//        {
-//            [_leftImage setFrame:rightFrame];
-//            [_centerImage setFrame:centrFrame];
-//        };
-//    }
-//    else if (((_centerImage.frame.origin.x > _rightImage.frame.origin.x) && (_centerImage.frame.origin.x > _leftImage.frame.origin.x)))
-//    {
-//        if (_leftImage.frame.origin.x < _rightImage.frame.origin.x)
-//        {  
-//            [_leftImage setFrame:centrFrame];
-//            [_centerImage setFrame:rightFrame];
-//        }
-//        else 
-//        {
-//            [_leftImage setFrame:rightFrame];
-//            [_centerImage setFrame:centrFrame];
-//        };
-//    };
+    tmp = [_ViewDataContainer objectAtIndex:0];
+    [tmp setFrame:CGRectMake(0, 0, 320, 290)];
+    [tmp setImage:[_galleryDataSource objectAtIndex:leftPage]];
+    
+    tmp = [_ViewDataContainer objectAtIndex:2];
+    [tmp setFrame:CGRectMake(320, 0, 320, 290)];
+    [tmp setImage:[_galleryDataSource objectAtIndex:_pageControl.currentPage]];
+    
+    tmp = [_ViewDataContainer objectAtIndex:1];  
+    [tmp setFrame:CGRectMake(640, 0, 320, 290)];
+    [tmp setImage:[_galleryDataSource objectAtIndex:rightPage]];
+    
 }
 
 

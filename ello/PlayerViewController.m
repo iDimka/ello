@@ -47,7 +47,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -90,6 +90,19 @@
 }
 - (void)stopPlay{
 	(self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying) ? [self.moviePlayer pause] : [self.moviePlayer play];
+}
+- (void)loadStateDidChange:(NSNotification*)notification{
+	switch (self.moviePlayer.loadState) {
+		case MPMovieLoadStatePlayable:			
+		case MPMovieLoadStatePlaythroughOK:
+			
+			break;
+//			case mpmovielo:
+			case MPMovieLoadStateStalled:
+			
+			break;
+	}
+	NSLog(@"loadState is %d", self.moviePlayer.loadState);
 }
 
 @end

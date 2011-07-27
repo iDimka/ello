@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EE001B0F13D04BB100A7D719 /* Clip.m in Sources */ = {isa = PBXBuildFile; fileRef = EE001B0E13D04BB100A7D719 /* Clip.m */; };
-		EE001B1313D04D0300A7D719 /* ClipsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE001B1213D04D0300A7D719 /* ClipsParser.m */; };
 		EE4E254B13DB1C0C003005D6 /* libRestKitCoreData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E254313DB1BC4003005D6 /* libRestKitCoreData.a */; };
 		EE4E254D13DB1C0C003005D6 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E253513DB1BC4003005D6 /* libRestKitNetwork.a */; };
 		EE4E254E13DB1C0C003005D6 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E253713DB1BC4003005D6 /* libRestKitObjectMapping.a */; };
@@ -32,7 +31,6 @@
 		EE6D054913CE3FF00076850F /* PlayListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D054813CE3FF00076850F /* PlayListsViewController.m */; };
 		EE6D054D13CE41FC0076850F /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D054B13CE41FB0076850F /* PlayListViewController.m */; };
 		EE6D054E13CE41FC0076850F /* PlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6D054C13CE41FC0076850F /* PlayListViewController.xib */; };
-		EE6D058313CF88850076850F /* ArtistParser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D058213CF88830076850F /* ArtistParser.m */; };
 		EE6D059513CF890A0076850F /* XMLDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059413CF89090076850F /* XMLDataLoader.m */; };
 		EE6D059813CF8FD40076850F /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059713CF8FD30076850F /* Artist.m */; };
 		EE6D059B13CF981B0076850F /* asyncimageview.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059A13CF98180076850F /* asyncimageview.m */; };
@@ -66,6 +64,8 @@
 		EEF2273313C792D8004731BE /* photo2.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF2273113C792D8004731BE /* photo2.png */; };
 		EEF2274713C79EDB004731BE /* photo3.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF2274613C79EDA004731BE /* photo3.png */; };
 		EEF2274C13C7A68E004731BE /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2274B13C7A68E004731BE /* VideoViewController.m */; };
+		EEF6AB8413DF8B94001418E3 /* PlayLists.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6AB8313DF8B94001418E3 /* PlayLists.m */; };
+		EEF6AB8713DF9D0D001418E3 /* Artists.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6AB8613DF9D0D001418E3 /* Artists.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,8 +151,6 @@
 /* Begin PBXFileReference section */
 		EE001B0D13D04BB100A7D719 /* Clip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clip.h; sourceTree = "<group>"; };
 		EE001B0E13D04BB100A7D719 /* Clip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clip.m; sourceTree = "<group>"; };
-		EE001B1113D04D0300A7D719 /* ClipsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipsParser.h; sourceTree = "<group>"; };
-		EE001B1213D04D0300A7D719 /* ClipsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipsParser.m; sourceTree = "<group>"; };
 		EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = "../../Documents/iProgects/RestKit-RestKit-40eb842 2/RestKit.xcodeproj"; sourceTree = "<group>"; };
 		EE4E255213DB1C97003005D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EE4E255313DB1C97003005D6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -180,8 +178,6 @@
 		EE6D054A13CE41FB0076850F /* PlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayListViewController.h; sourceTree = "<group>"; };
 		EE6D054B13CE41FB0076850F /* PlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListViewController.m; sourceTree = "<group>"; };
 		EE6D054C13CE41FC0076850F /* PlayListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayListViewController.xib; sourceTree = "<group>"; };
-		EE6D058113CF88820076850F /* ArtistParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistParser.h; sourceTree = "<group>"; };
-		EE6D058213CF88830076850F /* ArtistParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistParser.m; sourceTree = "<group>"; };
 		EE6D059313CF89080076850F /* XMLDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDataLoader.h; sourceTree = "<group>"; };
 		EE6D059413CF89090076850F /* XMLDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDataLoader.m; sourceTree = "<group>"; };
 		EE6D059613CF8FD20076850F /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
@@ -229,6 +225,10 @@
 		EEF2274613C79EDA004731BE /* photo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo3.png; sourceTree = "<group>"; };
 		EEF2274A13C7A68E004731BE /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		EEF2274B13C7A68E004731BE /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		EEF6AB8213DF8B94001418E3 /* PlayLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayLists.h; sourceTree = "<group>"; };
+		EEF6AB8313DF8B94001418E3 /* PlayLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayLists.m; sourceTree = "<group>"; };
+		EEF6AB8513DF9D0D001418E3 /* Artists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artists.h; sourceTree = "<group>"; };
+		EEF6AB8613DF9D0D001418E3 /* Artists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artists.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +300,10 @@
 			children = (
 				EE6D050413CCDBE10076850F /* ArtistsViewController.h */,
 				EE6D050513CCDBE10076850F /* ArtistsViewController.m */,
+				EE6D059613CF8FD20076850F /* Artist.h */,
+				EE6D059713CF8FD30076850F /* Artist.m */,
+				EEF6AB8513DF9D0D001418E3 /* Artists.h */,
+				EEF6AB8613DF9D0D001418E3 /* Artists.m */,
 			);
 			name = Artist;
 			sourceTree = "<group>";
@@ -321,6 +325,8 @@
 				EE6D054813CE3FF00076850F /* PlayListsViewController.m */,
 				EE4E256E13DB2676003005D6 /* PlayList.h */,
 				EE4E256F13DB2676003005D6 /* PlayList.m */,
+				EEF6AB8213DF8B94001418E3 /* PlayLists.h */,
+				EEF6AB8313DF8B94001418E3 /* PlayLists.m */,
 				EE6D054A13CE41FB0076850F /* PlayListViewController.h */,
 				EE6D054B13CE41FB0076850F /* PlayListViewController.m */,
 				EE6D054C13CE41FC0076850F /* PlayListViewController.xib */,
@@ -368,12 +374,6 @@
 			children = (
 				EEB8F80113C5FD0D00B70FDB /* elloAppDelegate.h */,
 				EEB8F80213C5FD0D00B70FDB /* elloAppDelegate.m */,
-				EE6D059613CF8FD20076850F /* Artist.h */,
-				EE6D059713CF8FD30076850F /* Artist.m */,
-				EE6D058113CF88820076850F /* ArtistParser.h */,
-				EE6D058213CF88830076850F /* ArtistParser.m */,
-				EE001B1113D04D0300A7D719 /* ClipsParser.h */,
-				EE001B1213D04D0300A7D719 /* ClipsParser.m */,
 				EE6D059313CF89080076850F /* XMLDataLoader.h */,
 				EE6D059413CF89090076850F /* XMLDataLoader.m */,
 				EE6D059913CF98170076850F /* asyncimageview.h */,
@@ -630,16 +630,16 @@
 				EE6D051A13CCE08D0076850F /* SearchViewController.m in Sources */,
 				EE6D054913CE3FF00076850F /* PlayListsViewController.m in Sources */,
 				EE6D054D13CE41FC0076850F /* PlayListViewController.m in Sources */,
-				EE6D058313CF88850076850F /* ArtistParser.m in Sources */,
 				EE6D059513CF890A0076850F /* XMLDataLoader.m in Sources */,
 				EE6D059813CF8FD40076850F /* Artist.m in Sources */,
 				EE6D059B13CF981B0076850F /* asyncimageview.m in Sources */,
 				EE6D05A213CFAF600076850F /* PlayerViewController.m in Sources */,
 				EEDB552313D0307200038999 /* RootViewController.m in Sources */,
 				EE001B0F13D04BB100A7D719 /* Clip.m in Sources */,
-				EE001B1313D04D0300A7D719 /* ClipsParser.m in Sources */,
 				EE4E257013DB2676003005D6 /* PlayList.m in Sources */,
 				EE5CDFCB13DE25F200B60CC1 /* Clips.m in Sources */,
+				EEF6AB8413DF8B94001418E3 /* PlayLists.m in Sources */,
+				EEF6AB8713DF9D0D001418E3 /* Artists.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

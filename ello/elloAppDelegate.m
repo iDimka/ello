@@ -11,16 +11,19 @@
 @implementation elloAppDelegate
 
 
-@synthesize window=_window;
-@synthesize artistParser = _artistParser;
+@synthesize window=_window; 
 @synthesize tabBarController=_tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 
-	_artistParser = [[ArtistParser alloc] init];
-	[_artistParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=artist&action=getAllArtists"]];
-	[_artistParser setDelegate:self];
-	 
+
+	
+//	_artistParser = [[ArtistParser alloc] init];
+//	[_artistParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=artist&action=getAllArtists"]];
+//	[_artistParser setDelegate:self];
+	
+	self.window.rootViewController = self.tabBarController;
+	[self.window makeKeyAndVisible];
 
     return YES;
 }
@@ -62,17 +65,6 @@
     [super dealloc];
 }
 
-
-- (void)parser:(ArtistParser*)parser xmlDidParsed:(NSArray*)content{
-	
-	self.window.rootViewController = self.tabBarController;
-	[self.window makeKeyAndVisible];
-}
-- (void)parser:(ArtistParser*)parser xmlDidError:(NSError*)error{
-		
-	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[[error userInfo] valueForKey:NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
+ 
 
 @end

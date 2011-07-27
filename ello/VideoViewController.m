@@ -11,8 +11,8 @@
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData/CoreData.h>
 
-#import "Clip.h"
-#import "ClipsParser.h"
+#import "Clips.h"
+#import "Clip.h" 
 #import "Artist.h"
 #import "SearchViewController.h"
 #import "PreviewViewController.h"
@@ -29,39 +29,60 @@
 
 @synthesize dataSource = _dataSource;
  
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        
+	
+    }
+    return self;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad{
     [super viewDidLoad];
 	
-	[self showDimView];
-	_clipsParser = [[ClipsParser alloc] init];
-	[_clipsParser setDelegate:self];
-	[_clipsParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=clip&action=getLatestClips"]];
-
 	
-	UISegmentedControl* tmp = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Популярные ", @"Премеры", @"Артисты", nil]];
-	[tmp setSegmentedControlStyle:UISegmentedControlStyleBar];
-	[tmp addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
-	self.navigationItem.titleView = tmp; 
-	[tmp setSelectedSegmentIndex:1];
-	[tmp release];
+	_dataSource = [[NSMutableArray alloc] init];
+	[_dataSource addObject:[NSNull null]];
+	[_dataSource addObject:[NSNull null]];
+	[_dataSource addObject:[NSNull null]];
+	
+	[self showDimView];
+ 
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Популярные ", @"Премеры", @"Артисты", nil]];
+	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
+	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
+	self.navigationItem.titleView = _segment; 
+	[_segment setSelectedSegmentIndex:0];
 
 	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-	
-    RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Artist class]];
+	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
     [mapping mapKeyPathsToAttributes:
-     @"id", @"accountID",
-     @"name", @"name",
-     @"balance", @"balance",
-     @"transactions.@count", @"transactionsCount",
-     @"transactions.@avg.amount", @"averageTransactionAmount",
-     @"transactions.@distinctUnionOfObjects.payee", @"distinctPayees",
+     @"clip.id",		@"clipID",
+	 @"clip.artistId",	@"artistId",
+	 @"clip.artistName",@"artistName",
+  	 @"clip.genreId",	@"clipGanre",
+  	 @"clip.genreName",	@"clipGanreName",
+  	 @"clip.viewCount",	@"viewCount",
+	 @"clip.name",		@"clipName",
+	 @"clip.image",		@"clipImageURL",
+ 	 @"clip.video",		@"clipVideoURL",
+  	 @"clip.label",		@"label", 
      nil];
-	
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?getAllArtists" objectMapping:mapping delegate:self];
-	
 
+	
+	_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
+	[_clipsMapping mapKeyPathsToAttributes:
+	 @"status", @"status",
+	 nil];
+	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
+	[_clipsMapping addRelationshipMapping:rel];
+	 
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getLatestClips" objectMapping:_clipsMapping delegate:self];
+	
+	
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -70,6 +91,8 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+	
+	[_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -83,23 +106,24 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 - (void)segmentTapped:(UISegmentedControl*)segmentedControl{
+	
+		if (![[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
+			[_tableView reloadData];
+			return;
+		}
+	
 	NSLog(@"segm index %d", segmentedControl.selectedSegmentIndex);
 	[self showDimView];
 	switch (segmentedControl.selectedSegmentIndex) {
 		case 0:			
-			[_clipsParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=clip&action=getLatestClips"]];
+			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getLatestClips" objectMapping:_clipsMapping delegate:self]; 
 			break;
 			case 1:			
-			[_clipsParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=clip&action=getPremierClips"]];
+			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getPremierClips" objectMapping:_clipsMapping delegate:self];
 			break;
 		case 2:
-			[_clipsParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=clip&action=getPopularClips"]];
+			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getPopularClips" objectMapping:_clipsMapping delegate:self];
 			break;		
 	}
 }
@@ -107,8 +131,11 @@
 #pragma mark - Table view data source
  
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
-    return [_dataSource count];
+	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
+	
+		return 0;
+	}
+    return [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
@@ -117,9 +144,9 @@
     if (cell == nil) {
         cell = [[[VideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    Clip* artist = [_dataSource objectAtIndex:indexPath.row]; 
+    Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
 	
-	[cell configCellByClip:artist];
+	[cell configCellByClip:clip];
     
     return cell;
 }
@@ -127,9 +154,10 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
- 
+	
+    Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
      PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithNibName:@"PreviewViewController" bundle:nil];
-	detailViewController.clip = [_dataSource objectAtIndex:indexPath.row];
+	detailViewController.clip = clip;
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      
@@ -141,23 +169,13 @@
 	[detailViewController release];
 }
 
-- (void)parser:(ArtistParser*)parser xmlDidParsed:(NSArray*)content{
-	self.dataSource = [NSMutableArray arrayWithArray:content];
-	[_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-	[self hideDimView];
-	
-}
-- (void)parser:(ArtistParser*)parser xmlDidError:(NSError*)error{
-	
-	UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:[[error userInfo] valueForKey:NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
-
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-	
+	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
+		[_dataSource insertObject:[objects objectAtIndex:0] atIndex:_segment.selectedSegmentIndex];
+	}
+	[self hideDimView];
+	[_tableView reloadData];
 }
-
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
 	NSLog(@"ERROR %@", tmp);
@@ -165,6 +183,10 @@
 }
 
 - (void)dealloc{
+	
+	
+	[_segment release];
+	
     [super dealloc];
 }
 

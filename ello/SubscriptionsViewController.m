@@ -13,14 +13,7 @@
 
 @synthesize emailField = _emailField;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+ 
 
 - (void)dealloc
 {

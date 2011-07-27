@@ -13,16 +13,18 @@
 @interface GeneralViewController : UIViewController <UIScrollViewDelegate, ADBannerViewDelegate>{
 	IBOutlet	UIScrollView*	_scrollView;
 	IBOutlet	UIImageView*	_banner;
-	IBOutlet	UIImageView*	_centerImage;
-	IBOutlet	UIImageView*	_leftImage;
-	IBOutlet	UIImageView*	_rightImage;
+//	IBOutlet	UIImageView*	_centerImage;
+//	IBOutlet	UIImageView*	_leftImage;
+//	IBOutlet	UIImageView*	_rightImage;
 	IBOutlet	UIPageControl*	_pageControl;
+    IBOutlet    UILabel*        _artistName1Label;
+    IBOutlet    UILabel*        _artistName2Label;
 	
 	NSTimer*					_slideshowTimer;
 	NSInteger					_position;
 	NSInteger					_prevPosition;	
 	BOOL						o_bannerIsVisible; 
-	
+	NSMutableArray*             _ViewDataContainer;
 	NSMutableArray*				_galleryDataSource;
 	
 	ADBannerView				*adView;

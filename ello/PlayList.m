@@ -10,8 +10,18 @@
 
 @implementation PlayList
 
+@synthesize thumb;
+@synthesize playListID;
 @synthesize artistID;
 @synthesize artistName;
-@synthesize artistImage;
+@synthesize imageURLString;
+@synthesize genreID;
+@synthesize genreName;
+@synthesize viewCount;
+@synthesize name;
+@synthesize videoURLString;
+@synthesize label;
+
+
 
 @end

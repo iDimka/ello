@@ -10,9 +10,12 @@
 
 #import "RootViewController.h"
 
-@interface PlayListsViewController : UITableViewController {
+@interface PlayListsViewController : UITableViewController <RKObjectLoaderDelegate> {
     
-    NSMutableArray*		_dataSoutce;
+    NSMutableArray*		_dataSource;
+	RKObjectMapping*	_clipsMapping;
+	
+	UISegmentedControl*	_segment;
 }
 
 @end

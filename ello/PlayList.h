@@ -10,8 +10,16 @@
 
 @interface PlayList : NSObject
 
-@property(nonatomic, assign)NSInteger	artistID;
-@property(nonatomic, copy)NSString*		artistName;
-@property(nonatomic, copy)NSURL*		artistImage;
+@property(nonatomic, retain)UIImage*		thumb;
+@property(nonatomic, retain)NSNumber*		playListID;
+@property(nonatomic, retain)NSNumber*		artistID;
+@property(nonatomic, retain)NSString*		artistName;
+@property(nonatomic, retain)NSString*		imageURLString;
+@property(nonatomic, retain)NSNumber*		genreID;
+@property(nonatomic, retain)NSString*		genreName;
+@property(nonatomic, retain)NSNumber*		viewCount;
+@property(nonatomic, retain)NSString*		name;
+@property(nonatomic, retain)NSString*		videoURLString;
+@property(nonatomic, retain)NSString*		label;
 
 @end

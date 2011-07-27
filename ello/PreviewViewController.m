@@ -14,57 +14,60 @@
 
 @implementation PreviewViewController
 
+@synthesize sun;
 @synthesize thumbView;
 @synthesize artistName;
 @synthesize clipName;
 @synthesize viewCount;
 @synthesize clip;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
-}
- 
+} 
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
 	
-	[self.thumbView loadImageFromURL:[self.clip clipImageURL]];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(push4play) name:MPMoviePlayerContentPreloadDidFinishNotification object:nil];
+	
+	_moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:clip.clipVideoURL]];
+
+	//	[self.thumbView setImage:[_moviePlayer.moviePlayer thumbnailImageAtTime:3 timeOption:MPMovieTimeOptionNearestKeyFrame]];	
+	[self.thumbView loadImageFromURL:[NSURL URLWithString:[self.clip clipImageURL]]];
 	[self.artistName setText:self.clip.artistName];
 	[self.clipName setText:self.clip.clipName];
-	[self.viewCount setText:[NSString stringWithFormat:@"%d views", clip.viewCount]];
+	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [clip.viewCount intValue]]];
 	
 }
-
-- (void)viewDidUnload
-{
+- (void)viewDidUnload{
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)play{
+- (IBAction)push4play{
+	[sun stopAnimating];
+	[self presentMoviePlayerViewControllerAnimated:_moviePlayer]; 
+
 	
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"testVideo" ofType:@"3gp"];
-	NSURL* videoUrl = [NSURL fileURLWithPath:path];
-	 
-	PlayerViewController* tmp = [[PlayerViewController alloc] initWithContentURL:clip.clipVideoURL];
-	[self presentMoviePlayerViewControllerAnimated:tmp]; 
-	[tmp release];
+}
+
+- (void)dealloc {
+
+    self.sun = nil;
+	[_moviePlayer release];
 	
+    [super dealloc];
 }
 
 @end

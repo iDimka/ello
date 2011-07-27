@@ -10,9 +10,12 @@
  
 #import "RootViewController.h"
 
-@interface ArtistsViewController : RootViewController {
-    NSMutableArray*		_dataSoutce;
-	ArtistParser*		_artistParser;
+@interface ArtistsViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate> {
+    
+    NSMutableArray*		_dataSource;
+	RKObjectMapping*	_clipsMapping;
+	
+	UISegmentedControl*	_segment;
 	UITableView*		_tableView;
 }
 

@@ -9,25 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "ello/PlayListsViewController.m"
-         timestampString = "333217924.750583"
+         timestampString = "333421042.679046"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "124"
-         endingLineNumber = "124"
-         landmarkName = "-objectLoader:didLoadObjects:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "ello/PlayListsViewController.m"
-         timestampString = "333217924.750583"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "128"
-         endingLineNumber = "128"
+         startingLineNumber = "186"
+         endingLineNumber = "186"
          landmarkName = "-objectLoader:didFailWithError:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "ello/VideoViewController.m"
-         timestampString = "333415877.81837"
+         timestampString = "333418312.41458"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
+         startingLineNumber = "180"
+         endingLineNumber = "180"
          landmarkName = "-objectLoader:didFailWithError:"
          landmarkType = "5">
       </FileBreakpoint>

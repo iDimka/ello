@@ -10,12 +10,14 @@
 
 
 @implementation Artist
-
+ 
+@synthesize thumb;
 @synthesize artistID;
 @synthesize artistName;
 @synthesize artistImage;
 
 -(NSString*)description{
+ 
 	NSString* tmp = [NSString stringWithFormat:@"id=%d;name=%@;imageURL=%@", self.artistID, self.artistName, self.artistImage];
 	return tmp;
 }

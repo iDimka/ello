@@ -12,10 +12,13 @@
 
 @class ClipsParser;
 
-@interface VideoViewController : RootViewController <UITableViewDelegate, UITableViewDataSource>{
-    NSMutableArray*		_dataSource;
-	ClipsParser*		_clipsParser;
-	IBOutlet UITableView* _tableView;
+@interface VideoViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>{
+	ClipsParser*			_clipsParser;
+	IBOutlet UITableView*	_tableView;
+	NSMutableArray*			_dataSource;
+	UISegmentedControl*		_segment;
+	
+	RKObjectMapping* _clipsMapping;
 }
 
 - (IBAction)search:(id)sender;

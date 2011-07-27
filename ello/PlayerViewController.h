@@ -11,7 +11,7 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface PlayerViewController : MPMoviePlayerViewController {
+@interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate>{
 	UIView*	_topControl;
 	UIView* _bottomControl;
 	
