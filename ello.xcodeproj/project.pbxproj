@@ -37,12 +37,12 @@
 		EE6D059D13CFA2730076850F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D059C13CFA2730076850F /* Default.png */; };
 		EE6D059F13CFAF250076850F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6D059E13CFAF230076850F /* MediaPlayer.framework */; };
 		EE6D05A213CFAF600076850F /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D05A113CFAF5F0076850F /* PlayerViewController.m */; };
-		EE6D05A413CFB2D10076850F /* testVideo.3gp in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A313CFB2D10076850F /* testVideo.3gp */; };
 		EE6D05A613CFB50B0076850F /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A513CFB50A0076850F /* share.png */; };
 		EE6D05A813CFC1330076850F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A713CFC1320076850F /* back.png */; };
 		EE6D05AA13CFC2A40076850F /* new_done.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A913CFC2A30076850F /* new_done.png */; };
+		EEA72AD913E07D8900B391D3 /* Entitlements.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = EEA72AD813E07D8900B391D3 /* Entitlements.entitlements */; };
 		EEB8F7F313C5FD0D00B70FDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F213C5FD0D00B70FDB /* UIKit.framework */; };
-		EEB8F7F513C5FD0D00B70FDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F413C5FD0D00B70FDB /* Foundation.framework */; };
+		EEB8F7F513C5FD0D00B70FDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F413C5FD0D00sB70FDB /* Foundation.framework */; };
 		EEB8F7F713C5FD0D00B70FDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F613C5FD0D00B70FDB /* CoreGraphics.framework */; };
 		EEB8F7FD13C5FD0D00B70FDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEB8F7FB13C5FD0D00B70FDB /* InfoPlist.strings */; };
 		EEB8F80013C5FD0D00B70FDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F7FF13C5FD0D00B70FDB /* main.m */; };
@@ -188,10 +188,10 @@
 		EE6D059E13CFAF230076850F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		EE6D05A013CFAF5E0076850F /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		EE6D05A113CFAF5F0076850F /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
-		EE6D05A313CFB2D10076850F /* testVideo.3gp */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.3gp; sourceTree = "<group>"; };
 		EE6D05A513CFB50A0076850F /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		EE6D05A713CFC1320076850F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		EE6D05A913CFC2A30076850F /* new_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_done.png; sourceTree = "<group>"; };
+		EEA72AD813E07D8900B391D3 /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		EEB8F7EE13C5FD0D00B70FDB /* ello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB8F7F213C5FD0D00B70FDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EEB8F7F413C5FD0D00B70FDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -337,7 +337,6 @@
 		EEB8F7E313C5FD0D00B70FDB = {
 			isa = PBXGroup;
 			children = (
-				EE4E256B13DB1FD2003005D6 /* MobileCoreServices.framework */,
 				EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */,
 				EEB8F7F813C5FD0D00B70FDB /* ello */,
 				EEB8F7F113C5FD0D00B70FDB /* Frameworks */,
@@ -356,6 +355,7 @@
 		EEB8F7F113C5FD0D00B70FDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EE4E256B13DB1FD2003005D6 /* MobileCoreServices.framework */,
 				EE4E255213DB1C97003005D6 /* CFNetwork.framework */,
 				EE4E255313DB1C97003005D6 /* CoreData.framework */,
 				EE4E255413DB1C97003005D6 /* SystemConfiguration.framework */,
@@ -396,7 +396,7 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EE6D05A313CFB2D10076850F /* testVideo.3gp */,
+				EEA72AD813E07D8900B391D3 /* Entitlements.entitlements */,
 				EEF2270113C651FC004731BE /* images */,
 				EEB8F7FA13C5FD0D00B70FDB /* ello-Info.plist */,
 				EEB8F7FB13C5FD0D00B70FDB /* InfoPlist.strings */,
@@ -603,10 +603,10 @@
 				EE6D051B13CCE08D0076850F /* SearchViewController.xib in Resources */,
 				EE6D054E13CE41FC0076850F /* PlayListViewController.xib in Resources */,
 				EE6D059D13CFA2730076850F /* Default.png in Resources */,
-				EE6D05A413CFB2D10076850F /* testVideo.3gp in Resources */,
 				EE6D05A613CFB50B0076850F /* share.png in Resources */,
 				EE6D05A813CFC1330076850F /* back.png in Resources */,
 				EE6D05AA13CFC2A40076850F /* new_done.png in Resources */,
+				EEA72AD913E07D8900B391D3 /* Entitlements.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,7 +677,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Valery Kurilov (5W44P8WJS4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -690,13 +691,13 @@
 					"\"$(SOURCE_ROOT)/RestKit/Build\"",
 					"\"$(SDK_DIR)\"/usr/include/libxml2\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-ObjC",
 					"-all_load",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0625434F-C58F-47F3-AD84-8984937A547E";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -705,16 +706,26 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexandr Androshuk";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexandr Androshuk";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"\"$(SOURCE_ROOT)/RestKit/Build\"",
+					"\"$(SDK_DIR)\"/usr/include/libxml2\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SOURCE_ROOT)/RestKit/Build/$(BUILD_STYLE)-$(PLATFORM_NAME)\"";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-all_load",
+				);
+				PROVISIONING_PROFILE = "A7332872-FD05-4E17-9B57-F7FD9652DE07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A7332872-FD05-4E17-9B57-F7FD9652DE07";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -723,6 +734,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -730,6 +743,7 @@
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -738,12 +752,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
+				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
