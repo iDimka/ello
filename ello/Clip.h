@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "asyncimageview.h"
 
-@interface Clip : NSObject {
+@interface Clip : NSObject <AsyncImageViewProtocol>{
   
 	NSNumber*		clipID;
 	NSNumber*		artistId;
@@ -21,7 +22,7 @@
 	NSString*		clipImageURL;
 	NSString*		clipVideoURL;	
 	NSString*		label;
-	
+	UIImage*		thumb;
 	
 	
 }

@@ -21,15 +21,10 @@
 @implementation ArtistsViewController
  
 #pragma mark - View lifecycle
-
+ 
 - (void)viewDidLoad{
     [super viewDidLoad];
-  	 
-	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Все", @"Топ", @"Новые", nil]];
-	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
-	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
-	self.navigationItem.titleView = _segment; 
-	[_segment setSelectedSegmentIndex:0];
+	 
 	
 	self.title = nil;
 	
@@ -47,7 +42,7 @@
 	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	
 	_tableView.rowHeight = 154; 
-	[self showDimView];
+//	[self showDimView];
 	
 	
 	_dataSource = [[NSMutableArray alloc] init];
@@ -56,6 +51,7 @@
 	[_dataSource addObject:[NSNull null]];
 	
 	
+	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Artist class]];
     [mapping mapKeyPathsToAttributes:
      @"artist.id",		@"artistID",
@@ -70,8 +66,13 @@
 	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping];
 	[_clipsMapping addRelationshipMapping:rel];
 	
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getAllArtists" objectMapping:_clipsMapping delegate:self];
+//     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getAllArtists" objectMapping:_clipsMapping delegate:self];
 	
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Все", @"Топ", @"Новые", nil]];
+	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
+	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
+	self.navigationItem.titleView = _segment; 
+	[_segment setSelectedSegmentIndex:0];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -118,10 +119,10 @@
 }
 
 - (void)segmentTapped:(UISegmentedControl*)segmentedControl{
-	
+		[_tableView reloadData];	
 	if (![[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
-		[_tableView reloadData];
-		return;
+
+//		return;
 	}
 	 
 	[self showDimView];
@@ -140,6 +141,7 @@
 }
 - (void)search:(id)sender{
 	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
+	[detailViewController setMode:kArtist];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }

@@ -17,13 +17,14 @@ typedef void (^CloseBlock)(NSString *inputString);
 @implementation _DimView
 
 - (id)initWithParent:(id) parent onTappedSelector:(SEL) tappedSel{
-    self = [super initWithFrame:[UIScreen mainScreen].bounds];
+    self = [super initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     if (self) {
         // Initialization code
         _parent = parent;
         onTapped = tappedSel;
         self.backgroundColor = [UIColor blackColor];
         self.alpha = 0.3;
+		self.userInteractionEnabled = NO;
 		
 		UIActivityIndicatorView* act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		[act setCenter:self.center];

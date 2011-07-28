@@ -96,9 +96,9 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="769263563">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="262089398">
-						<string key="IBUITitle">Видео</string>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="422683258">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="162079052">
+						<string key="IBUITitle">Главная</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
@@ -109,7 +109,7 @@
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					<bool key="IBUIHorizontal">NO</bool>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="143671727">
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="618860647">
 						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">256</int>
 						<string key="NSFrameSize">{0, 0}</string>
@@ -117,40 +117,94 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIBarStyle">1</int>
 					</object>
 					<object class="NSMutableArray" key="IBUIViewControllers">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="IBUIViewController" id="1011807803">
-							<object class="IBUITableView" key="IBUIView" id="694033765">
+						<object class="IBUIViewController" id="133330573">
+							<object class="IBUIView" key="IBUIView" id="148756954">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">274</int>
+								<object class="NSMutableArray" key="NSSubviews">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<object class="IBUIScrollView" id="785941374">
+										<reference key="NSNextResponder" ref="148756954"/>
+										<int key="NSvFlags">274</int>
+										<string key="NSFrameSize">{320, 290}</string>
+										<reference key="NSSuperview" ref="148756954"/>
+										<reference key="NSNextKeyView" ref="213464757"/>
+										<bool key="IBUIClipsSubviews">YES</bool>
+										<bool key="IBUIMultipleTouchEnabled">YES</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<bool key="IBUIPagingEnabled">YES</bool>
+										<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+										<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
+									</object>
+									<object class="IBUIPageControl" id="327858098">
+										<reference key="NSNextResponder" ref="148756954"/>
+										<int key="NSvFlags">1316</int>
+										<object class="NSPSMatrix" key="NSFrameMatrix"/>
+										<string key="NSFrame">{{108, 287}, {207, 36}}</string>
+										<reference key="NSSuperview" ref="148756954"/>
+										<reference key="NSNextKeyView" ref="795333663"/>
+										<bool key="IBUIOpaque">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIContentHorizontalAlignment">0</int>
+										<int key="IBUIContentVerticalAlignment">0</int>
+										<bool key="IBUIDefersCurrentPageDisplay">YES</bool>
+										<int key="IBUINumberOfPages">12</int>
+									</object>
+									<object class="IBUILabel" id="213464757">
+										<reference key="NSNextResponder" ref="148756954"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{10, 293}, {91, 21}}</string>
+										<reference key="NSSuperview" ref="148756954"/>
+										<reference key="NSNextKeyView" ref="327858098"/>
+										<bool key="IBUIOpaque">NO</bool>
+										<bool key="IBUIClipsSubviews">YES</bool>
+										<int key="IBUIContentMode">7</int>
+										<bool key="IBUIUserInteractionEnabled">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<string key="IBUIText"/>
+										<object class="NSFont" key="IBUIFont">
+											<string key="NSName">Helvetica</string>
+											<double key="NSSize">13</double>
+											<int key="NSfFlags">16</int>
+										</object>
+										<object class="NSColor" key="IBUITextColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MSAxIDEAA</bytes>
+											<object class="NSColorSpace" key="NSCustomColorSpace">
+												<int key="NSID">1</int>
+											</object>
+										</object>
+										<nil key="IBUIHighlightedColor"/>
+										<int key="IBUIBaselineAdjustment">1</int>
+										<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+										<float key="IBUIMinimumFontSize">10</float>
+										<int key="IBUITextAlignment">1</int>
+									</object>
+								</object>
 								<string key="NSFrame">{{0, 64}, {320, 367}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView" ref="795333663"/>
+								<reference key="NSNextKeyView" ref="785941374"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="856048234">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
-								<bool key="IBUIClipsSubviews">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<bool key="IBUIAlwaysBounceVertical">YES</bool>
-								<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
-								<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-								<float key="IBUIRowHeight">154</float>
-								<float key="IBUISectionHeaderHeight">22</float>
-								<float key="IBUISectionFooterHeight">22</float>
 							</object>
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="270856449">
-								<string key="IBUITitle"/>
-								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="476348002">
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="545662186">
+								<string key="IBUITitle">ELLO.TV</string>
+								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="778596073">
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
-									<reference key="IBUINavigationItem" ref="270856449"/>
+									<reference key="IBUINavigationItem" ref="545662186"/>
 									<int key="IBUISystemItemIdentifier">12</int>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<reference key="IBUIParentViewController" ref="769263563"/>
+							<reference key="IBUIParentViewController" ref="422683258"/>
 							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 								<int key="IBUIInterfaceOrientation">1</int>
 								<int key="interfaceOrientation">1</int>
@@ -162,9 +216,10 @@
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUINavigationController" id="422683258">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="162079052">
-							<string key="IBUITitle">Главная</string>
+					<reference ref="422683258"/>
+					<object class="IBUINavigationController" id="769263563">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="262089398">
+							<string key="IBUITitle">Видео</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
@@ -175,7 +230,7 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
-						<object class="IBUINavigationBar" key="IBUINavigationBar" id="618860647">
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="143671727">
 							<nil key="NSNextResponder"/>
 							<int key="NSvFlags">256</int>
 							<string key="NSFrameSize">{0, 0}</string>
@@ -183,89 +238,35 @@
 							<bool key="IBUIClipsSubviews">YES</bool>
 							<bool key="IBUIMultipleTouchEnabled">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<int key="IBUIBarStyle">1</int>
 						</object>
 						<object class="NSMutableArray" key="IBUIViewControllers">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIViewController" id="133330573">
-								<object class="IBUIView" key="IBUIView" id="148756954">
+							<object class="IBUIViewController" id="1011807803">
+								<object class="IBUITableView" key="IBUIView" id="694033765">
 									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">274</int>
-									<object class="NSMutableArray" key="NSSubviews">
-										<bool key="EncodedWithXMLCoder">YES</bool>
-										<object class="IBUIScrollView" id="785941374">
-											<reference key="NSNextResponder" ref="148756954"/>
-											<int key="NSvFlags">274</int>
-											<string key="NSFrameSize">{320, 290}</string>
-											<reference key="NSSuperview" ref="148756954"/>
-											<reference key="NSNextKeyView" ref="213464757"/>
-											<bool key="IBUIClipsSubviews">YES</bool>
-											<bool key="IBUIMultipleTouchEnabled">YES</bool>
-											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-											<bool key="IBUIPagingEnabled">YES</bool>
-											<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
-											<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
-										</object>
-										<object class="IBUIPageControl" id="327858098">
-											<reference key="NSNextResponder" ref="148756954"/>
-											<int key="NSvFlags">1316</int>
-											<object class="NSPSMatrix" key="NSFrameMatrix"/>
-											<string key="NSFrame">{{108, 287}, {207, 36}}</string>
-											<reference key="NSSuperview" ref="148756954"/>
-											<bool key="IBUIOpaque">NO</bool>
-											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-											<int key="IBUIContentHorizontalAlignment">0</int>
-											<int key="IBUIContentVerticalAlignment">0</int>
-											<bool key="IBUIDefersCurrentPageDisplay">YES</bool>
-											<int key="IBUINumberOfPages">12</int>
-										</object>
-										<object class="IBUILabel" id="213464757">
-											<reference key="NSNextResponder" ref="148756954"/>
-											<int key="NSvFlags">292</int>
-											<string key="NSFrame">{{10, 293}, {91, 21}}</string>
-											<reference key="NSSuperview" ref="148756954"/>
-											<reference key="NSNextKeyView" ref="327858098"/>
-											<bool key="IBUIOpaque">NO</bool>
-											<bool key="IBUIClipsSubviews">YES</bool>
-											<int key="IBUIContentMode">7</int>
-											<bool key="IBUIUserInteractionEnabled">NO</bool>
-											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-											<string key="IBUIText">ArtistName</string>
-											<object class="NSFont" key="IBUIFont">
-												<string key="NSName">Helvetica</string>
-												<double key="NSSize">13</double>
-												<int key="NSfFlags">16</int>
-											</object>
-											<object class="NSColor" key="IBUITextColor">
-												<int key="NSColorSpace">1</int>
-												<bytes key="NSRGB">MSAxIDEAA</bytes>
-												<object class="NSColorSpace" key="NSCustomColorSpace">
-													<int key="NSID">1</int>
-												</object>
-											</object>
-											<nil key="IBUIHighlightedColor"/>
-											<int key="IBUIBaselineAdjustment">1</int>
-											<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-											<float key="IBUIMinimumFontSize">10</float>
-											<int key="IBUITextAlignment">1</int>
-										</object>
-									</object>
 									<string key="NSFrame">{{0, 64}, {320, 367}}</string>
-									<reference key="NSNextKeyView" ref="785941374"/>
 									<reference key="IBUIBackgroundColor" ref="856048234"/>
+									<bool key="IBUIClipsSubviews">YES</bool>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									<bool key="IBUIAlwaysBounceVertical">YES</bool>
+									<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
+									<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
+									<float key="IBUIRowHeight">154</float>
+									<float key="IBUISectionHeaderHeight">22</float>
+									<float key="IBUISectionFooterHeight">22</float>
 								</object>
-								<object class="IBUINavigationItem" key="IBUINavigationItem" id="545662186">
-									<string key="IBUITitle">ELLO.TV</string>
-									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="778596073">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="270856449">
+									<string key="IBUITitle"/>
+									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="476348002">
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIStyle">1</int>
-										<reference key="IBUINavigationItem" ref="545662186"/>
+										<reference key="IBUINavigationItem" ref="270856449"/>
 										<int key="IBUISystemItemIdentifier">12</int>
 									</object>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
-								<reference key="IBUIParentViewController" ref="422683258"/>
+								<reference key="IBUIParentViewController" ref="769263563"/>
 								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 									<int key="IBUIInterfaceOrientation">1</int>
 									<int key="interfaceOrientation">1</int>
@@ -275,7 +276,6 @@
 							</object>
 						</object>
 					</object>
-					<reference ref="769263563"/>
 					<object class="IBUINavigationController" id="890068251">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="532754494">
 							<string key="IBUITitle">Плейлисты</string>
@@ -768,6 +768,7 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSNextKeyView"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
 						<bytes key="NSWhite">MCAwAA</bytes>
@@ -918,7 +919,7 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 						<reference key="source" ref="133330573"/>
 						<reference key="destination" ref="213464757"/>
 					</object>
-					<int key="connectionID">240</int>
+					<int key="connectionID">241</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1120,6 +1121,7 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 							<reference ref="148756954"/>
 						</object>
 						<reference key="parent" ref="422683258"/>
+						<string key="objectName">General View Controller - ELLO.TV</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">148</int>
@@ -1647,7 +1649,7 @@ INC/0LXRgNCy0YvQvNC4INC+INC90L7QstGL0YUg0LrQu9C40L/QsNGFA</string>
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">240</int>
+			<int key="maxID">241</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

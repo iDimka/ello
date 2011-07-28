@@ -51,12 +51,7 @@
 	
 	[self showDimView];
  
-	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Популярные ", @"Премеры", @"Артисты", nil]];
-	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
-	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
-	self.navigationItem.titleView = _segment; 
-	[_segment setSelectedSegmentIndex:0];
-
+	
 	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
     [mapping mapKeyPathsToAttributes:
@@ -71,17 +66,18 @@
  	 @"clip.video",		@"clipVideoURL",
   	 @"clip.label",		@"label", 
      nil];
-
 	
 	_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
-	[_clipsMapping mapKeyPathsToAttributes:
-	 @"status", @"status",
-	 nil];
+	[_clipsMapping mapKeyPathsToAttributes: @"status", @"status",  nil];
 	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
 	[_clipsMapping addRelationshipMapping:rel];
-	 
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getLatestClips" objectMapping:_clipsMapping delegate:self];
+
 	
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Популярные ", @"Премеры", @"Артисты", nil]];
+	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
+	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
+	self.navigationItem.titleView = _segment; 
+	[_segment setSelectedSegmentIndex:0];
 	
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -107,12 +103,9 @@
 }
 
 - (void)segmentTapped:(UISegmentedControl*)segmentedControl{
-	
-		if (![[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
-			[_tableView reloadData];
-			return;
-		}
-	
+	[_tableView reloadData];
+ 
+
 	NSLog(@"segm index %d", segmentedControl.selectedSegmentIndex);
 	[self showDimView];
 	switch (segmentedControl.selectedSegmentIndex) {
@@ -131,7 +124,7 @@
 #pragma mark - Table view data source
  
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
+	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isKindOfClass:[NSNull class]] ) {
 	
 		return 0;
 	}
@@ -165,12 +158,13 @@
  
 - (void)search:(id)sender{
 	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
+	[detailViewController setMode:kClip];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
+	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isKindOfClass:[NSNull class]] ) {
 		[_dataSource insertObject:[objects objectAtIndex:0] atIndex:_segment.selectedSegmentIndex];
 	}
 	[self hideDimView];

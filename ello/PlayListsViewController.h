@@ -12,7 +12,9 @@
 
 @interface PlayListsViewController : UITableViewController <RKObjectLoaderDelegate> {
     
-    NSMutableArray*		_dataSource;
+    NSMutableArray*		_dataSourceCharts;
+	NSMutableArray*		_dataSourceTop;
+	NSMutableArray*		_dataSourceMy;
 	RKObjectMapping*	_clipsMapping;
 	
 	UISegmentedControl*	_segment;

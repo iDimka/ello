@@ -7,24 +7,20 @@
 //
 
 #import "elloAppDelegate.h"
+ 
+
+//#import "RKReachabilityObserver.h"
 
 @implementation elloAppDelegate
 
-
+@synthesize reachability;
 @synthesize window=_window; 
 @synthesize tabBarController=_tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 
-
-	
-//	_artistParser = [[ArtistParser alloc] init];
-//	[_artistParser loadURL:[NSURL URLWithString:@"http://themedibook.com/ello/services/service.php?service=artist&action=getAllArtists"]];
-//	[_artistParser setDelegate:self];
-	
-	self.window.rootViewController = self.tabBarController;
-	[self.window makeKeyAndVisible];
-
+//[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	self.reachability = [[NSClassFromString(@"RKReachabilityObserver") alloc] initWithHostname:@"google.com"];
     return YES;
 }
 
@@ -49,6 +45,11 @@
 	/*
 	 Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 	 */
+}
+
+- (void)show{
+	self.window.rootViewController = self.tabBarController;
+	[self.window makeKeyAndVisible];	
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application{

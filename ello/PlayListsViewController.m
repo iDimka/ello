@@ -21,13 +21,13 @@
 
 @interface PlayListsViewController()
 
-@property(nonatomic, retain)NSMutableArray* dataSource;
+//@property(nonatomic, retain)NSMutableArray* dataSource;
 
 @end
 
 @implementation PlayListsViewController
 
-@synthesize dataSource = _dataSource;
+//@synthesize dataSource = _dataSource;
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -41,7 +41,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         
-//		[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+//		//[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
     }
     return self;
 }
@@ -50,47 +50,10 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-	
-	_dataSource = [[NSMutableArray alloc] init];
-	[_dataSource addObject:[NSNull null]];
-	[_dataSource addObject:[NSNull null]];
-	[_dataSource addObject:[NSNull null]];
 	 
-	 
-	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[PlayList class]];
-    [mapping mapKeyPathsToAttributes:
-     @"playlist.id",		@"playListID",
-	 @"playlist.artistId",	@"artistID",
-	 @"playlist.artistName",@"artistName",
-  	 @"playlist.genreId",	@"genreID",
-  	 @"playlist.genreName",	@"genreName",
-  	 @"playlist.viewCount",	@"viewCount",
-	 @"playlist.name",		@"name",
-	 @"playlist.image",		@"imageURLString",
- 	 @"playlist.video",		@"videoURLString",
-  	 @"playlist.label",		@"label", 
-     nil];
 	
-	/*
-	 NSNumber*		playListID;
-	 NSNumber*		artistID;
-	 NSString*		artistName;
-	 NSURL*			imageURLString;
-	 NSNumber*		genreID;
-	 NSString*		genreName;
-	 NSNumber*		viewCount;
-	 NSString*		name;
-	 NSString*		videoURLString;
-	 NSString*		label;
-	 */
-	_clipsMapping = [[RKObjectMapping mappingForClass:[PlayLists class]] retain];
-	[_clipsMapping mapKeyPathsToAttributes:
-	 @"status", @"status",
-	 nil];
-	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"playlists" toKeyPath:@"playlists" objectMapping:mapping];
-	[_clipsMapping addRelationshipMapping:rel];
 	
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=playlist&action=getChartPlaylists" objectMapping:_clipsMapping delegate:self];
+//    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=playlist&action=getChartPlaylists" objectMapping:_clipsMapping delegate:self];
 	  
 	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Чарты", @"Топ ", @"Мои артисты", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
@@ -126,8 +89,18 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
-	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) return 0; 
-    return [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] playlists] count];
+	switch (_segment.selectedSegmentIndex) {
+		case 0:  
+			return [[[_dataSourceCharts objectAtIndex:0] playlists] count];
+			break;
+		case 1:
+			return [[[_dataSourceTop objectAtIndex:0] playlists] count]; 
+			break;
+		case 2:
+			return [[[_dataSourceMy objectAtIndex:0] playlists]		count]; 
+			break; 	
+	}
+	return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
@@ -138,8 +111,18 @@
     }
     
 	
-	PlayList* playlist =  [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] playlists] objectAtIndex:indexPath.row]; 
-	
+	PlayList* playlist =  nil;
+	switch (_segment.selectedSegmentIndex) {
+		case 0:  
+			playlist = [[[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
+			break;
+		case 1:
+			playlist = [[[_dataSourceTop objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			break;
+		case 2:
+			playlist = [[[_dataSourceMy objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			break; 	
+	}
 	[cell configCellByPlayList:playlist];
     
     return cell;
@@ -157,17 +140,38 @@
 }
 
 - (void)segmentTapped:(id)sender{
+		[self.tableView reloadData];	
+ 
+//	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[PlayList class]];
+    [mapping mapKeyPathsToAttributes:
+     @"playlist.id",		@"playListID",
+	 @"playlist.artistId",	@"artistID",
+	 @"playlist.artistName",@"artistName",
+  	 @"playlist.genreId",	@"genreID",
+  	 @"playlist.genreName",	@"genreName",
+  	 @"playlist.viewCount",	@"viewCount",
+	 @"playlist.name",		@"name",
+	 @"playlist.image",		@"imageURLString",
+ 	 @"playlist.video",		@"videoURLString",
+  	 @"playlist.label",		@"label", 
+     nil];
 	
-	if (![[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
-		[self.tableView reloadData];
-		return;
-	}
+	
+	_clipsMapping = [[RKObjectMapping mappingForClass:[PlayLists class]] retain];
+	[_clipsMapping mapKeyPathsToAttributes:
+	 @"status", @"status",
+	 nil];
+	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"playlists" toKeyPath:@"playlists" objectMapping:mapping];
+	[_clipsMapping addRelationshipMapping:rel];
 	  
 	switch (_segment.selectedSegmentIndex) {
 		case 0:			
+			if ([_dataSourceCharts count]) break;
 			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=playlist&action=getChartPlaylists" objectMapping:_clipsMapping delegate:self]; 
 			break;
 		case 1:			
+			if ([_dataSourceTop count])break;
 			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=playlist&action=getTopPlaylists" objectMapping:_clipsMapping delegate:self];
 			break; 		
 	}
@@ -175,10 +179,26 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isMemberOfClass:[NSNull class]] ) {
-		[_dataSource insertObject:[objects objectAtIndex:0] atIndex:_segment.selectedSegmentIndex];
+ 
+	
+	switch (_segment.selectedSegmentIndex) {
+		case 0:
+			if (!_dataSourceCharts) _dataSourceCharts = [NSMutableArray new];
+			[_dataSourceCharts removeAllObjects];
+			[_dataSourceCharts addObject:[objects objectAtIndex:0]];
+			break;
+		case 1:
+			if (!_dataSourceTop) _dataSourceTop = [NSMutableArray new];
+			[_dataSourceTop removeAllObjects];
+			[_dataSourceTop addObject:[objects objectAtIndex:0]];
+			break;
+		case 2:
+			if (!_dataSourceMy) _dataSourceMy = [NSMutableArray new];
+			[_dataSourceMy removeAllObjects];
+			[_dataSourceMy addObject:[objects objectAtIndex:0]];
+			break; 	
 	}
-//	[self hideDimView];
+	
 	[self.tableView reloadData];
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
@@ -189,8 +209,7 @@
 
 - (void)dealloc {
 
-    [_segment release];
-	[_dataSource release];
+    [_segment release]; 
 	
     [super dealloc];
 }

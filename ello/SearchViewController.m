@@ -8,8 +8,15 @@
 
 #import "SearchViewController.h"
 
+#import "Artist.h"
+#import "Artists.h"
+#import "VideoTableViewCell.h"
+#import "Clip.h"
+#import "Clips.h"
 
 @implementation SearchViewController
+
+@synthesize mode;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,90 +35,61 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-//	NSLog(@"%@", [self.searchDisplayController.searchBar subviews]);
-	for (UIView* view in [self.searchDisplayController.searchBar subviews]) {
-		if ([view isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
-			[view becomeFirstResponder];
-		}
-	}  
-}
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+	_dataSource = [NSMutableArray new];
+	
+	   
 }
-
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	[self.searchDisplayController setActive:YES animated:NO];
-	
-	for (UIView* view in [self.searchDisplayController.searchBar subviews]) {
-		if ([view isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
-			[view becomeFirstResponder];
-		}
-	}  
+ 
 
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 }
-
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 		[self.navigationController setNavigationBarHidden:NO];
 }
-
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{ 
-    return 0;
+ 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
+    return [_dataSource count];
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{ 
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    VideoTableViewCell *cell = (VideoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[VideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    // Configure the cell...
+	id data;
+	switch (mode) {
+		case kArtist:
+			data = [_dataSource  objectAtIndex:indexPath.row]; 
+			[cell configCellByArtitst:data];
+			break;
+		case kClip:
+			data = [_dataSource  objectAtIndex:indexPath.row]; 
+			[cell configCellByClip:data];
+			break;
+	}
     
     return cell;
 }
  
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -129,7 +107,49 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
 }
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
- 
+	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	[[[RKObjectManager sharedManager] objectLoaderWithResourcePath:nil delegate:self] setDelegate:nil];
+	switch (mode) {
+		case kClip:;
+			
+//			//[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+			RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
+			[mapping mapKeyPathsToAttributes:
+			 @"clip.id",		@"clipID",
+			 @"clip.artistId",	@"artistId",
+			 @"clip.artistName",@"artistName",
+			 @"clip.genreId",	@"clipGanre",
+			 @"clip.genreName",	@"clipGanreName",
+			 @"clip.viewCount",	@"viewCount",
+			 @"clip.name",		@"clipName",
+			 @"clip.image",		@"clipImageURL",
+			 @"clip.video",		@"clipVideoURL",
+			 @"clip.label",		@"label", 
+			 nil];
+			
+			_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
+			[_clipsMapping mapKeyPathsToAttributes:@"status", @"status", nil];
+			RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
+			[_clipsMapping addRelationshipMapping:rel];
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=util&action=searchByClipName&name=%@", searchText] objectMapping:_clipsMapping delegate:self]; 
+			break;
+		case kArtist:
+			
+			mapping = [RKObjectMapping mappingForClass:[Artist class]];
+			[mapping mapKeyPathsToAttributes:
+			 @"artist.id",		@"artistID",
+			 @"artist.image",	@"artistImage",
+			 @"artist.name",	@"artistName",  
+			 nil];
+			
+			_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
+			[_clipsMapping mapKeyPathsToAttributes:
+			 @"status", @"status", nil]; 
+			[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
+			 
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", searchText]  objectMapping:_clipsMapping delegate:self]; 
+			break; 
+	} 
 }
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
 	
@@ -140,5 +160,27 @@
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope{
 	 
 }
+  
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+	[_dataSource removeAllObjects];
+	switch (mode) {
+		case kClip:
+			[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] clips]];
+			break;
+			
+		default:
+			[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] artists]];
+			break;
+	}
+	[self.tableView reloadData];
+	[[[UIApplication sharedApplication] delegate] performSelector:@selector(show)];
+}
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
+	NSLog(@"ERROR %@", tmp);
+	
+}
+
+
 
 @end

@@ -8,7 +8,6 @@
 
 #import "Clip.h"
 
-
 @implementation Clip
 
 @synthesize thumb;
@@ -26,6 +25,17 @@
 
 - (NSString*)description{
 	return clipName;
+}
+
+- (void)setClipImageURL:(NSString *)clipImageURL_{
+	clipImageURL = [clipImageURL_ retain];
+	AsyncImageView* tmp = [[[AsyncImageView alloc] init] autorelease];
+	[tmp performSelectorOnMainThread:@selector(loadImageFromURL:) withObject:[NSURL URLWithString:clipImageURL_] waitUntilDone:YES];
+	[tmp setDelegate:self];
+}
+
+- (void)imageDidLoad:(UIImage*)image{
+	self.thumb = image;
 }
 
 @end

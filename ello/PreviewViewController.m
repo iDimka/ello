@@ -20,15 +20,7 @@
 @synthesize clipName;
 @synthesize viewCount;
 @synthesize clip;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-} 
-
+ 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad{
@@ -38,28 +30,19 @@
 	
 	_moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:clip.clipVideoURL]];
 
-	//	[self.thumbView setImage:[_moviePlayer.moviePlayer thumbnailImageAtTime:3 timeOption:MPMovieTimeOptionNearestKeyFrame]];	
-	[self.thumbView loadImageFromURL:[NSURL URLWithString:[self.clip clipImageURL]]];
+	if ([self.clip thumb]) {
+		[self.thumbView setImage:self.clip.thumb];
+	}else [self.thumbView loadImageFromURL:[NSURL URLWithString:[self.clip clipImageURL]]];
 	[self.artistName setText:self.clip.artistName];
 	[self.clipName setText:self.clip.clipName];
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [clip.viewCount intValue]]];
 	
 }
-- (void)viewDidUnload{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 - (IBAction)push4play{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[sun stopAnimating];
-	[self presentMoviePlayerViewControllerAnimated:_moviePlayer]; 
-
-	
+	[self presentMoviePlayerViewControllerAnimated:_moviePlayer]; 	
 }
 
 - (void)dealloc {

@@ -10,7 +10,7 @@
 
 #import <iAd/iAd.h>
  
-@interface GeneralViewController : UIViewController <UIScrollViewDelegate, ADBannerViewDelegate>{
+@interface GeneralViewController : UIViewController <UIScrollViewDelegate, ADBannerViewDelegate, RKObjectLoaderDelegate>{
 	IBOutlet	UIScrollView*	_scrollView;
 	IBOutlet	UIImageView*	_banner;
 //	IBOutlet	UIImageView*	_centerImage;
@@ -18,18 +18,20 @@
 //	IBOutlet	UIImageView*	_rightImage;
 	IBOutlet	UIPageControl*	_pageControl;
     IBOutlet    UILabel*        _artistName1Label;
-    IBOutlet    UILabel*        _artistName2Label;
+//    IBOutlet    UILabel*        _artistName2Label;
 	
 	NSTimer*					_slideshowTimer;
 	NSInteger					_position;
 	NSInteger					_prevPosition;	
 	BOOL						o_bannerIsVisible; 
 	NSMutableArray*             _ViewDataContainer;
-	NSMutableArray*				_galleryDataSource;
+	NSMutableArray*				_dataSource;
 	
 	ADBannerView				*adView;
-	BOOL bannerIsVisible;
- 
+	BOOL						bannerIsVisible;
+	
+	
+	RKObjectMapping*			_clipsMapping;
 }
 
 - (IBAction)search;

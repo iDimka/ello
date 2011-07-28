@@ -8,9 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+	kNone,
+	kArtist,
+	kClip
+}SearchMode;
 
-@interface SearchViewController : UITableViewController {
+@interface SearchViewController : UITableViewController <RKObjectLoaderDelegate>{
     
+	RKObjectMapping*			_clipsMapping;
+	NSMutableArray*				_dataSource;
 }
+
+@property(nonatomic, assign)SearchMode mode;
 
 @end
