@@ -3312,7 +3312,7 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>333575975.30353898</real>
+		<real>333576014.20563698</real>
 		<string>{0, 458}</string>
 		<string>{450, 0}</string>
 		<string>@interface GanriViewController</string>
@@ -10209,7 +10209,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>333575975.29641002</real>
+		<real>333576014.19924402</real>
 		<string>{0, 458}</string>
 		<string>{450, 0}</string>
 		<dict>
@@ -16191,15 +16191,15 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>73</integer>
+					<integer>323</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>71</integer>
+					<integer>321</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>70</integer>
+					<integer>320</integer>
 				</dict>
 			</array>
 			<key>NS.objects</key>
@@ -16218,8 +16218,8 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{4384, 1212}</string>
-		<real>333481774.50624901</real>
+		<string>{33622, 842}</string>
+		<real>333576014.19944602</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -23009,7 +23009,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>1722</integer>
+					<integer>1723</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -23054,7 +23054,7 @@
 				<integer>1718</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/idimka/github/ello/ello/GanriViewController.h</string>
+		<string>file://localhost/Users/idimka/github/ello/ello.xcodeproj/project.pbxproj</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -23070,6 +23070,24 @@
 			<dict>
 				<key>CF$UID</key>
 				<integer>1720</integer>
+			</dict>
+		</dict>
+		<string>file://localhost/Users/idimka/github/ello/ello/GanriViewController.h</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>82</integer>
+			</dict>
+			<key>NS.base</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>0</integer>
+			</dict>
+			<key>NS.relative</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>1722</integer>
 			</dict>
 		</dict>
 		<string>file://localhost/Users/idimka/github/ello/ello/elloAppDelegate.m</string>
@@ -23104,7 +23122,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>1723</integer>
+				<integer>1725</integer>
 			</dict>
 		</dict>
 		<string>file://localhost/Users/idimka/Documents/iProgects/RestKit-RestKit-40eb842%202/Code/Network/RKRequestCache.m</string>
@@ -23122,7 +23140,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>1725</integer>
+				<integer>1727</integer>
 			</dict>
 		</dict>
 		<string>file://localhost/Users/idimka/github/ello/ello/main.m</string>
@@ -23140,7 +23158,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>1727</integer>
+				<integer>1729</integer>
 			</dict>
 		</dict>
 		<string>file://localhost/Users/idimka/github/ello/ello/SearchViewController.m</string>
@@ -23158,7 +23176,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>1729</integer>
+				<integer>1731</integer>
 			</dict>
 		</dict>
 		<string>file://localhost/Users/idimka/github/ello/ello/SearchViewController.h</string>
@@ -23176,7 +23194,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>1731</integer>
+				<integer>1733</integer>
 			</dict>
 		</dict>
 		<string>file://localhost/Users/idimka/Documents/iProgects/RestKit-RestKit-40eb842%202/Code/Network/RKResponse.m</string>
@@ -23194,28 +23212,10 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>1733</integer>
-			</dict>
-		</dict>
-		<string>file://localhost/Users/idimka/Documents/iProgects/RestKit-RestKit-40eb842%202/Code/ObjectMapping/RKObjectLoader.m</string>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>82</integer>
-			</dict>
-			<key>NS.base</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>0</integer>
-			</dict>
-			<key>NS.relative</key>
-			<dict>
-				<key>CF$UID</key>
 				<integer>1735</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/idimka/Documents/iProgects/RestKit-RestKit-40eb842%202/Code/ObjectMapping/RKObjectManager.h</string>
+		<string>file://localhost/Users/idimka/Documents/iProgects/RestKit-RestKit-40eb842%202/Code/ObjectMapping/RKObjectLoader.m</string>
 	</array>
 	<key>$top</key>
 	<dict>
