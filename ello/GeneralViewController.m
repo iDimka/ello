@@ -89,6 +89,8 @@
   	 @"clip.label",		@"label", 
      nil];
 	
+
+	
 	_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
 	[_clipsMapping mapKeyPathsToAttributes:
 	 @"status", @"status",

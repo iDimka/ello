@@ -29,17 +29,25 @@
 		EE6D059513CF890A0076850F /* XMLDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059413CF89090076850F /* XMLDataLoader.m */; };
 		EE6D059813CF8FD40076850F /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059713CF8FD30076850F /* Artist.m */; };
 		EE6D059B13CF981B0076850F /* asyncimageview.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059A13CF98180076850F /* asyncimageview.m */; };
-		EE6D059D13CFA2730076850F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D059C13CFA2730076850F /* Default.png */; };
 		EE6D059F13CFAF250076850F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6D059E13CFAF230076850F /* MediaPlayer.framework */; };
 		EE6D05A213CFAF600076850F /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D05A113CFAF5F0076850F /* PlayerViewController.m */; };
 		EE6D05A613CFB50B0076850F /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A513CFB50A0076850F /* share.png */; };
 		EE6D05A813CFC1330076850F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A713CFC1320076850F /* back.png */; };
 		EE6D05AA13CFC2A40076850F /* new_done.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A913CFC2A30076850F /* new_done.png */; };
-		EEA7008513E1E4C80017F550 /* libRestKitCoreData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008113E1E4C70017F550 /* libRestKitCoreData.a */; };
-		EEA7008613E1E4C80017F550 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008213E1E4C70017F550 /* libRestKitJSONParserJSONKit.a */; };
-		EEA7008713E1E4C80017F550 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008313E1E4C70017F550 /* libRestKitNetwork.a */; };
-		EEA7008813E1E4C80017F550 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008413E1E4C70017F550 /* libRestKitObjectMapping.a */; };
-		EEA7008A13E1E9670017F550 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008913E1E9670017F550 /* libRestKitSupport.a */; };
+		EE74379013E20C4B00FD9509 /* libRestKitCoreData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74378913E20C2400FD9509 /* libRestKitCoreData.a */; };
+		EE74379113E20C4B00FD9509 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74378513E20C2400FD9509 /* libRestKitJSONParserJSONKit.a */; };
+		EE74379213E20C4B00FD9509 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74377B13E20C2400FD9509 /* libRestKitNetwork.a */; };
+		EE74379313E20C4B00FD9509 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74377D13E20C2400FD9509 /* libRestKitObjectMapping.a */; };
+		EE74379413E20C4B00FD9509 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74377F13E20C2400FD9509 /* libRestKitSupport.a */; };
+		EE74379D13E213A600FD9509 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379513E213A600FD9509 /* Icon-72.png */; };
+		EE74379E13E213A600FD9509 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379613E213A600FD9509 /* Icon-Small-50.png */; };
+		EE74379F13E213A600FD9509 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379713E213A600FD9509 /* Icon-Small.png */; };
+		EE7437A013E213A600FD9509 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379813E213A600FD9509 /* Icon-Small@2x.png */; };
+		EE7437A113E213A600FD9509 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379913E213A600FD9509 /* Icon.png */; };
+		EE7437A213E213A600FD9509 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379A13E213A600FD9509 /* Icon@2x.png */; };
+		EE7437A313E213A600FD9509 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379B13E213A600FD9509 /* Default@2x.png */; };
+		EE7437A413E213A600FD9509 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379C13E213A600FD9509 /* Default.png */; };
+		EE7437A713E213D200FD9509 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = EE7437A613E213D200FD9509 /* iTunesArtwork */; };
 		EEA7009313E1EA140017F550 /* GanrObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008B13E1EA140017F550 /* GanrObject.m */; };
 		EEA7009413E1EA140017F550 /* Ganri.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008D13E1EA140017F550 /* Ganri.m */; };
 		EEA7009513E1EA140017F550 /* GanriTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */; };
@@ -73,79 +81,79 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EEA7006B13E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74377A13E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 253A07FC1255161B00976E89;
 			remoteInfo = RestKitNetwork;
 		};
-		EEA7006D13E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74377C13E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 253A08031255162C00976E89;
 			remoteInfo = RestKitObjectMapping;
 		};
-		EEA7006F13E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74377E13E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 253A080C12551D3000976E89;
 			remoteInfo = RestKitSupport;
 		};
-		EEA7007113E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74378013E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2590E64F125231F600531FA8;
 			remoteInfo = "RestKitJSONParser+YAJL";
 		};
-		EEA7007313E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74378213E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2590E66B1252353700531FA8;
 			remoteInfo = "RestKitJSONParser+SBJSON";
 		};
-		EEA7007513E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74378413E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 73057FD11331AD2E001908EE;
 			remoteInfo = "RestKitJSONParser+JSONKit";
 		};
-		EEA7007713E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74378613E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 25BD43BD1340315800DBACDD;
 			remoteInfo = "RestKitXMLParser+Libxml";
 		};
-		EEA7007913E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74378813E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 253A081412551D5300976E89;
 			remoteInfo = RestKitCoreData;
 		};
-		EEA7007B13E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74378A13E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2523360511E79F090048F9B4;
 			remoteInfo = RestKitThree20;
 		};
-		EEA7007D13E1E4930017F550 /* PBXContainerItemProxy */ = {
+		EE74378C13E20C2400FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3F6C39A510FE5C95008F47C5;
 			remoteInfo = UISpec;
 		};
-		EEA7007F13E1E4A40017F550 /* PBXContainerItemProxy */ = {
+		EE74378E13E20C3600FD9509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+			containerPortal = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 255B7588133BABBF00ED76AD;
 			remoteInfo = RestKit;
@@ -187,14 +195,22 @@
 		EE6D059713CF8FD30076850F /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		EE6D059913CF98170076850F /* asyncimageview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asyncimageview.h; sourceTree = "<group>"; };
 		EE6D059A13CF98180076850F /* asyncimageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = asyncimageview.m; sourceTree = "<group>"; };
-		EE6D059C13CFA2730076850F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		EE6D059E13CFAF230076850F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		EE6D05A013CFAF5E0076850F /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		EE6D05A113CFAF5F0076850F /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		EE6D05A513CFB50A0076850F /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		EE6D05A713CFC1320076850F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		EE6D05A913CFC2A30076850F /* new_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_done.png; sourceTree = "<group>"; };
-		EEA7005813E1E4920017F550 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = "../RestKit-RestKit-4ed7a20/RestKit.xcodeproj"; sourceTree = "<group>"; };
+		EE74376613E20C2300FD9509 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = "RestKit-RestKit-40eb842/RestKit.xcodeproj"; sourceTree = "<group>"; };
+		EE74379513E213A600FD9509 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		EE74379613E213A600FD9509 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		EE74379713E213A600FD9509 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		EE74379813E213A600FD9509 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		EE74379913E213A600FD9509 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		EE74379A13E213A600FD9509 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		EE74379B13E213A600FD9509 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		EE74379C13E213A600FD9509 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		EE7437A613E213D200FD9509 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		EEA7008113E1E4C70017F550 /* libRestKitCoreData.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitCoreData.a; sourceTree = SOURCE_ROOT; };
 		EEA7008213E1E4C70017F550 /* libRestKitJSONParserJSONKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitJSONParserJSONKit.a; sourceTree = SOURCE_ROOT; };
 		EEA7008313E1E4C70017F550 /* libRestKitNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitNetwork.a; sourceTree = SOURCE_ROOT; };
@@ -256,11 +272,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEA7008A13E1E9670017F550 /* libRestKitSupport.a in Frameworks */,
-				EEA7008513E1E4C80017F550 /* libRestKitCoreData.a in Frameworks */,
-				EEA7008613E1E4C80017F550 /* libRestKitJSONParserJSONKit.a in Frameworks */,
-				EEA7008713E1E4C80017F550 /* libRestKitNetwork.a in Frameworks */,
-				EEA7008813E1E4C80017F550 /* libRestKitObjectMapping.a in Frameworks */,
+				EE74379013E20C4B00FD9509 /* libRestKitCoreData.a in Frameworks */,
+				EE74379113E20C4B00FD9509 /* libRestKitJSONParserJSONKit.a in Frameworks */,
+				EE74379213E20C4B00FD9509 /* libRestKitNetwork.a in Frameworks */,
+				EE74379313E20C4B00FD9509 /* libRestKitObjectMapping.a in Frameworks */,
+				EE74379413E20C4B00FD9509 /* libRestKitSupport.a in Frameworks */,
 				EECFB8D713E08B1E00BB3D80 /* Foundation.framework in Frameworks */,
 				EE4E256C13DB1FD2003005D6 /* MobileCoreServices.framework in Frameworks */,
 				EE4E255513DB1C97003005D6 /* CFNetwork.framework in Frameworks */,
@@ -352,27 +368,44 @@
 			name = Ganre;
 			sourceTree = "<group>";
 		};
-		EEA7005913E1E4920017F550 /* Products */ = {
+		EE74376713E20C2300FD9509 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EEA7006C13E1E4930017F550 /* libRestKitNetwork.a */,
-				EEA7006E13E1E4930017F550 /* libRestKitObjectMapping.a */,
-				EEA7007013E1E4930017F550 /* libRestKitSupport.a */,
-				EEA7007213E1E4930017F550 /* libRestKitJSONParserYAJL.a */,
-				EEA7007413E1E4930017F550 /* libRestKitJSONParserSBJSON.a */,
-				EEA7007613E1E4930017F550 /* libRestKitJSONParserJSONKit.a */,
-				EEA7007813E1E4930017F550 /* libRestKitXMLParserLibxml.a */,
-				EEA7007A13E1E4930017F550 /* libRestKitCoreData.a */,
-				EEA7007C13E1E4930017F550 /* libRestKitThree20.a */,
-				EEA7007E13E1E4930017F550 /* UISpec.app */,
+				EE74377B13E20C2400FD9509 /* libRestKitNetwork.a */,
+				EE74377D13E20C2400FD9509 /* libRestKitObjectMapping.a */,
+				EE74377F13E20C2400FD9509 /* libRestKitSupport.a */,
+				EE74378113E20C2400FD9509 /* libRestKitJSONParserYAJL.a */,
+				EE74378313E20C2400FD9509 /* libRestKitJSONParserSBJSON.a */,
+				EE74378513E20C2400FD9509 /* libRestKitJSONParserJSONKit.a */,
+				EE74378713E20C2400FD9509 /* libRestKitXMLParserLibxml.a */,
+				EE74378913E20C2400FD9509 /* libRestKitCoreData.a */,
+				EE74378B13E20C2400FD9509 /* libRestKitThree20.a */,
+				EE74378D13E20C2400FD9509 /* UISpec.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EE7437A513E213B100FD9509 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				EE6D05A913CFC2A30076850F /* new_done.png */,
+				EE7437A613E213D200FD9509 /* iTunesArtwork */,
+				EE74379513E213A600FD9509 /* Icon-72.png */,
+				EE74379613E213A600FD9509 /* Icon-Small-50.png */,
+				EE74379713E213A600FD9509 /* Icon-Small.png */,
+				EE74379813E213A600FD9509 /* Icon-Small@2x.png */,
+				EE74379913E213A600FD9509 /* Icon.png */,
+				EE74379A13E213A600FD9509 /* Icon@2x.png */,
+				EE74379B13E213A600FD9509 /* Default@2x.png */,
+				EE74379C13E213A600FD9509 /* Default.png */,
+			);
+			name = icons;
 			sourceTree = "<group>";
 		};
 		EEB8F7E313C5FD0D00B70FDB = {
 			isa = PBXGroup;
 			children = (
-				EEA7005813E1E4920017F550 /* RestKit.xcodeproj */,
+				EE74376613E20C2300FD9509 /* RestKit.xcodeproj */,
 				EEB8F7F813C5FD0D00B70FDB /* ello */,
 				EEB8F7F113C5FD0D00B70FDB /* Frameworks */,
 				EEB8F7EF13C5FD0D00B70FDB /* Products */,
@@ -451,10 +484,9 @@
 		EEF2270113C651FC004731BE /* images */ = {
 			isa = PBXGroup;
 			children = (
-				EE6D05A913CFC2A30076850F /* new_done.png */,
+				EE7437A513E213B100FD9509 /* icons */,
 				EE6D05A713CFC1320076850F /* back.png */,
 				EE6D05A513CFB50A0076850F /* share.png */,
-				EE6D059C13CFA2730076850F /* Default.png */,
 				EE6D04FE13CCD8B80076850F /* bann.png */,
 				EE6D04FF13CCD8B80076850F /* previewImage.png */,
 				EE6D050013CCD8B80076850F /* previewPic.png */,
@@ -514,7 +546,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				EEA7008013E1E4A40017F550 /* PBXTargetDependency */,
+				EE74378F13E20C3600FD9509 /* PBXTargetDependency */,
 			);
 			name = ello;
 			productName = ello;
@@ -541,8 +573,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = EEA7005913E1E4920017F550 /* Products */;
-					ProjectRef = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
+					ProductGroup = EE74376713E20C2300FD9509 /* Products */;
+					ProjectRef = EE74376613E20C2300FD9509 /* RestKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -553,74 +585,74 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EEA7006C13E1E4930017F550 /* libRestKitNetwork.a */ = {
+		EE74377B13E20C2400FD9509 /* libRestKitNetwork.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitNetwork.a;
-			remoteRef = EEA7006B13E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74377A13E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7006E13E1E4930017F550 /* libRestKitObjectMapping.a */ = {
+		EE74377D13E20C2400FD9509 /* libRestKitObjectMapping.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitObjectMapping.a;
-			remoteRef = EEA7006D13E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74377C13E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7007013E1E4930017F550 /* libRestKitSupport.a */ = {
+		EE74377F13E20C2400FD9509 /* libRestKitSupport.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitSupport.a;
-			remoteRef = EEA7006F13E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74377E13E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7007213E1E4930017F550 /* libRestKitJSONParserYAJL.a */ = {
+		EE74378113E20C2400FD9509 /* libRestKitJSONParserYAJL.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitJSONParserYAJL.a;
-			remoteRef = EEA7007113E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74378013E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7007413E1E4930017F550 /* libRestKitJSONParserSBJSON.a */ = {
+		EE74378313E20C2400FD9509 /* libRestKitJSONParserSBJSON.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitJSONParserSBJSON.a;
-			remoteRef = EEA7007313E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74378213E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7007613E1E4930017F550 /* libRestKitJSONParserJSONKit.a */ = {
+		EE74378513E20C2400FD9509 /* libRestKitJSONParserJSONKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitJSONParserJSONKit.a;
-			remoteRef = EEA7007513E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74378413E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7007813E1E4930017F550 /* libRestKitXMLParserLibxml.a */ = {
+		EE74378713E20C2400FD9509 /* libRestKitXMLParserLibxml.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitXMLParserLibxml.a;
-			remoteRef = EEA7007713E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74378613E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7007A13E1E4930017F550 /* libRestKitCoreData.a */ = {
+		EE74378913E20C2400FD9509 /* libRestKitCoreData.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitCoreData.a;
-			remoteRef = EEA7007913E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74378813E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7007C13E1E4930017F550 /* libRestKitThree20.a */ = {
+		EE74378B13E20C2400FD9509 /* libRestKitThree20.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitThree20.a;
-			remoteRef = EEA7007B13E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74378A13E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EEA7007E13E1E4930017F550 /* UISpec.app */ = {
+		EE74378D13E20C2400FD9509 /* UISpec.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = UISpec.app;
-			remoteRef = EEA7007D13E1E4930017F550 /* PBXContainerItemProxy */;
+			remoteRef = EE74378C13E20C2400FD9509 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -646,10 +678,18 @@
 				EE6D050313CCD8B80076850F /* previewPic.png in Resources */,
 				EE6D051B13CCE08D0076850F /* SearchViewController.xib in Resources */,
 				EE6D054E13CE41FC0076850F /* PlayListViewController.xib in Resources */,
-				EE6D059D13CFA2730076850F /* Default.png in Resources */,
 				EE6D05A613CFB50B0076850F /* share.png in Resources */,
 				EE6D05A813CFC1330076850F /* back.png in Resources */,
 				EE6D05AA13CFC2A40076850F /* new_done.png in Resources */,
+				EE74379D13E213A600FD9509 /* Icon-72.png in Resources */,
+				EE74379E13E213A600FD9509 /* Icon-Small-50.png in Resources */,
+				EE74379F13E213A600FD9509 /* Icon-Small.png in Resources */,
+				EE7437A013E213A600FD9509 /* Icon-Small@2x.png in Resources */,
+				EE7437A113E213A600FD9509 /* Icon.png in Resources */,
+				EE7437A213E213A600FD9509 /* Icon@2x.png in Resources */,
+				EE7437A313E213A600FD9509 /* Default@2x.png in Resources */,
+				EE7437A413E213A600FD9509 /* Default.png in Resources */,
+				EE7437A713E213D200FD9509 /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,10 +734,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EEA7008013E1E4A40017F550 /* PBXTargetDependency */ = {
+		EE74378F13E20C3600FD9509 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RestKit;
-			targetProxy = EEA7007F13E1E4A40017F550 /* PBXContainerItemProxy */;
+			targetProxy = EE74378E13E20C3600FD9509 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -784,7 +824,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Intellectsoft LTD";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -797,7 +837,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2BC538DE-D9D1-4405-97C8-1D141115C679";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -809,7 +849,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Alexandr Androshuk";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alexandr Androshuk";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Intellectsoft LTD";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
@@ -822,7 +862,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "A7332872-FD05-4E17-9B57-F7FD9652DE07";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A7332872-FD05-4E17-9B57-F7FD9652DE07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2BC538DE-D9D1-4405-97C8-1D141115C679";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

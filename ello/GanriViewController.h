@@ -15,7 +15,7 @@
     IBOutlet UITableView* _ganritableView;
 }
     
-    - (IBAction)search:(id)sender;
+- (IBAction)search:(id)sender;
     
 
 

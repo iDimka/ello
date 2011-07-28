@@ -16,7 +16,7 @@
 @synthesize tabBarController=_tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-
+	[[RKRequestCache alloc] initWithCachePath:nil storagePolicy:RKRequestCacheStoragePolicyDisabled];
 //[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
 	self.reachability = [[NSClassFromString(@"RKReachabilityObserver") alloc] initWithHostname:@"google.com"];
     return YES;
