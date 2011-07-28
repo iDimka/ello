@@ -337,6 +337,21 @@
 			name = PlayList;
 			sourceTree = "<group>";
 		};
+		EE74375E13E1F6DD00FD9509 /* Ganre */ = {
+			isa = PBXGroup;
+			children = (
+				EEA7008B13E1EA140017F550 /* GanrObject.m */,
+				EEA7008C13E1EA140017F550 /* GanrObject.h */,
+				EEA7008D13E1EA140017F550 /* Ganri.m */,
+				EEA7008E13E1EA140017F550 /* Ganri.h */,
+				EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */,
+				EEA7009013E1EA140017F550 /* GanriTableViewCell.h */,
+				EEA7009113E1EA140017F550 /* GanriViewController.m */,
+				EEA7009213E1EA140017F550 /* GanriViewController.h */,
+			);
+			name = Ganre;
+			sourceTree = "<group>";
+		};
 		EEA7005913E1E4920017F550 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,14 +422,7 @@
 				EEDB552113D0307200038999 /* RootViewController.h */,
 				EEDB552213D0307200038999 /* RootViewController.m */,
 				EEB8F80413C5FD0D00B70FDB /* MainWindow.xib */,
-				EEA7008B13E1EA140017F550 /* GanrObject.m */,
-				EEA7008C13E1EA140017F550 /* GanrObject.h */,
-				EEA7008D13E1EA140017F550 /* Ganri.m */,
-				EEA7008E13E1EA140017F550 /* Ganri.h */,
-				EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */,
-				EEA7009013E1EA140017F550 /* GanriTableViewCell.h */,
-				EEA7009113E1EA140017F550 /* GanriViewController.m */,
-				EEA7009213E1EA140017F550 /* GanriViewController.h */,
+				EE74375E13E1F6DD00FD9509 /* Ganre */,
 				EE6D054513CE3FC50076850F /* PlayList */,
 				EE6D051C13CCE0980076850F /* Search */,
 				EE6D050813CCDC060076850F /* Artist */,
