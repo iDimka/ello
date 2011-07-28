@@ -8,15 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		EE001B0F13D04BB100A7D719 /* Clip.m in Sources */ = {isa = PBXBuildFile; fileRef = EE001B0E13D04BB100A7D719 /* Clip.m */; };
-		EE4E254B13DB1C0C003005D6 /* libRestKitCoreData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E254313DB1BC4003005D6 /* libRestKitCoreData.a */; };
-		EE4E254D13DB1C0C003005D6 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E253513DB1BC4003005D6 /* libRestKitNetwork.a */; };
-		EE4E254E13DB1C0C003005D6 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E253713DB1BC4003005D6 /* libRestKitObjectMapping.a */; };
-		EE4E254F13DB1C0C003005D6 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E253913DB1BC4003005D6 /* libRestKitSupport.a */; };
 		EE4E255513DB1C97003005D6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255213DB1C97003005D6 /* CFNetwork.framework */; };
 		EE4E255613DB1C97003005D6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255313DB1C97003005D6 /* CoreData.framework */; };
 		EE4E255713DB1C97003005D6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255413DB1C97003005D6 /* SystemConfiguration.framework */; };
 		EE4E256C13DB1FD2003005D6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E256B13DB1FD2003005D6 /* MobileCoreServices.framework */; };
-		EE4E256D13DB2037003005D6 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E253F13DB1BC4003005D6 /* libRestKitJSONParserJSONKit.a */; };
 		EE4E257013DB2676003005D6 /* PlayList.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4E256F13DB2676003005D6 /* PlayList.m */; };
 		EE5CDFCB13DE25F200B60CC1 /* Clips.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5CDFCA13DE25F200B60CC1 /* Clips.m */; };
 		EE6D04F413CCD3420076850F /* SubscriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D04F313CCD3420076850F /* SubscriptionsViewController.m */; };
@@ -40,6 +35,15 @@
 		EE6D05A613CFB50B0076850F /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A513CFB50A0076850F /* share.png */; };
 		EE6D05A813CFC1330076850F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A713CFC1320076850F /* back.png */; };
 		EE6D05AA13CFC2A40076850F /* new_done.png in Resources */ = {isa = PBXBuildFile; fileRef = EE6D05A913CFC2A30076850F /* new_done.png */; };
+		EEA7008513E1E4C80017F550 /* libRestKitCoreData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008113E1E4C70017F550 /* libRestKitCoreData.a */; };
+		EEA7008613E1E4C80017F550 /* libRestKitJSONParserJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008213E1E4C70017F550 /* libRestKitJSONParserJSONKit.a */; };
+		EEA7008713E1E4C80017F550 /* libRestKitNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008313E1E4C70017F550 /* libRestKitNetwork.a */; };
+		EEA7008813E1E4C80017F550 /* libRestKitObjectMapping.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008413E1E4C70017F550 /* libRestKitObjectMapping.a */; };
+		EEA7008A13E1E9670017F550 /* libRestKitSupport.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA7008913E1E9670017F550 /* libRestKitSupport.a */; };
+		EEA7009313E1EA140017F550 /* GanrObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008B13E1EA140017F550 /* GanrObject.m */; };
+		EEA7009413E1EA140017F550 /* Ganri.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008D13E1EA140017F550 /* Ganri.m */; };
+		EEA7009513E1EA140017F550 /* GanriTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */; };
+		EEA7009613E1EA140017F550 /* GanriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7009113E1EA140017F550 /* GanriViewController.m */; };
 		EEB8F7F313C5FD0D00B70FDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F213C5FD0D00B70FDB /* UIKit.framework */; };
 		EEB8F7F713C5FD0D00B70FDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F613C5FD0D00B70FDB /* CoreGraphics.framework */; };
 		EEB8F7FD13C5FD0D00B70FDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEB8F7FB13C5FD0D00B70FDB /* InfoPlist.strings */; };
@@ -69,79 +73,79 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EE4E253413DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7006B13E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 253A07FC1255161B00976E89;
 			remoteInfo = RestKitNetwork;
 		};
-		EE4E253613DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7006D13E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 253A08031255162C00976E89;
 			remoteInfo = RestKitObjectMapping;
 		};
-		EE4E253813DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7006F13E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 253A080C12551D3000976E89;
 			remoteInfo = RestKitSupport;
 		};
-		EE4E253A13DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7007113E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2590E64F125231F600531FA8;
 			remoteInfo = "RestKitJSONParser+YAJL";
 		};
-		EE4E253C13DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7007313E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2590E66B1252353700531FA8;
 			remoteInfo = "RestKitJSONParser+SBJSON";
 		};
-		EE4E253E13DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7007513E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 73057FD11331AD2E001908EE;
 			remoteInfo = "RestKitJSONParser+JSONKit";
 		};
-		EE4E254013DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7007713E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 25BD43BD1340315800DBACDD;
 			remoteInfo = "RestKitXMLParser+Libxml";
 		};
-		EE4E254213DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7007913E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 253A081412551D5300976E89;
 			remoteInfo = RestKitCoreData;
 		};
-		EE4E254413DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7007B13E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2523360511E79F090048F9B4;
 			remoteInfo = RestKitThree20;
 		};
-		EE4E254613DB1BC4003005D6 /* PBXContainerItemProxy */ = {
+		EEA7007D13E1E4930017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3F6C39A510FE5C95008F47C5;
 			remoteInfo = UISpec;
 		};
-		EE4E254913DB1BEF003005D6 /* PBXContainerItemProxy */ = {
+		EEA7007F13E1E4A40017F550 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+			containerPortal = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 255B7588133BABBF00ED76AD;
 			remoteInfo = RestKit;
@@ -151,7 +155,6 @@
 /* Begin PBXFileReference section */
 		EE001B0D13D04BB100A7D719 /* Clip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clip.h; sourceTree = "<group>"; };
 		EE001B0E13D04BB100A7D719 /* Clip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clip.m; sourceTree = "<group>"; };
-		EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = "../../Documents/iProgects/RestKit-RestKit-40eb842 2/RestKit.xcodeproj"; sourceTree = "<group>"; };
 		EE4E255213DB1C97003005D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EE4E255313DB1C97003005D6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EE4E255413DB1C97003005D6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -191,6 +194,20 @@
 		EE6D05A513CFB50A0076850F /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		EE6D05A713CFC1320076850F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		EE6D05A913CFC2A30076850F /* new_done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_done.png; sourceTree = "<group>"; };
+		EEA7005813E1E4920017F550 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = "../RestKit-RestKit-4ed7a20/RestKit.xcodeproj"; sourceTree = "<group>"; };
+		EEA7008113E1E4C70017F550 /* libRestKitCoreData.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitCoreData.a; sourceTree = SOURCE_ROOT; };
+		EEA7008213E1E4C70017F550 /* libRestKitJSONParserJSONKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitJSONParserJSONKit.a; sourceTree = SOURCE_ROOT; };
+		EEA7008313E1E4C70017F550 /* libRestKitNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitNetwork.a; sourceTree = SOURCE_ROOT; };
+		EEA7008413E1E4C70017F550 /* libRestKitObjectMapping.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitObjectMapping.a; sourceTree = SOURCE_ROOT; };
+		EEA7008913E1E9670017F550 /* libRestKitSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitSupport.a; sourceTree = SOURCE_ROOT; };
+		EEA7008B13E1EA140017F550 /* GanrObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanrObject.m; sourceTree = "<group>"; };
+		EEA7008C13E1EA140017F550 /* GanrObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanrObject.h; sourceTree = "<group>"; };
+		EEA7008D13E1EA140017F550 /* Ganri.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ganri.m; sourceTree = "<group>"; };
+		EEA7008E13E1EA140017F550 /* Ganri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ganri.h; sourceTree = "<group>"; };
+		EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanriTableViewCell.m; sourceTree = "<group>"; };
+		EEA7009013E1EA140017F550 /* GanriTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanriTableViewCell.h; sourceTree = "<group>"; };
+		EEA7009113E1EA140017F550 /* GanriViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanriViewController.m; sourceTree = "<group>"; };
+		EEA7009213E1EA140017F550 /* GanriViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanriViewController.h; sourceTree = "<group>"; };
 		EEA72AD813E07D8900B391D3 /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		EEB8F7EE13C5FD0D00B70FDB /* ello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB8F7F213C5FD0D00B70FDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -239,16 +256,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEA7008A13E1E9670017F550 /* libRestKitSupport.a in Frameworks */,
+				EEA7008513E1E4C80017F550 /* libRestKitCoreData.a in Frameworks */,
+				EEA7008613E1E4C80017F550 /* libRestKitJSONParserJSONKit.a in Frameworks */,
+				EEA7008713E1E4C80017F550 /* libRestKitNetwork.a in Frameworks */,
+				EEA7008813E1E4C80017F550 /* libRestKitObjectMapping.a in Frameworks */,
 				EECFB8D713E08B1E00BB3D80 /* Foundation.framework in Frameworks */,
-				EE4E256D13DB2037003005D6 /* libRestKitJSONParserJSONKit.a in Frameworks */,
 				EE4E256C13DB1FD2003005D6 /* MobileCoreServices.framework in Frameworks */,
 				EE4E255513DB1C97003005D6 /* CFNetwork.framework in Frameworks */,
 				EE4E255613DB1C97003005D6 /* CoreData.framework in Frameworks */,
 				EE4E255713DB1C97003005D6 /* SystemConfiguration.framework in Frameworks */,
-				EE4E254B13DB1C0C003005D6 /* libRestKitCoreData.a in Frameworks */,
-				EE4E254D13DB1C0C003005D6 /* libRestKitNetwork.a in Frameworks */,
-				EE4E254E13DB1C0C003005D6 /* libRestKitObjectMapping.a in Frameworks */,
-				EE4E254F13DB1C0C003005D6 /* libRestKitSupport.a in Frameworks */,
 				EEDB552613D0319600038999 /* QuartzCore.framework in Frameworks */,
 				EE6D059F13CFAF250076850F /* MediaPlayer.framework in Frameworks */,
 				EECAB46E13CBA30000EE96B5 /* iAd.framework in Frameworks */,
@@ -260,23 +277,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EE4E252113DB1BC3003005D6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EE4E253513DB1BC4003005D6 /* libRestKitNetwork.a */,
-				EE4E253713DB1BC4003005D6 /* libRestKitObjectMapping.a */,
-				EE4E253913DB1BC4003005D6 /* libRestKitSupport.a */,
-				EE4E253B13DB1BC4003005D6 /* libRestKitJSONParserYAJL.a */,
-				EE4E253D13DB1BC4003005D6 /* libRestKitJSONParserSBJSON.a */,
-				EE4E253F13DB1BC4003005D6 /* libRestKitJSONParserJSONKit.a */,
-				EE4E254113DB1BC4003005D6 /* libRestKitXMLParserLibxml.a */,
-				EE4E254313DB1BC4003005D6 /* libRestKitCoreData.a */,
-				EE4E254513DB1BC4003005D6 /* libRestKitThree20.a */,
-				EE4E254713DB1BC4003005D6 /* UISpec.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EE6D04F113CCD3190076850F /* Subscriptions */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,10 +337,27 @@
 			name = PlayList;
 			sourceTree = "<group>";
 		};
+		EEA7005913E1E4920017F550 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEA7006C13E1E4930017F550 /* libRestKitNetwork.a */,
+				EEA7006E13E1E4930017F550 /* libRestKitObjectMapping.a */,
+				EEA7007013E1E4930017F550 /* libRestKitSupport.a */,
+				EEA7007213E1E4930017F550 /* libRestKitJSONParserYAJL.a */,
+				EEA7007413E1E4930017F550 /* libRestKitJSONParserSBJSON.a */,
+				EEA7007613E1E4930017F550 /* libRestKitJSONParserJSONKit.a */,
+				EEA7007813E1E4930017F550 /* libRestKitXMLParserLibxml.a */,
+				EEA7007A13E1E4930017F550 /* libRestKitCoreData.a */,
+				EEA7007C13E1E4930017F550 /* libRestKitThree20.a */,
+				EEA7007E13E1E4930017F550 /* UISpec.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EEB8F7E313C5FD0D00B70FDB = {
 			isa = PBXGroup;
 			children = (
-				EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */,
+				EEA7005813E1E4920017F550 /* RestKit.xcodeproj */,
 				EEB8F7F813C5FD0D00B70FDB /* ello */,
 				EEB8F7F113C5FD0D00B70FDB /* Frameworks */,
 				EEB8F7EF13C5FD0D00B70FDB /* Products */,
@@ -358,6 +375,11 @@
 		EEB8F7F113C5FD0D00B70FDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EEA7008913E1E9670017F550 /* libRestKitSupport.a */,
+				EEA7008113E1E4C70017F550 /* libRestKitCoreData.a */,
+				EEA7008213E1E4C70017F550 /* libRestKitJSONParserJSONKit.a */,
+				EEA7008313E1E4C70017F550 /* libRestKitNetwork.a */,
+				EEA7008413E1E4C70017F550 /* libRestKitObjectMapping.a */,
 				EECFB8D613E08B1E00BB3D80 /* Foundation.framework */,
 				EE4E256B13DB1FD2003005D6 /* MobileCoreServices.framework */,
 				EE4E255213DB1C97003005D6 /* CFNetwork.framework */,
@@ -385,6 +407,14 @@
 				EEDB552113D0307200038999 /* RootViewController.h */,
 				EEDB552213D0307200038999 /* RootViewController.m */,
 				EEB8F80413C5FD0D00B70FDB /* MainWindow.xib */,
+				EEA7008B13E1EA140017F550 /* GanrObject.m */,
+				EEA7008C13E1EA140017F550 /* GanrObject.h */,
+				EEA7008D13E1EA140017F550 /* Ganri.m */,
+				EEA7008E13E1EA140017F550 /* Ganri.h */,
+				EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */,
+				EEA7009013E1EA140017F550 /* GanriTableViewCell.h */,
+				EEA7009113E1EA140017F550 /* GanriViewController.m */,
+				EEA7009213E1EA140017F550 /* GanriViewController.h */,
 				EE6D054513CE3FC50076850F /* PlayList */,
 				EE6D051C13CCE0980076850F /* Search */,
 				EE6D050813CCDC060076850F /* Artist */,
@@ -476,7 +506,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				EE4E254A13DB1BEF003005D6 /* PBXTargetDependency */,
+				EEA7008013E1E4A40017F550 /* PBXTargetDependency */,
 			);
 			name = ello;
 			productName = ello;
@@ -503,8 +533,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = EE4E252113DB1BC3003005D6 /* Products */;
-					ProjectRef = EE4E252013DB1BC3003005D6 /* RestKit.xcodeproj */;
+					ProductGroup = EEA7005913E1E4920017F550 /* Products */;
+					ProjectRef = EEA7005813E1E4920017F550 /* RestKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -515,74 +545,74 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EE4E253513DB1BC4003005D6 /* libRestKitNetwork.a */ = {
+		EEA7006C13E1E4930017F550 /* libRestKitNetwork.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitNetwork.a;
-			remoteRef = EE4E253413DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7006B13E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E253713DB1BC4003005D6 /* libRestKitObjectMapping.a */ = {
+		EEA7006E13E1E4930017F550 /* libRestKitObjectMapping.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitObjectMapping.a;
-			remoteRef = EE4E253613DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7006D13E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E253913DB1BC4003005D6 /* libRestKitSupport.a */ = {
+		EEA7007013E1E4930017F550 /* libRestKitSupport.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitSupport.a;
-			remoteRef = EE4E253813DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7006F13E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E253B13DB1BC4003005D6 /* libRestKitJSONParserYAJL.a */ = {
+		EEA7007213E1E4930017F550 /* libRestKitJSONParserYAJL.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitJSONParserYAJL.a;
-			remoteRef = EE4E253A13DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7007113E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E253D13DB1BC4003005D6 /* libRestKitJSONParserSBJSON.a */ = {
+		EEA7007413E1E4930017F550 /* libRestKitJSONParserSBJSON.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitJSONParserSBJSON.a;
-			remoteRef = EE4E253C13DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7007313E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E253F13DB1BC4003005D6 /* libRestKitJSONParserJSONKit.a */ = {
+		EEA7007613E1E4930017F550 /* libRestKitJSONParserJSONKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitJSONParserJSONKit.a;
-			remoteRef = EE4E253E13DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7007513E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E254113DB1BC4003005D6 /* libRestKitXMLParserLibxml.a */ = {
+		EEA7007813E1E4930017F550 /* libRestKitXMLParserLibxml.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitXMLParserLibxml.a;
-			remoteRef = EE4E254013DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7007713E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E254313DB1BC4003005D6 /* libRestKitCoreData.a */ = {
+		EEA7007A13E1E4930017F550 /* libRestKitCoreData.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitCoreData.a;
-			remoteRef = EE4E254213DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7007913E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E254513DB1BC4003005D6 /* libRestKitThree20.a */ = {
+		EEA7007C13E1E4930017F550 /* libRestKitThree20.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRestKitThree20.a;
-			remoteRef = EE4E254413DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7007B13E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EE4E254713DB1BC4003005D6 /* UISpec.app */ = {
+		EEA7007E13E1E4930017F550 /* UISpec.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = UISpec.app;
-			remoteRef = EE4E254613DB1BC4003005D6 /* PBXContainerItemProxy */;
+			remoteRef = EEA7007D13E1E4930017F550 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -646,16 +676,20 @@
 				EEF6AB8413DF8B94001418E3 /* PlayLists.m in Sources */,
 				EEF6AB8713DF9D0D001418E3 /* Artists.m in Sources */,
 				EECFB8F013E0C89C00BB3D80 /* SlideshowImageView.m in Sources */,
+				EEA7009313E1EA140017F550 /* GanrObject.m in Sources */,
+				EEA7009413E1EA140017F550 /* Ganri.m in Sources */,
+				EEA7009513E1EA140017F550 /* GanriTableViewCell.m in Sources */,
+				EEA7009613E1EA140017F550 /* GanriViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EE4E254A13DB1BEF003005D6 /* PBXTargetDependency */ = {
+		EEA7008013E1E4A40017F550 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RestKit;
-			targetProxy = EE4E254913DB1BEF003005D6 /* PBXContainerItemProxy */;
+			targetProxy = EEA7007F13E1E4A40017F550 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -749,6 +783,10 @@
 				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -769,6 +807,10 @@
 				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "A7332872-FD05-4E17-9B57-F7FD9652DE07";
