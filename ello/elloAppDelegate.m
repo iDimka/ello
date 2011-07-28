@@ -9,8 +9,6 @@
 #import "elloAppDelegate.h"
  
 
-//#import "RKReachabilityObserver.h"
-
 @implementation elloAppDelegate
 
 @synthesize reachability;
