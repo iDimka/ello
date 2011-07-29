@@ -22,6 +22,32 @@
  
 #pragma mark - View lifecycle
  
+
+- (void)awakeFromNib{
+	[super awakeFromNib];
+	
+	[RKRequestQueue sharedQueue].delegate = __delegate;
+	[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
+	
+	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	RKObjectMapping* mapping = nil;
+	
+	mapping = [RKObjectMapping mappingForClass:[Artist class]];
+	[mapping mapKeyPathsToAttributes:
+	 @"artist.id",		@"artistID",
+	 @"artist.image",	@"artistImage",
+	 @"artist.name",	@"artistName",  
+	 nil];
+	
+	_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
+	[_clipsMapping mapKeyPathsToAttributes:
+	 @"status", @"status", nil]; 
+	[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
+	
+	[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=artist&action=getAllArtists"]  objectMapping:_clipsMapping delegate:self]; 
+
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
 	 
@@ -49,24 +75,6 @@
 	[_dataSource addObject:[NSNull null]];
 	[_dataSource addObject:[NSNull null]];
 	[_dataSource addObject:[NSNull null]];
-	
-	
-	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Artist class]];
-    [mapping mapKeyPathsToAttributes:
-     @"artist.id",		@"artistID",
-	 @"artist.image",	@"artistImage",
-	 @"artist.name",	@"artistName",  
-     nil];
-	 
-	_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
-	[_clipsMapping mapKeyPathsToAttributes:
-	 @"status", @"status",
-	 nil];
-	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping];
-	[_clipsMapping addRelationshipMapping:rel];
-	
-//     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getAllArtists" objectMapping:_clipsMapping delegate:self];
 	
 	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Все", @"Топ", @"Новые", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
@@ -124,6 +132,7 @@
 
 //		return;
 	}
+	[self showDimView];
 	 
 	[self showDimView];
 	switch (segmentedControl.selectedSegmentIndex) {
@@ -142,7 +151,7 @@
 - (void)search:(id)sender{
 	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
 	[detailViewController setMode:kArtist];
-	[self.navigationController pushViewController:detailViewController animated:YES];
+//	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }
 

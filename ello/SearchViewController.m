@@ -18,11 +18,62 @@
 
 @synthesize mode;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)bundle{
+    self = [super initWithNibName:nibNameOrNil bundle:bundle];
     if (self) {
-        // Custom initialization
+		
+		
+		[RKRequestQueue sharedQueue].delegate = __delegate;
+		[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
+		
+//        [RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+		
+		RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+		[RKObjectManager setSharedManager:objectManager];
+		
+		[[[RKObjectManager sharedManager] objectLoaderWithResourcePath:nil delegate:self] setDelegate:nil];
+		switch ((int)mode) {
+			case kClip:;
+				 
+				RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
+				[mapping mapKeyPathsToAttributes:
+				 @"clip.id",		@"clipID",
+				 @"clip.artistId",	@"artistId",
+				 @"clip.artistName",@"artistName",
+				 @"clip.genreId",	@"clipGanre",
+				 @"clip.genreName",	@"clipGanreName",
+				 @"clip.viewCount",	@"viewCount",
+				 @"clip.name",		@"clipName",
+				 @"clip.image",		@"clipImageURL",
+				 @"clip.video",		@"clipVideoURL",
+				 @"clip.label",		@"label", 
+				 nil];
+				
+				_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
+				[_clipsMapping mapKeyPathsToAttributes:@"status", @"status", nil];
+				RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
+				[_clipsMapping addRelationshipMapping:rel]; 
+				[objectManager.mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"clips"];
+    [objectManager.mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"clips"];
+				break;
+			case kArtist:
+				
+				mapping = [RKObjectMapping mappingForClass:[Artist class]];
+				[mapping mapKeyPathsToAttributes:
+				 @"artist.id",		@"artistID",
+				 @"artist.image",	@"artistImage",
+				 @"artist.name",	@"artistName",  
+				 nil];
+				
+				_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
+				[_clipsMapping mapKeyPathsToAttributes:
+				 @"status", @"status", nil]; 
+				[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
+				[objectManager.mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"artists"];
+				    [objectManager.mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"artists"];
+				break; 
+		} 
+
     }
     return self;
 }
@@ -54,6 +105,8 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+	
+	  [[RKRequestQueue sharedQueue] cancelRequestsWithDelegate:self];
 		[self.navigationController setNavigationBarHidden:NO];
 }
 - (void)viewDidDisappear:(BOOL)animated{
@@ -111,41 +164,10 @@
 	[[[RKObjectManager sharedManager] objectLoaderWithResourcePath:nil delegate:self] setDelegate:nil];
 	switch (mode) {
 		case kClip:;
-			
-//			//[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-			RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
-			[mapping mapKeyPathsToAttributes:
-			 @"clip.id",		@"clipID",
-			 @"clip.artistId",	@"artistId",
-			 @"clip.artistName",@"artistName",
-			 @"clip.genreId",	@"clipGanre",
-			 @"clip.genreName",	@"clipGanreName",
-			 @"clip.viewCount",	@"viewCount",
-			 @"clip.name",		@"clipName",
-			 @"clip.image",		@"clipImageURL",
-			 @"clip.video",		@"clipVideoURL",
-			 @"clip.label",		@"label", 
-			 nil];
-			
-			_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
-			[_clipsMapping mapKeyPathsToAttributes:@"status", @"status", nil];
-			RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
-			[_clipsMapping addRelationshipMapping:rel];
+			 
 			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=util&action=searchByClipName&name=%@", searchText] objectMapping:_clipsMapping delegate:self]; 
 			break;
 		case kArtist:
-			
-			mapping = [RKObjectMapping mappingForClass:[Artist class]];
-			[mapping mapKeyPathsToAttributes:
-			 @"artist.id",		@"artistID",
-			 @"artist.image",	@"artistImage",
-			 @"artist.name",	@"artistName",  
-			 nil];
-			
-			_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
-			[_clipsMapping mapKeyPathsToAttributes:
-			 @"status", @"status", nil]; 
-			[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
 			 
 			[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", searchText]  objectMapping:_clipsMapping delegate:self]; 
 			break; 

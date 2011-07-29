@@ -29,7 +29,7 @@
 	
 	ADBannerView				*adView;
 	BOOL						bannerIsVisible;
-	
+	BOOL						_isDid;
 	
 	RKObjectMapping*			_clipsMapping;
 }

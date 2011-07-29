@@ -18,6 +18,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 	[[RKRequestCache alloc] initWithCachePath:nil storagePolicy:RKRequestCacheStoragePolicyDisabled];
 //[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	
+	RKClient* client = [RKClient clientWithBaseURL:@"http://themedibook.com/ello/services"];
+	[RKClient setSharedClient:client];
+	
 	self.reachability = [[NSClassFromString(@"RKReachabilityObserver") alloc] initWithHostname:@"google.com"];
     return YES;
 }
@@ -49,6 +53,18 @@
 	self.window.rootViewController = self.tabBarController;
 	[self.window makeKeyAndVisible];	
 }
+
+
+- (void)requestQueueWasUnsuspended:(RKRequestQueue*)queue;{
+	
+}
+- (void)requestQueueWasSuspended:(RKRequestQueue*)queue;{
+	
+}
+- (void)requestQueue:(RKRequestQueue*)queue didFailRequest:(RKRequest*)request withError:(NSError*)error{
+	
+}
+
 
 - (void)applicationWillTerminate:(UIApplication *)application{
 	/*

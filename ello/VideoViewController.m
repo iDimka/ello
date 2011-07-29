@@ -159,7 +159,7 @@
 - (void)search:(id)sender{
 	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
 	[detailViewController setMode:kClip];
-	[self.navigationController pushViewController:detailViewController animated:YES];
+//	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }
 

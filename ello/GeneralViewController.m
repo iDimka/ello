@@ -157,7 +157,9 @@
     if ([_slideshowTimer isValid])
 		{
         [_slideshowTimer invalidate];
+		_slideshowTimer = nil;
 		} 
+	_isDid = NO;
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES]; 
@@ -184,6 +186,7 @@
 			}
         [self SlideToRight];
 		}
+	_isDid = YES;
     
 } 
 
@@ -259,7 +262,7 @@
 - (void)search{
 	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
 	[detailViewController setMode:kClip];
-	[self.navigationController pushViewController:detailViewController animated:YES];
+//	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }
 

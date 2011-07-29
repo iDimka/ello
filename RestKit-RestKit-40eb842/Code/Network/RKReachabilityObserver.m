@@ -218,6 +218,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 }
 
 - (BOOL)reachabilityEstablished {
+//	return YES;
     return _reachabilityEstablished;
 }
 
