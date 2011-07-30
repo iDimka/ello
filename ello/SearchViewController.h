@@ -22,4 +22,6 @@ typedef enum {
 
 @property(nonatomic, assign)SearchMode mode;
 
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)bundle mode:(SearchMode)mode;
+
 @end

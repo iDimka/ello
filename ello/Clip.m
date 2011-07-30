@@ -23,6 +23,40 @@
 @synthesize clipGanreName;
 
 
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) 
+		{ 
+			 
+			thumb = [[decoder decodeObjectForKey:@"label"] retain];
+			thumb = [[decoder decodeObjectForKey:@"clipID"] retain];
+			thumb = [[decoder decodeObjectForKey:@"artistId"] retain];
+			thumb = [[decoder decodeObjectForKey:@"artistName"] retain];
+			thumb = [[decoder decodeObjectForKey:@"viewCount"] retain];
+			thumb = [[decoder decodeObjectForKey:@"clipName"] retain];
+			thumb = [[decoder decodeObjectForKey:@"clipImageURL"] retain];
+			thumb = [[decoder decodeObjectForKey:@"clipVideoURL"] retain];
+			thumb = [[decoder decodeObjectForKey:@"clipGanre"] retain];
+			thumb = [[decoder decodeObjectForKey:@"clipGanreName"] retain];
+		}
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder{
+	
+	[encoder encodeObject:label forKey:@"label"];
+	[encoder encodeObject:clipID forKey:@"clipID"];
+	[encoder encodeObject:artistId forKey:@"artistId"];
+	[encoder encodeObject:artistName forKey:@"artistName"];
+	[encoder encodeObject:viewCount forKey:@"viewCount"];
+	[encoder encodeObject:clipName forKey:@"clipName"];
+	[encoder encodeObject:clipImageURL forKey:@"clipImageURL"];
+	[encoder encodeObject:clipVideoURL forKey:@"clipVideoURL"];
+	[encoder encodeObject:clipGanre forKey:@"clipGanre"];
+	[encoder encodeObject:clipGanreName forKey:@"clipGanreName"]; 
+}
+
+
 - (NSString*)description{
 	return clipName;
 }

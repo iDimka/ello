@@ -149,9 +149,8 @@
 
 }
 - (void)search:(id)sender{
-	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
-	[detailViewController setMode:kArtist];
-//	[self.navigationController pushViewController:detailViewController animated:YES];
+	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil mode:kArtist];  
+	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }
 

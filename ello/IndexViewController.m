@@ -6,7 +6,7 @@
 //  Copyright 2011 iDimka. All rights reserved.
 //
 
-#import "GeneralViewController.h"
+#import "IndexViewController.h"
 
 #import "PreviewViewController.h"
 #import "SlideshowImageView.h"
@@ -19,7 +19,7 @@
 #define centrFrame CGRectMake(320, 0, 320, 290)
 #define rightFrame CGRectMake(640, 0, 320, 290)
 
-@interface GeneralViewController()
+@interface IndexViewController()
 
 @property(nonatomic, retain)UIImageView* leftImage;
 @property(nonatomic, retain)UIImageView* rightImage;
@@ -30,13 +30,13 @@
 - (void)fake;
 @end
 
-@interface GeneralViewController ()
+@interface IndexViewController ()
 
 -(void) SlideToRight;
 -(void) SlideToLeft;
 @end
 
-@implementation GeneralViewController
+@implementation IndexViewController
 
 @synthesize leftImage;
 @synthesize centerImage;
@@ -190,31 +190,6 @@
     
 } 
 
-- (void)slideshow:(NSTimer*)timer{
-    if ([_pageControl currentPage] < [_dataSource count]-1)
-		{
-        
-		[_pageControl setCurrentPage:[_pageControl currentPage]+1];   
-		[UIView animateWithDuration:0.6 animations:^(void) {
-			[_scrollView setContentOffset:CGPointMake([_scrollView contentOffset].x +320, 0) animated:0];
-		} completion:^(BOOL finished) {
-			[self SlideToRight]; 
-
-		}];
-		
-		} else 
-			{
-			[_pageControl setCurrentPage:0];
-			[UIView animateWithDuration:1 animations:^(void) {
-				[_scrollView setContentOffset:CGPointMake([_scrollView contentOffset].x +320, 0) animated:0];
-			} completion:^(BOOL finished) {
-				[self SlideToRight];
-			}];
-			
-
-			}  
-    
-}
 - (void)InesrtViewInCantainer{
     for (int ind = 0; ind < 3; ind++) 
 		{
@@ -260,12 +235,36 @@
 		}
 }
 - (void)search{
-	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
-	[detailViewController setMode:kClip];
-//	[self.navigationController pushViewController:detailViewController animated:YES];
+	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil mode:kClip]; 
+	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }
 
+- (void)slideshow:(NSTimer*)timer{
+    if ([_pageControl currentPage] < [_dataSource count]-1)
+		{
+        
+		[_pageControl setCurrentPage:[_pageControl currentPage]+1];   
+		[UIView animateWithDuration:0.6 animations:^(void) {
+			[_scrollView setContentOffset:CGPointMake([_scrollView contentOffset].x +320, 0) animated:0];
+		} completion:^(BOOL finished) {
+			[self SlideToRight]; 
+
+		}];
+		
+		} else 
+			{
+			[_pageControl setCurrentPage:0];
+			[UIView animateWithDuration:1 animations:^(void) {
+				[_scrollView setContentOffset:CGPointMake([_scrollView contentOffset].x +320, 0) animated:0];
+			} completion:^(BOOL finished) {
+				[self SlideToRight];
+			}];
+			
+
+			}  
+    
+}
 -(void) SlideToLeft{    
     int leftPage;
     int rightPage;
@@ -296,7 +295,8 @@
     [tmp setImage:[[_dataSource objectAtIndex:rightPage] thumb]];
     [tmp setFrame:CGRectMake(640, 0, 320, 290)];
 	
-	_artistName1Label.text = [[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
+	_artistName1Label.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] artistName];
+	_clipNameLabel.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
     
 }
 -(void) SlideToRight{
@@ -348,10 +348,9 @@
 	}else [(UILabel*)[[_ViewDataContainer objectAtIndex:2] viewWithTag:777] setHidden:YES]; 
 		
 	
-	_artistName1Label.text = [[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
-    
+	_artistName1Label.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] artistName];
+	_clipNameLabel.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
 }
-
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	[_dataSource removeAllObjects];

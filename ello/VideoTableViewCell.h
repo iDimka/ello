@@ -10,22 +10,33 @@
 
 #import "asyncimageview.h"
 
+@class VideoTableViewCell;
 @class Clip; 
 @class Artist;
 @class PlayList;
 @class VideoObject;
 
+@protocol PlayListProtocol <NSObject>
+
+- (void)addToPlaylist:(Clip*)cell;
+
+@end
+
 @interface VideoTableViewCell : UITableViewCell <AsyncImageViewProtocol> {
     UILabel*		_title;
 	UILabel*		_artist;
 	UILabel*		_viewCount;
+	UILabel*		_clipNumberLabel;
 	
 	UIButton*		_add2playlist;
 	AsyncImageView*	_videoThumb;
 	VideoObject*	_videoObject;
+	Clip*			_clip;
 }
 
-@property(nonatomic, retain)id		dataObject;
+@property(nonatomic, assign)id<PlayListProtocol>	delegate;
+@property(nonatomic, assign)NSInteger				clipNumber;
+@property(nonatomic, retain)id						dataObject;
 
 - (void)configCellByPlayList:(PlayList*)object;
 - (void)configCellByClip:(Clip*)object;

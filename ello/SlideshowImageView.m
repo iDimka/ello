@@ -24,7 +24,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 
 	if ([delegate respondsToSelector:@selector(touchedInView:)]) {
-		[delegate touchedInView:self];
+		[delegate performSelector:@selector(touchedInView:) withObject:self];
 	}
 	
 }

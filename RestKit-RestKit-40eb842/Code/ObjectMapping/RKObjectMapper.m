@@ -261,7 +261,7 @@
     
     // If we found nothing eligible for mapping in the content, add an unmappable key path error and fail mapping
     if (foundMappable == NO) {
-        [self addErrorForUnmappableKeyPath:@""];
+        [self addErrorForUnmappableKeyPath:[keyPathsAndObjectMappings description]];
         return nil;
     }
     

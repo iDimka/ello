@@ -10,15 +10,12 @@
 
 #import <iAd/iAd.h>
  
-@interface GeneralViewController : UIViewController <UIScrollViewDelegate, ADBannerViewDelegate, RKObjectLoaderDelegate>{
+@interface IndexViewController : UIViewController <UIScrollViewDelegate, ADBannerViewDelegate, RKObjectLoaderDelegate>{
 	IBOutlet	UIScrollView*	_scrollView;
-	IBOutlet	UIImageView*	_banner;
-//	IBOutlet	UIImageView*	_centerImage;
-//	IBOutlet	UIImageView*	_leftImage;
-//	IBOutlet	UIImageView*	_rightImage;
+	IBOutlet	UIImageView*	_banner; 
 	IBOutlet	UIPageControl*	_pageControl;
     IBOutlet    UILabel*        _artistName1Label;
-//    IBOutlet    UILabel*        _artistName2Label;
+    IBOutlet    UILabel*        _clipNameLabel;
 	
 	NSTimer*					_slideshowTimer;
 	NSInteger					_position;
@@ -34,6 +31,7 @@
 	RKObjectMapping*			_clipsMapping;
 }
 
+- (IBAction)touchedInView:(UIView*)view;
 - (IBAction)search;
 
 

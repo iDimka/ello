@@ -27,6 +27,7 @@
 	
 }
 
+
 @property(nonatomic, retain)UIImage*	thumb;
 @property(nonatomic, retain)NSString*	label;
 @property(nonatomic, retain)NSNumber*	clipID;

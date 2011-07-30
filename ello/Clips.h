@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Clips : NSObject
+@class Clip;
+
+@interface Clips : NSObject<NSCoding>
 
 @property(nonatomic, retain)NSString*	status;
 @property(nonatomic, retain)NSMutableArray* clips;
+
+- (void)addClip:(Clip*)clip;
+- (void)removeClip:(Clip*)clip;
 
 @end

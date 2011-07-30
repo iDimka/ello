@@ -140,6 +140,7 @@
     Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
 	
 	[cell configCellByClip:clip];
+	[cell setClipNumber:indexPath.row];
     
     return cell;
 }
@@ -157,9 +158,8 @@
 }
  
 - (void)search:(id)sender{
-	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil]; 
-	[detailViewController setMode:kClip];
-//	[self.navigationController pushViewController:detailViewController animated:YES];
+	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil mode:kClip]; 
+	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }
 

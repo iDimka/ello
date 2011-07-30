@@ -14,7 +14,7 @@
 
 #pragma mark - View lifecycle
  
- - (void)viewDidLoad{
+- (void)viewDidLoad{
     [super viewDidLoad];
 	 
 	 _topControl = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
@@ -24,10 +24,12 @@
 	 _bottomControl = [[UIView alloc] initWithFrame:CGRectMake(0, 276, 480, 44)];
 	 [_bottomControl setBackgroundColor:[UIColor redColor]];
 	 [self.view addSubview:_bottomControl];
-	 UIButton* stopPlay = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	
+	 UIButton* stopPlay = [UIButton buttonWithType:UIButtonTypeCustom];
 	 [stopPlay setFrame:CGRectMake(10, 2, 32, 30)];
-	 [stopPlay.titleLabel setText:@"Stop"];
-	 [stopPlay addTarget:self action:@selector(stopPlay) forControlEvents:UIControlEventTouchUpInside];
+	 [stopPlay setImage:[UIImage imageNamed:@"player_pause.png"] forState:UIControlStateNormal];
+	 [stopPlay setImage:[UIImage imageNamed:@"player_play.png"] forState:UIControlStateSelected];
+	[stopPlay addTarget:self action:@selector(stopPlay:) forControlEvents:UIControlEventTouchUpInside];
 	 [_bottomControl addSubview:stopPlay];
 	
 	self.moviePlayer.controlStyle = MPMovieControlStyleNone;
@@ -42,8 +44,11 @@
 	UIButton* done = [UIButton buttonWithType:UIButtonTypeCustom];
 	[done setFrame:CGRectMake(1, 9, 63, 30)];
 	[done setImage:[UIImage imageNamed:@"new_done.png"] forState:UIControlStateNormal];
-	[done addTarget:self.parentViewController action:@selector(dismissMoviePlayerViewControllerAnimated) forControlEvents:UIControlEventTouchUpInside];
+	[done addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:done];
+	 
+		_topControl.center = CGPointMake(_topControl.center.x, -50); 
+		_bottomControl.center = CGPointMake(_bottomControl.center.x, 370); 
 }
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
@@ -88,7 +93,8 @@
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	[actionSheet release];
 }
-- (void)stopPlay{
+- (void)stopPlay:(UIButton*)sender{
+	sender.selected = !sender.selected;
 	(self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying) ? [self.moviePlayer pause] : [self.moviePlayer play];
 }
 - (void)loadStateDidChange:(NSNotification*)notification{
@@ -104,5 +110,11 @@
 	}
 	NSLog(@"loadState is %d", self.moviePlayer.loadState);
 }
+- (void)done{
+
+	[self.moviePlayer stop];
+	[self.parentViewController dismissModalViewControllerAnimated:YES];
+}
+
 
 @end

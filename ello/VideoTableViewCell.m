@@ -16,50 +16,71 @@
 
 @implementation VideoTableViewCell
 
+@synthesize delegate;
+@synthesize clipNumber;
 @synthesize dataObject;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _title = [[UILabel alloc] initWithFrame:CGRectMake(155, 35, 185, 20)];
+        _title = [[UILabel alloc] initWithFrame:CGRectMake(155, 15, 185, 20)];
 		[_title setFont:[UIFont boldSystemFontOfSize:13]];
 		[_title setTextColor:[UIColor redColor]];
 		[_title setBackgroundColor:[UIColor clearColor]];
 		
-		_artist = [[UILabel alloc] initWithFrame:CGRectMake(155, 50, 185, 20)];
+		_artist = [[UILabel alloc] initWithFrame:CGRectMake(155, 30, 185, 20)];
 		[_artist setFont:[UIFont boldSystemFontOfSize:13]];
 		[_artist setTextColor:[UIColor whiteColor]];
 		[_artist setBackgroundColor:[UIColor clearColor]];
 		
-		_viewCount = [[UILabel alloc] initWithFrame:CGRectMake(155, 68, 185, 20)];
+		_viewCount = [[UILabel alloc] initWithFrame:CGRectMake(155, 50, 185, 20)];
 		[_viewCount setFont:[UIFont systemFontOfSize:13]];
 		[_viewCount setTextColor:[UIColor grayColor]];
 		[_viewCount setBackgroundColor:[UIColor clearColor]];
 		
-		_videoThumb = [[AsyncImageView alloc] initWithFrame:CGRectMake(2, 2, 150, 150)];
+		_videoThumb = [[AsyncImageView alloc] initWithFrame:CGRectMake(2, 2, 150, 71)];
 		_videoThumb.delegate = self;
-
+		
+		_clipNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 51, 20, 20)];
+		[_clipNumberLabel setFont:[UIFont boldSystemFontOfSize:13]];
+		[_clipNumberLabel setTextColor:[UIColor redColor]];
+		[_clipNumberLabel setTextAlignment:UITextAlignmentCenter];
+		[_clipNumberLabel setBackgroundColor:[UIColor blueColor]];
+		[_clipNumberLabel setHidden:YES];
+		
+		UIButton* addToPlaylistButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[addToPlaylistButton setFrame:CGRectMake(270, 75 / 2 - 32 / 2, 32, 32)];
+		[addToPlaylistButton setImage:[UIImage imageNamed:@"addToPl.png"] forState:UIControlStateNormal];
+		[addToPlaylistButton addTarget:self action:@selector(addToPlaylist:) forControlEvents:UIControlEventTouchDragInside];
+		
 		[self addSubview:_videoThumb];
 		[self addSubview:_title];
 		[self addSubview:_artist];
 		[self addSubview:_viewCount];
+		[self addSubview:_clipNumberLabel];
+		[self addSubview:addToPlaylistButton];
 		
-		
-		UIImageView* bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
+		UIImageView* bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 75)];
 		[bg setImage:[[UIImage imageNamed:@"cellBG.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0]];		
 		[self setBackgroundView:bg];
-		[bg release];
+		[bg release]; 
     }
     return self;
+}
+
+- (void)setClipNumber:(NSInteger)clipNumberInt{
+	if (clipNumberInt != -1) 
+		{
+		_clipNumberLabel.hidden = NO;
+		_clipNumberLabel.text = [NSString stringWithFormat:@"%d", clipNumberInt + 1];
+	}else _clipNumberLabel.hidden = YES;
 }
 
 - (void)imageDidLoad:(UIImage*)image{
 	[dataObject setThumb:image];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
@@ -74,6 +95,8 @@
 }
 
 - (void)configCellByClip:(Clip*)object{
+	[_clip release];
+	_clip = [object retain];
 	self.dataObject = object;
 	_title.text = object.clipName;
 	_artist.text = object.artistName;
@@ -98,8 +121,14 @@
 	self.imageView.image = videoObject.thumb;
 }
 
-- (void)dealloc
-{
+- (void)addToPlaylist:(UIButton*)sender{
+	if ([delegate respondsToSelector:@selector(addToPlaylist:)]) {
+		[delegate addToPlaylist:_clip];
+	}
+}
+
+- (void)dealloc{
+	 
 	self.dataObject = nil;
 	
     [super dealloc];

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="562" systemVersion="11A511" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Clip" representedClassName="Clip">
+        <attribute name="artistId" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="artistName" optional="YES" attributeType="String"/>
+        <attribute name="clipGanre" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="clipGanreName" optional="YES" attributeType="String"/>
+        <attribute name="clipID" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+        <attribute name="clipImageURL" optional="YES" attributeType="String"/>
+        <attribute name="clipName" optional="YES" attributeType="String"/>
+        <attribute name="clipVideoURL" optional="YES" attributeType="String"/>
+        <attribute name="label" optional="YES" attributeType="String"/>
+        <attribute name="viewCount" optional="YES" attributeType="Integer 32" defaultValueString="0"/>
+    </entity>
+    <elements>
+        <element name="Clip" positionX="160" positionY="192" width="128" height="195"/>
+    </elements>
+</model>

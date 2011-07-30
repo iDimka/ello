@@ -8,21 +8,35 @@
 
 #import "Clips.h"
 
+#import "Clip.h"
+
 @implementation Clips
 
 @synthesize status;
 @synthesize clips;
 
-- (id)init
-{
+
+- (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    
+    if (self) 
+		{ 
+			
+			clips = [[decoder decodeObjectForKey:@"clips"] retain];
+		}
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)encoder{
+	[encoder encodeObject:clips forKey:@"clips"];
+}
+
+
+- (void)addClip:(Clip*)clip{
+	[clips addObject:clip];
+}
+- (void)removeClip:(Clip*)clip{
+	[clips removeObject:clip];
+}
 
 - (NSString*)description{
 	return [self.clips description];

@@ -18,23 +18,19 @@
 
 @synthesize mode;
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)bundle{
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)bundle mode:(SearchMode)mod{
     self = [super initWithNibName:nibNameOrNil bundle:bundle];
     if (self) {
+		
+		self.mode = mod;
 		
 		
 		[RKRequestQueue sharedQueue].delegate = __delegate;
 		[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
-		
-//        [RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-		
-		RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-		[RKObjectManager setSharedManager:objectManager];
-		
-		[[[RKObjectManager sharedManager] objectLoaderWithResourcePath:nil delegate:self] setDelegate:nil];
-		switch ((int)mode) {
+		 
+		switch ((int)self.mode) {
 			case kClip:;
-				 
+				
 				RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
 				[mapping mapKeyPathsToAttributes:
 				 @"clip.id",		@"clipID",
@@ -53,10 +49,11 @@
 				[_clipsMapping mapKeyPathsToAttributes:@"status", @"status", nil];
 				RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
 				[_clipsMapping addRelationshipMapping:rel]; 
-				[objectManager.mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"clips"];
-    [objectManager.mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"clips"];
+				[[RKObjectManager  sharedManager].mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"clips"];
+				[[RKObjectManager  sharedManager].mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"clips"];
 				break;
 			case kArtist:
+				 
 				
 				mapping = [RKObjectMapping mappingForClass:[Artist class]];
 				[mapping mapKeyPathsToAttributes:
@@ -68,18 +65,22 @@
 				_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
 				[_clipsMapping mapKeyPathsToAttributes:
 				 @"status", @"status", nil]; 
-				[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
-				[objectManager.mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"artists"];
-				    [objectManager.mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"artists"];
+//				[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
+				
+//				[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", @"r"]  objectMapping:_clipsMapping delegate:self]; 
+
+				
+				[_clipsMapping mapRelationship:@"artists" withObjectMapping:mapping];
+//				[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
+// 				[[RKObjectManager  sharedManager].mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"artists"];
+//				[[RKObjectManager  sharedManager].mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"artists"];
 				break; 
 		} 
-
+		
     }
     return self;
 }
-
-- (void)dealloc
-{
+- (void)dealloc{
     [super dealloc];
 }
 
@@ -88,17 +89,17 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-
+	
 	_dataSource = [NSMutableArray new];
 	
-	   
+	
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	[self.searchDisplayController setActive:YES animated:NO];
- 
-
+	
+	
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -106,15 +107,15 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 	
-	  [[RKRequestQueue sharedQueue] cancelRequestsWithDelegate:self];
-		[self.navigationController setNavigationBarHidden:NO];
+	[[RKRequestQueue sharedQueue] cancelRequestsWithDelegate:self];
+	[self.navigationController setNavigationBarHidden:NO];
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
 }
 
 #pragma mark - Table view data source
- 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
     return [_dataSource count];
 }
@@ -126,7 +127,7 @@
         cell = [[[VideoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 	id data;
-	switch (mode) {
+	switch ((int)mode) {
 		case kArtist:
 			data = [_dataSource  objectAtIndex:indexPath.row]; 
 			[cell configCellByArtitst:data];
@@ -139,7 +140,7 @@
     
     return cell;
 }
- 
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -154,35 +155,34 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar{
-		[self.searchDisplayController setActive:NO animated:NO];
+	[self.searchDisplayController setActive:NO animated:NO];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
 }
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-	[[[RKObjectManager sharedManager] objectLoaderWithResourcePath:nil delegate:self] setDelegate:nil];
-	switch (mode) {
+	
+	switch ((int)mode) {
 		case kClip:;
-			 
+			
 			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=util&action=searchByClipName&name=%@", searchText] objectMapping:_clipsMapping delegate:self]; 
 			break;
 		case kArtist:
-			 
+			
 			[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", searchText]  objectMapping:_clipsMapping delegate:self]; 
 			break; 
 	} 
 }
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
 	
-//	[o_searchArray removeAllObjects];
-//	[o_tableView reloadData];
+	//	[o_searchArray removeAllObjects];
+	//	[o_tableView reloadData];
 	return  YES;
 }
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope{
-	 
+	
 }
-  
+
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	[_dataSource removeAllObjects];
 	switch (mode) {
@@ -195,9 +195,11 @@
 			break;
 	}
 	[self.tableView reloadData];
-	[[[UIApplication sharedApplication] delegate] performSelector:@selector(show)];
+
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+	NSString* url  = [[objectLoader URL] absoluteString];
+	NSLog(@"\%@", url);
     NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
 	NSLog(@"ERROR %@", tmp);
 	
