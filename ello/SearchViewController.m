@@ -49,8 +49,8 @@
 				[_clipsMapping mapKeyPathsToAttributes:@"status", @"status", nil];
 				RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
 				[_clipsMapping addRelationshipMapping:rel]; 
-				[[RKObjectManager  sharedManager].mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"clips"];
-				[[RKObjectManager  sharedManager].mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"clips"];
+//				[[RKObjectManager  sharedManager].mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"clips"];
+//				[[RKObjectManager  sharedManager].mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"clips"];
 				break;
 			case kArtist:
 				 
@@ -92,22 +92,29 @@
 	
 	_dataSource = [NSMutableArray new];
 	
+	[self.searchDisplayController.searchResultsTableView setRowHeight:85];
+	[self.searchDisplayController.searchResultsTableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	[self.searchDisplayController.searchResultsTableView setSeparatorColor:[UIColor darkGrayColor]];
+	[self.tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	[self.tableView setSeparatorColor:[UIColor darkGrayColor]];
+	
 	
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
-	[self.searchDisplayController setActive:YES animated:NO];
 	
 	
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+	
+	[self.searchDisplayController setActive:YES animated:NO];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 	
-	[[RKRequestQueue sharedQueue] cancelRequestsWithDelegate:self];
+	[[RKRequestQueue sharedQueue] cancelAllRequests];
 	[self.navigationController setNavigationBarHidden:NO];
 }
 - (void)viewDidDisappear:(BOOL)animated{

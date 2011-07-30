@@ -32,9 +32,10 @@
 	AsyncImageView*	_videoThumb;
 	VideoObject*	_videoObject;
 	Clip*			_clip;
+	
 }
 
-@property(nonatomic, assign)id<PlayListProtocol>	delegate;
+@property(nonatomic, assign)id<PlayListProtocol>	clipDelegate;
 @property(nonatomic, assign)NSInteger				clipNumber;
 @property(nonatomic, retain)id						dataObject;
 

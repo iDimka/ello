@@ -16,7 +16,7 @@
 
 @implementation VideoTableViewCell
 
-@synthesize delegate;
+@synthesize clipDelegate;
 @synthesize clipNumber;
 @synthesize dataObject;
 
@@ -49,9 +49,11 @@
 		[_clipNumberLabel setHidden:YES];
 		
 		UIButton* addToPlaylistButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[addToPlaylistButton setTag:777];
+		[addToPlaylistButton setHidden:YES];
 		[addToPlaylistButton setFrame:CGRectMake(270, 75 / 2 - 32 / 2, 32, 32)];
 		[addToPlaylistButton setImage:[UIImage imageNamed:@"addToPl.png"] forState:UIControlStateNormal];
-		[addToPlaylistButton addTarget:self action:@selector(addToPlaylist:) forControlEvents:UIControlEventTouchDragInside];
+		[addToPlaylistButton addTarget:self action:@selector(addToPlaylist) forControlEvents:UIControlEventTouchUpInside];
 		
 		[self addSubview:_videoThumb];
 		[self addSubview:_title];
@@ -98,6 +100,9 @@
 	[_clip release];
 	_clip = [object retain];
 	self.dataObject = object;
+	
+	[[self viewWithTag:777] setHidden:NO];
+	
 	_title.text = object.clipName;
 	_artist.text = object.artistName;
 	_viewCount.text = [NSString stringWithFormat:@"%D views", [object.viewCount intValue]];
@@ -121,9 +126,9 @@
 	self.imageView.image = videoObject.thumb;
 }
 
-- (void)addToPlaylist:(UIButton*)sender{
-	if ([delegate respondsToSelector:@selector(addToPlaylist:)]) {
-		[delegate addToPlaylist:_clip];
+- (void)addToPlaylist{
+	if ([clipDelegate respondsToSelector:@selector(addToPlaylist:)]) {
+		[clipDelegate addToPlaylist:_clip];
 	}
 }
 

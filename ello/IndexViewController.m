@@ -14,10 +14,10 @@
 #import "Clips.h"
 #import "SearchViewController.h"
 
-
-#define leftFrame CGRectMake(0, 0, 320, 290)
-#define centrFrame CGRectMake(320, 0, 320, 290)
-#define rightFrame CGRectMake(640, 0, 320, 290)
+#define timerInterval	3
+#define leftFrame		CGRectMake(0, 0, 320, 290)
+#define centrFrame		CGRectMake(320, 0, 320, 290)
+#define rightFrame		CGRectMake(640, 0, 320, 290)
 
 @interface IndexViewController()
 
@@ -74,31 +74,31 @@
 	[_scrollView setContentSize:CGSizeMake(320 * 3, 290)];
     [_scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
 	
- 	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
-    [mapping mapKeyPathsToAttributes:
-     @"clip.id",		@"clipID",
-	 @"clip.artistId",	@"artistId",
-	 @"clip.artistName",@"artistName",
-  	 @"clip.genreId",	@"clipGanre",
-  	 @"clip.genreName",	@"clipGanreName",
-  	 @"clip.viewCount",	@"viewCount",
-	 @"clip.name",		@"clipName",
-	 @"clip.image",		@"clipImageURL",
- 	 @"clip.video",		@"clipVideoURL",
-  	 @"clip.label",		@"label", 
-     nil];
+// 	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+//	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
+//    [mapping mapKeyPathsToAttributes:
+//     @"clip.id",		@"clipID",
+//	 @"clip.artistId",	@"artistId",
+//	 @"clip.artistName",@"artistName",
+//  	 @"clip.genreId",	@"clipGanre",
+//  	 @"clip.genreName",	@"clipGanreName",
+//  	 @"clip.viewCount",	@"viewCount",
+//	 @"clip.name",		@"clipName",
+//	 @"clip.image",		@"clipImageURL",
+// 	 @"clip.video",		@"clipVideoURL",
+//  	 @"clip.label",		@"label", 
+//     nil];
+//	
+//
+//	
+//	_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
+//	[_clipsMapping mapKeyPathsToAttributes:
+//	 @"status", @"status",
+//	 nil];
+//	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
+//	[_clipsMapping addRelationshipMapping:rel];
 	
-
-	
-	_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
-	[_clipsMapping mapKeyPathsToAttributes:
-	 @"status", @"status",
-	 nil];
-	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
-	[_clipsMapping addRelationshipMapping:rel];
-	
-	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getIndexClips" objectMapping:_clipsMapping delegate:self]; 
+	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getIndexClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self]; 
 	
 	[_scrollView setUserInteractionEnabled:YES];
 	
@@ -106,7 +106,7 @@
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	
-	_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
+	_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
     
 	[_pageControl setNumberOfPages:[_dataSource count]];
 	
@@ -162,7 +162,7 @@
 	_isDid = NO;
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(slideshow:) userInfo:nil repeats:YES]; 
+    _slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(slideshow:) userInfo:nil repeats:YES]; 
 	if ([_scrollView contentOffset].x == 320) return;
     
     if (([_scrollView contentOffset].x == 0) )
@@ -265,7 +265,7 @@
 			}  
     
 }
--(void) SlideToLeft{    
+- (void) SlideToLeft{    
     int leftPage;
     int rightPage;
     
@@ -299,7 +299,7 @@
 	_clipNameLabel.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
     
 }
--(void) SlideToRight{
+- (void) SlideToRight{
     int leftPage;
     int rightPage;
     

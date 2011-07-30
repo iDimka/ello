@@ -20,5 +20,6 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 - (void)show;
+- (void)initRestKit;
 
 @end

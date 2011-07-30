@@ -38,6 +38,11 @@
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [clip.viewCount intValue]]];
 	
 }
+- (void)viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:animated];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (IBAction)push4play{
 	[[NSNotificationCenter defaultCenter] removeObserver:self];

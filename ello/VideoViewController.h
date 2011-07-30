@@ -10,9 +10,11 @@
 
 #import "RootViewController.h"
 
+@protocol PlayListProtocol;
+ 
 @class ClipsParser;
 
-@interface VideoViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>{
+@interface VideoViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate, UIActionSheetDelegate, PlayListProtocol>{
 	ClipsParser*			_clipsParser;
 	IBOutlet UITableView*	_tableView;
 	NSMutableArray*			_dataSource;

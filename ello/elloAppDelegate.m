@@ -8,6 +8,10 @@
 
 #import "elloAppDelegate.h"
  
+#import "Artist.h"
+#import "Artists.h"
+#import "Clip.h"
+#import "Clips.h"
 
 @implementation elloAppDelegate
 
@@ -15,16 +19,56 @@
 @synthesize window=_window; 
 @synthesize tabBarController=_tabBarController;
 
+- (void)initRestKit {
+	RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	 
+	[RKRequestQueue sharedQueue].delegate = self;
+	[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
+	 
+	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
+    [mapping mapKeyPathsToAttributes:
+     @"clip.id",		@"clipID",
+	 @"clip.artistId",	@"artistId",
+	 @"clip.artistName",@"artistName",
+  	 @"clip.genreId",	@"clipGanre",
+  	 @"clip.genreName",	@"clipGanreName",
+  	 @"clip.viewCount",	@"viewCount",
+	 @"clip.name",		@"clipName",
+	 @"clip.image",		@"clipImageURL",
+ 	 @"clip.video",		@"clipVideoURL",
+  	 @"clip.label",		@"label", 
+     nil];
+	
+	RKObjectMapping*  clipsMapping = [RKObjectMapping mappingForClass:[Clips class]];
+	[clipsMapping mapKeyPathsToAttributes: @"status", @"status",  nil];
+	[clipsMapping mapRelationship:@"clips" withObjectMapping:mapping]; 
+	[objectManager.mappingProvider setObjectMapping:clipsMapping forKeyPath:@"clips"];
+	
+	mapping = [RKObjectMapping mappingForClass:[Clip class]];
+	
+	mapping = [RKObjectMapping mappingForClass:[Artist class]];
+	[mapping mapKeyPathsToAttributes:
+	 @"artist.id",		@"artistID",
+	 @"artist.image",	@"artistImage",
+	 @"artist.name",	@"artistName",  
+	 nil];
+	
+	RKObjectMapping*  artistMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
+	[artistMapping mapKeyPathsToAttributes:@"status", @"status", nil];  
+	[artistMapping mapRelationship:@"artists" withObjectMapping:mapping]; 
+	[objectManager.mappingProvider setObjectMapping:artistMapping forKeyPath:@"artists"];
+
+}
+- (void)applicationDidFinishLaunching:(UIApplication *)application{
+	
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-	[[RKRequestCache alloc] initWithCachePath:nil storagePolicy:RKRequestCacheStoragePolicyDisabled];
-//[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-	
-	RKClient* client = [RKClient clientWithBaseURL:@"http://themedibook.com/ello/services"];
-	[RKClient setSharedClient:client];
-	
-	self.reachability = [[NSClassFromString(@"RKReachabilityObserver") alloc] initWithHostname:@"google.com"];
+
+	[self initRestKit];
+  
     return YES;
 }
+ 
 
 - (void)applicationWillResignActive:(UIApplication *)application{
 	/*

@@ -26,25 +26,25 @@
 - (void)awakeFromNib{
 	[super awakeFromNib];
 	
-	[RKRequestQueue sharedQueue].delegate = __delegate;
-	[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
+//	[RKRequestQueue sharedQueue].delegate = __delegate;
+//	[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
 	
-	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-	RKObjectMapping* mapping = nil;
-	
-	mapping = [RKObjectMapping mappingForClass:[Artist class]];
-	[mapping mapKeyPathsToAttributes:
-	 @"artist.id",		@"artistID",
-	 @"artist.image",	@"artistImage",
-	 @"artist.name",	@"artistName",  
-	 nil];
-	
-	_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
-	[_clipsMapping mapKeyPathsToAttributes:
-	 @"status", @"status", nil]; 
-	[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
-	
-	[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=artist&action=getAllArtists"]  objectMapping:_clipsMapping delegate:self]; 
+//	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+//	RKObjectMapping* mapping = nil;
+//	
+//	mapping = [RKObjectMapping mappingForClass:[Artist class]];
+//	[mapping mapKeyPathsToAttributes:
+//	 @"artist.id",		@"artistID",
+//	 @"artist.image",	@"artistImage",
+//	 @"artist.name",	@"artistName",  
+//	 nil];
+//	
+//	_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
+//	[_clipsMapping mapKeyPathsToAttributes:
+//	 @"status", @"status", nil]; 
+//	[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
+//	
+
 
 }
 
@@ -67,7 +67,7 @@
 	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
 	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	
-	_tableView.rowHeight = 154; 
+	_tableView.rowHeight = 85; 
 //	[self showDimView];
 	
 	
@@ -76,7 +76,9 @@
 	[_dataSource addObject:[NSNull null]];
 	[_dataSource addObject:[NSNull null]];
 	
-	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Все", @"Топ", @"Новые", nil]];
+		[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=artist&action=getAllArtists"]  objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self]; 
+	
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Топ", @"Новые", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = _segment; 
@@ -132,18 +134,17 @@
 
 //		return;
 	}
-	[self showDimView];
 	 
 	[self showDimView];
 	switch (segmentedControl.selectedSegmentIndex) {
+		case 777:			
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getAllArtists" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self]; 
+			break;
 		case 0:			
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getAllArtists" objectMapping:_clipsMapping delegate:self]; 
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getTopArtists" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self];
 			break;
-		case 1:			
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getTopArtists" objectMapping:_clipsMapping delegate:self];
-			break;
-		case 2:
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getNewArtists" objectMapping:_clipsMapping delegate:self];
+		case 1:
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=artist&action=getNewArtists" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self];
 			break;		
 	}
 
