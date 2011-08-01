@@ -12,7 +12,7 @@
 
 @interface GanriViewController :  RootViewController <UITableViewDelegate, UITableViewDataSource>{
     NSMutableArray*		_dataSource;
-    IBOutlet UITableView* _ganritableView;
+    IBOutlet UITableView* _tableView;
 }
     
 - (IBAction)search:(id)sender;

@@ -22,65 +22,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:bundle];
     if (self) {
 		
-		self.mode = mod;
-		
-		
-		[RKRequestQueue sharedQueue].delegate = __delegate;
-		[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
-		 
-		switch ((int)self.mode) {
-			case kClip:;
-				
-				RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
-				[mapping mapKeyPathsToAttributes:
-				 @"clip.id",		@"clipID",
-				 @"clip.artistId",	@"artistId",
-				 @"clip.artistName",@"artistName",
-				 @"clip.genreId",	@"clipGanre",
-				 @"clip.genreName",	@"clipGanreName",
-				 @"clip.viewCount",	@"viewCount",
-				 @"clip.name",		@"clipName",
-				 @"clip.image",		@"clipImageURL",
-				 @"clip.video",		@"clipVideoURL",
-				 @"clip.label",		@"label", 
-				 nil];
-				
-				_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
-				[_clipsMapping mapKeyPathsToAttributes:@"status", @"status", nil];
-				RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
-				[_clipsMapping addRelationshipMapping:rel]; 
-//				[[RKObjectManager  sharedManager].mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"clips"];
-//				[[RKObjectManager  sharedManager].mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"clips"];
-				break;
-			case kArtist:
-				 
-				
-				mapping = [RKObjectMapping mappingForClass:[Artist class]];
-				[mapping mapKeyPathsToAttributes:
-				 @"artist.id",		@"artistID",
-				 @"artist.image",	@"artistImage",
-				 @"artist.name",	@"artistName",  
-				 nil];
-				
-				_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
-				[_clipsMapping mapKeyPathsToAttributes:
-				 @"status", @"status", nil]; 
-//				[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
-				
-//				[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", @"r"]  objectMapping:_clipsMapping delegate:self]; 
-
-				
-				[_clipsMapping mapRelationship:@"artists" withObjectMapping:mapping];
-//				[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
-// 				[[RKObjectManager  sharedManager].mappingProvider setObjectMapping:_clipsMapping forKeyPath:@"artists"];
-//				[[RKObjectManager  sharedManager].mappingProvider registerMapping:_clipsMapping withRootKeyPath:@"artists"];
-				break; 
-		} 
-		
+		self.mode = mod;		
     }
     return self;
 }
 - (void)dealloc{
+	
+	[_dataSource release];
+	
     [super dealloc];
 }
 
@@ -89,38 +38,38 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-	
+	 	
+	self.title = @"Поиск";
 	_dataSource = [NSMutableArray new];
+	
+	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) style:UITableViewStylePlain];
+//	[self.view addSubview:_tableView];
+	[_tableView setDelegate:self];
+	[_tableView setDataSource:self];
+	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
+	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	
 	
 	[self.searchDisplayController.searchResultsTableView setRowHeight:85];
 	[self.searchDisplayController.searchResultsTableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	[self.searchDisplayController.searchResultsTableView setSeparatorColor:[UIColor darkGrayColor]];
-	[self.tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
-	[self.tableView setSeparatorColor:[UIColor darkGrayColor]];
+	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
 	
 	
-}
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-	[self.navigationController setNavigationBarHidden:YES animated:YES];
-	
-	
-}
+} 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 	
-	[self.searchDisplayController setActive:YES animated:NO];
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
+	[self.searchDisplayController setActive:YES animated:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-	
-	[[RKRequestQueue sharedQueue] cancelAllRequests];
-	[self.navigationController setNavigationBarHidden:NO];
-}
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-}
 
+	[self.navigationController setNavigationBarHidden:NO animated:YES];	
+	[[RKRequestQueue sharedQueue] cancelAllRequests]; 
+} 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
@@ -169,21 +118,20 @@
 }
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
 	
+	[[RKRequestQueue sharedQueue] cancelRequestsWithDelegate:self];
 	switch ((int)mode) {
 		case kClip:;
 			
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=util&action=searchByClipName&name=%@", searchText] objectMapping:_clipsMapping delegate:self]; 
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=util&action=searchByClipName&name=%@", searchText] objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self]; 
 			break;
 		case kArtist:
 			
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", searchText]  objectMapping:_clipsMapping delegate:self]; 
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", searchText]  objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self]; 
 			break; 
 	} 
 }
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-	
-	//	[o_searchArray removeAllObjects];
-	//	[o_tableView reloadData];
+	 
 	return  YES;
 }
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope{
@@ -192,6 +140,7 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	[_dataSource removeAllObjects];
+	if (![objects count]) return;
 	switch (mode) {
 		case kClip:
 			[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] clips]];
@@ -201,7 +150,7 @@
 			[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] artists]];
 			break;
 	}
-	[self.tableView reloadData];
+	[_tableView reloadData];
 
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {

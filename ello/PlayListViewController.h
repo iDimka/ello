@@ -8,11 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-#import "VideoViewController.h"
+#import "ClipsViewController.h"
 
-@interface PlayListViewController : UITableViewController <UIActionSheetDelegate>{
-    
-    NSMutableArray*		_dataSoutce;
+typedef enum{
+	kNetwork,
+	kLocalhost
+}PlaylistStorePlace;
+
+@interface PlayListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, RKObjectLoaderDelegate>{
+    UITableView*		_tableView;
+    NSMutableArray*		_dataSource;
 }
+
+@property(nonatomic, assign)PlaylistStorePlace		mode;
+@property(nonatomic, retain)PlayList*				playlist;
 
 @end

@@ -17,5 +17,7 @@
 
 #define __delegate (elloAppDelegate*)[[UIApplication sharedApplication] delegate]
 
+#import "RootViewController.h"
+
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData/CoreData.h>

@@ -79,9 +79,18 @@
 		EEF2273213C792D8004731BE /* photo1.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF2273013C792D8004731BE /* photo1.png */; };
 		EEF2273313C792D8004731BE /* photo2.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF2273113C792D8004731BE /* photo2.png */; };
 		EEF2274713C79EDB004731BE /* photo3.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF2274613C79EDA004731BE /* photo3.png */; };
-		EEF2274C13C7A68E004731BE /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2274B13C7A68E004731BE /* VideoViewController.m */; };
+		EEF2274C13C7A68E004731BE /* ClipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2274B13C7A68E004731BE /* ClipsViewController.m */; };
 		EEF6AB8413DF8B94001418E3 /* PlayLists.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6AB8313DF8B94001418E3 /* PlayLists.m */; };
 		EEF6AB8713DF9D0D001418E3 /* Artists.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6AB8613DF9D0D001418E3 /* Artists.m */; };
+		EEFB251013E5BEBD00BA8BD1 /* TabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEFB250F13E5BEBC00BA8BD1 /* TabbarViewController.xib */; };
+		EEFB251513E5CFC100BA8BD1 /* artista_32.png in Resources */ = {isa = PBXBuildFile; fileRef = EEFB251113E5CFC100BA8BD1 /* artista_32.png */; };
+		EEFB251613E5CFC100BA8BD1 /* clip.png in Resources */ = {isa = PBXBuildFile; fileRef = EEFB251213E5CFC100BA8BD1 /* clip.png */; };
+		EEFB251713E5CFC100BA8BD1 /* player_playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = EEFB251313E5CFC100BA8BD1 /* player_playlist.png */; };
+		EEFB251813E5CFC200BA8BD1 /* slideshow.png in Resources */ = {isa = PBXBuildFile; fileRef = EEFB251413E5CFC100BA8BD1 /* slideshow.png */; };
+		EEFB252213E5EB6F00BA8BD1 /* MKEntryPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = EEFB251E13E5EB6D00BA8BD1 /* MKEntryPanel.m */; };
+		EEFB252313E5EB6F00BA8BD1 /* MKEntryPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEFB251F13E5EB6D00BA8BD1 /* MKEntryPanel.xib */; };
+		EEFB252413E5EB6F00BA8BD1 /* TopBar.png in Resources */ = {isa = PBXBuildFile; fileRef = EEFB252013E5EB6E00BA8BD1 /* TopBar.png */; };
+		EEFB252513E5EB6F00BA8BD1 /* TopBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEFB252113E5EB6F00BA8BD1 /* TopBar@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,12 +276,22 @@
 		EEF2273013C792D8004731BE /* photo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo1.png; sourceTree = "<group>"; };
 		EEF2273113C792D8004731BE /* photo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo2.png; sourceTree = "<group>"; };
 		EEF2274613C79EDA004731BE /* photo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo3.png; sourceTree = "<group>"; };
-		EEF2274A13C7A68E004731BE /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
-		EEF2274B13C7A68E004731BE /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		EEF2274A13C7A68E004731BE /* ClipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipsViewController.h; sourceTree = "<group>"; };
+		EEF2274B13C7A68E004731BE /* ClipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipsViewController.m; sourceTree = "<group>"; };
 		EEF6AB8213DF8B94001418E3 /* PlayLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayLists.h; sourceTree = "<group>"; };
 		EEF6AB8313DF8B94001418E3 /* PlayLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayLists.m; sourceTree = "<group>"; };
 		EEF6AB8513DF9D0D001418E3 /* Artists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artists.h; sourceTree = "<group>"; };
 		EEF6AB8613DF9D0D001418E3 /* Artists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artists.m; sourceTree = "<group>"; };
+		EEFB250F13E5BEBC00BA8BD1 /* TabbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
+		EEFB251113E5CFC100BA8BD1 /* artista_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = artista_32.png; sourceTree = "<group>"; };
+		EEFB251213E5CFC100BA8BD1 /* clip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clip.png; sourceTree = "<group>"; };
+		EEFB251313E5CFC100BA8BD1 /* player_playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_playlist.png; sourceTree = "<group>"; };
+		EEFB251413E5CFC100BA8BD1 /* slideshow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideshow.png; sourceTree = "<group>"; };
+		EEFB251D13E5EB6D00BA8BD1 /* MKEntryPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEntryPanel.h; sourceTree = "<group>"; };
+		EEFB251E13E5EB6D00BA8BD1 /* MKEntryPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEntryPanel.m; sourceTree = "<group>"; };
+		EEFB251F13E5EB6D00BA8BD1 /* MKEntryPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKEntryPanel.xib; sourceTree = "<group>"; };
+		EEFB252013E5EB6E00BA8BD1 /* TopBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TopBar.png; sourceTree = "<group>"; };
+		EEFB252113E5EB6F00BA8BD1 /* TopBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TopBar@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +482,7 @@
 				EEDB552113D0307200038999 /* RootViewController.h */,
 				EEDB552213D0307200038999 /* RootViewController.m */,
 				EEB8F80413C5FD0D00B70FDB /* MainWindow.xib */,
+				EEFB250F13E5BEBC00BA8BD1 /* TabbarViewController.xib */,
 				EE74375E13E1F6DD00FD9509 /* Ganre */,
 				EE6D054513CE3FC50076850F /* PlayList */,
 				EE6D051C13CCE0980076850F /* Search */,
@@ -470,7 +490,7 @@
 				EE6D04F813CCD78C0076850F /* Preview */,
 				EE6D04F113CCD3190076850F /* Subscriptions */,
 				EEF2274813C7A63C004731BE /* General */,
-				EEF2274913C7A64A004731BE /* Viedeo */,
+				EEF2274913C7A64A004731BE /* Clips */,
 				EEB8F7F913C5FD0D00B70FDB /* Supporting Files */,
 			);
 			path = ello;
@@ -479,6 +499,10 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEFB251113E5CFC100BA8BD1 /* artista_32.png */,
+				EEFB251213E5CFC100BA8BD1 /* clip.png */,
+				EEFB251313E5CFC100BA8BD1 /* player_playlist.png */,
+				EEFB251413E5CFC100BA8BD1 /* slideshow.png */,
 				EE1E6C2713E3426A006794C7 /* addToPl.png */,
 				EE1E6C2513E33764006794C7 /* player_pause.png */,
 				EE1E6C2313E335EF006794C7 /* player_play.png */,
@@ -526,11 +550,12 @@
 			name = General;
 			sourceTree = "<group>";
 		};
-		EEF2274913C7A64A004731BE /* Viedeo */ = {
+		EEF2274913C7A64A004731BE /* Clips */ = {
 			isa = PBXGroup;
 			children = (
-				EEF2274A13C7A68E004731BE /* VideoViewController.h */,
-				EEF2274B13C7A68E004731BE /* VideoViewController.m */,
+				EEF2274A13C7A68E004731BE /* ClipsViewController.h */,
+				EEF2274B13C7A68E004731BE /* ClipsViewController.m */,
+				EEFB252613E5EB8500BA8BD1 /* MKEntryPanel */,
 				EE1E6C4313E34972006794C7 /* MyPlaylist.xcdatamodeld */,
 				EE5CDFC913DE25F200B60CC1 /* Clips.h */,
 				EE5CDFCA13DE25F200B60CC1 /* Clips.m */,
@@ -541,7 +566,19 @@
 				EECAB46813CB999000EE96B5 /* VideoObject.h */,
 				EECAB46913CB999000EE96B5 /* VideoObject.m */,
 			);
-			name = Viedeo;
+			name = Clips;
+			sourceTree = "<group>";
+		};
+		EEFB252613E5EB8500BA8BD1 /* MKEntryPanel */ = {
+			isa = PBXGroup;
+			children = (
+				EEFB251D13E5EB6D00BA8BD1 /* MKEntryPanel.h */,
+				EEFB251E13E5EB6D00BA8BD1 /* MKEntryPanel.m */,
+				EEFB251F13E5EB6D00BA8BD1 /* MKEntryPanel.xib */,
+				EEFB252013E5EB6E00BA8BD1 /* TopBar.png */,
+				EEFB252113E5EB6F00BA8BD1 /* TopBar@2x.png */,
+			);
+			name = MKEntryPanel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -705,6 +742,14 @@
 				EE1E6C2413E335EF006794C7 /* player_play.png in Resources */,
 				EE1E6C2613E33764006794C7 /* player_pause.png in Resources */,
 				EE1E6C2813E3426A006794C7 /* addToPl.png in Resources */,
+				EEFB251013E5BEBD00BA8BD1 /* TabbarViewController.xib in Resources */,
+				EEFB251513E5CFC100BA8BD1 /* artista_32.png in Resources */,
+				EEFB251613E5CFC100BA8BD1 /* clip.png in Resources */,
+				EEFB251713E5CFC100BA8BD1 /* player_playlist.png in Resources */,
+				EEFB251813E5CFC200BA8BD1 /* slideshow.png in Resources */,
+				EEFB252313E5EB6F00BA8BD1 /* MKEntryPanel.xib in Resources */,
+				EEFB252413E5EB6F00BA8BD1 /* TopBar.png in Resources */,
+				EEFB252513E5EB6F00BA8BD1 /* TopBar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,7 +764,7 @@
 				EEB8F80313C5FD0D00B70FDB /* elloAppDelegate.m in Sources */,
 				EEF2270913C65695004731BE /* IndexViewController.m in Sources */,
 				EEF2272F13C78D16004731BE /* AdView.m in Sources */,
-				EEF2274C13C7A68E004731BE /* VideoViewController.m in Sources */,
+				EEF2274C13C7A68E004731BE /* ClipsViewController.m in Sources */,
 				EECAB46413CB95D900EE96B5 /* VideoTableViewCell.m in Sources */,
 				EECAB46A13CB999000EE96B5 /* VideoObject.m in Sources */,
 				EE6D04F413CCD3420076850F /* SubscriptionsViewController.m in Sources */,
@@ -744,6 +789,7 @@
 				EEA7009513E1EA140017F550 /* GanriTableViewCell.m in Sources */,
 				EEA7009613E1EA140017F550 /* GanriViewController.m in Sources */,
 				EE1E6C4513E34973006794C7 /* MyPlaylist.xcdatamodeld in Sources */,
+				EEFB252213E5EB6F00BA8BD1 /* MKEntryPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

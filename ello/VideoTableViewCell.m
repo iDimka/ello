@@ -117,7 +117,13 @@
 	_viewCount.text = [NSString stringWithFormat:@"%D views", [object.viewCount intValue]];
 	[_videoThumb setImage:nil];
 	if (object.thumb)  _videoThumb.image = object.thumb;
-	else [_videoThumb loadImageFromURL:[NSURL URLWithString:object.imageURLString]];
+	else {
+	if (object.imageURLString)[_videoThumb loadImageFromURL:[NSURL URLWithString:object.imageURLString]];	
+	else{
+		if ([object.clips count]) [_videoThumb loadImageFromURL:[NSURL URLWithString:[(Clip*)[object.clips objectAtIndex:0] clipImageURL]]];	
+//		NSLog([(Clip*)[object.clips objectAtIndex:0] description]);
+	}
+	}
 }
 - (void)configCell:(VideoObject*)videoObject{
 	_title.text = videoObject.title;

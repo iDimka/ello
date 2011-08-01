@@ -14,9 +14,8 @@ typedef enum {
 	kClip
 }SearchMode;
 
-@interface SearchViewController : UITableViewController <RKObjectLoaderDelegate>{
-    
-	RKObjectMapping*			_clipsMapping;
+@interface SearchViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>{
+    UITableView*				_tableView;
 	NSMutableArray*				_dataSource;
 }
 

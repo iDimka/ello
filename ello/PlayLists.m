@@ -8,19 +8,47 @@
 
 #import "PlayLists.h"
 
+#import "PlayList.h"
+
 @implementation PlayLists
 
 @synthesize playlists;
 @synthesize status;
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
-        // Initialization code here.
+        playlists = [NSMutableArray new];
     }
-    
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) 
+		{ 			 
+			playlists = [[decoder decodeObjectForKey:@"playlists"] retain];
+			status = [[decoder decodeObjectForKey:@"status"] retain];
+		}
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder{
+	[encoder encodeObject:playlists forKey:@"playlists"];
+	[encoder encodeObject:status forKey:@"status"];
+}
+
+- (NSString*)description{
+	return [NSString stringWithFormat:@"playlist count is %d", [playlists count]];
+}
+
+- (void)addPlaylist:(PlayList*)playlist{
+	[playlists addObject:playlist];
+	[NSKeyedArchiver archiveRootObject:self toFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"playlists.plist"]];
+}
+- (void)removePlaylist:(PlayList*)playlist{
+	[playlists removeObject:playlist];
+	[NSKeyedArchiver archiveRootObject:self toFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"playlists.plist"]];
 }
 
 @end

@@ -10,7 +10,7 @@
 
 #import <iAd/iAd.h>
  
-@interface IndexViewController : UIViewController <UIScrollViewDelegate, ADBannerViewDelegate, RKObjectLoaderDelegate>{
+@interface IndexViewController : RootViewController <UIScrollViewDelegate, ADBannerViewDelegate, RKObjectLoaderDelegate>{
 	IBOutlet	UIScrollView*	_scrollView;
 	IBOutlet	UIImageView*	_banner; 
 	IBOutlet	UIPageControl*	_pageControl;

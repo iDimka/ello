@@ -16,6 +16,13 @@
 @synthesize clips;
 
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        clips = [NSMutableArray new];
+    }
+    return self;
+}
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if (self) 

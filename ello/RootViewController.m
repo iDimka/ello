@@ -22,8 +22,8 @@ typedef void (^CloseBlock)(NSString *inputString);
         // Initialization code
         _parent = parent;
         onTapped = tappedSel;
-        self.backgroundColor = [UIColor blackColor];
-        self.alpha = 0.3;
+        self.backgroundColor = [UIColor darkGrayColor];
+        self.alpha = 0.4;
 		self.userInteractionEnabled = NO;
 		
 		UIActivityIndicatorView* act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -36,12 +36,10 @@ typedef void (^CloseBlock)(NSString *inputString);
     return self;
 }
 
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 //    [_parent performSelector:onTapped];
 }
-- (void)dealloc
-{
+- (void)dealloc{
     [super dealloc];
 }
 

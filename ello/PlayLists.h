@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class PlayList;
+
 @interface PlayLists : NSObject
 
 @property(nonatomic, retain)NSString*	status;
 @property(nonatomic, retain)NSMutableArray* playlists;
+
+- (void)addPlaylist:(PlayList*)playlist;
+- (void)removePlaylist:(PlayList*)playlist;
 
 @end

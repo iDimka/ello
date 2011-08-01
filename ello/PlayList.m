@@ -10,6 +10,7 @@
 
 @implementation PlayList
 
+@synthesize clips;
 @synthesize thumb;
 @synthesize playListID;
 @synthesize artistID;
@@ -22,6 +23,61 @@
 @synthesize videoURLString;
 @synthesize label;
 
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        clips = [NSMutableArray new];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) 
+		{ 
+			clips = [NSMutableArray new];
+			
+			playListID = [[decoder decodeObjectForKey:@"playListID"] retain];
+			artistID = [[decoder decodeObjectForKey:@"artistID"] retain];
+			artistName = [[decoder decodeObjectForKey:@"artistName"] retain];
+			imageURLString = [[decoder decodeObjectForKey:@"imageURLString"] retain];
+			genreID = [[decoder decodeObjectForKey:@"genreID"] retain];
+			genreName = [[decoder decodeObjectForKey:@"genreName"] retain];
+			viewCount = [[decoder decodeObjectForKey:@"viewCount"] retain];
+			name = [[decoder decodeObjectForKey:@"name"] retain];
+			videoURLString = [[decoder decodeObjectForKey:@"videoURLString"] retain];
+			label = [[decoder decodeObjectForKey:@"label"] retain];
+			clips = [[decoder decodeObjectForKey:@"clips"] retain];
+//			NSKeyedUnarchiver* ua = [[NSKeyedUnarchiver alloc] initForReadingWithData:[NSData dataWithContentsOfFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"clips.plist"]]];
+//			clips = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"clips.txt"]] retain];
+//			clips = [ua decodeObject];
+		}
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder{
+	
+	[encoder encodeObject:playListID forKey:@"playListID"];
+	[encoder encodeObject:artistID forKey:@"artistID"];
+	[encoder encodeObject:artistName forKey:@"artistName"];
+	[encoder encodeObject:imageURLString forKey:@"imageURLString"];
+	[encoder encodeObject:genreID forKey:@"genreID"];
+	[encoder encodeObject:genreName forKey:@"genreName"];
+	[encoder encodeObject:viewCount forKey:@"viewCount"];
+	[encoder encodeObject:name forKey:@"name"];
+	[encoder encodeObject:videoURLString forKey:@"videoURLString"];
+	[encoder encodeObject:label forKey:@"label"];
+//	NSKeyedArchiver* ua = [[NSKeyedArchiver alloc] initForWritingWithMutableData:[NSData dataWithContentsOfFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"clips.plist"]]];
+//	[NSKeyedArchiver archiveRootObject:self toFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"clips.txt"]];
+//	[ua encodeObject:clips];
+
+	[encoder encodeObject:clips forKey:@"clips"]; 
+}
+
+- (NSString*)description{
+	return [NSString stringWithFormat:@"clips count is %d\n\n\n%@", [clips count], clips];
+}
 
 
 @end

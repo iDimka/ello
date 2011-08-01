@@ -45,6 +45,16 @@
 - (void)viewDidLoad
 {   _dataSource = [[NSMutableArray alloc] init];
     [super viewDidLoad];
+	
+	self.title = @"Жанры";
+	
+	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) style:UITableViewStylePlain];
+	[self.view addSubview:_tableView];
+	[_tableView setDelegate:self];
+	[_tableView setDataSource:self];
+	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
+	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	
     [self InesrtViewInCantainer];
     // Do any additional setup after loading the view from its nib.
 }
@@ -97,6 +107,8 @@
 }
 
 
-
+- (IBAction)search:(id)sender{
+	
+}
 
 @end

@@ -41,15 +41,7 @@
 @synthesize leftImage;
 @synthesize centerImage;
 @synthesize rightImage;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
+ 
 #pragma mark - View lifecycle 
 
 - (void)viewDidLoad{
@@ -73,31 +65,7 @@
 	[self.view addSubview:adView]; 
 	[_scrollView setContentSize:CGSizeMake(320 * 3, 290)];
     [_scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
-	
-// 	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-//	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
-//    [mapping mapKeyPathsToAttributes:
-//     @"clip.id",		@"clipID",
-//	 @"clip.artistId",	@"artistId",
-//	 @"clip.artistName",@"artistName",
-//  	 @"clip.genreId",	@"clipGanre",
-//  	 @"clip.genreName",	@"clipGanreName",
-//  	 @"clip.viewCount",	@"viewCount",
-//	 @"clip.name",		@"clipName",
-//	 @"clip.image",		@"clipImageURL",
-// 	 @"clip.video",		@"clipVideoURL",
-//  	 @"clip.label",		@"label", 
-//     nil];
-//	
-//
-//	
-//	_clipsMapping = [[RKObjectMapping mappingForClass:[Clips class]] retain];
-//	[_clipsMapping mapKeyPathsToAttributes:
-//	 @"status", @"status",
-//	 nil];
-//	RKObjectRelationshipMapping* rel = [RKObjectRelationshipMapping mappingFromKeyPath:@"clips" toKeyPath:@"clips" objectMapping:mapping];
-//	[_clipsMapping addRelationshipMapping:rel];
-	
+	  
 	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getIndexClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self]; 
 	
 	[_scrollView setUserInteractionEnabled:YES];

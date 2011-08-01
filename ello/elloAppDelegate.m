@@ -7,7 +7,9 @@
 //
 
 #import "elloAppDelegate.h"
- 
+
+#import "PlayList.h"
+#import "PlayLists.h"
 #import "Artist.h"
 #import "Artists.h"
 #import "Clip.h"
@@ -15,6 +17,7 @@
 
 @implementation elloAppDelegate
 
+@synthesize playlists = _playlists;
 @synthesize reachability;
 @synthesize window=_window; 
 @synthesize tabBarController=_tabBarController;
@@ -22,7 +25,7 @@
 - (void)initRestKit {
 	RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
 	 
-	[RKRequestQueue sharedQueue].delegate = self;
+	[RKRequestQueue sharedQueue].delegate = (NSObject<RKRequestQueueDelegate>*)self;
 	[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
 	 
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Clip class]];
@@ -57,14 +60,37 @@
 	[artistMapping mapKeyPathsToAttributes:@"status", @"status", nil];  
 	[artistMapping mapRelationship:@"artists" withObjectMapping:mapping]; 
 	[objectManager.mappingProvider setObjectMapping:artistMapping forKeyPath:@"artists"];
+	
+	mapping = [RKObjectMapping mappingForClass:[PlayList class]];
+    [mapping mapKeyPathsToAttributes:
+     @"playlist.id",		@"playListID",
+	 @"playlist.artistId",	@"artistID",
+	 @"playlist.artistName",@"artistName",
+  	 @"playlist.genreId",	@"genreID",
+  	 @"playlist.genreName",	@"genreName",
+  	 @"playlist.viewCount",	@"viewCount",
+	 @"playlist.name",		@"name",
+	 @"playlist.image",		@"imageURLString",
+ 	 @"playlist.video",		@"videoURLString",
+  	 @"playlist.label",		@"label", 
+     nil];
+	
+	RKObjectMapping* playlistsMapping = [[RKObjectMapping mappingForClass:[PlayLists class]] retain];
+	[playlistsMapping mapKeyPathsToAttributes: @"status", @"status", nil];
+	[playlistsMapping mapRelationship:@"playlists" withObjectMapping:mapping];
+	[objectManager.mappingProvider setObjectMapping:playlistsMapping forKeyPath:@"playlists"];
+	 
 
 }
-- (void)applicationDidFinishLaunching:(UIApplication *)application{
-	
-}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 
 	[self initRestKit];
+	[[NSBundle mainBundle] loadNibNamed:@"TabbarViewController" owner:self options:nil];
+	_playlists = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"playlists.plist"]] retain];
+	if (!_playlists) {
+		_playlists = [[PlayLists alloc] init];
+	}
   
     return YES;
 }
@@ -98,6 +124,10 @@
 	[self.window makeKeyAndVisible];	
 }
 
+- (NSString *)applicationDocumentsDirectory {
+	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
 
 - (void)requestQueueWasUnsuspended:(RKRequestQueue*)queue;{
 	
@@ -119,6 +149,8 @@
 }
 
 - (void)dealloc{
+	
+	[_playlists release];
 	[_window release];
 	[_tabBarController release];
     [super dealloc];

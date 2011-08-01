@@ -10,8 +10,9 @@
 
 #import "RootViewController.h"
 
-@interface PlayListsViewController : UITableViewController <RKObjectLoaderDelegate> {
+@interface PlayListsViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate> {
     
+	UITableView*		_tableView;
     NSMutableArray*		_dataSourceCharts;
 	NSMutableArray*		_dataSourceTop;
 	NSMutableArray*		_dataSourceMy;

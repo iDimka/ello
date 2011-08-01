@@ -98,7 +98,7 @@ static NSDateFormatter* __rfc1123DateFormatter;
 						  stringByAppendingPathComponent:[request cacheKey]];
 
 	} else if (_storagePolicy == RKRequestCacheStoragePolicyPermanently) {
-#warning in the next line crash
+		// iDimka in the next line crash
 		pathForRequest = [[_cachePath stringByAppendingPathComponent:permanentCacheFolder]
 						  stringByAppendingPathComponent:[request cacheKey]];
 	}

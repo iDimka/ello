@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PlayList : NSObject
+@interface PlayList : NSObject <NSCoding>
 
 @property(nonatomic, retain)UIImage*		thumb;
 @property(nonatomic, retain)NSNumber*		playListID;
@@ -21,5 +21,6 @@
 @property(nonatomic, retain)NSString*		name;
 @property(nonatomic, retain)NSString*		videoURLString;
 @property(nonatomic, retain)NSString*		label;
+@property(nonatomic, retain)NSMutableArray*	clips;
 
 @end

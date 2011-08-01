@@ -21,33 +21,7 @@
 @implementation ArtistsViewController
  
 #pragma mark - View lifecycle
- 
-
-- (void)awakeFromNib{
-	[super awakeFromNib];
-	
-//	[RKRequestQueue sharedQueue].delegate = __delegate;
-//	[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
-	
-//	[RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
-//	RKObjectMapping* mapping = nil;
-//	
-//	mapping = [RKObjectMapping mappingForClass:[Artist class]];
-//	[mapping mapKeyPathsToAttributes:
-//	 @"artist.id",		@"artistID",
-//	 @"artist.image",	@"artistImage",
-//	 @"artist.name",	@"artistName",  
-//	 nil];
-//	
-//	_clipsMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
-//	[_clipsMapping mapKeyPathsToAttributes:
-//	 @"status", @"status", nil]; 
-//	[_clipsMapping addRelationshipMapping:[RKObjectRelationshipMapping mappingFromKeyPath:@"artists" toKeyPath:@"artists" objectMapping:mapping]];
-//	
-
-
-}
-
+  
 - (void)viewDidLoad{
     [super viewDidLoad];
 	 
@@ -75,9 +49,7 @@
 	[_dataSource addObject:[NSNull null]];
 	[_dataSource addObject:[NSNull null]];
 	[_dataSource addObject:[NSNull null]];
-	
-		[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=artist&action=getAllArtists"]  objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self]; 
-	
+ 	
 	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Топ", @"Новые", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];

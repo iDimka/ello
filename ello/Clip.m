@@ -58,7 +58,7 @@
 
 
 - (NSString*)description{
-	return clipName;
+	return [NSString stringWithFormat:@"name is %@, url: %@ clipID: %@", clipName, clipImageURL, clipID];
 }
 
 - (void)setClipImageURL:(NSString *)clipImageURL_{
