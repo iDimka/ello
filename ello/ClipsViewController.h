@@ -19,7 +19,7 @@
 	NSMutableArray*			_dataSource;
 	UISegmentedControl*		_segment;
 	
-	RKObjectMapping* _clipsMapping;
+//	RKObjectMapping* _clipsMapping;
 }
 
 - (IBAction)search:(id)sender;

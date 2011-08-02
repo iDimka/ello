@@ -8,6 +8,8 @@
 
 #import "SearchViewController.h"
 
+#import "PreviewViewController.h"
+#import "ArtistViewController.h"
 #import "Artist.h"
 #import "Artists.h"
 #import "VideoTableViewCell.h"
@@ -42,13 +44,14 @@
 	self.title = @"Поиск";
 	_dataSource = [NSMutableArray new];
 	
-	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) style:UITableViewStylePlain];
+//	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) style:UITableViewStylePlain];
 //	[self.view addSubview:_tableView];
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
 	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
 	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	
+	_tableView = [self.searchDisplayController.searchResultsTableView retain];
 	
 	[self.searchDisplayController.searchResultsTableView setRowHeight:85];
 	[self.searchDisplayController.searchResultsTableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
@@ -61,8 +64,8 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 	
-	[self.navigationController setNavigationBarHidden:YES animated:YES];
-	[self.searchDisplayController setActive:YES animated:YES];
+//	[self.navigationController setNavigationBarHidden:YES animated:YES];
+//	[self.searchDisplayController setActive:YES animated:NO];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -70,6 +73,7 @@
 	[self.navigationController setNavigationBarHidden:NO animated:YES];	
 	[[RKRequestQueue sharedQueue] cancelAllRequests]; 
 } 
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
@@ -100,14 +104,19 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+	switch ((int)mode) {
+		case kClip:;
+			PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithNibName:@"PreviewViewController" bundle:nil];
+			detailViewController.clip = [_dataSource  objectAtIndex:indexPath.row];
+			[self.navigationController pushViewController:detailViewController animated:YES];
+			[detailViewController release];
+			break;
+		case kArtist:;			
+			ArtistViewController* tmp = [[ArtistViewController alloc] initWithArtist:[_dataSource  objectAtIndex:indexPath.row]];
+			[self.navigationController pushViewController:tmp animated:YES];
+			[tmp release];
+			break; 
+	} 
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar{

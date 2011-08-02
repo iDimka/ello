@@ -15,9 +15,13 @@ typedef enum{
 	kLocalhost
 }PlaylistStorePlace;
 
+@class PlayList;
+
 @interface PlayListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, RKObjectLoaderDelegate>{
     UITableView*		_tableView;
     NSMutableArray*		_dataSource;
+	UILabel*			plClipsCount;
+	PlayList*			_playList;
 }
 
 @property(nonatomic, assign)PlaylistStorePlace		mode;

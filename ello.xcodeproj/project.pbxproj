@@ -52,10 +52,14 @@
 		EE7437A313E213A600FD9509 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379B13E213A600FD9509 /* Default@2x.png */; };
 		EE7437A413E213A600FD9509 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379C13E213A600FD9509 /* Default.png */; };
 		EE7437A713E213D200FD9509 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = EE7437A613E213D200FD9509 /* iTunesArtwork */; };
-		EEA7009313E1EA140017F550 /* GanrObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008B13E1EA140017F550 /* GanrObject.m */; };
-		EEA7009413E1EA140017F550 /* Ganri.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008D13E1EA140017F550 /* Ganri.m */; };
+		EE8759DD13E6F3BA00B38801 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8759DC13E6F3BA00B38801 /* ArtistViewController.m */; };
+		EE8759E013E71E7D00B38801 /* GenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8759DF13E71E7C00B38801 /* GenreViewController.m */; };
+		EEA0691413E8A02800C4E1A2 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA0691213E8A02800C4E1A2 /* next.png */; };
+		EEA0691513E8A02800C4E1A2 /* prev.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA0691313E8A02800C4E1A2 /* prev.png */; };
+		EEA7009313E1EA140017F550 /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008B13E1EA140017F550 /* Genre.m */; };
+		EEA7009413E1EA140017F550 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008D13E1EA140017F550 /* Genres.m */; };
 		EEA7009513E1EA140017F550 /* GanriTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */; };
-		EEA7009613E1EA140017F550 /* GanriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7009113E1EA140017F550 /* GanriViewController.m */; };
+		EEA7009613E1EA140017F550 /* GenresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7009113E1EA140017F550 /* GenresViewController.m */; };
 		EEB8F7F313C5FD0D00B70FDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F213C5FD0D00B70FDB /* UIKit.framework */; };
 		EEB8F7F713C5FD0D00B70FDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F613C5FD0D00B70FDB /* CoreGraphics.framework */; };
 		EEB8F7FD13C5FD0D00B70FDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEB8F7FB13C5FD0D00B70FDB /* InfoPlist.strings */; };
@@ -228,19 +232,25 @@
 		EE74379B13E213A600FD9509 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		EE74379C13E213A600FD9509 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		EE7437A613E213D200FD9509 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		EE8759DB13E6F3BA00B38801 /* ArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
+		EE8759DC13E6F3BA00B38801 /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
+		EE8759DE13E71E7C00B38801 /* GenreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreViewController.h; sourceTree = "<group>"; };
+		EE8759DF13E71E7C00B38801 /* GenreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreViewController.m; sourceTree = "<group>"; };
+		EEA0691213E8A02800C4E1A2 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
+		EEA0691313E8A02800C4E1A2 /* prev.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prev.png; sourceTree = "<group>"; };
 		EEA7008113E1E4C70017F550 /* libRestKitCoreData.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitCoreData.a; sourceTree = SOURCE_ROOT; };
 		EEA7008213E1E4C70017F550 /* libRestKitJSONParserJSONKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitJSONParserJSONKit.a; sourceTree = SOURCE_ROOT; };
 		EEA7008313E1E4C70017F550 /* libRestKitNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitNetwork.a; sourceTree = SOURCE_ROOT; };
 		EEA7008413E1E4C70017F550 /* libRestKitObjectMapping.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitObjectMapping.a; sourceTree = SOURCE_ROOT; };
 		EEA7008913E1E9670017F550 /* libRestKitSupport.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitSupport.a; sourceTree = SOURCE_ROOT; };
-		EEA7008B13E1EA140017F550 /* GanrObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanrObject.m; sourceTree = "<group>"; };
-		EEA7008C13E1EA140017F550 /* GanrObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanrObject.h; sourceTree = "<group>"; };
-		EEA7008D13E1EA140017F550 /* Ganri.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ganri.m; sourceTree = "<group>"; };
-		EEA7008E13E1EA140017F550 /* Ganri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ganri.h; sourceTree = "<group>"; };
+		EEA7008B13E1EA140017F550 /* Genre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Genre.m; sourceTree = "<group>"; };
+		EEA7008C13E1EA140017F550 /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
+		EEA7008D13E1EA140017F550 /* Genres.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Genres.m; sourceTree = "<group>"; };
+		EEA7008E13E1EA140017F550 /* Genres.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genres.h; sourceTree = "<group>"; };
 		EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanriTableViewCell.m; sourceTree = "<group>"; };
 		EEA7009013E1EA140017F550 /* GanriTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanriTableViewCell.h; sourceTree = "<group>"; };
-		EEA7009113E1EA140017F550 /* GanriViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GanriViewController.m; sourceTree = "<group>"; };
-		EEA7009213E1EA140017F550 /* GanriViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GanriViewController.h; sourceTree = "<group>"; };
+		EEA7009113E1EA140017F550 /* GenresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenresViewController.m; sourceTree = "<group>"; };
+		EEA7009213E1EA140017F550 /* GenresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenresViewController.h; sourceTree = "<group>"; };
 		EEA72AD813E07D8900B391D3 /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		EEB8F7EE13C5FD0D00B70FDB /* ello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB8F7F213C5FD0D00B70FDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -282,6 +292,8 @@
 		EEF6AB8313DF8B94001418E3 /* PlayLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayLists.m; sourceTree = "<group>"; };
 		EEF6AB8513DF9D0D001418E3 /* Artists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artists.h; sourceTree = "<group>"; };
 		EEF6AB8613DF9D0D001418E3 /* Artists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artists.m; sourceTree = "<group>"; };
+		EEF85F9A13E72DA8001AF525 /* ru-RU */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "ru-RU"; path = "/Users/idimka/github/ello/ello/ru-RU.lproj/MainWindow.xib"; sourceTree = "<absolute>"; };
+		EEF85F9B13E72DA8001AF525 /* ru-RU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-RU"; path = "/Users/idimka/github/ello/ello/ru-RU.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		EEFB250F13E5BEBC00BA8BD1 /* TabbarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabbarViewController.xib; sourceTree = "<group>"; };
 		EEFB251113E5CFC100BA8BD1 /* artista_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = artista_32.png; sourceTree = "<group>"; };
 		EEFB251213E5CFC100BA8BD1 /* clip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clip.png; sourceTree = "<group>"; };
@@ -346,6 +358,8 @@
 			children = (
 				EE6D050413CCDBE10076850F /* ArtistsViewController.h */,
 				EE6D050513CCDBE10076850F /* ArtistsViewController.m */,
+				EE8759DB13E6F3BA00B38801 /* ArtistViewController.h */,
+				EE8759DC13E6F3BA00B38801 /* ArtistViewController.m */,
 				EE6D059613CF8FD20076850F /* Artist.h */,
 				EE6D059713CF8FD30076850F /* Artist.m */,
 				EEF6AB8513DF9D0D001418E3 /* Artists.h */,
@@ -383,14 +397,16 @@
 		EE74375E13E1F6DD00FD9509 /* Ganre */ = {
 			isa = PBXGroup;
 			children = (
-				EEA7008B13E1EA140017F550 /* GanrObject.m */,
-				EEA7008C13E1EA140017F550 /* GanrObject.h */,
-				EEA7008D13E1EA140017F550 /* Ganri.m */,
-				EEA7008E13E1EA140017F550 /* Ganri.h */,
-				EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */,
+				EEA7009213E1EA140017F550 /* GenresViewController.h */,
+				EEA7009113E1EA140017F550 /* GenresViewController.m */,
+				EE8759DE13E71E7C00B38801 /* GenreViewController.h */,
+				EE8759DF13E71E7C00B38801 /* GenreViewController.m */,
+				EEA7008C13E1EA140017F550 /* Genre.h */,
+				EEA7008B13E1EA140017F550 /* Genre.m */,
+				EEA7008E13E1EA140017F550 /* Genres.h */,
+				EEA7008D13E1EA140017F550 /* Genres.m */,
 				EEA7009013E1EA140017F550 /* GanriTableViewCell.h */,
-				EEA7009113E1EA140017F550 /* GanriViewController.m */,
-				EEA7009213E1EA140017F550 /* GanriViewController.h */,
+				EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */,
 			);
 			name = Ganre;
 			sourceTree = "<group>";
@@ -499,6 +515,8 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEA0691213E8A02800C4E1A2 /* next.png */,
+				EEA0691313E8A02800C4E1A2 /* prev.png */,
 				EEFB251113E5CFC100BA8BD1 /* artista_32.png */,
 				EEFB251213E5CFC100BA8BD1 /* clip.png */,
 				EEFB251313E5CFC100BA8BD1 /* player_playlist.png */,
@@ -750,6 +768,8 @@
 				EEFB252313E5EB6F00BA8BD1 /* MKEntryPanel.xib in Resources */,
 				EEFB252413E5EB6F00BA8BD1 /* TopBar.png in Resources */,
 				EEFB252513E5EB6F00BA8BD1 /* TopBar@2x.png in Resources */,
+				EEA0691413E8A02800C4E1A2 /* next.png in Resources */,
+				EEA0691513E8A02800C4E1A2 /* prev.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,12 +804,14 @@
 				EEF6AB8413DF8B94001418E3 /* PlayLists.m in Sources */,
 				EEF6AB8713DF9D0D001418E3 /* Artists.m in Sources */,
 				EECFB8F013E0C89C00BB3D80 /* SlideshowImageView.m in Sources */,
-				EEA7009313E1EA140017F550 /* GanrObject.m in Sources */,
-				EEA7009413E1EA140017F550 /* Ganri.m in Sources */,
+				EEA7009313E1EA140017F550 /* Genre.m in Sources */,
+				EEA7009413E1EA140017F550 /* Genres.m in Sources */,
 				EEA7009513E1EA140017F550 /* GanriTableViewCell.m in Sources */,
-				EEA7009613E1EA140017F550 /* GanriViewController.m in Sources */,
+				EEA7009613E1EA140017F550 /* GenresViewController.m in Sources */,
 				EE1E6C4513E34973006794C7 /* MyPlaylist.xcdatamodeld in Sources */,
 				EEFB252213E5EB6F00BA8BD1 /* MKEntryPanel.m in Sources */,
+				EE8759DD13E6F3BA00B38801 /* ArtistViewController.m in Sources */,
+				EE8759E013E71E7D00B38801 /* GenreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +830,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EEB8F7FC13C5FD0D00B70FDB /* en */,
+				EEF85F9B13E72DA8001AF525 /* ru-RU */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -816,6 +839,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EEB8F80513C5FD0D00B70FDB /* en */,
+				EEF85F9A13E72DA8001AF525 /* ru-RU */,
 			);
 			name = MainWindow.xib;
 			sourceTree = "<group>";
@@ -941,7 +965,7 @@
 				EEB8F81413C5FD0E00B70FDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		EEB8F81513C5FD0E00B70FDB /* Build configuration list for PBXNativeTarget "ello" */ = {
 			isa = XCConfigurationList;
@@ -950,7 +974,7 @@
 				EEB8F81713C5FD0E00B70FDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

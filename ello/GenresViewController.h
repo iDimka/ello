@@ -10,7 +10,7 @@
 #import "RootViewController.h"
 #import "GanriTableViewCell.h"
 
-@interface GanriViewController :  RootViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface GenresViewController :  RootViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>{
     NSMutableArray*		_dataSource;
     IBOutlet UITableView* _tableView;
 }

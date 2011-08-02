@@ -8,6 +8,8 @@
 
 #import "elloAppDelegate.h"
 
+#import "Genre.h"
+#import "Genres.h"
 #import "PlayList.h"
 #import "PlayLists.h"
 #import "Artist.h"
@@ -79,7 +81,17 @@
 	[playlistsMapping mapKeyPathsToAttributes: @"status", @"status", nil];
 	[playlistsMapping mapRelationship:@"playlists" withObjectMapping:mapping];
 	[objectManager.mappingProvider setObjectMapping:playlistsMapping forKeyPath:@"playlists"];
-	 
+	
+	mapping = [RKObjectMapping mappingForClass:[Genre class]];
+    [mapping mapKeyPathsToAttributes:
+	 @"genre.id",		@"genreID",
+	 @"genre.name",		@"genreName",
+     nil];
+	
+	RKObjectMapping* ganresMapping = [RKObjectMapping mappingForClass:[Genres class]];
+	[ganresMapping mapKeyPathsToAttributes: @"status", @"status", nil];
+	[ganresMapping mapRelationship:@"genres" withObjectMapping:mapping];
+	[objectManager.mappingProvider setObjectMapping:ganresMapping forKeyPath:@"genres"];
 
 }
 
@@ -87,6 +99,10 @@
 
 	[self initRestKit];
 	[[NSBundle mainBundle] loadNibNamed:@"TabbarViewController" owner:self options:nil];
+	
+	[self.tabBarController.moreNavigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+	[[self.tabBarController.moreNavigationController.viewControllers objectAtIndex:0] setTitle:@"Ещё"];
+	[[[self.tabBarController.moreNavigationController tabBarController] tabBarItem] setTitle:@"Ещё"];
 	_playlists = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"playlists.plist"]] retain];
 	if (!_playlists) {
 		_playlists = [[PlayLists alloc] init];

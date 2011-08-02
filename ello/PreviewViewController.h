@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class Playlist;
 @class Clip;
 @class AsyncImageView;
 @class PlayerViewController;
@@ -16,6 +17,7 @@
     PlayerViewController*	_moviePlayer;
 }
 
+@property(nonatomic, retain)Playlist*	playlist;
 @property(nonatomic, retain)IBOutlet UIActivityIndicatorView*	sun;
 @property(nonatomic, retain)IBOutlet AsyncImageView*	thumbView;
 @property(nonatomic, retain)IBOutlet UILabel*		artistName;

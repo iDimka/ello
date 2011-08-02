@@ -14,6 +14,7 @@
 
 @implementation PreviewViewController
 
+@synthesize playlist;
 @synthesize sun;
 @synthesize thumbView;
 @synthesize artistName;
@@ -41,6 +42,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
 	
+	[_moviePlayer.moviePlayer stop]; 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

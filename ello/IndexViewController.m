@@ -57,12 +57,12 @@
 //	[self fake];
 
     
-	adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-	adView.frame = CGRectOffset(adView.frame, 0, -50);
-	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifierPortrait];
-	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
-	adView.delegate=self;
-	[self.view addSubview:adView]; 
+//	adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
+//	adView.frame = CGRectOffset(adView.frame, 0, -50);
+//	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifierPortrait];
+//	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
+//	adView.delegate=self;
+//	[self.view addSubview:adView]; 
 	[_scrollView setContentSize:CGSizeMake(320 * 3, 290)];
     [_scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
 	  
@@ -321,7 +321,7 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-	[_dataSource removeAllObjects];
+//	[_dataSource removeAllObjects];
 	[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] clips]];
 	//	[self hideDimView];
 		[self InesrtViewInCantainer];

@@ -157,6 +157,7 @@
 		PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 2];
 		[[myPlaylist clips] addObject:clipToPlaylist];
 		self.clipToPlaylist = nil;
+		[[__delegate playlists] save];
 	}
 }
 

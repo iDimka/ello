@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Ganri.h"
+#import "Genres.h"
 
+@class Genre;
 
 @interface GanriTableViewCell : UITableViewCell {
     UILabel*		_title;
@@ -16,7 +17,7 @@
 
 }
 
-- (void)configCellByGanri:(Ganri*)object;
+- (void)configCellByGanri:(Genre*)object;
 
 
 

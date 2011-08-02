@@ -7,8 +7,8 @@
 //
 
 #import "GanriTableViewCell.h"
-#import "Ganri.h"
-#import "GanrObject.h"
+#import "Genres.h"
+#import "Genre.h"
 
 
 @implementation GanriTableViewCell
@@ -48,9 +48,9 @@
     // Configure the view for the selected state
 }
 
-- (void)configCellByGanri:(Ganri *)object{
-	_title.text = object.GanrName;
-	_ganrCount.text = [NSString stringWithFormat:@"%D views", object.GanrCount];
+- (void)configCellByGanri:(Genre *)object{
+	_title.text = object.genreName;
+//	_ganrCount.text = [NSString stringWithFormat:@"%D views", object.GanrCount];
 
 
 }

@@ -30,6 +30,8 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 	 
+	self.title = @"Плейлисты";
+	
 	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) style:UITableViewStylePlain];
 	[self.view addSubview:_tableView];
 	[_tableView setDelegate:self];
@@ -37,7 +39,7 @@
 	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
 	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	  
-	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Чарты", @"Топ ", @"Мои листы", nil]];
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Чарты", @"Топ ", @"Мои", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = _segment; 

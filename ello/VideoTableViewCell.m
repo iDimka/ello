@@ -107,7 +107,7 @@
 	_artist.text = object.artistName;
 	_viewCount.text = [NSString stringWithFormat:@"%D views", [object.viewCount intValue]];
 	[_videoThumb setImage:nil];
-	if (object.thumb)  _videoThumb.image = object.thumb;
+	if (object.thumb && ![object.thumb isKindOfClass:[NSNull class]])  _videoThumb.image = object.thumb;
 	else [_videoThumb loadImageFromURL:[NSURL URLWithString:object.clipImageURL]];
 }
 - (void)configCellByPlayList:(PlayList*)object{

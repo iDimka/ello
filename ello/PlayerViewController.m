@@ -8,12 +8,24 @@
 
 #import "PlayerViewController.h"
 
+#import "Clip.h"
+
 
 @implementation PlayerViewController
-  
+
+@synthesize playlist;
 
 #pragma mark - View lifecycle
  
+- (id)initWithPlaylist:(PlayList*)pl inPlayMode:(PlayMode)mode {
+    self = [super init];
+    if (self) {
+		_playMode = mode;
+        self.playlist = pl;
+    }
+    return self;
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
 	 
@@ -46,9 +58,32 @@
 	[done setImage:[UIImage imageNamed:@"new_done.png"] forState:UIControlStateNormal];
 	[done addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:done];
-	 
-		_topControl.center = CGPointMake(_topControl.center.x, -50); 
-		_bottomControl.center = CGPointMake(_bottomControl.center.x, 370); 
+	
+	UIButton* prev = [UIButton buttonWithType:UIButtonTypeCustom];
+	[prev setFrame:CGRectMake(50, 9, 63, 30)];
+	[prev setImage:[UIImage imageNamed:@"prev.png"] forState:UIControlStateNormal];
+	[prev addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
+	[_bottomControl addSubview:prev];
+	
+	UIButton* next = [UIButton buttonWithType:UIButtonTypeCustom];
+	[next setFrame:CGRectMake(100, 9, 63, 30)];
+	[next setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
+	[next addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
+	[_bottomControl addSubview:next];
+	
+	_topControl.center = CGPointMake(_topControl.center.x, -50); 
+	_bottomControl.center = CGPointMake(_bottomControl.center.x, 370); 
+	
+	if (playlist) {
+		switch ((int)_playMode) {
+			case kNormal:
+				[self.moviePlayer setContentURL:[NSURL URLWithString:[[self.playlist.clips objectAtIndex:_index] clipVideoURL]]];
+				break;
+				
+			default:
+				break;
+		}
+	}
 }
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
@@ -114,6 +149,21 @@
 
 	[self.moviePlayer stop];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
+}
+- (void)next:(UIButton*)sender{
+	switch ((int)_playMode) {
+		case kNormal:
+			_index++;
+			[self.moviePlayer pause];
+			[self.moviePlayer setContentURL:[NSURL URLWithString:[[self.playlist.clips objectAtIndex:_index] clipVideoURL]]];			
+			break;
+			
+		default:
+			break;
+	}
+}
+- (void)prev:(UIButton*)sender{
+	
 }
 
 

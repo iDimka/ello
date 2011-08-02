@@ -9,6 +9,7 @@
 #import "PlayListViewController.h"
 
 #import "PreviewViewController.h"
+#import "PlayerViewController.h"
 #import "Clip.h"
 #import "Clips.h"
 #import "PlayList.h"
@@ -23,7 +24,7 @@
 
 @synthesize clipToPlaylist;
 @synthesize mode;
-@synthesize playlist;
+@synthesize playlist = _playList;
  
 #pragma mark - View lifecycle
 
@@ -35,7 +36,7 @@
 	[plName setFont:[UIFont boldSystemFontOfSize:13]];
 	[plName setBackgroundColor:[UIColor clearColor]];
 	[plName setTextColor:[UIColor whiteColor]];
-	[plName setText:@"Плейлист #1"];
+	[plName setText:[NSString stringWithFormat:@"Плейлист #%d", [_playList.playListID intValue] + 1]];
 	[header addSubview:plName];
 	[plName release];
 		
@@ -47,13 +48,11 @@
 	[header addSubview:plCompiler];
 	[plCompiler release];
 	
-	
-	UILabel* plClipsCount = [[UILabel alloc] initWithFrame:CGRectMake(5, 45, 250, 20)];
+	plClipsCount = [[UILabel alloc] initWithFrame:CGRectMake(5, 45, 250, 20)];
 	[plClipsCount setFont:[UIFont boldSystemFontOfSize:13]];
 	[plClipsCount setBackgroundColor:[UIColor clearColor]];
 	[plClipsCount setTextColor:[UIColor lightGrayColor]];
 	[plClipsCount setTextColor:[UIColor whiteColor]];
-	[plClipsCount setText:[NSString stringWithFormat:@"%d клипов", [_dataSource count]]];
 	[header addSubview:plClipsCount];
 	[plClipsCount release];
 	
@@ -68,6 +67,7 @@
 	[header release];
 
 }
+
 - (void)viewDidLoad{
     [super viewDidLoad];
 
@@ -80,7 +80,6 @@
 	
 	_dataSource = [NSMutableArray new];
 	
-	[self configTableViewAppearence];
 	
 	_tableView.rowHeight = 80;
 	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
@@ -88,20 +87,21 @@
 	
 	switch ((int)mode) {
 		case kNetwork:
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat: @"/service.php?service=clip&action=getClipsByPlaylistId&id=%d", [playlist.playListID intValue]] objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self];
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat: @"/service.php?service=clip&action=getClipsByPlaylistId&id=%d", [_playList.playListID intValue]] objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self];
 			
 			break;
 			
 		case kLocalhost:;
-			PlayList* pl = playlist;
+			PlayList* pl = _playList;
 			Clips* clips = [Clips new];
 			[clips setClips:pl.clips];
 			[_dataSource addObject:clips];
 			[clips release];
 			break;
 	}
+	
+	[self configTableViewAppearence];
 }
- 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
@@ -119,7 +119,9 @@
 #pragma mark - Table view data source
  
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
-    return [_dataSource count];
+	if (![_dataSource count]) return 0;
+	[plClipsCount setText:[NSString stringWithFormat:@"%d клипов", [[[_dataSource objectAtIndex:0] clips] count]]];
+    return [[[_dataSource objectAtIndex:0] clips] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -171,15 +173,21 @@
 
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-	
+	if (buttonIndex == 0) {
+		PlayList* playlist = [_dataSource objectAtIndex:0];
+		PlayerViewController *detailViewController = [[PlayerViewController alloc] initWithPlaylist:playlist inPlayMode:kNormal];
+		detailViewController.playlist = playlist;
+		[self presentMoviePlayerViewControllerAnimated:detailViewController]; 
+		[detailViewController release];
+	}	
 }
-
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	if ([objects count] == 0) return;
 			if (!_dataSource) _dataSource = [NSMutableArray new];
 			[_dataSource removeAllObjects];
 			[_dataSource addObject:[objects objectAtIndex:0]];
+	
 
 	[self hideDimView];
 	[_tableView reloadData];

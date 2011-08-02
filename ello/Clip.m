@@ -28,16 +28,16 @@
     if (self) 
 		{ 
 			 
-			thumb = [[decoder decodeObjectForKey:@"label"] retain];
-			thumb = [[decoder decodeObjectForKey:@"clipID"] retain];
-			thumb = [[decoder decodeObjectForKey:@"artistId"] retain];
-			thumb = [[decoder decodeObjectForKey:@"artistName"] retain];
-			thumb = [[decoder decodeObjectForKey:@"viewCount"] retain];
-			thumb = [[decoder decodeObjectForKey:@"clipName"] retain];
-			thumb = [[decoder decodeObjectForKey:@"clipImageURL"] retain];
-			thumb = [[decoder decodeObjectForKey:@"clipVideoURL"] retain];
-			thumb = [[decoder decodeObjectForKey:@"clipGanre"] retain];
-			thumb = [[decoder decodeObjectForKey:@"clipGanreName"] retain];
+			label = [[decoder decodeObjectForKey:@"label"] retain];
+			clipID = [[decoder decodeObjectForKey:@"clipID"] retain];
+			artistId = [[decoder decodeObjectForKey:@"artistId"] retain];
+			artistName = [[decoder decodeObjectForKey:@"artistName"] retain];
+			viewCount = [[decoder decodeObjectForKey:@"viewCount"] retain];
+			clipName = [[decoder decodeObjectForKey:@"clipName"] retain];
+			clipImageURL = [[decoder decodeObjectForKey:@"clipImageURL"] retain];
+			clipVideoURL = [[decoder decodeObjectForKey:@"clipVideoURL"] retain];
+			clipGanre = [[decoder decodeObjectForKey:@"clipGanre"] retain];
+			clipGanreName = [[decoder decodeObjectForKey:@"clipGanreName"] retain];
 		}
     return self;
 }

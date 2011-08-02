@@ -42,6 +42,13 @@
 	return [NSString stringWithFormat:@"playlist count is %d", [playlists count]];
 }
 
+- (void)save{
+	[NSKeyedArchiver archiveRootObject:self toFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"playlists.plist"]];
+}
+- (void)read{
+	[NSKeyedArchiver archiveRootObject:self toFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"playlists.plist"]];
+}
+
 - (void)addPlaylist:(PlayList*)playlist{
 	[playlists addObject:playlist];
 	[NSKeyedArchiver archiveRootObject:self toFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:@"playlists.plist"]];

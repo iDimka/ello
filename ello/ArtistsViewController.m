@@ -8,6 +8,7 @@
 
 #import "ArtistsViewController.h"
 
+#import "ArtistViewController.h"
 #import "Artist.h" 
 #import "Artists.h" 
 #import "VideoTableViewCell.h"
@@ -95,7 +96,11 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
- 
+	Artist* artist = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] artists] objectAtIndex:indexPath.row];
+
+	ArtistViewController* tmp = [[ArtistViewController alloc] initWithArtist:artist];
+	[self.navigationController pushViewController:tmp animated:YES];
+	[tmp release];
 
     
 }
