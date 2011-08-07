@@ -76,6 +76,7 @@
 		EEB323D913EED73D008329F2 /* Channels.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB323D813EED73D008329F2 /* Channels.m */; };
 		EEB323DC13EED74A008329F2 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB323DB13EED74A008329F2 /* Channel.m */; };
 		EEB3240513EEDC1E008329F2 /* ChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB3240413EEDC1E008329F2 /* ChannelsViewController.m */; };
+		EEB3240813EEF259008329F2 /* ClipThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB3240713EEF257008329F2 /* ClipThumb.m */; };
 		EEB8F7F313C5FD0D00B70FDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F213C5FD0D00B70FDB /* UIKit.framework */; };
 		EEB8F7F713C5FD0D00B70FDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB8F7F613C5FD0D00B70FDB /* CoreGraphics.framework */; };
 		EEB8F7FD13C5FD0D00B70FDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEB8F7FB13C5FD0D00B70FDB /* InfoPlist.strings */; };
@@ -91,7 +92,6 @@
 		EECFB8F013E0C89C00BB3D80 /* SlideshowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EECFB8EF13E0C89C00BB3D80 /* SlideshowImageView.m */; };
 		EEDB552313D0307200038999 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB552213D0307200038999 /* RootViewController.m */; };
 		EEDB552613D0319600038999 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEDB552513D0319600038999 /* QuartzCore.framework */; };
-		EEEC3D3E13EB35DA002BAD53 /* MultiPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEEC3D3D13EB35DA002BAD53 /* MultiPlayerViewController.m */; };
 		EEF2270613C6554A004731BE /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF2270513C6554A004731BE /* banner.png */; };
 		EEF2270913C65695004731BE /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2270813C65695004731BE /* IndexViewController.m */; };
 		EEF2272213C78996004731BE /* tabItemPlaylist.png in Resources */ = {isa = PBXBuildFile; fileRef = EEF2272013C78996004731BE /* tabItemPlaylist.png */; };
@@ -289,6 +289,8 @@
 		EEB323DB13EED74A008329F2 /* Channel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Channel.m; sourceTree = "<group>"; };
 		EEB3240313EEDC1E008329F2 /* ChannelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelsViewController.h; sourceTree = "<group>"; };
 		EEB3240413EEDC1E008329F2 /* ChannelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsViewController.m; sourceTree = "<group>"; };
+		EEB3240613EEF256008329F2 /* ClipThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipThumb.h; sourceTree = "<group>"; };
+		EEB3240713EEF257008329F2 /* ClipThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipThumb.m; sourceTree = "<group>"; };
 		EEB8F7EE13C5FD0D00B70FDB /* ello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEB8F7F213C5FD0D00B70FDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EEB8F7F413C5FD0D00B70FDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -313,8 +315,6 @@
 		EEDB552113D0307200038999 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		EEDB552213D0307200038999 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		EEDB552513D0319600038999 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		EEEC3D3C13EB35DA002BAD53 /* MultiPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiPlayerViewController.h; sourceTree = "<group>"; };
-		EEEC3D3D13EB35DA002BAD53 /* MultiPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiPlayerViewController.m; sourceTree = "<group>"; };
 		EEF2270513C6554A004731BE /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		EEF2270713C65695004731BE /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		EEF2270813C65695004731BE /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
@@ -388,8 +388,8 @@
 				EE6D04FB13CCD7DD0076850F /* PreviewViewController.xib */,
 				EE6D05A013CFAF5E0076850F /* PlayerViewController.h */,
 				EE6D05A113CFAF5F0076850F /* PlayerViewController.m */,
-				EEEC3D3C13EB35DA002BAD53 /* MultiPlayerViewController.h */,
-				EEEC3D3D13EB35DA002BAD53 /* MultiPlayerViewController.m */,
+				EEB3240613EEF256008329F2 /* ClipThumb.h */,
+				EEB3240713EEF257008329F2 /* ClipThumb.m */,
 			);
 			name = Preview;
 			sourceTree = "<group>";
@@ -893,11 +893,11 @@
 				EEFB252213E5EB6F00BA8BD1 /* MKEntryPanel.m in Sources */,
 				EE8759DD13E6F3BA00B38801 /* ArtistViewController.m in Sources */,
 				EE8759E013E71E7D00B38801 /* GenreViewController.m in Sources */,
-				EEEC3D3E13EB35DA002BAD53 /* MultiPlayerViewController.m in Sources */,
 				EEB323D613EED646008329F2 /* ChannelViewController.m in Sources */,
 				EEB323D913EED73D008329F2 /* Channels.m in Sources */,
 				EEB323DC13EED74A008329F2 /* Channel.m in Sources */,
 				EEB3240513EEDC1E008329F2 /* ChannelsViewController.m in Sources */,
+				EEB3240813EEF259008329F2 /* ClipThumb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
