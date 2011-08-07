@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ClipThumb.h"
 
 typedef enum{
 	kNormal = 0,
@@ -28,19 +29,21 @@ typedef enum{
 
 @end
 
+@protocol PlaylistProtocol;
+
 @class PlayList;
 @class Clip;
 @class AsyncImageView;
 @class PlayerViewController;
 
-@interface PreviewViewController : RootViewController <PlaylistProtocol>{
+@interface PreviewViewController : RootViewController <PlaylistProtocol, ClipThumbProtocol, ClipThumbProtocol>{
     PlayerViewController*	_moviePlayer;
 	PlayList*				_playlist;
 	Clip*					_clip;
 	PlayMode				_playMode;
 	PlayCountMode			_playCountMode;
 	NSInteger				_index;
-	
+	BOOL					_willNext;
 }
 
 @property(nonatomic, retain)PlayList*	playlist;

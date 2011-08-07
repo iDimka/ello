@@ -23,7 +23,7 @@
 		[adView.delegate bannerViewDidLoadAd:adView];
 		} 
 	
-	return adView;
+	return [adView autorelease];
 }
  
 - (id)initWithDelegate:(id)delegate{
@@ -32,10 +32,10 @@
 		
 		o_bannerDelegate = delegate;
 		[self setBackgroundColor:[UIColor greenColor]];
+		o_reloadTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(reload:) userInfo:nil repeats:YES];
 		 
     }
 	
-	o_reloadTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(reload:) userInfo:nil repeats:YES];
 	
     return self;
 }

@@ -63,11 +63,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
 	switch (_segment.selectedSegmentIndex) {
-		case 0:  
-			return [[[_dataSourceCharts objectAtIndex:0] playlists] count];
-			break;
-		case 1:
+		case 0:
 			return [[[_dataSourceTop objectAtIndex:0] playlists] count]; 
+			break;
+		case 1:  
+			return [[[_dataSourceCharts objectAtIndex:0] playlists] count];
 			break;
 		case 2:
 			return [[[_dataSourceMy objectAtIndex:0] playlists]		count]; 
@@ -159,14 +159,14 @@
 	
 	switch (_segment.selectedSegmentIndex) {
 		case 0:
-			if (!_dataSourceCharts) _dataSourceCharts = [NSMutableArray new];
-			[_dataSourceCharts removeAllObjects];
-			[_dataSourceCharts addObject:[objects objectAtIndex:0]];
-			break;
-		case 1:
 			if (!_dataSourceTop) _dataSourceTop = [NSMutableArray new];
 			[_dataSourceTop removeAllObjects];
 			[_dataSourceTop addObject:[objects objectAtIndex:0]];
+			break;
+		case 1:
+			if (!_dataSourceCharts) _dataSourceCharts = [NSMutableArray new];
+			[_dataSourceCharts removeAllObjects];
+			[_dataSourceCharts addObject:[objects objectAtIndex:0]];
 			break;
 		case 2:
 			

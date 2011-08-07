@@ -17,11 +17,13 @@
 
 @class Clip;
 
-@interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate>{
+@interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate, PlaylistProtocol>{
 	UIView*					_topControl;
 	UIView*					_bottomControl;	
 	id<PlaylistProtocol>	_delegate;
 	Clip*					_currentClip;
+	UIScrollView*			_clipsBund;
+	UIButton*				_stopPlay;
 }
 
 @property(nonatomic, retain)Clip*					currentClip;

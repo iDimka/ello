@@ -18,7 +18,7 @@
 
 -(NSString*)description{
  
-	NSString* tmp = [NSString stringWithFormat:@"id=%d;name=%@;imageURL=%@", self.artistID, self.artistName, self.artistImage];
+	NSString* tmp = [NSString stringWithFormat:@"id=%@;name=%@;imageURL=%@", self.artistID, self.artistName, self.artistImage];
 	return tmp;
 }
 

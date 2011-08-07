@@ -50,8 +50,7 @@
 	[clipsMapping mapKeyPathsToAttributes: @"status", @"status",  nil];
 	[clipsMapping mapRelationship:@"clips" withObjectMapping:mapping]; 
 	[objectManager.mappingProvider setObjectMapping:clipsMapping forKeyPath:@"clips"];
-	
-	mapping = [RKObjectMapping mappingForClass:[Clip class]];
+	 
 	
 	mapping = [RKObjectMapping mappingForClass:[Artist class]];
 	[mapping mapKeyPathsToAttributes:
@@ -60,7 +59,7 @@
 	 @"artist.name",	@"artistName",  
 	 nil];
 	
-	RKObjectMapping*  artistMapping = [[RKObjectMapping mappingForClass:[Artists class]] retain];
+	RKObjectMapping*  artistMapping = [RKObjectMapping mappingForClass:[Artists class]];
 	[artistMapping mapKeyPathsToAttributes:@"status", @"status", nil];  
 	[artistMapping mapRelationship:@"artists" withObjectMapping:mapping]; 
 	[objectManager.mappingProvider setObjectMapping:artistMapping forKeyPath:@"artists"];
@@ -79,7 +78,7 @@
   	 @"playlist.label",		@"label", 
      nil];
 	
-	RKObjectMapping* playlistsMapping = [[RKObjectMapping mappingForClass:[PlayLists class]] retain];
+	RKObjectMapping* playlistsMapping = [RKObjectMapping mappingForClass:[PlayLists class]];
 	[playlistsMapping mapKeyPathsToAttributes: @"status", @"status", nil];
 	[playlistsMapping mapRelationship:@"playlists" withObjectMapping:mapping];
 	[objectManager.mappingProvider setObjectMapping:playlistsMapping forKeyPath:@"playlists"];

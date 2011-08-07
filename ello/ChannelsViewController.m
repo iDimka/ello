@@ -62,9 +62,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	Channel* channel =  nil;
- 
-			channel = [[[_dataSource objectAtIndex:0] channels] objectAtIndex:indexPath.row];  	
+	Channel* channel = [[[_dataSource objectAtIndex:0] channels] objectAtIndex:indexPath.row];  	
  
  
 	

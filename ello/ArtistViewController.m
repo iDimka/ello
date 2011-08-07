@@ -52,6 +52,8 @@
 	_artistTweets.textColor = [UIColor whiteColor];
 	[_artistTweets setBackgroundColor:[UIColor clearColor]];
 	
+	[_artistTweets setFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, [_artistTweets contentSize].height)];
+	
 	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _artistTweets.frame.origin.y + _artistTweets.frame.size.height + paggin, 320, 1) style:UITableViewStylePlain];;
 	[_contentScroll addSubview:_tableView];
 	[_tableView setDelegate:self];
@@ -64,8 +66,6 @@
 	
 	[_contentScroll addSubview:_artistPhoto];
 	[_contentScroll addSubview:_artistTweets]; 
-
-	[_contentScroll setContentSize:CGSizeMake(320, _tableView.frame.origin.y + _tableView.frame.size.height + paggin)];
 	
 	self.title = _artist.artistName;
 	if (!(_artistPhoto.image = _artist.thumb))	[_artistPhoto loadImageFromURL:[NSURL URLWithString:_artist.artistImage]];
@@ -78,9 +78,8 @@
 }  
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	 
-	[_artistTweets setFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, [_artistTweets contentSize].height)];
 	
+	[_contentScroll setContentSize:CGSizeMake(320, _tableView.frame.origin.y + _tableView.frame.size.height + paggin)];
 }
 
 #pragma mark - Table view data source
@@ -165,9 +164,9 @@
 
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-
+	
 	[_dataSource addObject:[objects objectAtIndex:0]];
-
+	
 	[self hideDimView];
 	[_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
 }

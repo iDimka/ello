@@ -23,8 +23,6 @@
 	NSString*		clipVideoURL;	
 	NSString*		label;
 	UIImage*		thumb;
-	
-	
 }
 
 

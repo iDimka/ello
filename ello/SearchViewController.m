@@ -29,7 +29,7 @@
     return self;
 }
 - (void)dealloc{
-	
+		[[RKRequestQueue sharedQueue] cancelAllRequests]; 
 	[_dataSource release];
 	
     [super dealloc];
@@ -43,9 +43,7 @@
 	 	
 	self.title = @"Поиск";
 	_dataSource = [NSMutableArray new];
-	
-//	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) style:UITableViewStylePlain];
-//	[self.view addSubview:_tableView];
+	 
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
 	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
@@ -61,17 +59,11 @@
 	
 	
 } 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-	
-//	[self.navigationController setNavigationBarHidden:YES animated:YES];
-//	[self.searchDisplayController setActive:YES animated:NO];
-}
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 
 	[self.navigationController setNavigationBarHidden:NO animated:YES];	
-	[[RKRequestQueue sharedQueue] cancelAllRequests]; 
+
 } 
 
 #pragma mark - Table view data source
@@ -137,14 +129,7 @@
 			[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", searchText]  objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self]; 
 			break; 
 	} 
-}
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-	 
-	return  YES;
-}
-- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope{
-	
-}
+} 
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	[_dataSource removeAllObjects];
