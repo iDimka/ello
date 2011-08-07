@@ -8,6 +8,7 @@
 
 #import "VideoTableViewCell.h"
 
+#import "Channel.h"
 #import "PlayList.h"
 #import "asyncimageview.h"
 #import "Artist.h"
@@ -90,10 +91,17 @@
 
 - (void)configCellByArtitst:(Artist*)object{
 	self.dataObject = object;
-//	_title.text = object.clipName;
+	//	_title.text = object.clipName;
 	_artist.text = object.artistName;
 	if (object.thumb)  _videoThumb.image = object.thumb;
 	else [_videoThumb loadImageFromURL:[NSURL URLWithString:object.artistImage]];
+}
+- (void)configCellByChannel:(Channel*)object{
+	self.dataObject = object;
+	//	_title.text = object.clipName;
+	_artist.text = object.channelName;
+	if (object.thumb)  _videoThumb.image = object.thumb;
+	else [_videoThumb loadImageFromURL:[NSURL URLWithString:object.channelImage]];
 }
 
 - (void)configCellByClip:(Clip*)object{
@@ -101,7 +109,7 @@
 	_clip = [object retain];
 	self.dataObject = object;
 	
-	[[self viewWithTag:777] setHidden:NO];
+	if (clipDelegate) [[self viewWithTag:777] setHidden:NO];
 	
 	_title.text = object.clipName;
 	_artist.text = object.artistName;

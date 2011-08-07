@@ -10,6 +10,7 @@
 
 #import "asyncimageview.h"
 
+@class Channel;
 @class VideoTableViewCell;
 @class Clip; 
 @class Artist;
@@ -39,6 +40,7 @@
 @property(nonatomic, assign)NSInteger				clipNumber;
 @property(nonatomic, retain)id						dataObject;
 
+- (void)configCellByChannel:(Channel*)object;
 - (void)configCellByPlayList:(PlayList*)object;
 - (void)configCellByClip:(Clip*)object;
 - (void)configCellByArtitst:(Artist*)object;

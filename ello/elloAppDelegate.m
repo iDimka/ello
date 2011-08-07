@@ -8,6 +8,8 @@
 
 #import "elloAppDelegate.h"
 
+#import "Channels.h"
+#import "Channel.h"
 #import "Genre.h"
 #import "Genres.h"
 #import "PlayList.h"
@@ -92,6 +94,18 @@
 	[ganresMapping mapKeyPathsToAttributes: @"status", @"status", nil];
 	[ganresMapping mapRelationship:@"genres" withObjectMapping:mapping];
 	[objectManager.mappingProvider setObjectMapping:ganresMapping forKeyPath:@"genres"];
+	
+	mapping = [RKObjectMapping mappingForClass:[Channel class]];
+    [mapping mapKeyPathsToAttributes:
+	 @"channel.id",		@"channelID",
+	 @"channel.image",	@"channelImage",
+	 @"channel.name",	@"channelName",  
+     nil];
+	
+ 	RKObjectMapping* channels = [RKObjectMapping mappingForClass:[Channels class]];
+	[channels mapKeyPathsToAttributes: @"status", @"status", nil];
+	[ganresMapping mapRelationship:@"channels" withObjectMapping:mapping];
+	[objectManager.mappingProvider setObjectMapping:ganresMapping forKeyPath:@"channels"];
 
 }
 

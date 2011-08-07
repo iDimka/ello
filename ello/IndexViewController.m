@@ -188,8 +188,7 @@
 }
 - (void)touchedInView:(UIView*)view{
 	Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithNibName:@"PreviewViewController" bundle:nil];
-	detailViewController.clip = clip;
+	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }

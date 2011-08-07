@@ -8,22 +8,28 @@
 
 #import "PlayerViewController.h"
 
+#import "PlayLists.h"
+#import "MKEntryPanel.h"
+#import "PlayList.h"
+#import "PreviewViewController.h"
 #import "Clip.h"
 
 
 @implementation PlayerViewController
 
+@synthesize currentClip = _currentClip;
+@synthesize delegate = _delegate;
 @synthesize playlist;
 
 #pragma mark - View lifecycle
  
-- (id)initWithPlaylist:(PlayList*)pl inPlayMode:(PlayMode)mode {
-    self = [super init];
-    if (self) {
-		_playMode = mode;
-        self.playlist = pl;
-    }
-    return self;
+- (void)dealloc {
+    
+	[_currentClip release];
+	[_topControl release];
+	[_bottomControl release];
+	
+    [super dealloc];
 }
 
 - (void)viewDidLoad{
@@ -59,6 +65,18 @@
 	[done addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:done];
 	
+	UIButton* addToPlaylistButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[addToPlaylistButton setFrame:CGRectMake(270, 9, 32, 32)];
+	[addToPlaylistButton setImage:[UIImage imageNamed:@"addToPl.png"] forState:UIControlStateNormal];
+	[addToPlaylistButton addTarget:self action:@selector(addToPlaylist:) forControlEvents:UIControlEventTouchUpInside];
+	[_topControl addSubview:addToPlaylistButton];
+	
+	UIButton* info = [UIButton buttonWithType:UIButtonTypeCustom];
+	[info setFrame:CGRectMake(210, 9, 32, 32)];
+	[info setImage:[UIImage imageNamed:@"info.png"] forState:UIControlStateNormal];
+	[info addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
+	[_topControl addSubview:info];
+	
 	UIButton* prev = [UIButton buttonWithType:UIButtonTypeCustom];
 	[prev setFrame:CGRectMake(50, 9, 63, 30)];
 	[prev setImage:[UIImage imageNamed:@"prev.png"] forState:UIControlStateNormal];
@@ -74,28 +92,20 @@
 	_topControl.center = CGPointMake(_topControl.center.x, -50); 
 	_bottomControl.center = CGPointMake(_bottomControl.center.x, 370); 
 	
-	if (playlist) {
-		switch ((int)_playMode) {
-			case kNormal:
-				[self.moviePlayer setContentURL:[NSURL URLWithString:[[self.playlist.clips objectAtIndex:_index] clipVideoURL]]];
-				break;
-				
-			default:
-				break;
-		}
-	}
+ 
 }
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
 	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
+	
 }
 - (void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
 	
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
 }
-
 - (void)viewDidUnload{
     [super viewDidUnload];
 	[self.navigationController setNavigationBarHidden:NO animated:YES]; 
@@ -123,7 +133,7 @@
 }
 
 - (void)share:(id)sender{
-	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", @"VKontakte", nil];
+	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", @"VKontakte", nil];
 	[actionSheet showInView:self.view];
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	[actionSheet release];
@@ -146,25 +156,65 @@
 	NSLog(@"loadState is %d", self.moviePlayer.loadState);
 }
 - (void)done{
-
-	[self.moviePlayer stop];
+ 	[self.moviePlayer stop];
+	[_delegate done];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 - (void)next:(UIButton*)sender{
-	switch ((int)_playMode) {
-		case kNormal:
-			_index++;
-			[self.moviePlayer pause];
-			[self.moviePlayer setContentURL:[NSURL URLWithString:[[self.playlist.clips objectAtIndex:_index] clipVideoURL]]];			
-			break;
-			
-		default:
-			break;
-	}
+	self.view.frame = CGRectMake(0, 0, 236, 236);
+	[self.moviePlayer stop]; 
+	[_delegate next:sender];
 }
 - (void)prev:(UIButton*)sender{
-	
+	self.view.frame = CGRectMake(0, 0, 236, 367);
+	[self.moviePlayer stop];
+	[_delegate prev:sender];
 }
 
+- (void)addToPlaylist:(Clip*)clip{
+
+	[self.moviePlayer pause];
+	
+	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Новый плейлист", nil];
+	[actionSheet setTag:777];
+	for (PlayList* pl in [[__delegate playlists] playlists]) {
+		[actionSheet addButtonWithTitle:pl.name];
+	}
+	[actionSheet addButtonWithTitle:@"Отмена"];
+	
+	[actionSheet showInView:self.view];
+	[actionSheet release];
+	
+	
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+	[self.moviePlayer play];
+	if (actionSheet.tag == 777) {
+		if (buttonIndex == [actionSheet numberOfButtons] - 1) return;
+		if (buttonIndex == 0) {
+			
+			PlayList* playList = [PlayList new];
+			[MKEntryPanel showPanelWithTitle:NSLocalizedString(@"Название листа", @"") 
+									  inView:self.view 
+							   onTextEntered:^(NSString* enteredString)
+			 {
+			 
+			 playList.name = enteredString;
+			 [[__delegate playlists] addPlaylist:playList];
+			 
+			 }];
+			[[playList clips] addObject:_currentClip];
+			[playList release]; 
+		}else{
+			PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 1];
+			[[myPlaylist clips] addObject:_currentClip]; 
+		}
+		return;
+	}
+	if (buttonIndex != actionSheet.cancelButtonIndex)
+		{
+ 
+		}	
+}
 
 @end

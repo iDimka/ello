@@ -117,8 +117,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
     Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row]; 
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithNibName:@"PreviewViewController" bundle:nil];
-	detailViewController.clip = clip;
+	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 	
@@ -128,10 +127,11 @@
 	
 	self.clipToPlaylist = clip;
 	
-	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Отмена" otherButtonTitles:@"Новый плейлист", nil];
+	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Новый плейлист", nil];
 	for (PlayList* pl in [[__delegate playlists] playlists]) {
 		[actionSheet addButtonWithTitle:pl.name];
 	}
+	[actionSheet addButtonWithTitle:@"Отмена"];
 	
 	[actionSheet showFromTabBar:self.tabBarController.tabBar];
 	[actionSheet release];
@@ -140,8 +140,8 @@
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	NSLog(@"button index is %d", buttonIndex);
-	if (buttonIndex == 0) return;
-	if (buttonIndex == 1) {
+	if (buttonIndex == [actionSheet numberOfButtons] - 1) return;
+	if (buttonIndex == 0) {
 		
 		PlayList* playList = [PlayList new];
 		[MKEntryPanel showPanelWithTitle:NSLocalizedString(@"Название листа", @"") 
@@ -157,7 +157,7 @@
 		[playList release];
 		self.clipToPlaylist = nil;
 	}else{
-		PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 2];
+		PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 1];
 		[[myPlaylist clips] addObject:clipToPlaylist];
 		self.clipToPlaylist = nil;
 	}

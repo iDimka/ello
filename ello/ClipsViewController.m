@@ -38,6 +38,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+
+	self.title = @"Клипы";
 	
 	
 	_dataSource = [[NSMutableArray alloc] init];
@@ -47,7 +49,7 @@
 	
 	[self showDimView];
   
-	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Популярные ", @"Премеры", @"Новинки", nil]];
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Премеры", @"Популярные", @"Новинки", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = _segment; 
@@ -67,11 +69,11 @@
 	NSLog(@"segm index %d", segmentedControl.selectedSegmentIndex);
 	[self showDimView];
 	switch (segmentedControl.selectedSegmentIndex) {
-		case 0:			
-			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getLatestClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self]; 
-			break;
-			case 1:			
+			case 0:			
 			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getPremierClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self];
+			break;
+		case 1:			
+			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getLatestClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self]; 
 			break;
 		case 2:
 			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getPopularClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self];
@@ -109,8 +111,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
     Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
-     PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithNibName:@"PreviewViewController" bundle:nil];
-	detailViewController.clip = clip;
+	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      
@@ -125,11 +126,11 @@
 	
 	self.clipToPlaylist = clip;
 	
-	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Отмена" otherButtonTitles:@"Новый плейлист", nil];
+	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Новый плейлист", nil];
 	for (PlayList* pl in [[__delegate playlists] playlists]) {
 		[actionSheet addButtonWithTitle:pl.name];
 	}
-
+	[actionSheet addButtonWithTitle:@"Отмена"];
 	[actionSheet showFromTabBar:self.tabBarController.tabBar];
 	[actionSheet release];
 	
@@ -137,8 +138,8 @@
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	NSLog(@"button index is %d", buttonIndex);
-	if (buttonIndex == 0) return;
-	if (buttonIndex == 1) {
+	if (buttonIndex == [actionSheet numberOfButtons] - 1) return;
+	if (buttonIndex == 0) {
 		
 		PlayList* playList = [PlayList new];
 		[MKEntryPanel showPanelWithTitle:NSLocalizedString(@"Название листа", @"") 
@@ -154,7 +155,7 @@
 		[playList release];
 		self.clipToPlaylist = nil;
 	}else{
-		PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 2];
+		PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 1];
 		[[myPlaylist clips] addObject:clipToPlaylist];
 		self.clipToPlaylist = nil;
 		[[__delegate playlists] save];

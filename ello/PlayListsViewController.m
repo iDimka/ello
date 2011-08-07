@@ -39,7 +39,7 @@
 	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
 	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	  
-	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Чарты", @"Топ ", @"Мои", nil]];
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Топ ", @"Чарты", @"Мои", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = _segment; 
@@ -86,11 +86,11 @@
 	
 	PlayList* playlist =  nil;
 	switch (_segment.selectedSegmentIndex) {
-		case 0:  
-			playlist = [[[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
-			break;
-		case 1:
+		case 0:
 			playlist = [[[_dataSourceTop objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			break;
+		case 1:  
+			playlist = [[[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
 			break;
 		case 2:
 			playlist = [[[_dataSourceMy objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
@@ -107,11 +107,11 @@
 	
 	PlayList* playlist =  nil;
 	switch (_segment.selectedSegmentIndex) {
-		case 0:  
-			playlist = [[[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
-			break;
-		case 1:
+		case 0:
 			playlist = [[[_dataSourceTop objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			break;
+		case 1:  
+			playlist = [[[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
 			break;
 		case 2:
 			playlist = [[[_dataSourceMy objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
@@ -132,19 +132,19 @@
 	switch (_segment.selectedSegmentIndex) 
 	{
 		case 0:			
-		if ([_dataSourceCharts count]) {
-			[_tableView reloadData];
-			break;
-		}
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=playlist&action=getChartPlaylists" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"playlists"] delegate:self]; 
-			break;
-		case 1:			
 		if ([_dataSourceTop count]){
 			[_tableView reloadData];
 			break;
 		}
 			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=playlist&action=getTopPlaylists" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"playlists"] delegate:self];
-		break; 		
+		break; 
+		case 1:			
+		if ([_dataSourceCharts count]) {
+			[_tableView reloadData];
+			break;
+		}
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=playlist&action=getChartPlaylists" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"playlists"] delegate:self]; 
+			break;		
 		case 2:
 			if (!_dataSourceMy) _dataSourceMy = [NSMutableArray new];
 			[_dataSourceMy removeAllObjects];

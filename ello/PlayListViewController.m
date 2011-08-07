@@ -8,6 +8,7 @@
 
 #import "PlayListViewController.h"
 
+#import "MKEntryPanel.h"
 #import "PreviewViewController.h"
 #import "PlayerViewController.h"
 #import "Clip.h"
@@ -100,6 +101,8 @@
 			break;
 	}
 	
+	self.title = _playList.name;
+	
 	[self configTableViewAppearence];
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -111,7 +114,6 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }
-
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
 }
@@ -123,7 +125,6 @@
 	[plClipsCount setText:[NSString stringWithFormat:@"%d клипов", [[[_dataSource objectAtIndex:0] clips] count]]];
     return [[[_dataSource objectAtIndex:0] clips] count];
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     
@@ -145,39 +146,64 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
     Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row]; 
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithNibName:@"PreviewViewController" bundle:nil];
-	detailViewController.clip = clip;
+	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 	
 }
 
-- (void)addToPlaylist:(Clip*)clip{
-	
-	self.clipToPlaylist = clip;
-	
-	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Отмена" otherButtonTitles:@"Новый плейлист", nil];
-	for (PlayList* pl in [[__delegate playlists] playlists]) {
-		[actionSheet addButtonWithTitle:pl.name];
-	}
-	
-	[actionSheet showFromTabBar:self.tabBarController.tabBar];
-	[actionSheet release];
-	
-	
-}
 - (void)showAll:(id)sender{
 	UIActionSheet* menu = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Просмотреть Все", @"Вперемешку", nil];
 	[menu showInView:_tableView.tableHeaderView];
 	[menu release];
 
 }
+- (void)addToPlaylist:(Clip*)clip{
+	
+	self.clipToPlaylist = clip;
+	
+	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Новый плейлист", nil];
+	[actionSheet setTag:777];
+	for (PlayList* pl in [[__delegate playlists] playlists]) {
+		[actionSheet addButtonWithTitle:pl.name];
+	}
+	[actionSheet addButtonWithTitle:@"Отмена"];
+	
+	[actionSheet showFromTabBar:self.tabBarController.tabBar];
+	[actionSheet release];
+	
+	
+}
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-	if (buttonIndex == 0) {
+	if (actionSheet.tag == 777) {
+		if (buttonIndex == [actionSheet numberOfButtons] - 1) return;
+		if (buttonIndex == 0) {
+			
+			PlayList* playList = [PlayList new];
+			[MKEntryPanel showPanelWithTitle:NSLocalizedString(@"Название листа", @"") 
+									  inView:self.view 
+							   onTextEntered:^(NSString* enteredString)
+			 {
+			 
+			 playList.name = enteredString;
+			 [[__delegate playlists] addPlaylist:playList];
+			 
+			 }];
+			[[playList clips] addObject:clipToPlaylist];
+			[playList release];
+			self.clipToPlaylist = nil;
+		}else{
+			PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 1];
+			[[myPlaylist clips] addObject:clipToPlaylist];
+			self.clipToPlaylist = nil;
+		}
+		return;
+	}
+	if (buttonIndex != actionSheet.cancelButtonIndex)
+		{
 		PlayList* playlist = [_dataSource objectAtIndex:0];
-		PlayerViewController *detailViewController = [[PlayerViewController alloc] initWithPlaylist:playlist inPlayMode:kNormal];
-		detailViewController.playlist = playlist;
-		[self presentMoviePlayerViewControllerAnimated:detailViewController]; 
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist inPlayMode:buttonIndex];
+		[self.navigationController pushViewController:detailViewController  animated:YES]; 
 		[detailViewController release];
 	}	
 }

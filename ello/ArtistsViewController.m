@@ -27,7 +27,7 @@
     [super viewDidLoad];
 	 
 	
-	self.title = nil;
+	self.title = @"Артисты";
 	
 	UIBarButtonItem* barButtonRight = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
 	self.navigationItem.rightBarButtonItem = barButtonRight;

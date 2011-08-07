@@ -8,23 +8,49 @@
 
 #import <UIKit/UIKit.h>
 
-@class Playlist;
+
+typedef enum{
+	kNormal = 0,
+	kShufle
+}PlayMode;
+
+typedef enum{
+	kSingleClip,
+	kMultiClips,
+	kDone
+}PlayCountMode;
+
+@protocol PlaylistProtocol <NSObject>
+ 
+- (void)done;
+- (void)next:(UIButton*)sender;
+- (void)prev:(UIButton*)sender;
+
+@end
+
+@class PlayList;
 @class Clip;
 @class AsyncImageView;
 @class PlayerViewController;
 
-@interface PreviewViewController : UIViewController {
+@interface PreviewViewController : RootViewController <PlaylistProtocol>{
     PlayerViewController*	_moviePlayer;
+	PlayList*				_playlist;
+	Clip*					_clip;
+	PlayMode				_playMode;
+	PlayCountMode			_playCountMode;
+	NSInteger				_index;
+	
 }
 
-@property(nonatomic, retain)Playlist*	playlist;
+@property(nonatomic, retain)PlayList*	playlist;
 @property(nonatomic, retain)IBOutlet UIActivityIndicatorView*	sun;
 @property(nonatomic, retain)IBOutlet AsyncImageView*	thumbView;
 @property(nonatomic, retain)IBOutlet UILabel*		artistName;
 @property(nonatomic, retain)IBOutlet UILabel*		clipName;
 @property(nonatomic, retain)IBOutlet UILabel*		viewCount;
-@property(nonatomic, retain)Clip*					clip;
 
-- (IBAction)push4play;
+- (id)initWithClip:(Clip*)clip;
+- (id)initWithPlaylist:(PlayList*)playlist inPlayMode:(PlayMode)mode;
 
 @end

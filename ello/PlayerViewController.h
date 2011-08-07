@@ -11,22 +11,23 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
-typedef enum{
-	kNormal = 0,
-	kShufle
-}PlayMode;
-
 #import "PlayList.h"
 
+@protocol PlaylistProtocol;
+
+@class Clip;
+
 @interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate>{
-	UIView*		_topControl;
-	UIView*		_bottomControl;	
-	PlayMode	_playMode;
-	NSInteger	_index;
+	UIView*					_topControl;
+	UIView*					_bottomControl;	
+	id<PlaylistProtocol>	_delegate;
+	Clip*					_currentClip;
 }
 
-@property(nonatomic, retain)PlayList*	playlist;
+@property(nonatomic, retain)Clip*					currentClip;
+@property(nonatomic, assign)id<PlaylistProtocol>	delegate;
+@property(nonatomic, retain)PlayList*				playlist;
 
-- (id)initWithPlaylist:(PlayList*)pl inPlayMode:(PlayMode)mode;
+
 
 @end

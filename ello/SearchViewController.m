@@ -106,8 +106,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	switch ((int)mode) {
 		case kClip:;
-			PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithNibName:@"PreviewViewController" bundle:nil];
-			detailViewController.clip = [_dataSource  objectAtIndex:indexPath.row];
+			PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:[_dataSource  objectAtIndex:indexPath.row]];
 			[self.navigationController pushViewController:detailViewController animated:YES];
 			[detailViewController release];
 			break;
