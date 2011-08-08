@@ -20,7 +20,7 @@
 - (void)viewDidLoad{   _dataSource = [[NSMutableArray alloc] init];
     [super viewDidLoad];
 	
-	self.title = @"Жанры";
+	self.title = @"Каналы";
 	
 	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 367) style:UITableViewStylePlain];
 	[self.view addSubview:_tableView];
@@ -28,9 +28,9 @@
 	[_tableView setDataSource:self];
 	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
 	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	[_tableView setRowHeight:85];
 	
-	
-	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=channel&action=getAllChannels" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"genres"] delegate:self]; 
+	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=channel&action=getAllChannels" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"channels"] delegate:self]; 
 	[self showDimView];
 }
 
@@ -63,7 +63,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	Channel* channel = [[[_dataSource objectAtIndex:0] channels] objectAtIndex:indexPath.row];  	
- 
+	ChannelViewController* tmp = [[ChannelViewController alloc] initWitChannel:channel];
+	[self.navigationController pushViewController:tmp animated:YES];
+	[tmp release];
  
 	
 }

@@ -20,7 +20,7 @@
     return self;
 }
  
-- (id)initWithGenre:(Channel*)channel {
+- (id)initWitChannel:(Channel*)channel {
     self = [super init];
     if (self) {
         _channel = [channel retain];

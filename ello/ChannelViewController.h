@@ -16,4 +16,6 @@
 	Channel*		_channel;
 }
 
+- (id)initWitChannel:(Channel*)channel;
+
 @end

@@ -103,8 +103,8 @@
 	
  	RKObjectMapping* channels = [RKObjectMapping mappingForClass:[Channels class]];
 	[channels mapKeyPathsToAttributes: @"status", @"status", nil];
-	[ganresMapping mapRelationship:@"channels" withObjectMapping:mapping];
-	[objectManager.mappingProvider setObjectMapping:ganresMapping forKeyPath:@"channels"];
+	[channels mapRelationship:@"channels" withObjectMapping:mapping];
+	[objectManager.mappingProvider setObjectMapping:channels forKeyPath:@"channels"];
 
 }
 
