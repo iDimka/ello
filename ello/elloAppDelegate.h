@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h> 
-  
+#import "SHK.h"
+
 @class Playlists;
 @class RKReachabilityObserver;
 

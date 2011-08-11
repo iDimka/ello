@@ -264,7 +264,7 @@
 		{
 		PlayList* playlist = [_dataSource objectAtIndex:0];
 		self.repeatPlaylist = _playList;;
-		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist inPlayMode:buttonIndex];
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist inPlayMode:(buttonIndex ? kShufle : kNormal)];
 		[self.navigationController pushViewController:detailViewController  animated:YES]; 
 		[detailViewController release];
 	}	

@@ -16,7 +16,6 @@
 
 @interface PreviewViewController()
 
-@property(nonatomic, retain)Clip*					currentClip;
 @property(nonatomic, retain)PlayerViewController*	moviePlayer;
 
 - (void)prev:(UIButton*)sender;

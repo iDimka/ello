@@ -22,7 +22,9 @@ typedef enum{
 }PlayCountMode;
 
 @protocol PlaylistProtocol <NSObject>
- 
+
+@property(nonatomic, retain)Clip*					currentClip;
+
 - (void)done;
 - (void)next:(UIButton*)sender;
 - (void)prev:(UIButton*)sender;
@@ -53,6 +55,7 @@ typedef enum{
 @property(nonatomic, retain)IBOutlet UILabel*		artistName;
 @property(nonatomic, retain)IBOutlet UILabel*		clipName;
 @property(nonatomic, retain)IBOutlet UILabel*		viewCount;
+@property(nonatomic, retain)Clip*					currentClip;
 
 - (id)initWithClip:(Clip*)clip;
 - (id)initWithPlaylist:(PlayList*)playlist inPlayMode:(PlayMode)mode;

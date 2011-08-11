@@ -116,9 +116,10 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	PreviewViewController *detailViewController = nil;
 	switch ((int)mode) {
 		case kClip:;
-			PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:[_dataSource  objectAtIndex:indexPath.row]];
+			detailViewController = [[PreviewViewController alloc] initWithClip:[_dataSource  objectAtIndex:indexPath.row]];
 			[self.navigationController pushViewController:detailViewController animated:YES];
 			[detailViewController release];
 			break;
