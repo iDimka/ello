@@ -59,7 +59,7 @@
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
 	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
-	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+//	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	[_tableView setRowHeight:85];
 	
 	[self.view addSubview:_contentScroll];

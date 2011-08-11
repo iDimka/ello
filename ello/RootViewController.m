@@ -51,9 +51,8 @@ typedef void (^CloseBlock)(NSString *inputString);
     [super viewDidLoad];
 	 
 	[self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
- 
+	
 } 
- 
 
 - (UIBarButtonItem *) barButtonItemWithSel:(SEL)selector target:(id)target image:(UIImage*)image {
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

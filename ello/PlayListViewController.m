@@ -14,6 +14,7 @@
 #import "Clip.h"
 #import "Clips.h"
 #import "PlayList.h"
+#import "PlayLists.h"
 
 @interface PlayListViewController()
 
@@ -23,6 +24,7 @@
 
 @implementation PlayListViewController
 
+@synthesize repeatPlaylist = _repeatPlayList;
 @synthesize clipToPlaylist;
 @synthesize mode;
 @synthesize playlist = _playList;
@@ -30,42 +32,7 @@
 #pragma mark - View lifecycle
 
 - (void)configTableViewAppearence {
-  UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
-	[header setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
-	
-	UILabel* plName = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 250, 20)];
-	[plName setFont:[UIFont boldSystemFontOfSize:13]];
-	[plName setBackgroundColor:[UIColor clearColor]];
-	[plName setTextColor:[UIColor whiteColor]];
-	[plName setText:[NSString stringWithFormat:@"Плейлист #%d", [_playList.playListID intValue] + 1]];
-	[header addSubview:plName];
-	[plName release];
-		
-	UILabel* plCompiler = [[UILabel alloc] initWithFrame:CGRectMake(5, 25, 250, 20)];
-	[plCompiler setFont:[UIFont systemFontOfSize:13]];
-	[plCompiler setBackgroundColor:[UIColor clearColor]];
-	[plCompiler setTextColor:[UIColor whiteColor]];
-	[plCompiler setText:@"Составлено: Команда ЕЛЛО"];
-	[header addSubview:plCompiler];
-	[plCompiler release];
-	
-	plClipsCount = [[UILabel alloc] initWithFrame:CGRectMake(5, 45, 250, 20)];
-	[plClipsCount setFont:[UIFont boldSystemFontOfSize:13]];
-	[plClipsCount setBackgroundColor:[UIColor clearColor]];
-	[plClipsCount setTextColor:[UIColor lightGrayColor]];
-	[plClipsCount setTextColor:[UIColor whiteColor]];
-	[header addSubview:plClipsCount];
-	[plClipsCount release];
-	
-	_tableView.tableHeaderView = header;
-	
-	UIButton* showAll = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-	[showAll addTarget:self action:@selector(showAll:) forControlEvents:UIControlEventTouchUpInside];
-	[showAll setCenter:CGPointMake(278, 24)];
-	[header addSubview:showAll];
-	
-	
-	[header release];
+ 
 
 }
 
@@ -76,8 +43,11 @@
 	[self.view addSubview:_tableView];
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
-	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
-	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	[_tableView setRowHeight:TBL_V_H];
+	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[_tableView setBackgroundView:tmp];
+	[tmp release];
+	[_tableView setSeparatorColor:[UIColor clearColor]];
 	
 	_dataSource = [NSMutableArray new];
 	
@@ -110,6 +80,8 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+	
+	[_tableView reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -119,7 +91,92 @@
 }
 
 #pragma mark - Table view data source
- 
+
+- (float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+	if (!self.repeatPlaylist) {
+		return 70;
+	}	
+	return 120;
+}
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+	if (!self.repeatPlaylist) 
+		{
+	 
+	UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 70)];
+	[header setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	
+	UILabel* plName = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 250, 20)];
+	[plName setFont:[UIFont boldSystemFontOfSize:13]];
+	[plName setBackgroundColor:[UIColor clearColor]];
+	[plName setTextColor:[UIColor whiteColor]];
+	[plName setText:[NSString stringWithFormat:@"Плейлист #%d", [_playList.playListID intValue] + 1]];
+	[header addSubview:plName];
+	[plName release];
+	
+	UILabel* plCompiler = [[UILabel alloc] initWithFrame:CGRectMake(5, 25, 250, 20)];
+	[plCompiler setFont:[UIFont systemFontOfSize:13]];
+	[plCompiler setBackgroundColor:[UIColor clearColor]];
+	[plCompiler setTextColor:[UIColor whiteColor]];
+	[plCompiler setText:@"Составлено: Команда ЕЛЛО"];
+	[header addSubview:plCompiler];
+	[plCompiler release];
+	
+	plClipsCount = [[UILabel alloc] initWithFrame:CGRectMake(5, 45, 250, 20)];
+	[plClipsCount setFont:[UIFont boldSystemFontOfSize:13]];
+	[plClipsCount setBackgroundColor:[UIColor clearColor]];
+	[plClipsCount setTextColor:[UIColor lightGrayColor]];
+	[plClipsCount setTextColor:[UIColor whiteColor]];
+	[header addSubview:plClipsCount];
+	[plClipsCount release];
+	 
+	
+	UIButton* showAll = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+	[showAll addTarget:self action:@selector(showAll:) forControlEvents:UIControlEventTouchUpInside];
+	[showAll setCenter:CGPointMake(278, 24)];
+	[header addSubview:showAll];
+	
+	 
+	
+	return [header autorelease];
+	}
+	
+	UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 120)];
+	[header setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	
+	UILabel* plType = [[UILabel alloc] initWithFrame:CGRectMake(140, 5, 180, 20)];
+	[plType setFont:[UIFont boldSystemFontOfSize:13]];
+	[plType setBackgroundColor:[UIColor clearColor]];
+	[plType setTextColor:[UIColor whiteColor]];
+	[plType setText:[NSString stringWithFormat:@"Тип плейлиста...", [_playList.playListID intValue] + 1]];
+	[header addSubview:plType];
+	[plType release];
+	
+	
+	AsyncImageView* videoThumb = [[AsyncImageView alloc] initWithFrame:CGRectMake(10, 5, 112, 69)];	
+	if (_repeatPlayList.imageURLString)[videoThumb loadImageFromURL:[NSURL URLWithString:_repeatPlayList.imageURLString]];	
+	else if ([_repeatPlayList.clips count]) [videoThumb loadImageFromURL:[NSURL URLWithString:[(Clip*)[_repeatPlayList.clips objectAtIndex:0] clipImageURL]]];
+	[header addSubview:videoThumb];
+	   
+	UIButton* repeat = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[repeat addTarget:self action:@selector(showAll:) forControlEvents:UIControlEventTouchUpInside];
+	[repeat setTitle:@"Еще раз" forState:UIControlStateNormal];
+	[repeat setFrame:CGRectMake(140, 30, 70, 30)];
+	[header addSubview:repeat];
+	
+	UISegmentedControl* s = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, header.frame.size.height - 30, 320, 30)];
+	[s setSegmentedControlStyle:UISegmentedControlStyleBar];
+	[s setTintColor:[UIColor blackColor]];
+	[s insertSegmentWithTitle:@"В Этом Плейлисте"	atIndex:0 animated:NO];
+	[s insertSegmentWithTitle:@"Похожие плейлисты"	atIndex:1 animated:NO];
+	[s setMomentary:YES];
+	[s addTarget:self action:@selector(segmentHeaderTapped:) forControlEvents:UIControlEventValueChanged];
+	[header addSubview:s];
+	[s release];
+		  
+	return [header autorelease];
+
+	
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
 	if (![_dataSource count]) return 0;
 	[plClipsCount setText:[NSString stringWithFormat:@"%d клипов", [[[_dataSource objectAtIndex:0] clips] count]]];
@@ -152,9 +209,12 @@
 	
 }
 
+- (void)segmentHeaderTapped:(UISegmentedControl*)sender{
+	
+}
 - (void)showAll:(id)sender{
 	UIActionSheet* menu = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Просмотреть Все", @"Вперемешку", nil];
-	[menu showInView:_tableView.tableHeaderView];
+	[menu showFromTabBar:self.view];
 	[menu release];
 
 }
@@ -194,6 +254,7 @@
 			self.clipToPlaylist = nil;
 		}else{
 			PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 1];
+			self.repeatPlaylist = myPlaylist;
 			[[myPlaylist clips] addObject:clipToPlaylist];
 			self.clipToPlaylist = nil;
 		}
@@ -202,6 +263,7 @@
 	if (buttonIndex != actionSheet.cancelButtonIndex)
 		{
 		PlayList* playlist = [_dataSource objectAtIndex:0];
+		self.repeatPlaylist = _playList;;
 		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist inPlayMode:buttonIndex];
 		[self.navigationController pushViewController:detailViewController  animated:YES]; 
 		[detailViewController release];

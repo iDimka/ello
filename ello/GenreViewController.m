@@ -35,9 +35,11 @@
 	[self.view addSubview:_tableView];
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
-	[_tableView setRowHeight:85];
-	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
-	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	[_tableView setRowHeight:TBL_V_H];
+	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[_tableView setBackgroundView:tmp];
+	[tmp release];
+	[_tableView setSeparatorColor:[UIColor clearColor]];
 	
 	
 	self.title = _genre.genreName;

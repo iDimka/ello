@@ -37,6 +37,7 @@ typedef enum{
 @class PlayerViewController;
 
 @interface PreviewViewController : RootViewController <PlaylistProtocol, ClipThumbProtocol, ClipThumbProtocol>{
+	IBOutlet UILabel*		_buffering;
     PlayerViewController*	_moviePlayer;
 	PlayList*				_playlist;
 	Clip*					_clip;
@@ -48,7 +49,7 @@ typedef enum{
 
 @property(nonatomic, retain)PlayList*	playlist;
 @property(nonatomic, retain)IBOutlet UIActivityIndicatorView*	sun;
-@property(nonatomic, retain)IBOutlet AsyncImageView*	thumbView;
+@property(nonatomic, retain)IBOutlet AsyncImageView*thumbView;
 @property(nonatomic, retain)IBOutlet UILabel*		artistName;
 @property(nonatomic, retain)IBOutlet UILabel*		clipName;
 @property(nonatomic, retain)IBOutlet UILabel*		viewCount;

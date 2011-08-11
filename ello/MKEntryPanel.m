@@ -10,7 +10,7 @@
 @implementation DimView
 
 - (id)initWithParent:(UIView*) aParentView onTappedSelector:(SEL) tappedSel{
-    self = [super initWithFrame:[UIScreen mainScreen].bounds];
+    self = [super initWithFrame:[aParentView bounds]];
     if (self) {
         // Initialization code
         parentView = aParentView;
@@ -21,7 +21,7 @@
     return self;
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [parentView performSelector:onTapped];
 }
 

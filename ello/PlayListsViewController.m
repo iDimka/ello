@@ -36,17 +36,17 @@
 	[self.view addSubview:_tableView];
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
-	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
-	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	[_tableView setRowHeight:TBL_V_H];
+	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[_tableView setBackgroundView:tmp];
+	[tmp release];
+	[_tableView setSeparatorColor:[UIColor clearColor]];
 	  
 	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Топ ", @"Чарты", @"Мои", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = _segment; 
 	[_segment setSelectedSegmentIndex:0];
-	 
-	[_tableView setBackgroundColor:[UIColor blackColor]];
-	_tableView.rowHeight = 85;
 	
 }  
 - (void)viewWillAppear:(BOOL)animated{

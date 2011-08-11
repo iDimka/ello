@@ -53,7 +53,7 @@
 		
 		switch ((int)_playMode) {
 			case kNormal:
-				self.currentClip = [_playlist.clips objectAtIndex:_index++];
+				self.currentClip = [_playlist.clips objectAtIndex:_index];
 				_moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 				[_moviePlayer setPlaylist:_playlist];
 				break; 
@@ -93,6 +93,17 @@
 	[self.artistName setText:_currentClip.artistName];
 	[self.clipName setText:_currentClip.clipName];
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [_currentClip.viewCount intValue]]];
+
+	
+//	UIImageView* bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+//	[self.view addSubview:bg];
+//	[bg release];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:animated];
+	[_buffering setHidden:YES];
+	[self.moviePlayer.moviePlayer stop];
+	self.moviePlayer = nil;
 }
   
 - (void)push4play{ NSLog(@"%s", __func__);
@@ -100,6 +111,7 @@
 	self.moviePlayer = tmp;
 	[tmp release];
 	
+	[_buffering setHidden:NO];
 	[sun startAnimating];
 }
  
@@ -114,6 +126,7 @@
 		if (_playCountMode == kMultiClips) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackDidFinish:)	name:MPMoviePlayerPlaybackDidFinishNotification		object:nil];
 			[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
 			[sun stopAnimating];
+			[_buffering setHidden:YES];
 			[self presentMoviePlayerViewControllerAnimated:_moviePlayer]; 
 			break; 
 	}
@@ -137,11 +150,11 @@
 	{
 		case kNormal:
 		
-		if (_index == [_playlist.clips count]) {
+		if (++_index == [_playlist.clips count]) {
 			[self.navigationController popViewControllerAnimated:YES];
 			return;
 		};
-		self.currentClip = [_playlist.clips objectAtIndex:++_index];
+		self.currentClip = [_playlist.clips objectAtIndex:_index];
 		self.moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 		[_moviePlayer release];
 		
@@ -157,6 +170,7 @@
 	}
 
 	[sun startAnimating];
+		[_buffering setHidden:NO];
 	[_moviePlayer setPlaylist:_playlist];
 	_moviePlayer.delegate = self;
 }
@@ -181,6 +195,7 @@
 			break;
 	}
 	[sun startAnimating];
+	[_buffering setHidden:NO];	
 	[_moviePlayer setPlaylist:_playlist];
 	_moviePlayer.delegate = self;
 }
@@ -194,6 +209,7 @@
 	self.moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 	[_moviePlayer release];
 	[sun startAnimating];
+		[_buffering setHidden:NO];
 	[_moviePlayer setPlaylist:_playlist];
 	_moviePlayer.delegate = self;
 	[self.moviePlayer dismissModalViewControllerAnimated:YES];

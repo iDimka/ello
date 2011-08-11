@@ -18,8 +18,8 @@
 @class Clip;
 
 @interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate, PlaylistProtocol>{
-	UIView*					_topControl;
-	UIView*					_bottomControl;	
+	UIImageView*			_topControl;
+	UIImageView*			_bottomControl;	
 	id<PlaylistProtocol>	_delegate;
 	Clip*					_currentClip;
 	UIScrollView*			_clipsBund;

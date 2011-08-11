@@ -18,9 +18,12 @@
 	IBOutlet UITableView*	_tableView;
 	NSMutableArray*			_dataSource;
 	UISegmentedControl*		_segment;
-	
+	BOOL					_isHasHeader;
 //	RKObjectMapping* _clipsMapping;
 }
+
+@property(nonatomic, assign, getter = isHasHeader)BOOL hasHeader;
+@property(nonatomic, retain)Clip*				clipToPlaylist;
 
 - (IBAction)search:(id)sender;
 

@@ -44,12 +44,15 @@
 - (void)viewDidLoad{NSLog(@"%s", __func__);
     [super viewDidLoad];
 	 
-	 _topControl = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
-	 [_topControl setBackgroundColor:[UIColor darkGrayColor]];
+	 _topControl = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
+	[_topControl setImage:[UIImage imageNamed:@"playerBand.png"]];
+	[_topControl setAlpha:.8];
+	[_topControl setUserInteractionEnabled:YES];
 	 [self.view addSubview:_topControl];
 	 
-	 _bottomControl = [[UIView alloc] initWithFrame:CGRectMake(0, 280, 480, 40)];
-	 [_bottomControl setBackgroundColor:[UIColor darkGrayColor]];
+	 _bottomControl = [[UIImageView alloc] initWithFrame:CGRectMake(0, 280, 480, 40)];
+	 [_bottomControl  setImage:[UIImage imageNamed:@"playerBand.png"]];
+	[_bottomControl setUserInteractionEnabled:YES];
 	 [self.view addSubview:_bottomControl];
 	
 	if (playlist) {
@@ -68,13 +71,12 @@
 			[th setDelegate:_delegate];
 			[th release];
 			}
-
 	}	
 	
 	 _stopPlay = [UIButton buttonWithType:UIButtonTypeCustom];
-	 [_stopPlay setFrame:CGRectMake(10, 2, 32, 30)];
-	 [_stopPlay setImage:[UIImage imageNamed:@"player_pause.png"]		forState:UIControlStateNormal];
-	 [_stopPlay setImage:[UIImage imageNamed:@"player_play.png"]		forState:UIControlStateSelected];
+	 [_stopPlay setFrame:CGRectMake(10, 2, 36, 36)];
+	 [_stopPlay setImage:[UIImage imageNamed:@"playerBtnPlay.png"]		forState:UIControlStateSelected];
+	 [_stopPlay setImage:[UIImage imageNamed:@"playerBtnStop.png"]		forState:UIControlStateNormal];
 	[_stopPlay addTarget:self action:@selector(stopPlay:) forControlEvents:UIControlEventTouchUpInside];
 	 [_bottomControl addSubview:_stopPlay];
 	
@@ -82,25 +84,25 @@
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	
 	UIButton* share = [UIButton buttonWithType:UIButtonTypeCustom];
-	[share setFrame:CGRectMake(65, -1, 48, 48)];
-	[share setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+	[share setFrame:CGRectMake(65, 4, 33, 37)];
+	[share setImage:[UIImage imageNamed:@"btnShare.png"] forState:UIControlStateNormal];
  	[share addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:share];
  
 	UIButton* done = [UIButton buttonWithType:UIButtonTypeCustom];
-	[done setFrame:CGRectMake(1, 9, 63, 30)];
-	[done setImage:[UIImage imageNamed:@"new_done.png"] forState:UIControlStateNormal];
+	[done setFrame:CGRectMake(1, 7, 51, 31)];
+	[done setImage:[UIImage imageNamed:@"btnBack.png"] forState:UIControlStateNormal];
 	[done addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:done];
 	
 	UIButton* addToPlaylistButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[addToPlaylistButton setFrame:CGRectMake(270, 9, 32, 32)];
-	[addToPlaylistButton setImage:[UIImage imageNamed:@"addToPl.png"] forState:UIControlStateNormal];
+	[addToPlaylistButton setFrame:CGRectMake(270, 7, 27, 32)];
+	[addToPlaylistButton setImage:[UIImage imageNamed:@"cellBtnAdd.png"] forState:UIControlStateNormal];
 	[addToPlaylistButton addTarget:self action:@selector(addToPlaylist:) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:addToPlaylistButton];
 	
 	UIButton* info = [UIButton buttonWithType:UIButtonTypeCustom];
-	[info setFrame:CGRectMake(210, 9, 32, 32)];
+	[info setFrame:CGRectMake(210, 6, 32, 32)];
 	[info setImage:[UIImage imageNamed:@"info.png"] forState:UIControlStateNormal];
 	[info addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:info];

@@ -22,9 +22,11 @@ typedef enum{
     NSMutableArray*		_dataSource;
 	UILabel*			plClipsCount;
 	PlayList*			_playList;
+		PlayList*			_repeatPlayList;
 }
 
 @property(nonatomic, assign)PlaylistStorePlace		mode;
 @property(nonatomic, retain)PlayList*				playlist;
+@property(nonatomic, retain)PlayList*				repeatPlaylist;
 
 @end

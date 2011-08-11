@@ -39,21 +39,21 @@
 		[_viewCount setTextColor:[UIColor grayColor]];
 		[_viewCount setBackgroundColor:[UIColor clearColor]];
 		
-		_videoThumb = [[AsyncImageView alloc] initWithFrame:CGRectMake(2, 2, 150, 71)];
+		_videoThumb = [[AsyncImageView alloc] initWithFrame:CGRectMake(5, 5, 112, 69)];
 		_videoThumb.delegate = self;
 		
 		_clipNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 51, 20, 20)];
 		[_clipNumberLabel setFont:[UIFont boldSystemFontOfSize:13]];
-		[_clipNumberLabel setTextColor:[UIColor redColor]];
+		[_clipNumberLabel setTextColor:[UIColor whiteColor]];
 		[_clipNumberLabel setTextAlignment:UITextAlignmentCenter];
-		[_clipNumberLabel setBackgroundColor:[UIColor blueColor]];
+		[_clipNumberLabel setBackgroundColor:[UIColor redColor]];
 		[_clipNumberLabel setHidden:YES];
 		
 		UIButton* addToPlaylistButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[addToPlaylistButton setTag:777];
 		[addToPlaylistButton setHidden:YES];
-		[addToPlaylistButton setFrame:CGRectMake(270, 75 / 2 - 32 / 2, 32, 32)];
-		[addToPlaylistButton setImage:[UIImage imageNamed:@"addToPl.png"] forState:UIControlStateNormal];
+		[addToPlaylistButton setFrame:CGRectMake(285, TBL_V_H / 2 - 32 / 2, 27, 32)];
+		[addToPlaylistButton setImage:[UIImage imageNamed:@"cellBtnAdd.png"] forState:UIControlStateNormal];
 		[addToPlaylistButton addTarget:self action:@selector(addToPlaylist) forControlEvents:UIControlEventTouchUpInside];
 		
 		[self addSubview:_videoThumb];
@@ -64,7 +64,7 @@
 		[self addSubview:addToPlaylistButton];
 		
 		UIImageView* bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 75)];
-		[bg setImage:[[UIImage imageNamed:@"cellBG.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0]];		
+		[bg setImage:[[UIImage imageNamed:@"cellBg.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0]];		
 		[self setBackgroundView:bg];
 		[bg release]; 
     }
@@ -127,10 +127,8 @@
 	if (object.thumb)  _videoThumb.image = object.thumb;
 	else {
 	if (object.imageURLString)[_videoThumb loadImageFromURL:[NSURL URLWithString:object.imageURLString]];	
-	else{
-		if ([object.clips count]) [_videoThumb loadImageFromURL:[NSURL URLWithString:[(Clip*)[object.clips objectAtIndex:0] clipImageURL]]];	
-//		NSLog([(Clip*)[object.clips objectAtIndex:0] description]);
-	}
+	else if ([object.clips count]) [_videoThumb loadImageFromURL:[NSURL URLWithString:[(Clip*)[object.clips objectAtIndex:0] clipImageURL]]];	 
+	 
 	}
 }
 - (void)configCell:(VideoObject*)videoObject{

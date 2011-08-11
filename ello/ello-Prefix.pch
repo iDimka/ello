@@ -15,6 +15,7 @@
 
 #import "elloAppDelegate.h"
 
+#define TBL_V_H		82
 #define __delegate (elloAppDelegate*)[[UIApplication sharedApplication] delegate]
 
 #import "RootViewController.h"

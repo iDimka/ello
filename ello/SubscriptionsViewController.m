@@ -31,6 +31,11 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+	
+	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[self.view addSubview:tmp];
+	[self.view insertSubview:tmp atIndex:0];
+	[tmp release];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

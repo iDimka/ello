@@ -26,9 +26,12 @@
 	[self.view addSubview:_tableView];
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
-	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
-	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
-	[_tableView setRowHeight:85];
+//	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+[_tableView setRowHeight:TBL_V_H];
+	[_tableView setSeparatorColor:[UIColor clearColor]];
+	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[_tableView setBackgroundView:tmp];
+	[tmp release];
 	
 	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=channel&action=getAllChannels" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"channels"] delegate:self]; 
 	[self showDimView];

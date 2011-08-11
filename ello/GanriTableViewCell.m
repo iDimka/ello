@@ -32,11 +32,11 @@
 		[self addSubview:_title];
 
 		[self addSubview:_ganrCount];
-				
-//		UIImageView* bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
-//		[bg setImage:[[UIImage imageNamed:@"cellBG.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0]];		
-//		[self setBackgroundView:bg];
-//		[bg release];
+		
+		UIImageView* bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 75)];
+		[bg setImage:[[UIImage imageNamed:@"cellBg.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:0]];		
+		[self setBackgroundView:bg];
+		[bg release]; 
     }
     return self;
 }

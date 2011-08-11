@@ -46,19 +46,39 @@
 	 
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
-	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
-	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	
 	_tableView = [self.searchDisplayController.searchResultsTableView retain];
+	for (UIView *view in self.searchDisplayController.searchBar.subviews)
+		{
+		if ([view isKindOfClass:NSClassFromString(@"UISearchBarBackground")])
+			{
+			[view removeFromSuperview];
+			}
+		if([view isKindOfClass: [UITextField class]])
+			{
+			[(UITextField *)view setKeyboardAppearance: UIKeyboardAppearanceAlert];
+			}
+		}
+//	[self.searchDisplayController.searchResultsTableView setRowHeight:TBL_V_H];
+//	[self.searchDisplayController.searchResultsTableView setSeparatorColor:[UIColor clearColor]];
+	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[self.view insertSubview:tmp atIndex:0];
+	[tmp release];
 	
-	[self.searchDisplayController.searchResultsTableView setRowHeight:85];
-	[self.searchDisplayController.searchResultsTableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
-	[self.searchDisplayController.searchResultsTableView setSeparatorColor:[UIColor darkGrayColor]];
-	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
-	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
+	
+	[_tableView setRowHeight:TBL_V_H];
+	[_tableView setSeparatorColor:[UIColor clearColor]];
+	tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[_tableView setBackgroundView:tmp];
+	[tmp release];
 	
 	
 } 
+- (void)viewDidAppear{
+	[self viewDidAppear];
+	
+		[self.searchDisplayController setActive:YES animated:YES];
+}
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 
@@ -117,6 +137,10 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
 }
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+	
+	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[self.searchDisplayController.searchResultsTableView setBackgroundView:tmp];
+	[tmp release];
 	
 	[[RKRequestQueue sharedQueue] cancelRequestsWithDelegate:self];
 	switch ((int)mode) {

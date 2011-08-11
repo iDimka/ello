@@ -24,13 +24,13 @@
 
 @interface ClipsViewController()
 
-@property(nonatomic, retain)Clip*				clipToPlaylist;
 @property(nonatomic, retain)NSMutableArray*		dataSource;
 
 @end
 
 @implementation ClipsViewController
 
+@synthesize hasHeader = _isHasHeader;
 @synthesize clipToPlaylist;
 @synthesize dataSource = _dataSource;
  
@@ -41,7 +41,6 @@
 
 	self.title = @"Клипы";
 	
-	
 	_dataSource = [[NSMutableArray alloc] init];
 	[_dataSource addObject:[NSNull null]];
 	[_dataSource addObject:[NSNull null]];
@@ -49,6 +48,12 @@
 	
 	[self showDimView];
   
+	[_tableView setRowHeight:TBL_V_H];
+	[_tableView setSeparatorColor:[UIColor clearColor]];
+	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+	[_tableView setBackgroundView:tmp];
+	[tmp release];
+	
 	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Премеры", @"Популярные", @"Новинки", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
@@ -59,6 +64,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 	
+	[_tableView reloadData];
 	[_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
 }
  
@@ -83,6 +89,50 @@
 
 #pragma mark - Table view data source
  
+- (float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+	if (!self.clipToPlaylist) {
+		return 0;
+	}	
+	return 155;
+}
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+	if (!self.clipToPlaylist) {
+		return nil;
+	}
+	AsyncImageView* _videoThumb = [[AsyncImageView alloc] initWithFrame:CGRectMake(10, 5, 112, 69)];
+	
+	if (self.clipToPlaylist.thumb && ![self.clipToPlaylist.thumb isKindOfClass:[NSNull class]])  _videoThumb.image = self.clipToPlaylist.thumb;
+	else [_videoThumb loadImageFromURL:[NSURL URLWithString:self.clipToPlaylist.clipImageURL]];
+
+	UIImageView* header = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 155)];
+	[header setUserInteractionEnabled:YES];
+	[header setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+	[header addSubview:_videoThumb];
+	
+	UIButton* repeatButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[repeatButton setTitle:@"Еще раз" forState:UIControlStateNormal];
+	[repeatButton setFrame:CGRectMake(10, 80, 130, 30)];
+	[repeatButton addTarget:self action:@selector(repeatClip) forControlEvents:UIControlEventTouchUpInside];
+	[header addSubview:repeatButton];
+	
+	UIButton* addToPlaylistButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[addToPlaylistButton setFrame:CGRectMake(255, header.frame.size.height / 2 - 32 / 2, 27, 32)];
+	[addToPlaylistButton setImage:[UIImage imageNamed:@"cellBtnAdd.png"] forState:UIControlStateNormal];
+	[addToPlaylistButton addTarget:self action:@selector(addToPlaylist) forControlEvents:UIControlEventTouchUpInside];
+	[header addSubview:addToPlaylistButton];
+	
+	UISegmentedControl* s = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, header.frame.size.height - 30, 320, 30)];
+	[s setSegmentedControlStyle:UISegmentedControlStyleBar];
+	[s setTintColor:[UIColor blackColor]];
+	[s insertSegmentWithTitle:@"Похожие плейлисты" atIndex:0 animated:NO];
+	[s insertSegmentWithTitle:@"Информация" atIndex:1 animated:NO];
+	[s setMomentary:YES];
+	[s addTarget:self action:@selector(segmentHeaderTapped:) forControlEvents:UIControlEventValueChanged];
+	[header addSubview:s];
+	[s release];
+	
+	return [header autorelease];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isKindOfClass:[NSNull class]] ) {
 	
@@ -111,16 +161,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
     Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
+	self.clipToPlaylist = clip;
+	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:self.clipToPlaylist];
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
+	
      
 }
- 
+
+- (void)segmentHeaderTapped:(UISegmentedControl*)sender{
+	
+}
+- (void)repeatClip{	
+	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:self.clipToPlaylist];
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	[detailViewController release];	
+}
 - (void)search:(id)sender{
 	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil mode:kClip]; 
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
+}
+- (void)addToPlaylist{
+	
+	[self addToPlaylist:self.clipToPlaylist];
+
 }
 - (void)addToPlaylist:(Clip*)clip{
 	

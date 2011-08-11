@@ -8,6 +8,8 @@
 
 #import "elloAppDelegate.h"
 
+#import "PlayListViewController.h"
+#import "ClipsViewController.h"
 #import "Channels.h"
 #import "Channel.h"
 #import "Genre.h"
@@ -112,10 +114,13 @@
 
 	[self initRestKit];
 	[[NSBundle mainBundle] loadNibNamed:@"TabbarViewController" owner:self options:nil];
+
+	[self.tabBarController setDelegate:self];
 	
 	[self.tabBarController.moreNavigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[[self.tabBarController.moreNavigationController.viewControllers objectAtIndex:0] setTitle:@"Ещё"];
 	[[[self.tabBarController.moreNavigationController tabBarController] tabBarItem] setTitle:@"Ещё"];
+	
 	_playlists = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[self applicationDocumentsDirectory] stringByAppendingPathComponent:@"playlists.plist"]] retain];
 	if (!_playlists) {
 		_playlists = [[PlayLists alloc] init];
@@ -168,13 +173,26 @@
 	
 }
 
-
 - (void)applicationWillTerminate:(UIApplication *)application{
 	/*
 	 Called when the application is about to terminate.
 	 Save data if appropriate.
 	 See also applicationDidEnterBackground:.
 	 */
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+	
+	if ([viewController isKindOfClass:[UINavigationController class]] && 
+		 [[[(UINavigationController*)viewController viewControllers] objectAtIndex:0] isKindOfClass:[ClipsViewController class]])
+		{
+		[(ClipsViewController*)[[(UINavigationController*)viewController viewControllers] objectAtIndex:0] setClipToPlaylist:nil];
+		}else if ([viewController isKindOfClass:[UINavigationController class]] && 
+				  [[[(UINavigationController*)viewController viewControllers] objectAtIndex:0] isKindOfClass:[PlayListViewController class]])
+			{
+			[(PlayListViewController*)[[(UINavigationController*)viewController viewControllers] objectAtIndex:0] setRepeatPlaylist:nil];
+			}
+	return YES;
 }
 
 - (void)dealloc{
