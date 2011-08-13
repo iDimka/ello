@@ -77,11 +77,11 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+	[_tableView reloadData];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 	
-	[_tableView reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -165,10 +165,10 @@
 	
 	UISegmentedControl* s = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, header.frame.size.height - 30, 320, 30)];
 	[s setSegmentedControlStyle:UISegmentedControlStyleBar];
-	[s setTintColor:[UIColor blackColor]];
+	[s setTintColor:[UIColor darkGrayColor]]; 
 	[s insertSegmentWithTitle:@"В Этом Плейлисте"	atIndex:0 animated:NO];
 	[s insertSegmentWithTitle:@"Похожие плейлисты"	atIndex:1 animated:NO];
-	[s setMomentary:YES];
+	[s setSelectedSegmentIndex:0];
 	[s addTarget:self action:@selector(segmentHeaderTapped:) forControlEvents:UIControlEventValueChanged];
 	[header addSubview:s];
 	[s release];
@@ -206,6 +206,7 @@
 	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
+	 
 	
 }
 
@@ -214,7 +215,7 @@
 }
 - (void)showAll:(id)sender{
 	UIActionSheet* menu = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Просмотреть Все", @"Вперемешку", nil];
-	[menu showFromTabBar:self.view];
+	[menu showInView:self.view];
 	[menu release];
 
 }
@@ -263,7 +264,7 @@
 	if (buttonIndex != actionSheet.cancelButtonIndex)
 		{
 		PlayList* playlist = [_dataSource objectAtIndex:0];
-		self.repeatPlaylist = _playList;;
+		self.repeatPlaylist = _playList;
 		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist inPlayMode:(buttonIndex ? kShufle : kNormal)];
 		[self.navigationController pushViewController:detailViewController  animated:YES]; 
 		[detailViewController release];

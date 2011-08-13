@@ -23,6 +23,9 @@
 	NSString*		clipVideoURL;	
 	NSString*		label;
 	UIImage*		thumb;
+	NSString*		mainArtist;
+	NSString*		dirrector;
+	NSString*		producer;   
 }
 
 
@@ -37,5 +40,8 @@
 @property(nonatomic, retain)NSString*	clipGanreName;
 @property(nonatomic, retain)NSString*	clipImageURL;
 @property(nonatomic, retain)NSString*	clipVideoURL;
+@property(nonatomic, retain)NSString*	mainArtist;
+@property(nonatomic, retain)NSString*	dirrector;
+@property(nonatomic, retain)NSString*	producer; 
 
 @end

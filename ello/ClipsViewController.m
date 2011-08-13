@@ -61,10 +61,14 @@
 	[_segment setSelectedSegmentIndex:0];
 	
 } 
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	
+	[_tableView reloadData];
+}
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 	
-	[_tableView reloadData];
 	[_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
 }
  
@@ -74,6 +78,7 @@
 
 	NSLog(@"segm index %d", segmentedControl.selectedSegmentIndex);
 	[self showDimView];
+	self.clipToPlaylist = nil;
 	switch (segmentedControl.selectedSegmentIndex) {
 			case 0:			
 			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getPremierClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self];
@@ -123,10 +128,10 @@
 	
 	UISegmentedControl* s = [[UISegmentedControl alloc] initWithFrame:CGRectMake(0, header.frame.size.height - 30, 320, 30)];
 	[s setSegmentedControlStyle:UISegmentedControlStyleBar];
-	[s setTintColor:[UIColor blackColor]];
-	[s insertSegmentWithTitle:@"Похожие плейлисты" atIndex:0 animated:NO];
+	[s setTintColor:[UIColor darkGrayColor]];
+	[s insertSegmentWithTitle:@"Похожие клипы" atIndex:0 animated:NO];
 	[s insertSegmentWithTitle:@"Информация" atIndex:1 animated:NO];
-	[s setMomentary:YES];
+	[s setSelectedSegmentIndex:0];
 	[s addTarget:self action:@selector(segmentHeaderTapped:) forControlEvents:UIControlEventValueChanged];
 	[header addSubview:s];
 	[s release];
@@ -169,8 +174,20 @@
      
 }
 
-- (void)segmentHeaderTapped:(UISegmentedControl*)sender{
-	
+- (void)segmentHeaderTapped:(UISegmentedControl*)segmentedControl{
+	switch (segmentedControl.selectedSegmentIndex) {
+		case 0:			
+	[self showDimView];
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=util&action=getAfterPlayClips&id=%d", [self.clipToPlaylist.clipID intValue]]
+														 objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] 
+															  delegate:self];
+			self.clipToPlaylist = nil;
+			break;
+		case 1:			 
+			break;
+		case 2: 
+			break;		
+	}
 }
 - (void)repeatClip{	
 	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:self.clipToPlaylist];
@@ -232,7 +249,7 @@
 		[_dataSource insertObject:[objects objectAtIndex:0] atIndex:_segment.selectedSegmentIndex];
 	}
 	[self hideDimView];
-	[_tableView reloadData];
+	[_tableView reloadData]; //Sections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];

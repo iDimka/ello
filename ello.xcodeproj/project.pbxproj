@@ -12,6 +12,10 @@
 		EE1E6C2613E33764006794C7 /* player_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = EE1E6C2513E33764006794C7 /* player_pause.png */; };
 		EE1E6C2813E3426A006794C7 /* addToPl.png in Resources */ = {isa = PBXBuildFile; fileRef = EE1E6C2713E3426A006794C7 /* addToPl.png */; };
 		EE1E6C4513E34973006794C7 /* MyPlaylist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE1E6C4313E34972006794C7 /* MyPlaylist.xcdatamodeld */; };
+		EE36A88A13F6B52E00E2D698 /* ClipInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE36A88813F6B52A00E2D698 /* ClipInfoViewController.m */; };
+		EE36A88B13F6B52E00E2D698 /* ClipInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE36A88913F6B52B00E2D698 /* ClipInfoViewController.xib */; };
+		EE36A89213F6BF4900E2D698 /* ArtistInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */; };
+		EE36A89413F6BF8500E2D698 /* ArtistInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE36A89313F6BF8400E2D698 /* ArtistInfoView.xib */; };
 		EE4E255513DB1C97003005D6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255213DB1C97003005D6 /* CFNetwork.framework */; };
 		EE4E255613DB1C97003005D6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255313DB1C97003005D6 /* CoreData.framework */; };
 		EE4E255713DB1C97003005D6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255413DB1C97003005D6 /* SystemConfiguration.framework */; };
@@ -288,6 +292,12 @@
 		EE1E6C2513E33764006794C7 /* player_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_pause.png; sourceTree = "<group>"; };
 		EE1E6C2713E3426A006794C7 /* addToPl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addToPl.png; sourceTree = "<group>"; };
 		EE1E6C4413E34973006794C7 /* MyPlaylist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyPlaylist.xcdatamodel; sourceTree = "<group>"; };
+		EE36A88713F6B52A00E2D698 /* ClipInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipInfoViewController.h; sourceTree = "<group>"; };
+		EE36A88813F6B52A00E2D698 /* ClipInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipInfoViewController.m; sourceTree = "<group>"; };
+		EE36A88913F6B52B00E2D698 /* ClipInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClipInfoViewController.xib; sourceTree = "<group>"; };
+		EE36A89013F6BF4700E2D698 /* ArtistInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistInfoView.h; sourceTree = "<group>"; };
+		EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistInfoView.m; sourceTree = "<group>"; };
+		EE36A89313F6BF8400E2D698 /* ArtistInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistInfoView.xib; sourceTree = "<group>"; };
 		EE4E255213DB1C97003005D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EE4E255313DB1C97003005D6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EE4E255413DB1C97003005D6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -809,6 +819,12 @@
 				EE6D059A13CF98180076850F /* asyncimageview.m */,
 				EEDB552113D0307200038999 /* RootViewController.h */,
 				EEDB552213D0307200038999 /* RootViewController.m */,
+				EE36A88713F6B52A00E2D698 /* ClipInfoViewController.h */,
+				EE36A88813F6B52A00E2D698 /* ClipInfoViewController.m */,
+				EE36A88913F6B52B00E2D698 /* ClipInfoViewController.xib */,
+				EE36A89013F6BF4700E2D698 /* ArtistInfoView.h */,
+				EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */,
+				EE36A89313F6BF8400E2D698 /* ArtistInfoView.xib */,
 				EEB8F80413C5FD0D00B70FDB /* MainWindow.xib */,
 				EEFB250F13E5BEBC00BA8BD1 /* TabbarViewController.xib */,
 				EEB323D313EED62C008329F2 /* Channels */,
@@ -1518,6 +1534,8 @@
 				EEC7F77D13F44C1400818539 /* SHKSharers.plist in Resources */,
 				EEC7F78213F44C1400818539 /* Localizable.strings in Resources */,
 				EEC7F78913F44C1400818539 /* FBConnect.bundle in Resources */,
+				EE36A88B13F6B52E00E2D698 /* ClipInfoViewController.xib in Resources */,
+				EE36A89413F6BF8500E2D698 /* ArtistInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1625,6 +1643,8 @@
 				EEC7F7A213F44C1400818539 /* SHKOAuthView.m in Sources */,
 				EEC7F7A313F44C1400818539 /* SHKShareMenu.m in Sources */,
 				EEC7F7A413F44C1400818539 /* SHKViewControllerWrapper.m in Sources */,
+				EE36A88A13F6B52E00E2D698 /* ClipInfoViewController.m in Sources */,
+				EE36A89213F6BF4900E2D698 /* ArtistInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

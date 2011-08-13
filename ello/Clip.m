@@ -21,6 +21,9 @@
 @synthesize clipVideoURL; 
 @synthesize clipGanre;
 @synthesize clipGanreName;
+@synthesize mainArtist;
+@synthesize dirrector;
+@synthesize producer; 
 
 
 - (id)initWithCoder:(NSCoder *)decoder {

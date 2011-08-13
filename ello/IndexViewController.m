@@ -53,9 +53,7 @@
     _ViewDataContainer = [[NSMutableArray alloc] init];
 	
 	_dataSource = [[NSMutableArray alloc] init];
-    
-//	[self fake];
-
+     
     
 	adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
 	adView.frame = CGRectOffset(adView.frame, 0, -50);
@@ -314,17 +312,23 @@
 		[(UILabel*)[[_ViewDataContainer objectAtIndex:2] viewWithTag:777] setHidden:NO]; 
 	}else [(UILabel*)[[_ViewDataContainer objectAtIndex:2] viewWithTag:777] setHidden:YES]; 
 		
-	
-	_artistName1Label.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] artistName];
-	_clipNameLabel.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
-}
+ 
+		_artistName1Label.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] artistName];
+		_clipNameLabel.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
+ }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-//	[_dataSource removeAllObjects];
-	[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] clips]];
-	//	[self hideDimView];
+	[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] clips]]; 
 		[self InesrtViewInCantainer];
-	[[[UIApplication sharedApplication] delegate] performSelector:@selector(show)];
+	[(Clips*)[objects objectAtIndex:0] loadAllImages:^(BOOL isOK) {
+		if (isOK) { 
+			[[[UIApplication sharedApplication] delegate] performSelector:@selector(show)];
+			
+			[self SlideToRight];
+
+		}
+	}];
+	
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];

@@ -8,6 +8,8 @@
 
 #import "PlayerViewController.h"
 
+#import "ArtistInfoView.h"
+#import "ClipInfoViewController.h"
 #import "SHKActionSheet.h"
 #import "SHK.h"
 #import "ClipThumb.h"
@@ -72,6 +74,18 @@
 			[th setDelegate:_delegate];
 			[th release];
 			}
+		
+		UIButton* prev = [UIButton buttonWithType:UIButtonTypeCustom];
+		[prev setFrame:CGRectMake(50, 9, 63, 30)];
+		[prev setImage:[UIImage imageNamed:@"prev.png"] forState:UIControlStateNormal];
+		[prev addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
+		[_bottomControl addSubview:prev];
+		
+		UIButton* next = [UIButton buttonWithType:UIButtonTypeCustom];
+		[next setFrame:CGRectMake(100, 9, 63, 30)];
+		[next setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
+		[next addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
+		[_bottomControl addSubview:next];
 	}	
 	
 	 _stopPlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -105,26 +119,13 @@
 	UIButton* info = [UIButton buttonWithType:UIButtonTypeCustom];
 	[info setFrame:CGRectMake(210, 6, 32, 32)];
 	[info setImage:[UIImage imageNamed:@"info.png"] forState:UIControlStateNormal];
-	[info addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
+	[info addTarget:self action:@selector(info) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:info];
-	
-	UIButton* prev = [UIButton buttonWithType:UIButtonTypeCustom];
-	[prev setFrame:CGRectMake(50, 9, 63, 30)];
-	[prev setImage:[UIImage imageNamed:@"prev.png"] forState:UIControlStateNormal];
-	[prev addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
-	[_bottomControl addSubview:prev];
-	
-	UIButton* next = [UIButton buttonWithType:UIButtonTypeCustom];
-	[next setFrame:CGRectMake(100, 9, 63, 30)];
-	[next setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
-	[next addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
-	[_bottomControl addSubview:next];
-	
+	 
 	_topControl.center = CGPointMake(_topControl.center.x, -50); 
 	_bottomControl.center = CGPointMake(_bottomControl.center.x, 370); 
 	_clipsBund.frame = CGRectOffset(_clipsBund.frame, 0, _clipsBund.frame.size.height + _bottomControl.frame.size.height);
-	
- 
+	 
 }
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
@@ -161,6 +162,26 @@
 	}
 }
 
+- (void)info{
+//	ClipInfoViewController* info = [[ClipInfoViewController alloc] init];
+//	[[[(UITabBarController*)self.parentViewController viewControllers] objectAtIndex:[[__delegate tabBarController] selectedIndex]] pushViewController:info animated:YES];
+//	[info release];
+//	[self dismissMoviePlayerViewControllerAnimated];
+	NSArray* arr =[[NSBundle mainBundle] loadNibNamed:@"ArtistInfoView" owner:self options:nil];
+ 
+	ArtistInfoView* infoView = [arr objectAtIndex:0];
+	[infoView setHidden:YES];
+	[self.view addSubview:infoView];
+	[infoView configByClip:_delegate.currentClip];
+	
+	[UIView animateWithDuration:.4 animations:^(void) {
+			[infoView setHidden:NO];
+	}];
+	[_stopPlayButton setSelected:!_stopPlayButton.selected];
+	[self.moviePlayer pause];
+	
+
+}
 - (void)share:(id)sender{
  
 	
@@ -186,19 +207,16 @@
 	switch (self.moviePlayer.loadState) {
 		case MPMovieLoadStatePlayable:			
 		case MPMovieLoadStatePlaythroughOK:
-			
 			_stopPlayButton.selected = NO;
 			break;
- 
 			case MPMovieLoadStateStalled:
-			
 			_stopPlayButton.selected = YES;
 			break;
 	} 
 }
 - (void)done{	  
+	[self.moviePlayer stop];
 	[_delegate done];
-	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 - (void)next:(UIButton*)sender{ 
 	
@@ -228,12 +246,11 @@
 	[actionSheet showInView:self.view];
 	[actionSheet release];
 	
-	
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-	[self.moviePlayer play];
-	
-	[_stopPlayButton setSelected:NO];
+//	[self.moviePlayer play];
+//	
+//	[_stopPlayButton setSelected:NO];
 	if (actionSheet.tag == 777) {
 		if (buttonIndex == [actionSheet numberOfButtons] - 1) return;
 		if (buttonIndex == 0) {

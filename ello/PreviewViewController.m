@@ -60,7 +60,6 @@
 				[self next:nil];
 				break;
 		}
-		_moviePlayer.delegate = self;
 	}
 	return self;
 }
@@ -76,6 +75,7 @@
   
 		self.moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 		[_moviePlayer release];
+		_moviePlayer.delegate = self;
 	 
 		
 	}

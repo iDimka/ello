@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^LoadImages)(BOOL isOK);
+
 @class Clip;
 
 @interface Clips : NSObject<NSCoding>
 
+@property (nonatomic, copy) LoadImages loadAllImages;
 @property(nonatomic, retain)NSString*	status;
 @property(nonatomic, retain)NSMutableArray* clips;
 
 - (void)addClip:(Clip*)clip;
 - (void)removeClip:(Clip*)clip;
+- (void)loadAllImages:(LoadImages)block;
 
 @end

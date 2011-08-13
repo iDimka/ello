@@ -12,6 +12,7 @@
 
 @implementation Clips
 
+@synthesize loadAllImages;
 @synthesize status;
 @synthesize clips;
 
@@ -49,5 +50,22 @@
 	return [self.clips description];
 }
 
+- (void)loadAllImages:(LoadImages)block{
+	self.loadAllImages = block;
+	
+	for (Clip* clip in clips) {
+		NSURLResponse* response = nil;
+		NSError* error = nil;
+		NSData* payload = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[clip clipImageURL]]] returningResponse:&response error:&error];
+		clip.thumb = [UIImage imageWithData:payload]; 
+		if (error) {
+			UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:[error localizedFailureReason] delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			self.loadAllImages(NO);
+		}
+	}
+	self.loadAllImages(YES);
+}
 
 @end
