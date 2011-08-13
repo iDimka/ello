@@ -33,7 +33,6 @@
     }
     return self;
 }
-
 - (void)dealloc {NSLog(@"%s:%d", __func__, self);
     
 	[_currentClip release];
@@ -75,12 +74,12 @@
 			}
 	}	
 	
-	 _stopPlay = [UIButton buttonWithType:UIButtonTypeCustom];
-	 [_stopPlay setFrame:CGRectMake(10, 2, 36, 36)];
-	 [_stopPlay setImage:[UIImage imageNamed:@"playerBtnPlay.png"]		forState:UIControlStateSelected];
-	 [_stopPlay setImage:[UIImage imageNamed:@"playerBtnStop.png"]		forState:UIControlStateNormal];
-	[_stopPlay addTarget:self action:@selector(stopPlay:) forControlEvents:UIControlEventTouchUpInside];
-	 [_bottomControl addSubview:_stopPlay];
+	 _stopPlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	 [_stopPlayButton setFrame:CGRectMake(10, 2, 36, 36)];
+	 [_stopPlayButton setImage:[UIImage imageNamed:@"playerBtnPlay.png"]		forState:UIControlStateSelected];
+	 [_stopPlayButton setImage:[UIImage imageNamed:@"playerBtnStop.png"]		forState:UIControlStateNormal];
+	[_stopPlayButton addTarget:self action:@selector(stopPlay:) forControlEvents:UIControlEventTouchUpInside];
+	 [_bottomControl addSubview:_stopPlayButton];
 	
 	self.moviePlayer.controlStyle = MPMovieControlStyleNone;
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
@@ -136,16 +135,10 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
-//	[self.moviePlayer stop];
-//	for (UIView* v in self.view.subviews)[v removeFromSuperview];
+ 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
-}
-- (void)viewDidUnload{
-    [super viewDidUnload];
-	[self.navigationController setNavigationBarHidden:NO animated:YES]; 
-}
-
+} 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{ 
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
@@ -169,48 +162,41 @@
 }
 
 - (void)share:(id)sender{
-//	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Twitter", @"Facebook", @"VKontakte", nil];
-//	[actionSheet showInView:self.view];
-//	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-//	[actionSheet release];
+ 
 	
-	[_stopPlay setSelected:!_stopPlay.selected];
+	[_stopPlayButton setSelected:!_stopPlayButton.selected];
 	[self.moviePlayer pause];
 	
 	[[SHK currentHelper] setRootViewController:self];
 
 	[SHK setUserExclusions:[NSDictionary dictionaryWithObject:@"1" forKey:@"SHKReadItLater"]];
 	SHKItem *item = [SHKItem URL:self.moviePlayer.contentURL title:@""];
-	
-	// Get the ShareKit action sheet
+	 
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
-	
-	// Display the action sheet
-//	[actionSheet showFromTabBar:[__delegate tabBarController].tabBar];
+	 
 	[actionSheet showInView:self.view];
 	
 }
 - (void)stopPlay:(UIButton*)sender{
 	sender.selected = !sender.selected;
-	(self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying) ? [self.moviePlayer pause] : [self.moviePlayer play];
+	if(self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying) [self.moviePlayer pause];
+	else if (self.moviePlayer.playbackState == MPMoviePlaybackStatePaused || self.moviePlayer.playbackState == MPMoviePlaybackStateStopped)[self.moviePlayer play];
 }
 - (void)loadStateDidChange:(NSNotification*)notification{
 	switch (self.moviePlayer.loadState) {
 		case MPMovieLoadStatePlayable:			
 		case MPMovieLoadStatePlaythroughOK:
 			
-			_stopPlay.selected = NO;
+			_stopPlayButton.selected = NO;
 			break;
  
 			case MPMovieLoadStateStalled:
 			
-			_stopPlay.selected = YES;
+			_stopPlayButton.selected = YES;
 			break;
-	}
-//	NSLog(@"___loadState is %d", self.moviePlayer.loadState);
+	} 
 }
-- (void)done{	 
-// 	[self.moviePlayer stop];
+- (void)done{	  
 	[_delegate done];
 	[self.parentViewController dismissModalViewControllerAnimated:YES];
 }
@@ -222,8 +208,7 @@
 }
 - (void)prev:(UIButton*)sender{ 
 	
-	self.view.frame = CGRectMake(0, 0, 236, 367);
-//	[self.moviePlayer stop];
+	self.view.frame = CGRectMake(0, 0, 236, 367); 
 	[_delegate prev:sender];
 }
 
@@ -231,7 +216,7 @@
 
 	[self.moviePlayer pause];
 	
-	[_stopPlay setSelected:YES];
+	[_stopPlayButton setSelected:YES];
 	
 	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Новый плейлист", nil];
 	[actionSheet setTag:777];
@@ -248,7 +233,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	[self.moviePlayer play];
 	
-	[_stopPlay setSelected:NO];
+	[_stopPlayButton setSelected:NO];
 	if (actionSheet.tag == 777) {
 		if (buttonIndex == [actionSheet numberOfButtons] - 1) return;
 		if (buttonIndex == 0) {
