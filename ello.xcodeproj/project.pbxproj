@@ -16,6 +16,8 @@
 		EE36A88B13F6B52E00E2D698 /* ClipInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE36A88913F6B52B00E2D698 /* ClipInfoViewController.xib */; };
 		EE36A89213F6BF4900E2D698 /* ArtistInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */; };
 		EE36A89413F6BF8500E2D698 /* ArtistInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE36A89313F6BF8400E2D698 /* ArtistInfoView.xib */; };
+		EE4245C313FB38310045C7FB /* btnBck.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4245C113FB38310045C7FB /* btnBck.png */; };
+		EE4245C413FB38310045C7FB /* btnBck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE4245C213FB38310045C7FB /* btnBck@2x.png */; };
 		EE4E255513DB1C97003005D6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255213DB1C97003005D6 /* CFNetwork.framework */; };
 		EE4E255613DB1C97003005D6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255313DB1C97003005D6 /* CoreData.framework */; };
 		EE4E255713DB1C97003005D6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4E255413DB1C97003005D6 /* SystemConfiguration.framework */; };
@@ -298,6 +300,8 @@
 		EE36A89013F6BF4700E2D698 /* ArtistInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistInfoView.h; sourceTree = "<group>"; };
 		EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistInfoView.m; sourceTree = "<group>"; };
 		EE36A89313F6BF8400E2D698 /* ArtistInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistInfoView.xib; sourceTree = "<group>"; };
+		EE4245C113FB38310045C7FB /* btnBck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBck.png; sourceTree = "<group>"; };
+		EE4245C213FB38310045C7FB /* btnBck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnBck@2x.png"; sourceTree = "<group>"; };
 		EE4E255213DB1C97003005D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		EE4E255313DB1C97003005D6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EE4E255413DB1C97003005D6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -861,6 +865,8 @@
 				EE5A6CA613F302DF002BCE57 /* playerBtnStop@2x.png */,
 				EE5A6C9413F2FA12002BCE57 /* preview */,
 				EEFE8B5013F26C1100C02069 /* SsBtnPlay.png */,
+				EE4245C113FB38310045C7FB /* btnBck.png */,
+				EE4245C213FB38310045C7FB /* btnBck@2x.png */,
 				EEFE8B5113F26C1100C02069 /* SsBtnPlay@2x.png */,
 				EEFE8B4C13F1C78F00C02069 /* bg.png */,
 				EEFE8B4D13F1C78F00C02069 /* bg@2x.png */,
@@ -1536,6 +1542,8 @@
 				EEC7F78913F44C1400818539 /* FBConnect.bundle in Resources */,
 				EE36A88B13F6B52E00E2D698 /* ClipInfoViewController.xib in Resources */,
 				EE36A89413F6BF8500E2D698 /* ArtistInfoView.xib in Resources */,
+				EE4245C313FB38310045C7FB /* btnBck.png in Resources */,
+				EE4245C413FB38310045C7FB /* btnBck@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

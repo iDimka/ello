@@ -12,7 +12,7 @@
 @class Playlists;
 @class RKReachabilityObserver;
 
-@interface elloAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@interface elloAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UINavigationControllerDelegate> {
 	Playlists* _playlists;
 	
 }

@@ -57,6 +57,7 @@ typedef enum{
 @property(nonatomic, retain)IBOutlet UILabel*		viewCount;
 @property(nonatomic, retain)Clip*					currentClip;
 
+- (IBAction)back:(id)sender;
 - (id)initWithClip:(Clip*)clip;
 - (id)initWithPlaylist:(PlayList*)playlist inPlayMode:(PlayMode)mode;
 

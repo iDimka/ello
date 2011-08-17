@@ -53,13 +53,13 @@
 	[_artistTweets setBackgroundColor:[UIColor clearColor]];
 	
 	[_artistTweets setFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, [_artistTweets contentSize].height)];
+	[_artistTweets setScrollEnabled:NO];
 	
 	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _artistTweets.frame.origin.y + _artistTweets.frame.size.height + paggin, 320, 1) style:UITableViewStylePlain];;
 	[_contentScroll addSubview:_tableView];
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
 	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
-//	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
 	[_tableView setRowHeight:85];
 	
 	[self.view addSubview:_contentScroll];
@@ -114,6 +114,7 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	
 	
     Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row]; 
 	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];

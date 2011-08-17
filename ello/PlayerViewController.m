@@ -12,8 +12,6 @@
 #import "ClipInfoViewController.h"
 #import "SHKActionSheet.h"
 #import "SHK.h"
-#import "ClipThumb.h"
-#import "PlayLists.h"
 #import "MKEntryPanel.h"
 #import "PlayList.h"
 #import "PreviewViewController.h"
@@ -99,14 +97,15 @@
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	
 	UIButton* share = [UIButton buttonWithType:UIButtonTypeCustom];
-	[share setFrame:CGRectMake(65, 4, 33, 37)];
+	[share setFrame:CGRectMake(75, 4, 33, 37)];
 	[share setImage:[UIImage imageNamed:@"btnShare.png"] forState:UIControlStateNormal];
  	[share addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:share];
  
 	UIButton* done = [UIButton buttonWithType:UIButtonTypeCustom];
-	[done setFrame:CGRectMake(1, 7, 51, 31)];
-	[done setImage:[UIImage imageNamed:@"btnBack.png"] forState:UIControlStateNormal];
+	[done setFrame:CGRectMake(1, 7, 70, 31)];
+	[done setTitle:@"Готово" forState:UIControlStateNormal];
+	[done setBackgroundImage:[UIImage imageNamed:@"btnBack.png"] forState:UIControlStateNormal];
 	[done addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:done];
 	
@@ -130,15 +129,13 @@
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
-	[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil]; 
 	
 }
 - (void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
  
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
+	[[NSNotificationCenter defaultCenter] removeObserver:self]; 
 } 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{ 
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);

@@ -40,6 +40,7 @@
     self = [super init];
     if (self) {
 		
+		[self setHidesBottomBarWhenPushed:YES];
     }
     return self;
 }
@@ -71,19 +72,25 @@
 		self.currentClip = clip;
         _playlist = [PlayList new];
 		[_playlist.clips addObject:clip];
-		
-  
+		 
 		self.moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 		[_moviePlayer release];
-		_moviePlayer.delegate = self;
-	 
-		
+		_moviePlayer.delegate = self; 
 	}
 	return self;
 }
    
+- (void)viewDidLoad{
+	[super viewDidLoad];
+	 
+	
+	[[self view] setBounds:CGRectMake(0, 0, 480, 320)];
+	[[self view] setCenter:CGPointMake(160, 240)];
+	[[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2)]; 
+}
 - (void)viewWillAppear:(BOOL)animated{NSLog(@"%s", __func__);
- 
+	[super viewWillDisappear:animated];
+	
 	
  	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
 	
@@ -93,16 +100,17 @@
 	[self.clipName setText:_currentClip.clipName];
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [_currentClip.viewCount intValue]]];
 
-	
-//	UIImageView* bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
-//	[self.view addSubview:bg];
-//	[bg release];
+	 
 }
 - (void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
 	[_buffering setHidden:YES];
 	[self.moviePlayer.moviePlayer stop];
-	self.moviePlayer = nil;
+	self.moviePlayer = nil; 
+} 
+- (void)viewDidUnload{
+	[super viewDidUnload];
+	 
 }
   
 - (void)push4play{ NSLog(@"%s", __func__);
@@ -221,6 +229,9 @@
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [_currentClip.viewCount intValue]]];
 
 
+}
+- (IBAction)back:(id)sender{
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)dealloc {NSLog(@"%s", __func__);

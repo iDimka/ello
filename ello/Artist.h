@@ -13,7 +13,7 @@
     
 }
 
-@property(nonatomic, retain)UIImage*	thumb;
+@property(nonatomic, retain)UIImage*		thumb;
 @property(nonatomic, retain)NSNumber*		artistID;
 @property(nonatomic, retain)NSString*		artistName;
 @property(nonatomic, retain)NSString*		artistImage;

@@ -11,13 +11,15 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "ClipThumb.h"
+#import "PlayLists.h"
 #import "PlayList.h"
 
 @protocol PlaylistProtocol;
 
 @class Clip;
 
-@interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate, PlaylistProtocol>{
+@interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate, PlaylistProtocol, ClipThumbProtocol>{
 	UIImageView*			_topControl;
 	UIImageView*			_bottomControl;	
 	id<PlaylistProtocol>	_delegate;

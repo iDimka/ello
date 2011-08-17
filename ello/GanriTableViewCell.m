@@ -19,9 +19,9 @@
     [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator]; 
     
     if (self) {
-        _title = [[UILabel alloc] initWithFrame:CGRectMake(130, 15, 185, 20)];
-		[_title setFont:[UIFont boldSystemFontOfSize:13]];
-		[_title setTextColor:[UIColor redColor]];
+        _title = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 185, 20)];
+		[_title setFont:[UIFont boldSystemFontOfSize:18]];
+		[_title setTextColor:[UIColor whiteColor]];
 		[_title setBackgroundColor:[UIColor clearColor]];
 		
 		_ganrCount = [[UILabel alloc] initWithFrame:CGRectMake(190, 15, 185, 20)];

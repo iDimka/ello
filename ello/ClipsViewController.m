@@ -45,6 +45,7 @@
 	[_dataSource addObject:[NSNull null]];
 	[_dataSource addObject:[NSNull null]];
 	[_dataSource addObject:[NSNull null]];
+	[_dataSource addObject:[NSNull null]];
 	
 	[self showDimView];
   
@@ -54,7 +55,7 @@
 	[_tableView setBackgroundView:tmp];
 	[tmp release];
 	
-	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Премеры", @"Популярные", @"Новинки", nil]];
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Премьеры", @"Популярные", @"Новинки", @"Жанры", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = _segment; 
@@ -88,7 +89,10 @@
 			break;
 		case 2:
 			 [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getPopularClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self];
-			break;		
+			break;	
+		case 3:
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=genre&action=getAllGenres" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"genres"] delegate:self]; 
+			break;	
 	}
 }
 

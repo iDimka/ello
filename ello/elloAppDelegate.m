@@ -8,6 +8,8 @@
 
 #import "elloAppDelegate.h"
 
+#import "PlayerViewController.h"
+#import "PreviewViewController.h"
 #import "PlayListViewController.h"
 #import "ClipsViewController.h"
 #import "Channels.h"
@@ -118,6 +120,7 @@
 	[self.tabBarController setDelegate:self];
 	
 	[self.tabBarController.moreNavigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+	[self.tabBarController.moreNavigationController setDelegate:self];
 	[[self.tabBarController.moreNavigationController.viewControllers objectAtIndex:0] setTitle:@"Ещё"];
 	[[[self.tabBarController.moreNavigationController tabBarController] tabBarItem] setTitle:@"Ещё"];
 	
@@ -162,6 +165,18 @@
 	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+	if ([viewController isKindOfClass:[PreviewViewController class]]) 
+		{
+		[navigationController setNavigationBarHidden:YES]; 
+		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+		}
+	if (![viewController isKindOfClass:[PreviewViewController class]] && ![viewController isKindOfClass:[PreviewViewController class]])
+		{
+		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+		[navigationController setNavigationBarHidden:NO];
+		}
+}
 
 - (void)requestQueueWasUnsuspended:(RKRequestQueue*)queue;{
 	

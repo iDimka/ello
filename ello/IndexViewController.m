@@ -92,6 +92,7 @@
 - (void)bannerViewDidLoadAd:(ADBannerView *)bannerr{ 
 	if (!bannerIsVisible)
 		{
+		bannerr.frame = CGRectMake(0, 317 + 50, 320, 50);
 		[UIView beginAnimations:@"animateAdBannerOn" context:NULL]; 
 		bannerr.frame = CGRectMake(0, 317, 320, 50);
 		[UIView commitAnimations];
@@ -104,7 +105,7 @@
 	if (bannerIsVisible)
 		{
 		[UIView beginAnimations:@"animateAdBannerOff" context:NULL]; 
-		bannerr.frame = CGRectMake(0, -50, 320, 50);
+		bannerr.frame = CGRectMake(0, 317 + 50, 320, 50);
 		[UIView commitAnimations];
 		bannerIsVisible = NO;
 		}
