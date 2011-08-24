@@ -17,7 +17,6 @@
 	[data release]; 
     [super dealloc];
 }
-
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self)
@@ -47,8 +46,6 @@
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)incrementalData {
 	[data appendData:incrementalData]; 
 }
-
-
 - (void)connectionDidFinishLoading:(NSURLConnection*)theConnection {
 	
 	[connection release];
@@ -65,10 +62,8 @@
 		[delegate imageDidLoad:self.image];
 		}
 }
-
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	NSLog(@"error async image is%@", error);
 }
-
 
 @end

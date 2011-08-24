@@ -539,12 +539,19 @@
 	[oRequest setHTTPMethod:@"POST"];
 	
 	OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
-						 delegate:nil // Currently not doing any error handling here.  If it fails, it's probably best not to bug the user to follow you again.
-				didFinishSelector:nil
-				  didFailSelector:nil];	
+						 delegate:self // Currently not doing any error handling here.  If it fails, it's probably best not to bug the user to follow you again.
+				didFinishSelector:@selector(finishFollow)
+				  didFailSelector:@selector(failFollow)];	
 	
 	[fetcher start];
 	[oRequest release];
+}
+
+- (void)finishFollow{
+	
+}
+- (void)failFollow{
+	
 }
 
 @end

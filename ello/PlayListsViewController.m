@@ -126,6 +126,21 @@
 	
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+	if (_segment.selectedSegmentIndex == 2) {
+		return YES;
+	}
+	return NO;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+	if (_segment.selectedSegmentIndex) 
+		{
+		[[[_dataSourceMy objectAtIndex:0] playlists] removeObjectAtIndex:indexPath.row];
+		[[__delegate playlists] save];
+		[tableView reloadData];
+		}
+} 
+
 - (void)segmentTapped:(id)sender{
 	[self showDimView];
  

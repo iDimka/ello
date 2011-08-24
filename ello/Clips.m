@@ -54,6 +54,7 @@
 	self.loadAllImages = block;
 	
 	for (Clip* clip in clips) {
+		NSLog(@"%@:%@", clip.clipName, clip.type);
 		NSURLResponse* response = nil;
 		NSError* error = nil;
 		NSData* payload = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[clip clipImageURL]]] returningResponse:&response error:&error];

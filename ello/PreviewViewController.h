@@ -18,6 +18,7 @@ typedef enum{
 typedef enum{
 	kSingleClip,
 	kMultiClips,
+	kYouTubeClip,
 	kDone
 }PlayCountMode;
 
@@ -58,6 +59,7 @@ typedef enum{
 @property(nonatomic, retain)Clip*					currentClip;
 
 - (IBAction)back:(id)sender;
+- (id)initWithYouTubeVideo:(Clip*)clip;
 - (id)initWithClip:(Clip*)clip;
 - (id)initWithPlaylist:(PlayList*)playlist inPlayMode:(PlayMode)mode;
 

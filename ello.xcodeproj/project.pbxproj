@@ -50,7 +50,6 @@
 		EE6D054913CE3FF00076850F /* PlayListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D054813CE3FF00076850F /* PlayListsViewController.m */; };
 		EE6D054D13CE41FC0076850F /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D054B13CE41FB0076850F /* PlayListViewController.m */; };
 		EE6D054E13CE41FC0076850F /* PlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6D054C13CE41FC0076850F /* PlayListViewController.xib */; };
-		EE6D059513CF890A0076850F /* XMLDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059413CF89090076850F /* XMLDataLoader.m */; };
 		EE6D059813CF8FD40076850F /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059713CF8FD30076850F /* Artist.m */; };
 		EE6D059B13CF981B0076850F /* asyncimageview.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D059A13CF98180076850F /* asyncimageview.m */; };
 		EE6D059F13CFAF250076850F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6D059E13CFAF230076850F /* MediaPlayer.framework */; };
@@ -74,6 +73,12 @@
 		EE7437A713E213D200FD9509 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = EE7437A613E213D200FD9509 /* iTunesArtwork */; };
 		EE8759DD13E6F3BA00B38801 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8759DC13E6F3BA00B38801 /* ArtistViewController.m */; };
 		EE8759E013E71E7D00B38801 /* GenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8759DF13E71E7C00B38801 /* GenreViewController.m */; };
+		EE90737213FEAC1400658D18 /* bgl.png in Resources */ = {isa = PBXBuildFile; fileRef = EE90736C13FEAC1400658D18 /* bgl.png */; };
+		EE90737313FEAC1400658D18 /* bgl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE90736D13FEAC1400658D18 /* bgl@2x.png */; };
+		EE90737413FEAC1400658D18 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE90736E13FEAC1400658D18 /* logo.png */; };
+		EE90737513FEAC1400658D18 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE90736F13FEAC1400658D18 /* logo@2x.png */; };
+		EE90737613FEAC1400658D18 /* playerNavBar.png in Resources */ = {isa = PBXBuildFile; fileRef = EE90737013FEAC1400658D18 /* playerNavBar.png */; };
+		EE90737713FEAC1400658D18 /* playerNavBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE90737113FEAC1400658D18 /* playerNavBar@2x.png */; };
 		EEA0691413E8A02800C4E1A2 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA0691213E8A02800C4E1A2 /* next.png */; };
 		EEA0691513E8A02800C4E1A2 /* prev.png in Resources */ = {isa = PBXBuildFile; fileRef = EEA0691313E8A02800C4E1A2 /* prev.png */; };
 		EEA7009313E1EA140017F550 /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008B13E1EA140017F550 /* Genre.m */; };
@@ -103,6 +108,11 @@
 		EEB8F80013C5FD0D00B70FDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F7FF13C5FD0D00B70FDB /* main.m */; };
 		EEB8F80313C5FD0D00B70FDB /* elloAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F80213C5FD0D00B70FDB /* elloAppDelegate.m */; };
 		EEB8F80613C5FD0D00B70FDB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEB8F80413C5FD0D00B70FDB /* MainWindow.xib */; };
+		EEC2A5B5140421B400DEC155 /* ElloInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A5B3140421B400DEC155 /* ElloInfoViewController.m */; };
+		EEC2A5B6140421B400DEC155 /* ElloInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEC2A5B4140421B400DEC155 /* ElloInfoViewController.xib */; };
+		EEC2A5B81404632C00DEC155 /* facebook_like_button1.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC2A5B71404632C00DEC155 /* facebook_like_button1.png */; };
+		EEC2A5BB140465FA00DEC155 /* PSFBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A5BA140465F800DEC155 /* PSFBLoginDialog.m */; };
+		EEC2A5C11404856600DEC155 /* followme.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC2A5C01404856400DEC155 /* followme.png */; };
 		EEC7F50413F447BE00818539 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC7F50313F447BE00818539 /* Security.framework */; };
 		EEC7F50613F447CA00818539 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC7F50513F447CA00818539 /* MessageUI.framework */; };
 		EEC7F76613F44C1400818539 /* SHKOAuthSharer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC7F6CC13F44C1400818539 /* SHKOAuthSharer.m */; };
@@ -342,8 +352,6 @@
 		EE6D054A13CE41FB0076850F /* PlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayListViewController.h; sourceTree = "<group>"; };
 		EE6D054B13CE41FB0076850F /* PlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListViewController.m; sourceTree = "<group>"; };
 		EE6D054C13CE41FC0076850F /* PlayListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayListViewController.xib; sourceTree = "<group>"; };
-		EE6D059313CF89080076850F /* XMLDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDataLoader.h; sourceTree = "<group>"; };
-		EE6D059413CF89090076850F /* XMLDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDataLoader.m; sourceTree = "<group>"; };
 		EE6D059613CF8FD20076850F /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
 		EE6D059713CF8FD30076850F /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		EE6D059913CF98170076850F /* asyncimageview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asyncimageview.h; sourceTree = "<group>"; };
@@ -368,6 +376,12 @@
 		EE8759DC13E6F3BA00B38801 /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
 		EE8759DE13E71E7C00B38801 /* GenreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreViewController.h; sourceTree = "<group>"; };
 		EE8759DF13E71E7C00B38801 /* GenreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreViewController.m; sourceTree = "<group>"; };
+		EE90736C13FEAC1400658D18 /* bgl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgl.png; sourceTree = "<group>"; };
+		EE90736D13FEAC1400658D18 /* bgl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgl@2x.png"; sourceTree = "<group>"; };
+		EE90736E13FEAC1400658D18 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		EE90736F13FEAC1400658D18 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		EE90737013FEAC1400658D18 /* playerNavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playerNavBar.png; sourceTree = "<group>"; };
+		EE90737113FEAC1400658D18 /* playerNavBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playerNavBar@2x.png"; sourceTree = "<group>"; };
 		EEA0691213E8A02800C4E1A2 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		EEA0691313E8A02800C4E1A2 /* prev.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prev.png; sourceTree = "<group>"; };
 		EEA7008113E1E4C70017F550 /* libRestKitCoreData.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRestKitCoreData.a; sourceTree = SOURCE_ROOT; };
@@ -417,6 +431,13 @@
 		EEB8F80113C5FD0D00B70FDB /* elloAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = elloAppDelegate.h; sourceTree = "<group>"; };
 		EEB8F80213C5FD0D00B70FDB /* elloAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = elloAppDelegate.m; sourceTree = "<group>"; };
 		EEB8F80513C5FD0D00B70FDB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		EEC2A5B2140421B400DEC155 /* ElloInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElloInfoViewController.h; sourceTree = "<group>"; };
+		EEC2A5B3140421B400DEC155 /* ElloInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElloInfoViewController.m; sourceTree = "<group>"; };
+		EEC2A5B4140421B400DEC155 /* ElloInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ElloInfoViewController.xib; sourceTree = "<group>"; };
+		EEC2A5B71404632C00DEC155 /* facebook_like_button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_like_button1.png; sourceTree = "<group>"; };
+		EEC2A5B9140465F600DEC155 /* PSFBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFBLoginDialog.h; sourceTree = "<group>"; };
+		EEC2A5BA140465F800DEC155 /* PSFBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFBLoginDialog.m; sourceTree = "<group>"; };
+		EEC2A5C01404856400DEC155 /* followme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followme.png; sourceTree = "<group>"; };
 		EEC7F50313F447BE00818539 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EEC7F50513F447CA00818539 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		EEC7F6C113F44A1300818539 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -655,6 +676,8 @@
 				EE6D04FB13CCD7DD0076850F /* PreviewViewController.xib */,
 				EE6D05A013CFAF5E0076850F /* PlayerViewController.h */,
 				EE6D05A113CFAF5F0076850F /* PlayerViewController.m */,
+				EE36A89013F6BF4700E2D698 /* ArtistInfoView.h */,
+				EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */,
 				EEB3240613EEF256008329F2 /* ClipThumb.h */,
 				EEB3240713EEF257008329F2 /* ClipThumb.m */,
 			);
@@ -817,29 +840,24 @@
 			children = (
 				EEB8F80113C5FD0D00B70FDB /* elloAppDelegate.h */,
 				EEB8F80213C5FD0D00B70FDB /* elloAppDelegate.m */,
-				EE6D059313CF89080076850F /* XMLDataLoader.h */,
-				EE6D059413CF89090076850F /* XMLDataLoader.m */,
-				EE6D059913CF98170076850F /* asyncimageview.h */,
-				EE6D059A13CF98180076850F /* asyncimageview.m */,
 				EEDB552113D0307200038999 /* RootViewController.h */,
 				EEDB552213D0307200038999 /* RootViewController.m */,
-				EE36A88713F6B52A00E2D698 /* ClipInfoViewController.h */,
-				EE36A88813F6B52A00E2D698 /* ClipInfoViewController.m */,
 				EE36A88913F6B52B00E2D698 /* ClipInfoViewController.xib */,
-				EE36A89013F6BF4700E2D698 /* ArtistInfoView.h */,
-				EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */,
 				EE36A89313F6BF8400E2D698 /* ArtistInfoView.xib */,
 				EEB8F80413C5FD0D00B70FDB /* MainWindow.xib */,
 				EEFB250F13E5BEBC00BA8BD1 /* TabbarViewController.xib */,
-				EEB323D313EED62C008329F2 /* Channels */,
-				EE74375E13E1F6DD00FD9509 /* Ganre */,
-				EE6D054513CE3FC50076850F /* PlayList */,
-				EE6D051C13CCE0980076850F /* Search */,
-				EE6D050813CCDC060076850F /* Artist */,
-				EE6D04F813CCD78C0076850F /* Preview */,
-				EE6D04F113CCD3190076850F /* Subscriptions */,
+				EEC2A5B2140421B400DEC155 /* ElloInfoViewController.h */,
+				EEC2A5B3140421B400DEC155 /* ElloInfoViewController.m */,
+				EEC2A5B4140421B400DEC155 /* ElloInfoViewController.xib */,
 				EEF2274813C7A63C004731BE /* General */,
 				EEF2274913C7A64A004731BE /* Clips */,
+				EE6D054513CE3FC50076850F /* PlayList */,
+				EEB323D313EED62C008329F2 /* Channels */,
+				EE6D050813CCDC060076850F /* Artist */,
+				EE74375E13E1F6DD00FD9509 /* Ganre */,
+				EE6D051C13CCE0980076850F /* Search */,
+				EE6D04F813CCD78C0076850F /* Preview */,
+				EE6D04F113CCD3190076850F /* Subscriptions */,
 				EEB8F7F913C5FD0D00B70FDB /* Supporting Files */,
 			);
 			path = ello;
@@ -848,9 +866,19 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEC2A5C01404856400DEC155 /* followme.png */,
+				EEC2A5B71404632C00DEC155 /* facebook_like_button1.png */,
+				EE6D059913CF98170076850F /* asyncimageview.h */,
+				EE6D059A13CF98180076850F /* asyncimageview.m */,
 				EEC7F6C813F44C1400818539 /* ShareKit */,
 				EEE11A1413F308AC0000002F /* cellBg.png.png */,
 				EEE11A1513F308AC0000002F /* cellBg@2x.png */,
+				EE90736C13FEAC1400658D18 /* bgl.png */,
+				EE90736D13FEAC1400658D18 /* bgl@2x.png */,
+				EE90736E13FEAC1400658D18 /* logo.png */,
+				EE90736F13FEAC1400658D18 /* logo@2x.png */,
+				EE90737013FEAC1400658D18 /* playerNavBar.png */,
+				EE90737113FEAC1400658D18 /* playerNavBar@2x.png */,
 				EEE11A1613F308AC0000002F /* cellBtnAdd.png */,
 				EEE11A1713F308AC0000002F /* cellBtnAdd@2x.png */,
 				EE5A6C9D13F302DE002BCE57 /* btnBack.png */,
@@ -1149,6 +1177,8 @@
 				EEC7F72913F44C1400818539 /* FBConnectGlobal.m */,
 				EEC7F72A13F44C1400818539 /* FBDialog.h */,
 				EEC7F72B13F44C1400818539 /* FBDialog.m */,
+				EEC2A5B9140465F600DEC155 /* PSFBLoginDialog.h */,
+				EEC2A5BA140465F800DEC155 /* PSFBLoginDialog.m */,
 				EEC7F72C13F44C1400818539 /* FBFeedDialog.h */,
 				EEC7F72D13F44C1400818539 /* FBFeedDialog.m */,
 				EEC7F72E13F44C1400818539 /* FBLoginButton.h */,
@@ -1298,6 +1328,8 @@
 			children = (
 				EEF2274A13C7A68E004731BE /* ClipsViewController.h */,
 				EEF2274B13C7A68E004731BE /* ClipsViewController.m */,
+				EE36A88713F6B52A00E2D698 /* ClipInfoViewController.h */,
+				EE36A88813F6B52A00E2D698 /* ClipInfoViewController.m */,
 				EEFB252613E5EB8500BA8BD1 /* MKEntryPanel */,
 				EE1E6C4313E34972006794C7 /* MyPlaylist.xcdatamodeld */,
 				EE5CDFC913DE25F200B60CC1 /* Clips.h */,
@@ -1544,6 +1576,15 @@
 				EE36A89413F6BF8500E2D698 /* ArtistInfoView.xib in Resources */,
 				EE4245C313FB38310045C7FB /* btnBck.png in Resources */,
 				EE4245C413FB38310045C7FB /* btnBck@2x.png in Resources */,
+				EE90737213FEAC1400658D18 /* bgl.png in Resources */,
+				EE90737313FEAC1400658D18 /* bgl@2x.png in Resources */,
+				EE90737413FEAC1400658D18 /* logo.png in Resources */,
+				EE90737513FEAC1400658D18 /* logo@2x.png in Resources */,
+				EE90737613FEAC1400658D18 /* playerNavBar.png in Resources */,
+				EE90737713FEAC1400658D18 /* playerNavBar@2x.png in Resources */,
+				EEC2A5B6140421B400DEC155 /* ElloInfoViewController.xib in Resources */,
+				EEC2A5B81404632C00DEC155 /* facebook_like_button1.png in Resources */,
+				EEC2A5C11404856600DEC155 /* followme.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1567,7 +1608,6 @@
 				EE6D051A13CCE08D0076850F /* SearchViewController.m in Sources */,
 				EE6D054913CE3FF00076850F /* PlayListsViewController.m in Sources */,
 				EE6D054D13CE41FC0076850F /* PlayListViewController.m in Sources */,
-				EE6D059513CF890A0076850F /* XMLDataLoader.m in Sources */,
 				EE6D059813CF8FD40076850F /* Artist.m in Sources */,
 				EE6D059B13CF981B0076850F /* asyncimageview.m in Sources */,
 				EE6D05A213CFAF600076850F /* PlayerViewController.m in Sources */,
@@ -1653,6 +1693,8 @@
 				EEC7F7A413F44C1400818539 /* SHKViewControllerWrapper.m in Sources */,
 				EE36A88A13F6B52E00E2D698 /* ClipInfoViewController.m in Sources */,
 				EE36A89213F6BF4900E2D698 /* ArtistInfoView.m in Sources */,
+				EEC2A5B5140421B400DEC155 /* ElloInfoViewController.m in Sources */,
+				EEC2A5BB140465FA00DEC155 /* PSFBLoginDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

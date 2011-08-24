@@ -10,6 +10,7 @@
 
 @implementation Clip
 
+@synthesize type;
 @synthesize thumb;
 @synthesize label;
 @synthesize clipID;

@@ -188,6 +188,7 @@
 - (void)touchedInView:(UIView*)view{
 	Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
 	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
+//	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithYouTubeVideo:clip];
 	[self.navigationController pushViewController:detailViewController animated:YES];
 	[detailViewController release];
 }

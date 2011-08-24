@@ -210,6 +210,20 @@
 	
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+	if (mode == kLocalhost ) {
+		[[_playList clips] removeObjectAtIndex:indexPath.row];
+		[[__delegate playlists] save];
+		[tableView reloadData];
+	}
+} 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+	if (mode == kLocalhost) {
+		return YES;
+	}
+	return NO;
+}
+
 - (void)segmentHeaderTapped:(UISegmentedControl*)sender{
 	
 }

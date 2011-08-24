@@ -26,9 +26,10 @@
 	NSString*		mainArtist;
 	NSString*		dirrector;
 	NSString*		producer;   
+	NSString*		type;
 }
 
-
+@property(nonatomic, retain)NSString* type;
 @property(nonatomic, retain)UIImage*	thumb;
 @property(nonatomic, retain)NSString*	label;
 @property(nonatomic, retain)NSNumber*	clipID;

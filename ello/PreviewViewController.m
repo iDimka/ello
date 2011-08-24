@@ -14,10 +14,14 @@
 #import "asyncimageview.h"
 #import "PlayerViewController.h"
 
+
+
 @interface PreviewViewController()
 
+@property(nonatomic, retain)UIWebView*	webPlayer;
 @property(nonatomic, retain)PlayerViewController*	moviePlayer;
 
+- (void)embedYouTube:(NSString *)urlString frame:(CGRect)frame;
 - (void)prev:(UIButton*)sender;
 - (void)next:(UIButton*)sender;
 
@@ -25,6 +29,7 @@
 
 @implementation PreviewViewController
 
+@synthesize webPlayer;
 @synthesize moviePlayer = _moviePlayer;
 @synthesize playlist = _playlist;
 @synthesize sun;
@@ -43,6 +48,16 @@
 		[self setHidesBottomBarWhenPushed:YES];
     }
     return self;
+}
+- (id)initWithYouTubeVideo:(Clip*)clip{
+	if (self = [self init]) 
+		{		
+			_playMode = kYouTubeClip;; 	
+		_playCountMode = kSingleClip;
+		self.currentClip = clip;						
+			
+	}
+	return self;
 }
 - (id)initWithPlaylist:(PlayList*)playlist inPlayMode:(PlayMode)mode {
     self = [self init];
@@ -87,6 +102,23 @@
 	[[self view] setBounds:CGRectMake(0, 0, 480, 320)];
 	[[self view] setCenter:CGPointMake(160, 240)];
 	[[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2)]; 
+	
+	
+	
+	if (_playMode == kYouTubeClip) {
+		[self embedYouTube:_clip.clipVideoURL frame:CGRectMake(26, 89, 161, 121)];
+//		[self.webPlayer = [[UIWebView alloc] initWithFrame:CGRectMake(26, 89, 161, 121)] release];
+//		NSString* htmlString = [NSString stringWithFormat:@"<html><head><meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head><body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+//								<div><object width=\"320\" height=\"372\">\
+//								<param name=\"movie\" value=\"http://www.youtube.com/v/oHg5SJYRHA0&f=gdata_videos&c=ytapi-my-clientID&d=nGF83uyVrg8eD4rfEkk22mDOl3qUImVMV6ramM\"></param>\
+//								<param name=\"wmode\" value=\"transparent\"></param>\
+//								<embed src=\"%@\"\
+//								type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"320\" height=\"416\"></embed>\
+//								</object></div></body></html>", _clip.clipVideoURL];
+//		[webPlayer loadHTMLString:htmlString baseURL:[NSURL URLWithString:_clip.clipVideoURL]];
+//		[webPlayer setScalesPageToFit:YES];
+//		[self.view addSubview:webPlayer];
+	}
 }
 - (void)viewWillAppear:(BOOL)animated{NSLog(@"%s", __func__);
 	[super viewWillDisappear:animated];
@@ -234,9 +266,31 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)embedYouTube:(NSString *)urlString frame:(CGRect)frame {
+    NSString *embedHTML = @"\
+    <html><head>\
+    <style type=\"text/css\">\
+    body {\
+    background-color: transparent;\
+    color: white;\
+    }\
+    </style>\
+    </head><body style=\"margin:0\">\
+    <embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
+    width=\"%0.0f\" height=\"%0.0f\"></embed>\
+    </body></html>";
+    NSString *html = [NSString stringWithFormat:embedHTML, urlString, frame.size.width, frame.size.height];
+    UIWebView *videoView = [[UIWebView alloc] initWithFrame:frame];
+    [videoView loadHTMLString:html baseURL:nil];
+    [self.view addSubview:videoView];
+    [videoView release];
+}
+
+
 - (void)dealloc {NSLog(@"%s", __func__);
-	
+		
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	self.webPlayer = nil;
     self.sun = nil;
 	[_moviePlayer release];
 	
@@ -244,3 +298,17 @@
 }
 
 @end
+
+/*
+ 
+ NSString* htmlString = [NSString stringWithFormat:@"<html><head><meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head><body style=\"background:#000;margin-top:0px;margin-left:0px\">\
+ <div><object width=\"320\" height=\"372\">\
+ <param name=\"movie\" value=\"http://www.youtube.com/v/oHg5SJYRHA0&f=gdata_videos&c=ytapi-my-clientID&d=nGF83uyVrg8eD4rfEkk22mDOl3qUImVMV6ramM\"></param>\
+ <param name=\"wmode\" value=\"transparent\"></param>\
+ <embed src=\"%@\"\
+ type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"320\" height=\"416\"></embed>\
+ </object></div></body></html>", _url];
+ 
+ [_webView loadHTMLString:htmlString baseURL:_url];
+ 
+ */

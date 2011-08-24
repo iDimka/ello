@@ -31,7 +31,7 @@
 @synthesize tabBarController=_tabBarController;
 
 - (void)initRestKit {
-	RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURL:@"http://themedibook.com/ello/services"];
+	RKObjectManager* objectManager = [RKObjectManager objectManagerWithBaseURL:@"http://50.17.200.31"];
 	 
 	[RKRequestQueue sharedQueue].delegate = (NSObject<RKRequestQueueDelegate>*)self;
 	[RKRequestQueue sharedQueue].showsNetworkActivityIndicatorWhenBusy = YES;
@@ -48,6 +48,7 @@
 	 @"clip.image",		@"clipImageURL",
  	 @"clip.video",		@"clipVideoURL",
   	 @"clip.label",		@"label", 
+	 @"clip.type",		@"type",
      nil];
 	
 	RKObjectMapping*  clipsMapping = [RKObjectMapping mappingForClass:[Clips class]];
@@ -114,6 +115,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 
+//#if DEBUG
+//	PreviewViewController* p = [[PreviewViewController alloc] init];
+//	UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:p];
+//	[p release];
+//	[_window addSubview:navigationController.view];
+//	return YES;
+//	
+//#endif
+	
+	
 	[self initRestKit];
 	[[NSBundle mainBundle] loadNibNamed:@"TabbarViewController" owner:self options:nil];
 
