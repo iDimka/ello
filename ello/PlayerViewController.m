@@ -188,7 +188,7 @@
 	[[SHK currentHelper] setRootViewController:self];
 
 	[SHK setUserExclusions:[NSDictionary dictionaryWithObject:@"1" forKey:@"SHKReadItLater"]];
-	SHKItem *item = [SHKItem URL:self.moviePlayer.contentURL title:@""];
+	SHKItem *item = [SHKItem URL:self.moviePlayer.contentURL title:_delegate.currentClip.clipName];
 	 
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
 	 

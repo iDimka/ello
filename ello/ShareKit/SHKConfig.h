@@ -50,6 +50,19 @@
 #define SHKFacebookSecret			@"4509bd4bfb48173c628c8233b175e3c2"
 #define SHKFacebookSessionProxyURL  @""
 
+//Summary
+//App ID/API Key
+//246398275400534
+//App Secret
+//06ef73be018f13402bc3e4fe7897cbf9
+//Contact Email
+//ipaddev@gmail.com
+//Support Email
+//symbolic.digital@gmail.com
+//Access Token
+//246398275400534|2.AQD9lnmouIAAwK9l.3600.1314324000.0-1070695259|REAkxp7GWniWBmUx8n8g3ItDFjoMore
+
+
 // Read It Later - http://readitlaterlist.com/api/?shk
 #define SHKReadItLaterKey			@"e7dd6iaNTd8a7g529dA9d9fVb4g4PcUQ"
 
@@ -69,9 +82,9 @@
  2. 'Application Type' should be set to BROWSER (not client)
  3. 'Callback URL' should match whatever you enter in SHKTwitterCallbackUrl.  The callback url doesn't have to be an actual existing url.  The user will never get to it because ShareKit intercepts it before the user is redirected.  It just needs to match.
  */
-#define SHKTwitterConsumerKey		@"iaL5xCS6G4lx597Q02EVA"
-#define SHKTwitterSecret			@"GemEO6nry8iJMbT7BP4nkSfpBQlTXZuO0anQpuNK3M"
-#define SHKTwitterCallbackUrl		@"http://idimkadev.com" // You need to set this if using OAuth, see note above (xAuth users can skip it)
+#define SHKTwitterConsumerKey		@"iBNwTOAOM7Cyrb6Tb81zQ"
+#define SHKTwitterSecret			@"onF0kQUVQlpd6qyD5UkofWYgogf8QaQlC187X6NnI"
+#define SHKTwitterCallbackUrl		@"http://mobile.twitter.com/ello" // You need to set this if using OAuth, see note above (xAuth users can skip it)
 #define SHKTwitterUseXAuth			0 // To use xAuth, set to 1
 #define SHKTwitterUsername			@"ElloRU" // Enter your app's twitter account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
 

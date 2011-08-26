@@ -19,15 +19,7 @@
 @end
 
 @implementation GenresViewController;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
+ 
 - (void)dealloc{
     [super dealloc];
 }
@@ -71,7 +63,7 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
--(void)InesrtViewInCantainer{
+- (void)InesrtViewInCantainer{
 //
 //    for (int ind = 0; ind < 3; ind++) 
 //    {

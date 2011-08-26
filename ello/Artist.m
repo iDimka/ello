@@ -10,7 +10,8 @@
 
 
 @implementation Artist
- 
+
+@synthesize details;
 @synthesize thumb;
 @synthesize artistID;
 @synthesize artistName;

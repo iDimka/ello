@@ -8,6 +8,8 @@
 
 #import "ElloInfoViewController.h"
 
+
+#import "SVWebViewController.h"
 #import "PSFBLoginDialog.h"
 #import "SHK.h"
 #import "SHKTwitter.h"
@@ -28,7 +30,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
 
-	likeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(10, 10, 150, 35)] autorelease];
+//	likeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(10, 10, 150, 35)] autorelease];
 	[self.view addSubview:likeWebView];
 	
 	
@@ -69,9 +71,17 @@
 	[likeWebView reload];
 }
 
+- (IBAction)fbFeed:(id)sender{
+	SVWebViewController* w = [[SVWebViewController alloc] initWithAddress:@"http://m.facebook.com/ElloMusic?_rdr"];
+	[self.navigationController presentModalViewController:w animated:YES];
+	[w release];
+}
 - (IBAction)followMe:(id)sender{
-	SHKTwitter* tw = [[[SHKTwitter alloc] init] autorelease];
-	[tw followMe];
+//	SHKTwitter* tw = [[[SHKTwitter alloc] init] autorelease];
+//	[tw followMe];
+	SVWebViewController* w = [[SVWebViewController alloc] initWithAddress:@"http://mobile.twitter.com/ello"];
+	[self.navigationController presentModalViewController:w animated:YES];
+	[w release];
 }
 
 

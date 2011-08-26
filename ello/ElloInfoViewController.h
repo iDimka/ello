@@ -10,6 +10,7 @@
 
 @interface ElloInfoViewController : UIViewController
 
+- (IBAction)fbFeed:(id)sender;
 - (IBAction)followMe:(id)sender;
 
 @end

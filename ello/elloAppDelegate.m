@@ -62,6 +62,7 @@
 	 @"artist.id",		@"artistID",
 	 @"artist.image",	@"artistImage",
 	 @"artist.name",	@"artistName",  
+	 @"artist.details",	@"details",
 	 nil];
 	
 	RKObjectMapping*  artistMapping = [RKObjectMapping mappingForClass:[Artists class]];

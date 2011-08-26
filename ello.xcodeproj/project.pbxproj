@@ -185,6 +185,10 @@
 		EECAB46E13CBA30000EE96B5 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EECAB46D13CBA30000EE96B5 /* iAd.framework */; };
 		EECFB8D713E08B1E00BB3D80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EECFB8D613E08B1E00BB3D80 /* Foundation.framework */; };
 		EECFB8F013E0C89C00BB3D80 /* SlideshowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EECFB8EF13E0C89C00BB3D80 /* SlideshowImageView.m */; };
+		EED9B05B1406EB9600A45309 /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EED9B0581406EB9600A45309 /* SVWebViewController.bundle */; };
+		EED9B05C1406EB9600A45309 /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EED9B05A1406EB9600A45309 /* SVWebViewController.m */; };
+		EED9B05F1406FF6C00A45309 /* fb.png in Resources */ = {isa = PBXBuildFile; fileRef = EED9B05D1406FF6C00A45309 /* fb.png */; };
+		EED9B0601406FF6C00A45309 /* tw.png in Resources */ = {isa = PBXBuildFile; fileRef = EED9B05E1406FF6C00A45309 /* tw.png */; };
 		EEDB552313D0307200038999 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDB552213D0307200038999 /* RootViewController.m */; };
 		EEDB552613D0319600038999 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEDB552513D0319600038999 /* QuartzCore.framework */; };
 		EEE11A1813F308AC0000002F /* cellBg.png.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE11A1413F308AC0000002F /* cellBg.png.png */; };
@@ -579,6 +583,11 @@
 		EECFB8D613E08B1E00BB3D80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EECFB8EE13E0C89C00BB3D80 /* SlideshowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideshowImageView.h; sourceTree = "<group>"; };
 		EECFB8EF13E0C89C00BB3D80 /* SlideshowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideshowImageView.m; sourceTree = "<group>"; };
+		EED9B0581406EB9600A45309 /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
+		EED9B0591406EB9600A45309 /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
+		EED9B05A1406EB9600A45309 /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
+		EED9B05D1406FF6C00A45309 /* fb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fb.png; sourceTree = "<group>"; };
+		EED9B05E1406FF6C00A45309 /* tw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tw.png; sourceTree = "<group>"; };
 		EEDB552113D0307200038999 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		EEDB552213D0307200038999 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		EEDB552513D0319600038999 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -866,6 +875,9 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EED9B05D1406FF6C00A45309 /* fb.png */,
+				EED9B05E1406FF6C00A45309 /* tw.png */,
+				EED9B0571406EB9600A45309 /* SVWebViewController */,
 				EEC2A5C01404856400DEC155 /* followme.png */,
 				EEC2A5B71404632C00DEC155 /* facebook_like_button1.png */,
 				EE6D059913CF98170076850F /* asyncimageview.h */,
@@ -1278,6 +1290,16 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		EED9B0571406EB9600A45309 /* SVWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EED9B0581406EB9600A45309 /* SVWebViewController.bundle */,
+				EED9B0591406EB9600A45309 /* SVWebViewController.h */,
+				EED9B05A1406EB9600A45309 /* SVWebViewController.m */,
+			);
+			path = SVWebViewController;
+			sourceTree = "<group>";
+		};
 		EEF2270113C651FC004731BE /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1585,6 +1607,9 @@
 				EEC2A5B6140421B400DEC155 /* ElloInfoViewController.xib in Resources */,
 				EEC2A5B81404632C00DEC155 /* facebook_like_button1.png in Resources */,
 				EEC2A5C11404856600DEC155 /* followme.png in Resources */,
+				EED9B05B1406EB9600A45309 /* SVWebViewController.bundle in Resources */,
+				EED9B05F1406FF6C00A45309 /* fb.png in Resources */,
+				EED9B0601406FF6C00A45309 /* tw.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1695,6 +1720,7 @@
 				EE36A89213F6BF4900E2D698 /* ArtistInfoView.m in Sources */,
 				EEC2A5B5140421B400DEC155 /* ElloInfoViewController.m in Sources */,
 				EEC2A5BB140465FA00DEC155 /* PSFBLoginDialog.m in Sources */,
+				EED9B05C1406EB9600A45309 /* SVWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

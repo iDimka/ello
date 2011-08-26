@@ -35,15 +35,13 @@
 
 @synthesize item, sharers;
 
-- (void)dealloc
-{
+- (void)dealloc{
 	[item release];
 	[sharers release];
 	[super dealloc];
 }
 
-+ (SHKActionSheet *)actionSheetForType:(SHKShareType)type
-{
++ (SHKActionSheet *)actionSheetForType:(SHKShareType)type{
 	SHKActionSheet *as = [[SHKActionSheet alloc] initWithTitle:SHKLocalizedString(@"Share")
 													  delegate:self
 											 cancelButtonTitle:nil
@@ -54,7 +52,8 @@
 	
 	as.sharers = [NSMutableArray arrayWithCapacity:0];
 	NSArray *favoriteSharers = [SHK favoriteSharersForType:type];
-		
+	
+	[as addButtonWithTitle:@""];
 	// Add buttons for each favorite sharer
 	id class;
 	for(NSString *sharerId in favoriteSharers)
@@ -62,7 +61,7 @@
 		class = NSClassFromString(sharerId);
 		if ([class canShare])
 		{
-			[as addButtonWithTitle: [class sharerTitle] ];
+//			[as addButtonWithTitle: [class sharerTitle] ];
 			[as.sharers addObject:sharerId];
 		}
 	}
@@ -74,32 +73,55 @@
 	[as addButtonWithTitle:SHKLocalizedString(@"Cancel")];
 	as.cancelButtonIndex = as.numberOfButtons -1;
 	
+	[[[as subviews] objectAtIndex:0] setText:@""];
+	[[[as subviews] objectAtIndex:1] removeFromSuperview];
+//	[[[as subviews] objectAtIndex:2] removeFromSuperview];
+	
+	UIButton* fb = [UIButton buttonWithType:UIButtonTypeCustom];
+	fb.frame = CGRectMake(480 / 4 - 64 / 2, 25, 64, 64);
+	[as addSubview:fb];
+	[fb setImage:[UIImage imageNamed:@"fb.png"] forState:UIControlStateNormal];
+	[fb addTarget:as action:@selector(fb) forControlEvents:UIControlEventTouchUpInside];
+	
+	
+	UIButton* tw = [UIButton buttonWithType:UIButtonTypeCustom];
+	tw.frame = CGRectMake(480 / 4 * 3 - 64 / 2, 25, 64, 64);
+	[as addSubview:tw];
+	[tw setImage:[UIImage imageNamed:@"tw.png"] forState:UIControlStateNormal];
+	[tw addTarget:as action:@selector(tw) forControlEvents:UIControlEventTouchUpInside];
+	
 	return [as autorelease];
 }
 
-+ (SHKActionSheet *)actionSheetForItem:(SHKItem *)i
-{
++ (SHKActionSheet *)actionSheetForItem:(SHKItem *)i{
 	SHKActionSheet *as = [self actionSheetForType:i.shareType];
 	as.item = i;
 	return as;
 }
+- (void)tw{ 
+	[super dismissWithClickedButtonIndex:self.cancelButtonIndex animated:1];
+	[NSClassFromString([sharers objectAtIndex:0]) performSelector:@selector(shareItem:) withObject:item];
+}
+- (void)fb{ 
+	[super dismissWithClickedButtonIndex:self.cancelButtonIndex animated:1];
+	[NSClassFromString([sharers objectAtIndex:1]) performSelector:@selector(shareItem:) withObject:item];
+}
 
-- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated
-{
+- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated{
 	// Sharers
-	if (buttonIndex >= 0 && buttonIndex < sharers.count)
-	{
-		[NSClassFromString([sharers objectAtIndex:buttonIndex]) performSelector:@selector(shareItem:) withObject:item];
-	}
-	
-	// More
-	else if (buttonIndex == sharers.count)
-	{
-		SHKShareMenu *shareMenu = [[SHKCustomShareMenu alloc] initWithStyle:UITableViewStyleGrouped];
-		shareMenu.item = item;
-//		[[SHK currentHelper] showViewController:shareMenu];
-		[shareMenu release];
-	}
+//	if (buttonIndex >= 0 && buttonIndex < sharers.count)
+//	{
+//		[NSClassFromString([sharers objectAtIndex:buttonIndex]) performSelector:@selector(shareItem:) withObject:item];
+//	}
+//	
+//	// More
+//	else if (buttonIndex == sharers.count)
+//	{
+//		SHKShareMenu *shareMenu = [[SHKCustomShareMenu alloc] initWithStyle:UITableViewStyleGrouped];
+//		shareMenu.item = item;
+////		[[SHK currentHelper] showViewController:shareMenu];
+//		[shareMenu release];
+//	}
 	
 	[super dismissWithClickedButtonIndex:buttonIndex animated:animated];
 }

@@ -48,12 +48,14 @@
 	_contentScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 367)];
 	_artistPhoto = [[AsyncImageView alloc] initWithFrame:CGRectMake(20, paggin, 280, 280)];
 	[_artistPhoto setBackgroundColor:[UIColor darkGrayColor]];
-	_artistTweets = [[UITextView alloc] initWithFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, 10)];
-	_artistTweets.textColor = [UIColor whiteColor];
-	[_artistTweets setBackgroundColor:[UIColor clearColor]];
 	
-	[_artistTweets setFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, [_artistTweets contentSize].height)];
-	[_artistTweets setScrollEnabled:NO];
+	_artistTweets = [[UITextView alloc] initWithFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, 30)];
+	_artistTweets.text = _artist.details;
+	_artistTweets.textColor = [UIColor whiteColor];
+	[_artistTweets setBackgroundColor:[UIColor clearColor]];  
+	[_contentScroll addSubview:_artistTweets]; 
+	[_artistTweets setFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, _artistTweets.contentSize.height)];
+	NSLog(@"a d %@", _artistTweets);
 	
 	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _artistTweets.frame.origin.y + _artistTweets.frame.size.height + paggin, 320, 1) style:UITableViewStylePlain];;
 	[_contentScroll addSubview:_tableView];
@@ -65,11 +67,9 @@
 	[self.view addSubview:_contentScroll];
 	
 	[_contentScroll addSubview:_artistPhoto];
-	[_contentScroll addSubview:_artistTweets]; 
 	
 	self.title = _artist.artistName;
 	if (!(_artistPhoto.image = _artist.thumb))	[_artistPhoto loadImageFromURL:[NSURL URLWithString:_artist.artistImage]];
-	_artistTweets.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel est ante, in aliquet lorem. Sed tellus est, aliquam ac volutpat ornare, consectetur ut nunc. Aenean ac ligula velit, vitae rutrum urna. Mauris eget velit tortor. Mauris sed ligula velit. Nulla ultricies sem et velit auctor egestas. ";
 	
 	[[RKObjectManager sharedManager] 
 	 loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=clip&action=getClipsByArtistId&id=%d", [_artist.artistID intValue]] 

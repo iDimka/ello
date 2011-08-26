@@ -17,8 +17,6 @@
 
 @implementation GenreViewController
 
-//@synthesize tableView = _tableView;
-
 - (id)initWithGenre:(Genre*)genre {
     self = [super init];
     if (self) {
