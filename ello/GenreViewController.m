@@ -8,6 +8,17 @@
 
 #import "GenreViewController.h"
 
+#import "PlayList.h"
+#import "PlayLists.h"
+#import "Clips.h"
+#import "Clip.h" 
+#import "Artist.h"
+#import "SearchViewController.h"
+#import "PreviewViewController.h"
+#import "VideoObject.h"
+#import "VideoTableViewCell.h"
+
+
 @interface GenreViewController()
 
 //@property(nonatomic, retain)UITableView*	tableView;
@@ -51,6 +62,16 @@
 	
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+    Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
+ 
+	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
+	[self.navigationController pushViewController:detailViewController animated:YES];
+	[detailViewController release];
+	
+	
+}
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	if ([[_dataSource objectAtIndex:_segment.selectedSegmentIndex] isKindOfClass:[NSNull class]] ) {

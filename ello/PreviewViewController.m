@@ -29,6 +29,7 @@
 
 @implementation PreviewViewController
 
+@synthesize trackPosition;
 @synthesize webPlayer;
 @synthesize moviePlayer = _moviePlayer;
 @synthesize playlist = _playlist;
@@ -52,7 +53,7 @@
 - (id)initWithYouTubeVideo:(Clip*)clip{
 	if (self = [self init]) 
 		{		
-			_playMode = kYouTubeClip;; 	
+		_playMode = kYouTubeClip;; 	
 		_playCountMode = kSingleClip;
 		self.currentClip = clip;						
 			
@@ -76,10 +77,23 @@
 				[self next:nil];
 				break;
 		}
+		trackPosition.text = [NSString stringWithFormat:@"%d из %d", _index + 1, [[_playlist clips] count]];
+							  
 	}
 	return self;
 }
 - (id)initWithClip:(Clip*)clip{
+	
+	
+	if ([clip.type isEqualToString:@"youtube"]) 
+		{
+//		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.youtube.com/watch?v=lswjfAN6gTE&feature=youtu.be"]];
+													
+													
+
+//		[[clip.clipVideoURL stringByReplacingOccurrencesOfString:@"http" withString:@"youtube"]] ];
+		return [self initWithYouTubeVideo:clip];		
+	}
     self = [self init];
     if (self) {
 		_playMode = kNormal; 	
@@ -106,24 +120,15 @@
 	
 	
 	if (_playMode == kYouTubeClip) {
-		[self embedYouTube:_clip.clipVideoURL frame:CGRectMake(26, 89, 161, 121)];
-//		[self.webPlayer = [[UIWebView alloc] initWithFrame:CGRectMake(26, 89, 161, 121)] release];
-//		NSString* htmlString = [NSString stringWithFormat:@"<html><head><meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head><body style=\"background:#000;margin-top:0px;margin-left:0px\">\
-//								<div><object width=\"320\" height=\"372\">\
-//								<param name=\"movie\" value=\"http://www.youtube.com/v/oHg5SJYRHA0&f=gdata_videos&c=ytapi-my-clientID&d=nGF83uyVrg8eD4rfEkk22mDOl3qUImVMV6ramM\"></param>\
-//								<param name=\"wmode\" value=\"transparent\"></param>\
-//								<embed src=\"%@\"\
-//								type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"320\" height=\"416\"></embed>\
-//								</object></div></body></html>", _clip.clipVideoURL];
-//		[webPlayer loadHTMLString:htmlString baseURL:[NSURL URLWithString:_clip.clipVideoURL]];
-//		[webPlayer setScalesPageToFit:YES];
-//		[self.view addSubview:webPlayer];
+		[self embedYouTube:_currentClip.clipVideoURL frame:CGRectMake(26, 89, 161, 121)];
+		
+		[_buffering setHidden:YES];
+		[sun stopAnimating];
 	}
 }
-- (void)viewWillAppear:(BOOL)animated{NSLog(@"%s", __func__);
+- (void)viewWillAppear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	
-	
+	 
  	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
 	
 	if ([_currentClip thumb])[self.thumbView setImage:_currentClip.thumb];
@@ -132,7 +137,11 @@
 	[self.clipName setText:_currentClip.clipName];
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [_currentClip.viewCount intValue]]];
 
-	 
+	if (_playCountMode == kMultiClips) 
+		{		
+//			trackPosition.text = [NSString stringWithFormat:@"%d из %d", _index + 1, [[_playlist clips] count]];
+		}
+
 }
 - (void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
@@ -200,8 +209,8 @@
 		break;
 		
 		case kShufle:
-		
-		self.currentClip = [_playlist.clips objectAtIndex:(arc4random()% [_playlist.clips count])];
+		_index = arc4random()% [_playlist.clips count];
+		self.currentClip = [_playlist.clips objectAtIndex:_index];
 		self.moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 		[_moviePlayer release];
 		
@@ -209,9 +218,14 @@
 	}
 
 	[sun startAnimating];
-		[_buffering setHidden:NO];
+	[_buffering setHidden:NO];
 	[_moviePlayer setPlaylist:_playlist];
 	_moviePlayer.delegate = self;
+
+	if (_playCountMode == kMultiClips) 
+		{		
+			trackPosition.text = [NSString stringWithFormat:@"%d из %d", _index + 1, [[_playlist clips] count]];
+		}
 }
 - (void)prev:(UIButton*)sender{NSLog(@"%s %d", __func__, _index);
 	
@@ -229,7 +243,10 @@
 			break;
 			
 		case kShufle:
-			self.moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[[_playlist.clips objectAtIndex:(arc4random()% [_playlist.clips count])] clipVideoURL]]];
+			
+			_index = arc4random()% [_playlist.clips count];
+			self.currentClip = [_playlist.clips objectAtIndex:_index];
+			self.moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 			[_moviePlayer release];
 			break;
 	}
@@ -237,6 +254,10 @@
 	[_buffering setHidden:NO];	
 	[_moviePlayer setPlaylist:_playlist];
 	_moviePlayer.delegate = self;
+	if (_playCountMode == kMultiClips) 
+		{		
+		trackPosition.text = [NSString stringWithFormat:@"%d из %d", _index + 1, [[_playlist clips] count]];
+	}
 }
 - (void)selectClip:(Clip*)clip{
 	
@@ -259,7 +280,8 @@
 	[self.artistName setText:_currentClip.artistName];
 	[self.clipName setText:_currentClip.clipName];
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [_currentClip.viewCount intValue]]];
-
+ 
+	trackPosition.text = [NSString stringWithFormat:@"%d из %d", _index + 1, [[_playlist clips] count]];
 
 }
 - (IBAction)back:(id)sender{
@@ -267,18 +289,11 @@
 }
 
 - (void)embedYouTube:(NSString *)urlString frame:(CGRect)frame {
-    NSString *embedHTML = @"\
-    <html><head>\
-    <style type=\"text/css\">\
-    body {\
-    background-color: transparent;\
-    color: white;\
-    }\
-    </style>\
-    </head><body style=\"margin:0\">\
-    <embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
-    width=\"%0.0f\" height=\"%0.0f\"></embed>\
-    </body></html>";
+    NSString *embedHTML = @"<html><head>\
+	<body style=\"margin:0\">\
+	<embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
+	width=\"%0.0f\" height=\"%0.0f\"></embed>\
+	</body></html>";
     NSString *html = [NSString stringWithFormat:embedHTML, urlString, frame.size.width, frame.size.height];
     UIWebView *videoView = [[UIWebView alloc] initWithFrame:frame];
     [videoView loadHTMLString:html baseURL:nil];

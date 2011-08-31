@@ -17,7 +17,7 @@
 
 - (void)addPlaylist:(PlayList*)playlist;
 - (void)removePlaylist:(PlayList*)playlist;
-- (void)save;
 - (void)read;
+- (void)save;
 
 @end

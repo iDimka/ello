@@ -64,13 +64,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{ 
 	switch (_segment.selectedSegmentIndex) {
 		case 0:
-			return [[[_dataSourceTop objectAtIndex:0] playlists] count]; 
+			return [[(PlayLists*)[_dataSourceTop objectAtIndex:0] playlists] count]; 
 			break;
 		case 1:  
-			return [[[_dataSourceCharts objectAtIndex:0] playlists] count];
+			return [[(PlayLists*)[_dataSourceCharts objectAtIndex:0] playlists] count];
 			break;
 		case 2:
-			return [[[_dataSourceMy objectAtIndex:0] playlists]		count]; 
+			return [[(PlayLists*)[_dataSourceMy objectAtIndex:0] playlists]	count]; 
 			break; 	
 	}
 	return 0;
@@ -87,13 +87,13 @@
 	PlayList* playlist =  nil;
 	switch (_segment.selectedSegmentIndex) {
 		case 0:
-			playlist = [[[_dataSourceTop objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			playlist = [[(PlayLists*)[_dataSourceTop objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
 			break;
 		case 1:  
-			playlist = [[[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
+			playlist = [[(PlayLists*)[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
 			break;
 		case 2:
-			playlist = [[[_dataSourceMy objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			playlist = [[(PlayLists*)[_dataSourceMy objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
 			break; 	
 	}
 	[cell configCellByPlayList:playlist];
@@ -108,13 +108,13 @@
 	PlayList* playlist =  nil;
 	switch (_segment.selectedSegmentIndex) {
 		case 0:
-			playlist = [[[_dataSourceTop objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			playlist = [[(PlayLists*)[_dataSourceTop objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
 			break;
 		case 1:  
-			playlist = [[[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
+			playlist = [[(PlayLists*)[_dataSourceCharts objectAtIndex:0] playlists] objectAtIndex:indexPath.row];
 			break;
 		case 2:
-			playlist = [[[_dataSourceMy objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			playlist = [[(PlayLists*)[_dataSourceMy objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
 			break; 	
 	}
 
@@ -135,7 +135,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
 	if (_segment.selectedSegmentIndex) 
 		{
-		[[[_dataSourceMy objectAtIndex:0] playlists] removeObjectAtIndex:indexPath.row];
+		[[(PlayLists*)[_dataSourceMy objectAtIndex:0] playlists] removeObjectAtIndex:indexPath.row];
 		[[__delegate playlists] save];
 		[tableView reloadData];
 		}

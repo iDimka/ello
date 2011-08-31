@@ -32,7 +32,6 @@
 		}
     return self;
 }
-
 - (void)encodeWithCoder:(NSCoder *)encoder{
 	[encoder encodeObject:playlists forKey:@"playlists"];
 	[encoder encodeObject:status forKey:@"status"];

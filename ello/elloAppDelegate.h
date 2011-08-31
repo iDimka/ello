@@ -9,15 +9,16 @@
 #import <UIKit/UIKit.h> 
 #import "SHK.h"
 
-@class Playlists;
+@class PlayLists;
 @class RKReachabilityObserver;
 
 @interface elloAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UINavigationControllerDelegate> {
-	Playlists* _playlists;
+	PlayLists* _playlists;
+	IBOutlet UIImageView* bg;
 	
 }
 
-@property (nonatomic, retain) Playlists* playlists;
+@property (nonatomic, retain) PlayLists* playlists;
 @property (nonatomic, retain) RKReachabilityObserver* reachability;
 @property (nonatomic, retain) IBOutlet UIWindow *window; 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;

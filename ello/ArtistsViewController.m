@@ -92,7 +92,7 @@
     Artist* artist = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] artists] objectAtIndex:indexPath.row];
 	
 	[cell configCellByArtitst:artist];
-    
+//    NSLog([artist.artistID stringValue]);
     return cell;
 }
 

@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "PreviewViewController.h"
 #import "ClipThumb.h"
 #import "PlayLists.h"
 #import "PlayList.h"
 
-@protocol PlaylistProtocol;
-
+@class TimelineViewController;
 @class Clip;
 
 @interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate, PlaylistProtocol, ClipThumbProtocol>{
@@ -26,6 +25,7 @@
 	Clip*					_currentClip;
 	UIScrollView*			_clipsBund;
 	UIButton*				_stopPlayButton;
+	TimelineViewController*	_timeLineView;
 }
 
 @property(nonatomic, retain)Clip*					currentClip;

@@ -20,6 +20,8 @@
 
 @property(nonatomic, retain)Clip*				clipToPlaylist;
 
+- (void)addToPlaylist:(Clip*)cell;
+
 @end
 
 @implementation PlayListViewController
@@ -194,6 +196,7 @@
 	[cell setClipDelegate:self];
 	[cell configCellByClip:clip];
 	[cell setClipNumber:indexPath.row];
+//	NSLog([clip.artistId stringValue]);
     
     return cell;
 }
@@ -224,10 +227,13 @@
 	return NO;
 }
 
+#pragma mark -
+
 - (void)segmentHeaderTapped:(UISegmentedControl*)sender{
 	
 }
 - (void)showAll:(id)sender{
+	if (![_dataSource count]) return;
 	UIActionSheet* menu = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Просмотреть Все", @"Вперемешку", nil];
 	[menu showInView:self.view];
 	[menu release];

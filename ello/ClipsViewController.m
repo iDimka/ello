@@ -55,7 +55,7 @@
 	[_tableView setBackgroundView:tmp];
 	[tmp release];
 	
-	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Премьеры", @"Популярные", @"Новинки", @"Жанры", nil]];
+	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Премьеры", @"Популярные", @"Новинки", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[_segment addTarget:self action:@selector(segmentTapped:) forControlEvents:UIControlEventValueChanged];
 	self.navigationItem.titleView = _segment; 
@@ -161,7 +161,7 @@
 	[cell setClipDelegate:self];
 	[cell configCellByClip:clip];
 	[cell setClipNumber:indexPath.row];
-    
+//    NSLog([clip.artistId stringValue]);
     return cell;
 }
 

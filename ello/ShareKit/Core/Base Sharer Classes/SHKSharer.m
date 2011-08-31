@@ -613,8 +613,8 @@
 
 - (void)sharerStartedSending:(SHKSharer *)sharer
 {
-	if (!quiet)
-		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Saving to %@", [[self class] sharerTitle])];
+//	if (!quiet)
+		//[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Saving to %@", [[self class] sharerTitle])];
 }
 
 - (void)sharerFinishedSending:(SHKSharer *)sharer

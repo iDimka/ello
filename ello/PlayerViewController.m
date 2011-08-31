@@ -8,13 +8,14 @@
 
 #import "PlayerViewController.h"
 
+#import "TimelineViewController.h"
+#import "SecondLineView.h"
 #import "ArtistInfoView.h"
 #import "ClipInfoViewController.h"
 #import "SHKActionSheet.h"
 #import "SHK.h"
 #import "MKEntryPanel.h"
 #import "PlayList.h"
-#import "PreviewViewController.h"
 #import "Clip.h"
 
 
@@ -29,12 +30,13 @@
 - (id)initWithContentURL:(NSURL*)url {
     self = [super initWithContentURL:url];
     if (self) {
-        NSLog(@"%s:%d", __func__, self);
+        //////NSLog(@"%s:%d", __func__, self);
     }
     return self;
 }
 - (void)dealloc {NSLog(@"%s:%d", __func__, self);
     
+	[_timeLineView release];
 	[_currentClip release];
 	[_topControl release];
 	[_bottomControl release];
@@ -45,6 +47,8 @@
 - (void)viewDidLoad{NSLog(@"%s", __func__);
     [super viewDidLoad];
 	 
+//	self.moviePlayer.shouldAutoplay = YES;
+	
 	 _topControl = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
 	[_topControl setImage:[UIImage imageNamed:@"playerBand.png"]];
 	[_topControl setAlpha:.8];
@@ -88,10 +92,14 @@
 	
 	 _stopPlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	 [_stopPlayButton setFrame:CGRectMake(10, 2, 36, 36)];
-	 [_stopPlayButton setImage:[UIImage imageNamed:@"playerBtnPlay.png"]		forState:UIControlStateSelected];
 	 [_stopPlayButton setImage:[UIImage imageNamed:@"playerBtnStop.png"]		forState:UIControlStateNormal];
+	 [_stopPlayButton setImage:[UIImage imageNamed:@"playerBtnPlay.png"]		forState:UIControlStateSelected];
 	[_stopPlayButton addTarget:self action:@selector(stopPlay:) forControlEvents:UIControlEventTouchUpInside];
 	 [_bottomControl addSubview:_stopPlayButton];
+	
+	_timeLineView = [[TimelineViewController alloc] initWithFrame:CGRectMake(70, 10, 200, 20)];
+	[_bottomControl addSubview:_timeLineView];
+	[_timeLineView setDataSource:self.moviePlayer];
 	
 	self.moviePlayer.controlStyle = MPMovieControlStyleNone;
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
@@ -133,8 +141,11 @@
 	
 }
 - (void)viewWillDisappear:(BOOL)animated{
+//	[_timeLineView setDataSource:nil];
 	[super viewWillDisappear:animated];
- 
+	[_timeLineView setDataSource:nil];
+	[_timeLineView release];
+	_timeLineView = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver:self]; 
 } 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{ 
@@ -143,6 +154,10 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
  	
+	[super touchesEnded:touches withEvent:event];
+	CGPoint p = [[touches anyObject] locationInView:self.view];
+	if (!CGRectContainsPoint((CGRect){{40, 40}, {300, 240}}, p)) return;
+	
 	if (_topControl.center.y == -50) {
 		[UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionShowHideTransitionViews animations:^(void) {
 			_topControl.center = CGPointMake(_topControl.center.x, 22); 
@@ -201,14 +216,31 @@
 	else if (self.moviePlayer.playbackState == MPMoviePlaybackStatePaused || self.moviePlayer.playbackState == MPMoviePlaybackStateStopped)[self.moviePlayer play];
 }
 - (void)loadStateDidChange:(NSNotification*)notification{
-	switch (self.moviePlayer.loadState) {
+	MPMovieLoadState state = self.moviePlayer.loadState;//[[[notification userInfo] valueForKey:@"object"] loadState];
+//	NSLog(@"state is %d", state);
+	if (state == MPMovieLoadStatePlayable || state == MPMovieLoadStatePlaythroughOK) {		
+		_stopPlayButton.selected = NO;
+		[self.moviePlayer play];
+			NSLog(@"state N is %d", state);
+	}else {
+			NSLog(@"state Y is %d", state);
+		_stopPlayButton.selected = YES;		
+	}
+	return;
+	
+	switch ((int)[[[notification userInfo] valueForKey:@"object"] loadState]) 
+	{
 		case MPMovieLoadStatePlayable:			
 		case MPMovieLoadStatePlaythroughOK:
-			_stopPlayButton.selected = NO;
-			break;
-			case MPMovieLoadStateStalled:
-			_stopPlayButton.selected = YES;
-			break;
+		NSLog(@"state is %d", self.moviePlayer.loadState);
+		_stopPlayButton.selected = NO;
+		break;
+		case MPMovieLoadStateStalled:
+		NSLog(@"state is %d", self.moviePlayer.loadState);
+		_stopPlayButton.selected = YES;
+		break;
+		default:
+		NSLog(@"state default is %d", self.moviePlayer.loadState);
 	} 
 }
 - (void)done{	  

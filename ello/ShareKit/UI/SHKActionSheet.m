@@ -27,6 +27,8 @@
 
 #import "SHKActionSheet.h"
 #import "SHK.h"
+#import "SHKTwitter.h"
+#import "SHKFacebook.h"
 #import "SHKSharer.h"
 #import "SHKCustomShareMenu.h"
 #import <Foundation/NSObjCRuntime.h>
@@ -100,11 +102,11 @@
 }
 - (void)tw{ 
 	[super dismissWithClickedButtonIndex:self.cancelButtonIndex animated:1];
-	[NSClassFromString([sharers objectAtIndex:0]) performSelector:@selector(shareItem:) withObject:item];
+	[SHKTwitter performSelector:@selector(shareItem:) withObject:item];
 }
 - (void)fb{ 
 	[super dismissWithClickedButtonIndex:self.cancelButtonIndex animated:1];
-	[NSClassFromString([sharers objectAtIndex:1]) performSelector:@selector(shareItem:) withObject:item];
+	[SHKFacebook performSelector:@selector(shareItem:) withObject:item];
 }
 
 - (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated{

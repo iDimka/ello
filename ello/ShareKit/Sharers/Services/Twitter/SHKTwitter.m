@@ -1,34 +1,7 @@
-//
-//  SHKTwitter.m
-//  ShareKit
-//
-//  Created by Nathan Weiner on 6/21/10.
-
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in
-//  all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-//  THE SOFTWARE.
-//
-//
-
-// TODO - SHKTwitter supports offline sharing, however the url cannot be shortened without an internet connection.  Need a graceful workaround for this.
-
-
+ 
 #import "SHKTwitter.h"
+
+#import "DDAlertPrompt.h"
 
 @implementation SHKTwitter
 
@@ -205,6 +178,14 @@
 
 - (void)showTwitterForm
 {
+	
+	
+	DDAlertPrompt *tweet = [[DDAlertPrompt alloc] initWithTitle:[item customValueForKey:@"status"] delegate:self cancelButtonTitle:@"Отмена" otherButtonTitle:@"Tweet"];	
+	[tweet show];
+	[tweet release];
+	
+	return;
+	
 	SHKTwitterForm *rootView = [[SHKTwitterForm alloc] initWithNibName:nil bundle:nil];	
 	rootView.delegate = self;
 	
@@ -238,7 +219,7 @@
 	}
 	
 	if (!quiet)
-		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Shortening URL...")];
+		//[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Shortening URL...")];
 	
 	self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:[NSMutableString stringWithFormat:@"http://api.bit.ly/v3/shorten?login=%@&apikey=%@&longUrl=%@&format=txt",
 																		 SHKBitLyLogin,
@@ -552,6 +533,27 @@
 }
 - (void)failFollow{
 	
+}
+ 
+
+- (void)didPresentAlertView:(UIAlertView *)alertView {
+	if ([alertView isKindOfClass:[DDAlertPrompt class]]) {
+		DDAlertPrompt *loginPrompt = (DDAlertPrompt *)alertView;
+		[loginPrompt.plainTextField becomeFirstResponder];		
+		[loginPrompt setNeedsLayout];
+	}
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == [alertView cancelButtonIndex]) {
+	} else {
+		if ([alertView isKindOfClass:[DDAlertPrompt class]]) {
+			DDAlertPrompt *loginPrompt = (DDAlertPrompt *)alertView;
+			
+			[item setCustomValue:loginPrompt.textView.text forKey:@"status"];
+			[self tryToSend];
+		}
+	}
 }
 
 @end

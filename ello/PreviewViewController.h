@@ -50,13 +50,14 @@ typedef enum{
 	BOOL					_willNext;
 }
 
-@property(nonatomic, retain)PlayList*	playlist;
+@property(nonatomic, retain)PlayList*							playlist;
 @property(nonatomic, retain)IBOutlet UIActivityIndicatorView*	sun;
-@property(nonatomic, retain)IBOutlet AsyncImageView*thumbView;
-@property(nonatomic, retain)IBOutlet UILabel*		artistName;
-@property(nonatomic, retain)IBOutlet UILabel*		clipName;
-@property(nonatomic, retain)IBOutlet UILabel*		viewCount;
-@property(nonatomic, retain)Clip*					currentClip;
+@property(nonatomic, retain)IBOutlet AsyncImageView*			thumbView;
+@property(nonatomic, retain)IBOutlet UILabel*					artistName;
+@property(nonatomic, retain)IBOutlet UILabel*					trackPosition;
+@property(nonatomic, retain)IBOutlet UILabel*					clipName;
+@property(nonatomic, retain)IBOutlet UILabel*					viewCount;
+@property(nonatomic, retain)Clip*								currentClip;
 
 - (IBAction)back:(id)sender;
 - (id)initWithYouTubeVideo:(Clip*)clip;

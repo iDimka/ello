@@ -21,10 +21,10 @@
 	AsyncImageView*		_thumb;
 	UILabel*			_artistName;
 	UILabel*			_songName;
-	id<ClipThumbProtocol>_delegate;
+	id _delegate;
 }
 
-@property(nonatomic, assign)id<ClipThumbProtocol> delegate;
+@property(nonatomic, assign)id/*<ClipThumbProtocol>*/ delegate;
 @property(nonatomic, retain)Clip*	clip;
 
 - (id)initWithFrame:(CGRect)frame clip:(Clip*)cl;

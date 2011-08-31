@@ -23,6 +23,7 @@
 
 @implementation ElloInfoViewController
 
+@synthesize webView;
 @synthesize likeWebView;
 
 #pragma mark - View lifecycle
@@ -34,13 +35,15 @@
 	[self.view addSubview:likeWebView];
 	
 	
-	NSString *likePage = @"http://google.com";
-	NSString *likeFacebookUrl = @"http://www.facebook.com/plugins/like.php?href=%@&amp;layout=standard&amp;show_faces=false&amp;width=320&amp;action=like&amp;colorscheme=light&amp;height=35";
-//	likePage = feedItem.link;
-	[likeWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:likeFacebookUrl, likePage]]]];
-	likeWebView.opaque = NO;
-	likeWebView.backgroundColor = [UIColor clearColor];
-	likeWebView.delegate = self;
+//	NSString *likePage = @"http://google.com";
+//	NSString *likeFacebookUrl = @"http://www.facebook.com/plugins/like.php?href=%@&amp;layout=standard&amp;show_faces=false&amp;width=320&amp;action=like&amp;colorscheme=light&amp;height=35";
+////	likePage = feedItem.link;
+//	[likeWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:likeFacebookUrl, likePage]]]];
+//	likeWebView.opaque = NO;
+//	likeWebView.backgroundColor = [UIColor clearColor];
+//	likeWebView.delegate = self;
+	
+	[webView loadHTMLString:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"info" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:nil];
 	
 }
 
@@ -51,12 +54,17 @@
 	
 	// if user has to log in, open a new (modal) window
 	if ([[[request URL] absoluteString] rangeOfString:@"login.php"].location != NSNotFound) {
-		
-		PSFBLoginDialog *dialog = [[[PSFBLoginDialog alloc] init] autorelease];
-		[dialog loadURL:[[request URL] absoluteString] method:@"GET" get:nil post:nil];
-		dialog.delegate = self;
-		[dialog show];
+//		
+//		PSFBLoginDialog *dialog = [[[PSFBLoginDialog alloc] init] autorelease];
+//		[dialog loadURL:[[request URL] absoluteString] method:@"GET" get:nil post:nil];
+//		dialog.delegate = self;
+//		[dialog show];
 		return NO;
+	}else if([[[request URL] absoluteString] hasSuffix:@"likeme"]){
+		[self fbFeed:nil];
+	}
+	else if([[[request URL] absoluteString] hasSuffix:@"follow"]){
+		[self followMe:nil];
 	}
 	
 	return YES;
@@ -77,9 +85,7 @@
 	[w release];
 }
 - (IBAction)followMe:(id)sender{
-//	SHKTwitter* tw = [[[SHKTwitter alloc] init] autorelease];
-//	[tw followMe];
-	SVWebViewController* w = [[SVWebViewController alloc] initWithAddress:@"http://mobile.twitter.com/ello"];
+	SVWebViewController* w = [[SVWebViewController alloc] initWithAddress:@"http://mobile.twitter.com/elloru"];
 	[self.navigationController presentModalViewController:w animated:YES];
 	[w release];
 }

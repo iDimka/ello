@@ -63,8 +63,8 @@ static NSString * const kInstapaperSharingURL = @"https://www.instapaper.com/api
 - (void)authorizationFormValidate:(SHKFormController *)form
 {
 	// Display an activity indicator
-	if (!quiet)
-		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
+//	if (!quiet)
+		//[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
 	
 	
 	// Authorize the user through the server

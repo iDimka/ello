@@ -10,6 +10,8 @@
 
 @interface ElloInfoViewController : UIViewController
 
+@property(nonatomic, retain)IBOutlet UIWebView*	webView;
+
 - (IBAction)fbFeed:(id)sender;
 - (IBAction)followMe:(id)sender;
 
