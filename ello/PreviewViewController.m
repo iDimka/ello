@@ -72,6 +72,7 @@
 				self.currentClip = [_playlist.clips objectAtIndex:_index];
 				_moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 				[_moviePlayer setPlaylist:_playlist];
+				[_moviePlayer setDelegate:self];
 				break; 
 			case kShufle:
 				[self next:nil];
@@ -175,7 +176,7 @@
 			[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
 			[sun stopAnimating];
 			[_buffering setHidden:YES];
-			[self presentMoviePlayerViewControllerAnimated:_moviePlayer]; 
+			if (_playCountMode != kDone) [self presentMoviePlayerViewControllerAnimated:_moviePlayer]; 
 			break; 
 	}
 }
@@ -189,6 +190,7 @@
 - (void)done{NSLog(@"%s", __func__);
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
 	_playCountMode = kDone;	
+	[self.navigationController popViewControllerAnimated:NO];
 }
 - (void)next:(UIButton*)sender{NSLog(@"%s %d", __func__, _index);
 	 

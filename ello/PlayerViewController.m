@@ -47,7 +47,7 @@
 - (void)viewDidLoad{NSLog(@"%s", __func__);
     [super viewDidLoad];
 	 
-//	self.moviePlayer.shouldAutoplay = YES;
+	self.moviePlayer.shouldAutoplay = NO;
 	
 	 _topControl = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
 	[_topControl setImage:[UIImage imageNamed:@"playerBand.png"]];
@@ -91,13 +91,13 @@
 	}	
 	
 	 _stopPlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	 [_stopPlayButton setFrame:CGRectMake(10, 2, 36, 36)];
-	 [_stopPlayButton setImage:[UIImage imageNamed:@"playerBtnStop.png"]		forState:UIControlStateNormal];
-	 [_stopPlayButton setImage:[UIImage imageNamed:@"playerBtnPlay.png"]		forState:UIControlStateSelected];
+	 [_stopPlayButton setFrame:CGRectMake(10, 4, 33, 33)];
+	 [_stopPlayButton setImage:[UIImage imageNamed:@"SsBtnStop.png"]		forState:UIControlStateNormal];
+	 [_stopPlayButton setImage:[UIImage imageNamed:@"SsBtnPlay.png"]		forState:UIControlStateSelected];
 	[_stopPlayButton addTarget:self action:@selector(stopPlay:) forControlEvents:UIControlEventTouchUpInside];
 	 [_bottomControl addSubview:_stopPlayButton];
 	
-	_timeLineView = [[TimelineViewController alloc] initWithFrame:CGRectMake(70, 10, 200, 20)];
+	_timeLineView = [[TimelineViewController alloc] initWithFrame:CGRectMake(170, 2, 200, 20)];
 	[_bottomControl addSubview:_timeLineView];
 	[_timeLineView setDataSource:self.moviePlayer];
 	
@@ -105,16 +105,16 @@
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	
 	UIButton* share = [UIButton buttonWithType:UIButtonTypeCustom];
-	[share setFrame:CGRectMake(75, 4, 33, 37)];
+	[share setFrame:CGRectMake(115, 4, 33, 37)];
 	[share setImage:[UIImage imageNamed:@"btnShare.png"] forState:UIControlStateNormal];
  	[share addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:share];
  
 	UIButton* done = [UIButton buttonWithType:UIButtonTypeCustom];
-	[done setFrame:CGRectMake(1, 7, 70, 31)];
+	[done setFrame:CGRectMake(5, 7, 70, 31)];
 	[done setTitle:@"Готово" forState:UIControlStateNormal];
 	[done setBackgroundImage:[UIImage imageNamed:@"btnBack.png"] forState:UIControlStateNormal];
-	[done addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
+	[done addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:done];
 	
 	UIButton* addToPlaylistButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -124,7 +124,7 @@
 	[_topControl addSubview:addToPlaylistButton];
 	
 	UIButton* info = [UIButton buttonWithType:UIButtonTypeCustom];
-	[info setFrame:CGRectMake(210, 6, 32, 32)];
+	[info setFrame:CGRectMake(198, 6, 32, 32)];
 	[info setImage:[UIImage imageNamed:@"info.png"] forState:UIControlStateNormal];
 	[info addTarget:self action:@selector(info) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:info];
@@ -155,6 +155,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
  	
 	[super touchesEnded:touches withEvent:event];
+	
 	CGPoint p = [[touches anyObject] locationInView:self.view];
 	if (!CGRectContainsPoint((CGRect){{40, 40}, {300, 240}}, p)) return;
 	
@@ -172,6 +173,27 @@
 			_bottomControl.center = CGPointMake(_bottomControl.center.x, 370);
 		} completion:^(BOOL finished) {}];
 	}
+}
+
+- (void)loadStateDidChange:(NSNotification*)notification{
+	MPMovieLoadState state = self.moviePlayer.loadState;//[[[notification userInfo] valueForKey:@"object"] loadState];
+														//	NSLog(@"state is %d", state);
+	self.moviePlayer.shouldAutoplay = NO;
+	 
+	if ((state == MPMovieLoadStatePlayable) || (state == 3))
+		{		
+			_stopPlayButton.selected = NO;
+			[self.moviePlayer play];
+			NSLog(@"state N is %d", state);
+		}
+	else 
+		{
+		NSLog(@"state Y is %d", state);
+		_stopPlayButton.selected = YES;	
+		[self.moviePlayer pause];
+		}
+	return;
+ 
 }
 
 - (void)info{
@@ -212,38 +234,17 @@
 }
 - (void)stopPlay:(UIButton*)sender{
 	sender.selected = !sender.selected;
-	if(self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying) [self.moviePlayer pause];
-	else if (self.moviePlayer.playbackState == MPMoviePlaybackStatePaused || self.moviePlayer.playbackState == MPMoviePlaybackStateStopped)[self.moviePlayer play];
-}
-- (void)loadStateDidChange:(NSNotification*)notification{
-	MPMovieLoadState state = self.moviePlayer.loadState;//[[[notification userInfo] valueForKey:@"object"] loadState];
-//	NSLog(@"state is %d", state);
-	if (state == MPMovieLoadStatePlayable || state == MPMovieLoadStatePlaythroughOK) {		
-		_stopPlayButton.selected = NO;
+	if(self.moviePlayer.playbackState == MPMoviePlaybackStatePlaying) 	
+		{
+		[self.moviePlayer pause];
+		}
+	else //if (self.moviePlayer.playbackState == MPMoviePlaybackStatePaused || self.moviePlayer.playbackState == MPMoviePlaybackStateStopped)
+		{
 		[self.moviePlayer play];
-			NSLog(@"state N is %d", state);
-	}else {
-			NSLog(@"state Y is %d", state);
-		_stopPlayButton.selected = YES;		
-	}
-	return;
-	
-	switch ((int)[[[notification userInfo] valueForKey:@"object"] loadState]) 
-	{
-		case MPMovieLoadStatePlayable:			
-		case MPMovieLoadStatePlaythroughOK:
-		NSLog(@"state is %d", self.moviePlayer.loadState);
-		_stopPlayButton.selected = NO;
-		break;
-		case MPMovieLoadStateStalled:
-		NSLog(@"state is %d", self.moviePlayer.loadState);
-		_stopPlayButton.selected = YES;
-		break;
-		default:
-		NSLog(@"state default is %d", self.moviePlayer.loadState);
-	} 
+		}
 }
-- (void)done{	  
+- (void)done:(UIButton*)sender{	  
+	sender.enabled = NO;
 	[self.moviePlayer stop];
 	[_delegate done];
 }
@@ -294,11 +295,11 @@
 			 [[__delegate playlists] addPlaylist:playList];
 			 
 			 }];
-			[[playList clips] addObject:_currentClip];
+			[[playList clips] addObject:[_delegate currentClip]];
 			[playList release]; 
 		}else{
 			PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 1];
-			[[myPlaylist clips] addObject:_currentClip]; 
+			[[myPlaylist clips] addObject:[_delegate currentClip]]; 
 		}
 		return;
 	}

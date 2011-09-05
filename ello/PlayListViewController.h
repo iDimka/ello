@@ -17,7 +17,7 @@ typedef enum{
 
 @class PlayList;
 
-@interface PlayListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, RKObjectLoaderDelegate>{
+@interface PlayListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, RKObjectLoaderDelegate, PlayListProtocol>{
     UITableView*		_tableView;
     NSMutableArray*		_dataSource;
 	UILabel*			plClipsCount;

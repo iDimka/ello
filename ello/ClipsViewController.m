@@ -120,7 +120,9 @@
 	
 	UIButton* repeatButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[repeatButton setTitle:@"Еще раз" forState:UIControlStateNormal];
-	[repeatButton setFrame:CGRectMake(10, 80, 130, 30)];
+	[repeatButton setFrame:CGRectMake(10, 80, 70, 30)];
+	[repeatButton setImage:[UIImage imageNamed:@"OnceMoreWhite.png"] forState:UIControlStateNormal];
+	[repeatButton setImage:[UIImage imageNamed:@"OnceMore.png"] forState:UIControlStateSelected];
 	[repeatButton addTarget:self action:@selector(repeatClip) forControlEvents:UIControlEventTouchUpInside];
 	[header addSubview:repeatButton];
 	
@@ -217,7 +219,7 @@
 		[actionSheet addButtonWithTitle:pl.name];
 	}
 	[actionSheet addButtonWithTitle:@"Отмена"];
-	[actionSheet showFromTabBar:self.tabBarController.tabBar];
+	[actionSheet showInView:self.view];
 	[actionSheet release];
 	
 	

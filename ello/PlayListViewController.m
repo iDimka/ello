@@ -30,7 +30,14 @@
 @synthesize clipToPlaylist;
 @synthesize mode;
 @synthesize playlist = _playList;
- 
+
+- (void)dealloc {
+	
+    [plClipsCount release];
+	
+    [super dealloc];
+}
+
 #pragma mark - View lifecycle
 
 - (void)configTableViewAppearence {
@@ -65,6 +72,7 @@
 			break;
 			
 		case kLocalhost:;
+			if (![[_playList clips] count]) break;
 			PlayList* pl = _playList;
 			Clips* clips = [Clips new];
 			[clips setClips:pl.clips];
@@ -129,7 +137,7 @@
 	[plClipsCount setTextColor:[UIColor lightGrayColor]];
 	[plClipsCount setTextColor:[UIColor whiteColor]];
 	[header addSubview:plClipsCount];
-	[plClipsCount release];
+	
 	 
 	
 	UIButton* showAll = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -161,6 +169,8 @@
 	   
 	UIButton* repeat = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[repeat addTarget:self action:@selector(showAll:) forControlEvents:UIControlEventTouchUpInside];
+	[repeat setImage:[UIImage imageNamed:@"OnceMoreWhite.png"] forState:UIControlStateNormal];
+	[repeat setImage:[UIImage imageNamed:@"OnceMore.png"] forState:UIControlStateSelected];
 	[repeat setTitle:@"Еще раз" forState:UIControlStateNormal];
 	[repeat setFrame:CGRectMake(140, 30, 70, 30)];
 	[header addSubview:repeat];
@@ -233,7 +243,7 @@
 	
 }
 - (void)showAll:(id)sender{
-	if (![_dataSource count]) return;
+	if (![_dataSource count] || [[_dataSource objectAtIndex:0] isKindOfClass:[NSNull class]]) return;
 	UIActionSheet* menu = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Просмотреть Все", @"Вперемешку", nil];
 	[menu showInView:self.view];
 	[menu release];

@@ -41,11 +41,29 @@
 //	
 //#endif
 	
-	
 	[self initRestKit];
 	[[NSBundle mainBundle] loadNibNamed:@"TabbarViewController" owner:self options:nil];
 
 	[self.tabBarController setDelegate:self];
+	
+//	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+
+
+	
+//	[[[[[self.tabBarController moreNavigationController] viewControllers] objectAtIndex:0] view] addSubview:tmp];
+//	[[[[[self.tabBarController moreNavigationController] viewControllers] objectAtIndex:0] view] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];	
+//		[tmp release];
+//	
+//	NSLog([[[[[self.tabBarController moreNavigationController] viewControllers] objectAtIndex:0] view] recursiveDescription]);
+//	NSLog(@"sv c %d", [[[[[[self.tabBarController moreNavigationController] viewControllers] objectAtIndex:0] view] subviews] count]);
+//	
+//	for (UITableView* view in [[[[[self.tabBarController moreNavigationController] viewControllers] objectAtIndex:0] view] subviews]) {
+//		NSLog([view description]);
+//		if ([view isKindOfClass:[UITableView class]]) 
+//			{
+//			[view setSeparatorColor:[UIColor redColor]];
+//		}
+//	}
 	
 	[self.tabBarController.moreNavigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
 	[self.tabBarController.moreNavigationController setDelegate:self];

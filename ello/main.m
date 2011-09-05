@@ -11,6 +11,10 @@
 int main(int argc, char *argv[])
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+//	
+//	NSArray *langOrder = [NSArray arrayWithObjects:@"ru", nil];
+//	[[NSUserDefaults standardUserDefaults] setObject:langOrder forKey:@"AppleLanguages"];
+	
 	int retVal = UIApplicationMain(argc, argv, nil, @"elloAppDelegate");
 	[pool release];
 	return retVal;

@@ -85,7 +85,7 @@
         [_slideshowTimer invalidate];
 		} 
 }
-
+/*
 #pragma mark -
 #pragma mark ADBannerViewDelegate Protocol
 
@@ -116,7 +116,7 @@
 	[self hideBanner:bannerr];
 	
 }
-
+*/
 #pragma -
 #pragma UIScrolViewDelgate
 

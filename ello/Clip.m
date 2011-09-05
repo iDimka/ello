@@ -45,7 +45,6 @@
 		}
     return self;
 }
-
 - (void)encodeWithCoder:(NSCoder *)encoder{
 	
 	[encoder encodeObject:label forKey:@"label"];
@@ -60,6 +59,16 @@
 	[encoder encodeObject:clipGanreName forKey:@"clipGanreName"]; 
 }
 
+- (void)setType:(NSString *)t{
+	if (t != type) {
+		[type release];
+		type = [t retain];
+		if ([type isEqualToString:@"yoututbe"]) 
+			{
+			NSLog(@"type youtube");
+		}
+	}
+}
 
 - (NSString*)description{
 	return [NSString stringWithFormat:@"name is %@, url: %@ clipID: %@", clipName, clipImageURL, clipID];

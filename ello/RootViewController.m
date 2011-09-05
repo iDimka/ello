@@ -17,9 +17,10 @@ typedef void (^CloseBlock)(NSString *inputString);
 @implementation _DimView
 
 - (id)initWithParent:(id) parent onTappedSelector:(SEL) tappedSel{
-    self = [super initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    if (self) {
-        // Initialization code
+    self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
+    if (self) 
+		{
+		
         _parent = parent;
         onTapped = tappedSel;
         self.backgroundColor = [UIColor darkGrayColor];
@@ -36,7 +37,7 @@ typedef void (^CloseBlock)(NSString *inputString);
     return self;
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 //    [_parent performSelector:onTapped];
 }
 - (void)dealloc{

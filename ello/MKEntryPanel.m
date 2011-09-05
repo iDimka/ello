@@ -100,6 +100,8 @@
  
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+	if (range.location == 0 && range.length == 1)_btnOk.enabled = NO;
+	else _btnOk.enabled = YES;
 	return YES;
 	NSString *regEx = @"[0-9]+?\\.?[0-9]?";  
 	NSPredicate* predIsTime = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regEx];
@@ -116,10 +118,13 @@
     [self performSelectorOnMainThread:@selector(hidePanel) withObject:nil waitUntilDone:YES];    
     self.closeBlock(self.entryField.text);
 }
--(void) cancelTapped:(id) sender{
+- (IBAction) cancelAction:(id)sender{ 
+    [self performSelectorOnMainThread:@selector(hidePanel) withObject:nil waitUntilDone:YES];  
+}
+- (void) cancelTapped:(id) sender{
     [self performSelectorOnMainThread:@selector(hidePanel) withObject:nil waitUntilDone:YES];    
 }
--(void) hidePanel{
+- (void) hidePanel{
     [self.entryField resignFirstResponder];
     CATransition *transition = [CATransition animation];
 	transition.duration = kAnimationDuration;

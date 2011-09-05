@@ -30,7 +30,8 @@ typedef void (^CloseBlock)(NSString *inputString);
     UILabel *_titleLabel;
     UITextField *_entryField;
 
-    UIImageView *_backgroundGradient;
+    UIImageView*			_backgroundGradient;
+	IBOutlet UIButton*		_btnOk;
     
     DimView *_dimView;
 }
@@ -44,5 +45,6 @@ typedef void (^CloseBlock)(NSString *inputString);
 +(void) showPanelWithTitle:(NSString*) title inView:(UIView*) view onTextEntered:(CloseBlock) editingEndedBlock;
 - (IBAction) textFieldDidEndOnExit:(UITextField *)textField;
 - (IBAction) doneAction:(id)sender;
+- (IBAction) cancelAction:(id)sender;
 
 @end
