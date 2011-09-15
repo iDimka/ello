@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 //#import <iAd/iAd.h>
+@class AdView;
  
 @interface IndexViewController : RootViewController <UIScrollViewDelegate, RKObjectLoaderDelegate>{
 	IBOutlet	UIScrollView*	_scrollView;
@@ -24,7 +25,7 @@
 	NSMutableArray*             _ViewDataContainer;
 	NSMutableArray*				_dataSource;
 	
-//	ADBannerView				*adView;
+	AdView						*adView;
 	BOOL						bannerIsVisible;
 	BOOL						_isDid;
 	

@@ -10,7 +10,11 @@
 
 
 @interface Artist : NSObject {
-    
+    NSString*		details;
+	UIImage*		thumb;
+	NSNumber*		artistID;
+	NSString*		artistName;
+	NSString*		artistImage;
 }
 
 @property(nonatomic, retain)NSString*		details;

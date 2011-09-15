@@ -81,7 +81,7 @@
 			break;
 	}
 	
-	self.title = _playList.name;
+	self.title = _playList.playlistName;
 	
 	[self configTableViewAppearence];
 }
@@ -276,7 +276,7 @@
 							   onTextEntered:^(NSString* enteredString)
 			 {
 			 
-			 playList.name = enteredString;
+			 playList.playlistName = enteredString;
 			 [[__delegate playlists] addPlaylist:playList];
 			 
 			 }];

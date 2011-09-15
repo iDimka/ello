@@ -136,8 +136,9 @@
 	[s setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[s setTintColor:[UIColor darkGrayColor]];
 	[s insertSegmentWithTitle:@"Похожие клипы" atIndex:0 animated:NO];
-	[s insertSegmentWithTitle:@"Информация" atIndex:1 animated:NO];
+//	[s insertSegmentWithTitle:@"Информация" atIndex:1 animated:NO];
 	[s setSelectedSegmentIndex:0];
+	[s setMomentary:YES];
 	[s addTarget:self action:@selector(segmentHeaderTapped:) forControlEvents:UIControlEventValueChanged];
 	[header addSubview:s];
 	[s release];
@@ -216,7 +217,7 @@
 	
 	UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:@"Добавить это видео в..." delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:@"Новый плейлист", nil];
 	for (PlayList* pl in [[__delegate playlists] playlists]) {
-		[actionSheet addButtonWithTitle:pl.name];
+		[actionSheet addButtonWithTitle:pl.playlistName];
 	}
 	[actionSheet addButtonWithTitle:@"Отмена"];
 	[actionSheet showInView:self.view];
@@ -235,7 +236,7 @@
 						   onTextEntered:^(NSString* enteredString)
 		 {
 		
-		 playList.name = enteredString;
+		 playList.playlistName = enteredString;
 		 [[__delegate playlists] addPlaylist:playList];
 
 		 }];

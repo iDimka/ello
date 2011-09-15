@@ -14,8 +14,8 @@
 // App Description
 // These values are used by any service that shows 'shared from XYZ'
 
-#define SHKMyAppName			@"ELLO"
-#define SHKMyAppURL				@"http://iDimkaDev.com"
+#define SHKMyAppName			@"Forismatic"
+#define SHKMyAppURL				@"http://forismatic.com"
 
 
 
@@ -38,41 +38,32 @@
 
 
 
-// Vkontakte - http://vkontakte.ru/developers.php
-#define SHKVkontakteConsumerKey @"gX2NZAn5ZtkrV4IjILBm"	// The consumer key
-#define SHKVkontakteSecretKey @""		// The secret key
-#define SHKVkontakteCallbackUrl @"http://api.vkontakte.ru/blank.html"	// The user defined callback url
-#define SHKVkontakteAppId @"2408272"    // Aplication ID
-
-
-
 // Delicious - https://developer.apps.yahoo.com/projects
 #define SHKDeliciousConsumerKey		@""
 #define SHKDeliciousSecretKey		@""
 
 // Facebook - http://www.facebook.com/developers
-// If SHKFacebookUseSessionProxy is enabled then SHKFacebookSecret is ignored and should be left blank
-
+// SHKFacebookAppID is the Application ID provided by Facebook
+// SHKFacebookLocalAppID is used if you need to differentiate between several iOS apps running against a single Facebook app. Leave it blank unless you are sure of what you are doing. 
+// The CFBundleURLSchemes in your App-Info.plist should be "fb" + the concatenation of these two IDs.
+// Example: 
+//    SHKFacebookAppID = 555
+//    SHKFacebookLocalAppID = funk
+// 
+//    Your CFBundleURLSchemes entry: fb555funk
 #define SHKFacebookUseSessionProxy  NO 
-#define SHKFacebookKey				@"251377654883261"
-#define SHKFacebookSecret			@"4509bd4bfb48173c628c8233b175e3c2"
+#define SHKFacebookAppID      @"168367201785"
+//#define SHKFacebookLocalAppID      @""
 #define SHKFacebookSessionProxyURL  @""
 
-//Summary
-//App ID/API Key
-//246398275400534
-//App Secret
-//06ef73be018f13402bc3e4fe7897cbf9
-//Contact Email
-//ipaddev@gmail.com
-//Support Email
-//symbolic.digital@gmail.com
-//Access Token
-//246398275400534|2.AQD9lnmouIAAwK9l.3600.1314324000.0-1070695259|REAkxp7GWniWBmUx8n8g3ItDFjoMore
-
-
 // Read It Later - http://readitlaterlist.com/api/?shk
-#define SHKReadItLaterKey			@"e7dd6iaNTd8a7g529dA9d9fVb4g4PcUQ"
+#define SHKReadItLaterKey			@""
+
+// Evernote - https://www.evernote.com/about/developer/api/#key
+#define SHKEvernoteSecretKey        @""
+#define SHKEvernoteConsumerKey      @""
+#define SHKEvernoteUserStoreURL     @""
+#define SHKEvernoteNetStoreURLBase  @""
 
 // Twitter - http://dev.twitter.com/apps/new
 /*
@@ -90,15 +81,21 @@
  2. 'Application Type' should be set to BROWSER (not client)
  3. 'Callback URL' should match whatever you enter in SHKTwitterCallbackUrl.  The callback url doesn't have to be an actual existing url.  The user will never get to it because ShareKit intercepts it before the user is redirected.  It just needs to match.
  */
-#define SHKTwitterConsumerKey		@"iBNwTOAOM7Cyrb6Tb81zQ"
-#define SHKTwitterSecret			@"onF0kQUVQlpd6qyD5UkofWYgogf8QaQlC187X6NnI"
-#define SHKTwitterCallbackUrl		@"http://mobile.twitter.com/ello" // You need to set this if using OAuth, see note above (xAuth users can skip it)
+#define SHKTwitterConsumerKey		@"Hdom97MYzn2ewnOyuTAOA"
+#define SHKTwitterSecret			@"DZqJoZ8jemrb7YaDz9kAtMXfCv1ggv9yHWPZak7Js"
+#define SHKTwitterCallbackUrl		@"http://forismatic.com" // You need to set this if using OAuth, see note above (xAuth users can skip it)
 #define SHKTwitterUseXAuth			0 // To use xAuth, set to 1
-#define SHKTwitterUsername			@"ElloRU" // Enter your app's twitter account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+#define SHKTwitterUsername			@"Alterplay" // Enter your app's twitter account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+
+// Plurk - http://www.plurk.com/API/2
+#define SHKPlurkConsumerKey		@""
+#define SHKPlurkSecret			@""
+#define SHKPlurkCallbackUrl		@""
+
 
 // Bit.ly (for shortening URLs on Twitter) - http://bit.ly/account/register - after signup: http://bit.ly/a/your_api_key
-#define SHKBitLyLogin				@"idimka"
-#define SHKBitLyKey					@"R_29fa0d7c8765be95e61a247fcb5a7be3"
+#define SHKBitLyLogin				@""
+#define SHKBitLyKey					@""
 
 // ShareMenu Ordering
 #define SHKShareMenuAlphabeticalOrder 1 // Setting this to 1 will show list in Alphabetical Order, setting to 0 will follow the order in SHKShares.plist
@@ -107,7 +104,12 @@
 #define SHKSharedWithSignature		0
 
 
-
+// Vkontakte - http://vkontakte.ru/developers.php
+#define SHKVkontakteConsumerKey @"gX2NZAn5ZtkrV4IjILBm"	// The consumer key
+#define SHKVkontakteSecretKey @"CC2BC9FuJH6ajO6kbPcb"		// The secret key
+#define SHKVkontakteCallbackUrl @"http://api.vkontakte.ru/blank.html"	// The user defined callback url
+#define SHKVkontakteAppId @"2470957"   // Aplication ID
+ 
 /*
  UI Configuration : Basic
  ------

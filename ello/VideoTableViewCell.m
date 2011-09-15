@@ -24,12 +24,13 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _title = [[UILabel alloc] initWithFrame:CGRectMake(155, 15, 185, 20)];
+        _title = [[UILabel alloc] initWithFrame:CGRectMake(155, 3, 130, 30)];
 		[_title setFont:[UIFont boldSystemFontOfSize:13]];
+		[_title setNumberOfLines:0];
 		[_title setTextColor:[UIColor redColor]];
 		[_title setBackgroundColor:[UIColor clearColor]];
 		
-		_artist = [[UILabel alloc] initWithFrame:CGRectMake(155, 30, 185, 20)];
+		_artist = [[UILabel alloc] initWithFrame:CGRectMake(155, 33, 185, 20)];
 		[_artist setFont:[UIFont boldSystemFontOfSize:13]];
 		[_artist setTextColor:[UIColor whiteColor]];
 		[_artist setBackgroundColor:[UIColor clearColor]];
@@ -90,11 +91,14 @@
 }
 
 - (void)configCellByArtitst:(Artist*)object{
-	self.dataObject = object;
-	//	_title.text = object.clipName;
+	self.dataObject = object; 
 	_artist.text = object.artistName;
 	if (object.thumb)  _videoThumb.image = object.thumb;
-	else [_videoThumb loadImageFromURL:[NSURL URLWithString:object.artistImage]];
+	else {
+		_videoThumb.image = nil;
+		[_videoThumb loadImageFromURL:[NSURL URLWithString:object.artistImage]];
+		NSLog(object.artistImage);
+	}
 }
 - (void)configCellByChannel:(Channel*)object{
 	self.dataObject = object;
@@ -120,9 +124,9 @@
 }
 - (void)configCellByPlayList:(PlayList*)object{
 	self.dataObject = object;
-	_title.text = object.name;
-	_artist.text = object.artistName;
-	_viewCount.text = [NSString stringWithFormat:@"%D views", [object.viewCount intValue]];
+	_title.text = object.playlistName;
+//	_artist.text = object.playlistName;
+	_viewCount.text = [NSString stringWithFormat:@"%D clips", [object.clipsCount intValue]];
 	[_videoThumb setImage:nil];
 	if (object.thumb)  _videoThumb.image = object.thumb;
 	else {

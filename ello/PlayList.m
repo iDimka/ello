@@ -10,15 +10,17 @@
 
 @implementation PlayList
 
+@synthesize playListID;
+@synthesize clipsCount;
+@synthesize playlistName;
+@synthesize image;
+ 
 @synthesize clips;
 @synthesize thumb;
-@synthesize playListID;
-@synthesize artistID;
 @synthesize artistName;
 @synthesize imageURLString;
 @synthesize genreID;
-@synthesize genreName;
-@synthesize viewCount;
+@synthesize genreName; 
 @synthesize name;
 @synthesize videoURLString;
 @synthesize label;
@@ -44,7 +46,7 @@
 			imageURLString = [[decoder decodeObjectForKey:@"imageURLString"] retain];
 			genreID = [[decoder decodeObjectForKey:@"genreID"] retain];
 			genreName = [[decoder decodeObjectForKey:@"genreName"] retain];
-			viewCount = [[decoder decodeObjectForKey:@"viewCount"] retain];
+			clipsCount = [[decoder decodeObjectForKey:@"clipsCount"] retain];
 			name = [[decoder decodeObjectForKey:@"name"] retain];
 			videoURLString = [[decoder decodeObjectForKey:@"videoURLString"] retain];
 			label = [[decoder decodeObjectForKey:@"label"] retain];
@@ -64,7 +66,7 @@
 	[encoder encodeObject:imageURLString forKey:@"imageURLString"];
 	[encoder encodeObject:genreID forKey:@"genreID"];
 	[encoder encodeObject:genreName forKey:@"genreName"];
-	[encoder encodeObject:viewCount forKey:@"viewCount"];
+	[encoder encodeObject:clipsCount forKey:@"clipsCount"];
 	[encoder encodeObject:name forKey:@"name"];
 	[encoder encodeObject:videoURLString forKey:@"videoURLString"];
 	[encoder encodeObject:label forKey:@"label"];

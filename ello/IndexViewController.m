@@ -8,6 +8,8 @@
 
 #import "IndexViewController.h"
 
+#import "AdView.h"
+#import "AdViews.h"
 #import "PreviewViewController.h"
 #import "SlideshowImageView.h"
 #import "Clip.h"
@@ -55,17 +57,13 @@
 	_dataSource = [[NSMutableArray alloc] init];
      
     
-//	adView = [[ADBannerView alloc] initWithFrame:CGRectZero];
-//	adView.frame = CGRectOffset(adView.frame, 0, -50);
-//	adView.requiredContentSizeIdentifiers = [NSSet setWithObject:ADBannerContentSizeIdentifierPortrait];
-//	adView.currentContentSizeIdentifier = ADBannerContentSizeIdentifierPortrait;
-//	adView.delegate=self;
-//	[self.view addSubview:adView]; 
+
+ 
 	[_scrollView setContentSize:CGSizeMake(320 * 3, 290)];
     [_scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
 	  
-	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getIndexClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self]; 
-	
+	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getIndexClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self];
+	 
 	[_scrollView setUserInteractionEnabled:YES];
 	
 }
@@ -75,6 +73,7 @@
 	_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
     
 	[_pageControl setNumberOfPages:[_dataSource count]];
+	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=banner&action=getBanner" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"banners"] delegate:self]; 
 	
 }
 - (void)viewDidDisappear:(BOOL)animated{
@@ -84,6 +83,14 @@
 		{
         [_slideshowTimer invalidate];
 		} 
+}
+
+- (void)bannerViewDidLoadAd:(AdView *)banner{
+	[banner setFrame:CGRectMake(0, 367 - 50, 320, 50)];
+	[self.view addSubview:banner];
+}
+- (void)bannerViewDidError:(AdView *)banner{
+	
 }
 /*
 #pragma mark -
@@ -320,6 +327,13 @@
  }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+	NSLog(@"l %@\n\n", objects);
+	if ([[objects objectAtIndex:0] isKindOfClass:[AdViews class]]) {
+		adView =  [[[[objects objectAtIndex:0] banners] objectAtIndex:0] retain];
+		[[[[objects objectAtIndex:0] banners] objectAtIndex:0] setAddelegate:self];
+		[[[[objects objectAtIndex:0] banners] objectAtIndex:0] load];
+		return;
+	}
 	[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] clips]]; 
 		[self InesrtViewInCantainer];
 	[(Clips*)[objects objectAtIndex:0] loadAllImages:^(BOOL isOK) {
@@ -330,6 +344,7 @@
 
 		}
 	}];
+	
 	
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {

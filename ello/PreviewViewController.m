@@ -8,6 +8,10 @@
 
 #import "PreviewViewController.h"
 
+#import "Preroll.h"
+#import "Prerolls.h"
+#import "AdView.h"
+#import "AdViews.h"
 #import "PlayList.h"
 #import "Clip.h"
 #import "Clips.h"
@@ -126,6 +130,11 @@
 		[_buffering setHidden:YES];
 		[sun stopAnimating];
 	}
+	if ([self.currentClip.type isEqualToString:@"youtube"]) _youTubeIcn.hidden = NO; 
+	
+	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=banner&action=getBanner" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"banners"] delegate:self]; 
+
+	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=preroll&action=getPreroll" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"prerolls"] delegate:self]; 
 }
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillDisappear:animated];
@@ -151,10 +160,20 @@
 	self.moviePlayer = nil; 
 } 
 - (void)viewDidUnload{
+	[_youTubeIcn release];
+	_youTubeIcn = nil;
 	[super viewDidUnload];
 	 
 }
-  
+
+- (void)bannerViewDidLoadAd:(AdView *)banner{
+	[banner setFrame:CGRectMake(160, 215, 320, 50)];
+	[self.view addSubview:banner];
+}
+- (void)bannerViewDidError:(AdView *)banner{
+	
+}
+
 - (void)push4play{ NSLog(@"%s", __func__);
 	PlayerViewController* tmp = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 	self.moviePlayer = tmp;
@@ -171,8 +190,9 @@
 	{
 		case MPMovieLoadStatePlayable:			
 		case MPMovieLoadStatePlaythroughOK: 
-		
-		if (_playCountMode == kMultiClips) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackDidFinish:)	name:MPMoviePlayerPlaybackDidFinishNotification		object:nil];
+#warning may be need unkoment		
+//		if (_playCountMode == kMultiClips) 
+			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackDidFinish:)	name:MPMoviePlayerPlaybackDidFinishNotification		object:nil];
 			[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
 			[sun stopAnimating];
 			[_buffering setHidden:YES];
@@ -228,6 +248,7 @@
 		{		
 			trackPosition.text = [NSString stringWithFormat:@"%d из %d", _index + 1, [[_playlist clips] count]];
 		}
+	if ([self.currentClip.type isEqualToString:@"youtube"]) _youTubeIcn.hidden = NO;
 }
 - (void)prev:(UIButton*)sender{NSLog(@"%s %d", __func__, _index);
 	
@@ -259,7 +280,8 @@
 	if (_playCountMode == kMultiClips) 
 		{		
 		trackPosition.text = [NSString stringWithFormat:@"%d из %d", _index + 1, [[_playlist clips] count]];
-	}
+		}
+	if ([self.currentClip.type isEqualToString:@"youtube"]) _youTubeIcn.hidden = NO;
 }
 - (void)selectClip:(Clip*)clip{
 	
@@ -304,6 +326,34 @@
 }
 
 
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+	NSLog(@"ldd %@\n\n", objects);
+	if ([objects count]) 
+		{
+		if ([[objects objectAtIndex:0] isKindOfClass:[AdViews class]]) {
+			[[[[objects objectAtIndex:0] banners] objectAtIndex:0] retain];
+			[[[[objects objectAtIndex:0] banners] objectAtIndex:0] setAddelegate:self];
+			[[[[objects objectAtIndex:0] banners] objectAtIndex:0] load];
+			return;
+		} 
+		
+		if ([[objects objectAtIndex:0] isKindOfClass:[Prerolls class]]) 
+			{ 
+				NSURL* url = [NSURL URLWithString:[[[[objects objectAtIndex:0] prerolls] objectAtIndex:0] preollURL]];
+				self.moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:url]; 
+				[_moviePlayer.moviePlayer setControlStyle:MPMovieControlStyleNone];
+				 [self presentMoviePlayerViewControllerAnimated:_moviePlayer];
+			}
+		}
+	
+}
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
+	NSLog(@"ERROR %@", tmp);
+	
+}
+
+
 - (void)dealloc {NSLog(@"%s", __func__);
 		
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -311,6 +361,7 @@
     self.sun = nil;
 	[_moviePlayer release];
 	
+	[_youTubeIcn release];
     [super dealloc];
 }
 

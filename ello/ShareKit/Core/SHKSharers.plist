@@ -8,9 +8,12 @@
 		<string>SHKCopy</string>
 		<string>SHKMail</string>
 		<string>SHKSafari</string>
+		<string>SHKTextMessage</string>
 	</array>
 	<key>services</key>
 	<array>
+		<string>SHKVkontakte</string>
+		<string>SHKEvernote</string>
 		<string>SHKTwitter</string>
 		<string>SHKPinboard</string>
 		<string>SHKDelicious</string>
@@ -19,6 +22,7 @@
 		<string>SHKReadItLater</string>
 		<string>SHKInstapaper</string>
 		<string>SHKTumblr</string>
+		<string>SHKPlurk</string>
 	</array>
 </dict>
 </plist>

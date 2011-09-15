@@ -18,6 +18,6 @@
 	
 }
 
-@property MPMoviePlayerController* dataSource;
+@property(assign) MPMoviePlayerController* dataSource;
 
 @end

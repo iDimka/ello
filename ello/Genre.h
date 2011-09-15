@@ -15,8 +15,8 @@
 //        NSURL*			_ganrURL;
 }
 
-    @property(nonatomic, copy)NSString*		genreName;
-    @property(nonatomic, assign)NSNumber*	genreID;
+@property(nonatomic, retain)NSString*	genreName;
+@property(nonatomic, retain)NSNumber*	genreID;
 //    @property(nonatomic, retain)NSURL*		ganrURL;
 
 @end

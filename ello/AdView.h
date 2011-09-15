@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "asyncimageview.h"
+
 @class AdView;
 
 @protocol AdViewDelegate <NSObject>
@@ -17,7 +19,7 @@
 
 @end
 
-@interface AdView : UIImageView {
+@interface AdView : AsyncImageView {
     NSTimer*		o_reloadTimer;
 	NSTimeInterval	o_repeatTime;
 	NSURL*			o_adURL;
@@ -25,11 +27,20 @@
 	UIWebView*		o_htmlAdWebView;
 	
 	IBOutlet	id<AdViewDelegate>	o_bannerDelegate;
+	
 }
 
-@property(nonatomic, assign)id<AdViewDelegate> delegate;
+@property(nonatomic, retain)NSString*	bannerID;
+@property(nonatomic, retain)NSString*	name;
+@property(nonatomic, retain)NSString*	bannerImage;
+@property(nonatomic, retain)NSString*	url;
+@property(nonatomic, retain)NSString*	viewCount;
+@property(nonatomic, retain)NSString*	action;
+
+@property(nonatomic, assign)id<AdViewDelegate> addelegate;
 @property(nonatomic, retain)NSURL*	adURL;
 
+- (void)load;
 - (id)initWithDelegate:(id)delegate;
 + (id)showInView:(UIView*)view withDelegate:(id)delegate;
 

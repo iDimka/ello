@@ -51,7 +51,7 @@
 	
 	 _topControl = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
 	[_topControl setImage:[UIImage imageNamed:@"playerBand.png"]];
-	[_topControl setAlpha:.8];
+//	[_topControl setAlpha:.8];
 	[_topControl setUserInteractionEnabled:YES];
 	 [self.view addSubview:_topControl];
 	 
@@ -113,6 +113,7 @@
 	UIButton* done = [UIButton buttonWithType:UIButtonTypeCustom];
 	[done setFrame:CGRectMake(5, 7, 70, 31)];
 	[done setTitle:@"Готово" forState:UIControlStateNormal];
+	[done setFont:[UIFont boldSystemFontOfSize:14]];
 	[done setBackgroundImage:[UIImage imageNamed:@"btnBack.png"] forState:UIControlStateNormal];
 	[done addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:done];
@@ -291,7 +292,7 @@
 							   onTextEntered:^(NSString* enteredString)
 			 {
 			 
-			 playList.name = enteredString;
+			 playList.playlistName = enteredString;
 			 [[__delegate playlists] addPlaylist:playList];
 			 
 			 }];

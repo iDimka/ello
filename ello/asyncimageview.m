@@ -24,7 +24,6 @@
         _indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 		[_indicator setCenter:self.center];
 		[self addSubview:_indicator];
-		data = [[NSMutableData alloc] init]; 
     }
     return self;
 }
@@ -37,6 +36,8 @@
 		} 
 	
 	[_indicator startAnimating];
+	[data release];
+	data = nil;
 	
 	NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -44,6 +45,10 @@
 }
 
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)incrementalData {
+	if (!data) {
+		
+		data = [[NSMutableData alloc] init]; 
+	}
 	[data appendData:incrementalData]; 
 }
 - (void)connectionDidFinishLoading:(NSURLConnection*)theConnection {

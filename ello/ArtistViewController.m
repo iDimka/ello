@@ -23,6 +23,8 @@
 
 @property(nonatomic, retain)Clip*				clipToPlaylist; 
 
+- (NSString *) deleteHTMLTags:(NSString *)str;
+
 @end
 
 @implementation ArtistViewController
@@ -50,7 +52,7 @@
 	[_artistPhoto setBackgroundColor:[UIColor darkGrayColor]];
 	
 	_artistTweets = [[UITextView alloc] initWithFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, 30)];
-	_artistTweets.text = _artist.details;
+	_artistTweets.text = [self deleteHTMLTags:_artist.details];
 	_artistTweets.textColor = [UIColor whiteColor];
 	[_artistTweets setBackgroundColor:[UIColor clearColor]];  
 	[_contentScroll addSubview:_artistTweets]; 
@@ -149,7 +151,7 @@
 						   onTextEntered:^(NSString* enteredString)
 		 {
 		 
-		 playList.name = enteredString;
+		 playList.playlistName = enteredString;
 		 [[__delegate playlists] addPlaylist:playList];
 		 
 		 }];
@@ -163,6 +165,25 @@
 	}
 }
 
+- (NSString *) deleteHTMLTags:(NSString *)str{
+    NSMutableString *ms = [NSMutableString stringWithCapacity:[str length]];
+	
+    NSScanner *scanner = [NSScanner scannerWithString:str];
+    [scanner setCharactersToBeSkipped:nil];
+    NSString *s = nil;
+    while (![scanner isAtEnd])
+		{
+        [scanner scanUpToString:@"<" intoString:&s];
+        if (s != nil)
+            [ms appendString:s];
+        [scanner scanUpToString:@">" intoString:NULL];
+        if (![scanner isAtEnd])
+            [scanner setScanLocation:[scanner scanLocation]+1];
+        s = nil;
+		} 
+	
+    return [[ms stringByReplacingOccurrencesOfString:@"&laquo;" withString:@"\""] stringByReplacingOccurrencesOfString:@"&raquo;" withString:@"\""];
+}
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	

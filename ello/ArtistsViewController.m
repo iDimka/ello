@@ -39,20 +39,16 @@
 	[self.view addSubview:_tableView];
 	[_tableView setDelegate:self];
 	[_tableView setDataSource:self];
-	[_tableView setSeparatorColor:[UIColor darkGrayColor]];
-//	[_tableView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
-[_tableView setRowHeight:TBL_V_H];
+	[_tableView setSeparatorColor:[UIColor darkGrayColor]]; ;
+	[_tableView setRowHeight:TBL_V_H];
 	[_tableView setSeparatorColor:[UIColor clearColor]];
 	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
 	[_tableView setBackgroundView:tmp];
-	[tmp release];
-//	[self showDimView];
-	
-	
+	[tmp release]; 
+	 
 	_dataSource = [[NSMutableArray alloc] init];
 	[_dataSource addObject:[NSNull null]];
-	[_dataSource addObject:[NSNull null]];
-	[_dataSource addObject:[NSNull null]];
+	[_dataSource addObject:[NSNull null]]; 
  	
 	_segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Топ", @"Новые", nil]];
 	[_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
@@ -91,8 +87,7 @@
     
     Artist* artist = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] artists] objectAtIndex:indexPath.row];
 	
-	[cell configCellByArtitst:artist];
-//    NSLog([artist.artistID stringValue]);
+	[cell configCellByArtitst:artist]; 
     return cell;
 }
 

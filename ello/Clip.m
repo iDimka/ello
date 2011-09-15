@@ -68,7 +68,20 @@
 			NSLog(@"type youtube");
 		}
 	}
+	NSLog(@"type is %@", t);
 }
+- (void)setClipVideoURL:(NSString*)s{
+	if (![s isEqualToString:clipVideoURL]) {
+		[clipVideoURL release];
+		clipVideoURL = [s retain];
+//		if ([clipVideoURL hasSuffix:@".flv"]) {
+//			type = @"yoututbe";
+//		}
+//		else type = @"internal";
+	}
+//	NSLog(s);
+}
+
 
 - (NSString*)description{
 	return [NSString stringWithFormat:@"name is %@, url: %@ clipID: %@", clipName, clipImageURL, clipID];

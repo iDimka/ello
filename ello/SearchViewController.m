@@ -147,11 +147,11 @@
 	switch ((int)mode) {
 		case kClip:;
 			
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=util&action=searchByClipName&name=%@", searchText] objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self]; 
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/service.php?service=util&action=searchByClipName&name=%@", [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self]; 
 			break;
 		case kArtist:
 			
-			[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", searchText]  objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self]; 
+			[[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat:@"/service.php?service=util&action=searchByArtistName&name=%@", [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]  objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"artists"] delegate:self]; 
 			break; 
 	} 
 } 
@@ -175,7 +175,7 @@
 	NSString* url  = [[objectLoader URL] absoluteString];
 	NSLog(@"\%@", url);
     NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];
-	NSLog(@"ERROR %@", tmp);
+	NSLog(@"%@", tmp);
 	
 }
 

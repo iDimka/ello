@@ -8,6 +8,10 @@
 
 #import "elloAppDelegate.h"
 
+#import "Preroll.h"
+#import "Prerolls.h"
+#import "AdView.h"
+#import "AdViews.h"
 #import "PlayerViewController.h"
 #import "PreviewViewController.h"
 #import "PlayListViewController.h"
@@ -120,12 +124,39 @@
  	 @"clip.video",		@"clipVideoURL",
   	 @"clip.label",		@"label", 
 	 @"clip.type",		@"type",
+	 @"clip.producer",	@"producer",
      nil];
 	
 	RKObjectMapping*  clipsMapping = [RKObjectMapping mappingForClass:[Clips class]];
 	[clipsMapping mapKeyPathsToAttributes: @"status", @"status",  nil];
 	[clipsMapping mapRelationship:@"clips" withObjectMapping:mapping]; 
 	[objectManager.mappingProvider setObjectMapping:clipsMapping forKeyPath:@"clips"];
+	
+	mapping = [RKObjectMapping mappingForClass:[AdView class]];
+    [mapping mapKeyPathsToAttributes:
+     @"banner.id",			@"bannerID", 
+	 @"banner.image",		@"bannerImage",
+	 @"banner.url",			@"url",
+	 @"banner.name",		@"name",
+	 @"banner.view_count",	@"viewCount",
+	 @"banner.action",		@"action",
+     nil];
+	
+	clipsMapping = [RKObjectMapping mappingForClass:[AdViews class]]; 
+	[clipsMapping mapRelationship:@"banners" withObjectMapping:mapping]; 
+	[objectManager.mappingProvider setObjectMapping:clipsMapping forKeyPath:@"banners"];
+	
+	mapping = [RKObjectMapping mappingForClass:[Preroll class]];
+    [mapping mapKeyPathsToAttributes:
+     @"preroll.id",			@"preollID", 
+	 @"preroll.name",		@"preollName",
+	 @"preroll.url",		@"preollURL",
+	 @"preroll.view_count",	@"viewCount",
+     nil];
+	
+	clipsMapping = [RKObjectMapping mappingForClass:[Prerolls class]]; 
+	[clipsMapping mapRelationship:@"prerolls" withObjectMapping:mapping]; 
+	[objectManager.mappingProvider setObjectMapping:clipsMapping forKeyPath:@"prerolls"];
 	
 	
 	mapping = [RKObjectMapping mappingForClass:[Artist class]];
@@ -148,8 +179,8 @@
 	 @"playlist.artistName",@"artistName",
   	 @"playlist.genreId",	@"genreID",
   	 @"playlist.genreName",	@"genreName",
-  	 @"playlist.viewCount",	@"viewCount",
-	 @"playlist.name",		@"name",
+  	 @"playlist.clipsCount",@"clipsCount",
+	 @"playlist.playlistName",		@"playlistName",
 	 @"playlist.image",		@"imageURLString",
  	 @"playlist.video",		@"videoURLString",
   	 @"playlist.label",		@"label", 

@@ -39,7 +39,7 @@ typedef enum{
 @class AsyncImageView;
 @class PlayerViewController;
 
-@interface PreviewViewController : RootViewController <PlaylistProtocol, ClipThumbProtocol, ClipThumbProtocol>{
+@interface PreviewViewController : RootViewController <PlaylistProtocol, ClipThumbProtocol, ClipThumbProtocol, RKObjectLoaderDelegate>{
 	IBOutlet UILabel*		_buffering;
     PlayerViewController*	_moviePlayer;
 	PlayList*				_playlist;
@@ -48,6 +48,8 @@ typedef enum{
 	PlayCountMode			_playCountMode;
 	NSInteger				_index;
 	BOOL					_willNext;
+	Clip*					_currentClip;
+	IBOutlet UIImageView*	_youTubeIcn;
 }
 
 @property(nonatomic, retain)PlayList*							playlist;
