@@ -441,9 +441,9 @@
 		EE90736F13FEAC1400658D18 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		EE90737013FEAC1400658D18 /* playerNavBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playerNavBar.png; sourceTree = "<group>"; };
 		EE90737113FEAC1400658D18 /* playerNavBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playerNavBar@2x.png"; sourceTree = "<group>"; };
-		EE9D37B01421BA0100A61941 /* Prerolls.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Prerolls.h; sourceTree = "<group>"; };
+		EE9D37B01421BA0100A61941 /* Prerolls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prerolls.h; sourceTree = "<group>"; };
 		EE9D37B11421BA0100A61941 /* Prerolls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prerolls.m; sourceTree = "<group>"; };
-		EE9D37B31421BA4400A61941 /* Preroll.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Preroll.h; sourceTree = "<group>"; };
+		EE9D37B31421BA4400A61941 /* Preroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preroll.h; sourceTree = "<group>"; };
 		EE9D37B41421BA4400A61941 /* Preroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preroll.m; sourceTree = "<group>"; };
 		EEA0691213E8A02800C4E1A2 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		EEA0691313E8A02800C4E1A2 /* prev.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prev.png; sourceTree = "<group>"; };

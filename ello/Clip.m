@@ -68,7 +68,7 @@
 			NSLog(@"type youtube");
 		}
 	}
-	NSLog(@"type is %@", t);
+//	NSLog(@"type is %@", t);
 }
 - (void)setClipVideoURL:(NSString*)s{
 	if (![s isEqualToString:clipVideoURL]) {
