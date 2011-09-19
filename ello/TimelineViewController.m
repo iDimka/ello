@@ -47,7 +47,7 @@
 		[_timeLineView addSubview:_thumbOne];
 		
 		[self createGestureRecognizers];
-		_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -56,6 +56,7 @@
 	if (!dataSource || _thumbOne.canFollowTime == NO) return;
 	if (dataSource.duration == dataSource.currentPlaybackTime) [timer invalidate];
 	[_thumbOne setCenter:CGPointMake(self.frame.size.width / dataSource.duration * dataSource.currentPlaybackTime, self.frame.size.height / 2)];
+	NSLog(@"th centre: %@", NSStringFromCGPoint(_thumbOne.center));
  	
 }
 - (void)setDataSource:(MPMoviePlayerController *)dataS{

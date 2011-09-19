@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PreviewViewController.h"
+
 @interface PlayList : NSObject <NSCoding>{
 	NSNumber*		playListID;
 	NSNumber*		clipsCount;
@@ -40,5 +42,12 @@
 @property(nonatomic, retain)NSString*		videoURLString;
 @property(nonatomic, retain)NSString*		label;
 @property(nonatomic, retain)NSMutableArray*	clips;
+
+@end
+
+
+@interface PlayList()
+
+@property(nonatomic, assign)PlayMode playMode;
 
 @end

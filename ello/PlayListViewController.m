@@ -8,6 +8,7 @@
 
 #import "PlayListViewController.h"
 
+#import "PrerollViewController.h"
 #import "MKEntryPanel.h"
 #import "PreviewViewController.h"
 #import "PlayerViewController.h"
@@ -215,11 +216,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-    Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row]; 
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
-	[self.navigationController pushViewController:detailViewController animated:YES];
-	[detailViewController release];
+    
+	Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row]; 
 	 
+	if ([PrerollViewController hasPreroll]) {
+ 
+		PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:clip]; 
+		[detailViewController setPrerollDelegate:self];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
+	else{
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}	
+}
+
+- (void)showClip:(NSInvocationOperation*)inv{
+	PreviewViewController* tmp = (PreviewViewController*)[inv result]; 
+	[self.navigationController pushViewController:tmp animated:YES];
+	[tmp release];
 	
 }
 
@@ -294,8 +311,10 @@
 	if (buttonIndex != actionSheet.cancelButtonIndex)
 		{
 		PlayList* playlist = [_dataSource objectAtIndex:0];
+		[playlist setPlayMode:(buttonIndex ? kShufle : kNormal)];
 		self.repeatPlaylist = _playList;
-		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist inPlayMode:(buttonIndex ? kShufle : kNormal)];
+		
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist];
 		[self.navigationController pushViewController:detailViewController  animated:YES]; 
 		[detailViewController release];
 	}	

@@ -8,6 +8,7 @@
 
 #import "GenreViewController.h"
 
+#import "PrerollViewController.h"
 #import "PlayList.h"
 #import "PlayLists.h"
 #import "Clips.h"
@@ -65,10 +66,27 @@
 	
     Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
  
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
-	[self.navigationController pushViewController:detailViewController animated:YES];
-	[detailViewController release];
 	
+	if ([PrerollViewController hasPreroll]) {
+//		Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
+		PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:clip]; 
+		[detailViewController setPrerollDelegate:self];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
+	else{
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];;
+	}
+	
+	
+}
+
+- (void)showClip:(NSInvocationOperation*)inv{
+	PreviewViewController* tmp = (PreviewViewController*)[inv result]; 
+	[self.navigationController pushViewController:tmp animated:YES];
+	[tmp release];
 	
 }
 

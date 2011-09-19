@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AdView.h"
 #import "ClipThumb.h"
 
 typedef enum{
@@ -39,7 +40,7 @@ typedef enum{
 @class AsyncImageView;
 @class PlayerViewController;
 
-@interface PreviewViewController : RootViewController <PlaylistProtocol, ClipThumbProtocol, ClipThumbProtocol, RKObjectLoaderDelegate>{
+@interface PreviewViewController : RootViewController <AdViewDelegate ,PlaylistProtocol, ClipThumbProtocol, ClipThumbProtocol, RKObjectLoaderDelegate>{
 	IBOutlet UILabel*		_buffering;
     PlayerViewController*	_moviePlayer;
 	PlayList*				_playlist;
@@ -64,6 +65,6 @@ typedef enum{
 - (IBAction)back:(id)sender;
 - (id)initWithYouTubeVideo:(Clip*)clip;
 - (id)initWithClip:(Clip*)clip;
-- (id)initWithPlaylist:(PlayList*)playlist inPlayMode:(PlayMode)mode;
+- (id)initWithPlaylist:(PlayList*)playlist;
 
 @end

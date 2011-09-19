@@ -19,7 +19,7 @@
 
 @end
 
-@interface AdView : AsyncImageView {
+@interface AdView : AsyncImageView{
     NSTimer*		o_reloadTimer;
 	NSTimeInterval	o_repeatTime;
 	NSURL*			o_adURL;
@@ -40,7 +40,7 @@
 @property(nonatomic, assign)id<AdViewDelegate> addelegate;
 @property(nonatomic, retain)NSURL*	adURL;
 
-- (void)load;
+- (void)loadAdvert;
 - (id)initWithDelegate:(id)delegate;
 + (id)showInView:(UIView*)view withDelegate:(id)delegate;
 

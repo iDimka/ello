@@ -12,6 +12,7 @@
 
 @implementation Clips
 
+@synthesize playMode;
 @synthesize loadAllImages;
 @synthesize status;
 @synthesize clips;

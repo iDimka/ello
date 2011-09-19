@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 
+#import "PrerollViewController.h"
 #import "PreviewViewController.h"
 #import "ArtistViewController.h"
 #import "Artist.h"
@@ -116,12 +117,25 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	PreviewViewController *detailViewController = nil;
+//	PreviewViewController *detailViewController = nil;
 	switch ((int)mode) {
 		case kClip:;
-			detailViewController = [[PreviewViewController alloc] initWithClip:[_dataSource  objectAtIndex:indexPath.row]];
-			[self.navigationController pushViewController:detailViewController animated:YES];
-			[detailViewController release];
+//			detailViewController = [[PreviewViewController alloc] initWithClip:[_dataSource  objectAtIndex:indexPath.row]];
+//			[self.navigationController pushViewController:detailViewController animated:YES];
+//			[detailViewController release];
+			if ([PrerollViewController hasPreroll]) {
+				Clip* clip = [_dataSource objectAtIndex:[_dataSource  objectAtIndex:indexPath.row]];
+				PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:clip]; 
+				[detailViewController setPrerollDelegate:self];
+				[self.navigationController pushViewController:detailViewController animated:YES];
+				[detailViewController release];
+			}
+			else{
+				Clip* clip = [_dataSource  objectAtIndex:indexPath.row];
+				PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:[_dataSource  objectAtIndex:indexPath.row]];
+				[self.navigationController pushViewController:detailViewController animated:YES];
+				[detailViewController release];
+			}
 			break;
 		case kArtist:;			
 			ArtistViewController* tmp = [[ArtistViewController alloc] initWithArtist:[_dataSource  objectAtIndex:indexPath.row]];
@@ -129,6 +143,13 @@
 			[tmp release];
 			break; 
 	} 
+}
+
+- (void)showClip:(NSInvocationOperation*)inv{
+	PreviewViewController* tmp = (PreviewViewController*)[inv result]; 
+	[self.navigationController pushViewController:tmp animated:YES];
+	[tmp release];
+	
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar{

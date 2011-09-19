@@ -86,7 +86,7 @@
 	}
 }
 
-- (void)load{
+- (void)loadAdvert{
 	
 	[self loadImageFromURL:o_adURL];
 }

@@ -8,6 +8,8 @@
 
 #import "ArtistViewController.h"
 
+#import "PrerollViewController.h"
+#import "Prerolls.h"
 #import "MKEntryPanel.h"
 #import "PlayList.h"
 #import "PlayLists.h"
@@ -118,10 +120,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	
-    Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row]; 
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
-	[self.navigationController pushViewController:detailViewController animated:YES];
-	[detailViewController release];
+	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=preroll&action=getPreroll" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"prerolls"] delegate:self]; 
+	
+   
 	
 }
 
@@ -186,11 +187,50 @@
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
+	if ([objects count]) 
+		{
+		 
+		if ([[objects objectAtIndex:0] isKindOfClass:[Prerolls class]]) 
+			{ 
+				NSURL* url = [NSURL URLWithString:[[[[objects objectAtIndex:0] prerolls] objectAtIndex:0] preollURL]];
+				MPMoviePlayerViewController* moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:url]; 
+				[moviePlayer.moviePlayer setControlStyle:MPMovieControlStyleNone];
+				[self presentMoviePlayerViewControllerAnimated:moviePlayer];
+				return;
+			}
+		
+		[_dataSource addObject:[objects objectAtIndex:0]];
+		
+		[self hideDimView];
+		[_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
+		}
+	else{
+		
+		NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
+		
+		Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row];
+		if ([PrerollViewController hasPreroll]) {
+
+			PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:clip]; 
+			[detailViewController setPrerollDelegate:self];
+			[self.navigationController pushViewController:detailViewController animated:YES];
+			[detailViewController release];
+		}
+		else{
+			 
+			PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
+			[self.navigationController pushViewController:detailViewController animated:YES];
+			[detailViewController release];
+		}
+	}
 	
-	[_dataSource addObject:[objects objectAtIndex:0]];
+}
+
+- (void)showClip:(NSInvocationOperation*)inv{
+	PreviewViewController* tmp = (PreviewViewController*)[inv result]; 
+	[self.navigationController pushViewController:tmp animated:YES];
+	[tmp release];
 	
-	[self hideDimView];
-	[_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
 }
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSString* tmp = [NSString stringWithFormat:@"Error: %@", [error localizedDescription]];

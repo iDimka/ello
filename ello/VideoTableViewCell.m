@@ -97,7 +97,7 @@
 	else {
 		_videoThumb.image = nil;
 		[_videoThumb loadImageFromURL:[NSURL URLWithString:object.artistImage]];
-		NSLog(object.artistImage);
+//		NSLog(object.artistImage);
 	}
 }
 - (void)configCellByChannel:(Channel*)object{

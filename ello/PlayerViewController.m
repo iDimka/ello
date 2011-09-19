@@ -34,7 +34,7 @@
     }
     return self;
 }
-- (void)dealloc {NSLog(@"%s:%d", __func__, self);
+- (void)dealloc {//NSLog(@"%s:%d", __func__, self);
     
 	[_timeLineView release];
 	[_currentClip release];
@@ -113,7 +113,7 @@
 	UIButton* done = [UIButton buttonWithType:UIButtonTypeCustom];
 	[done setFrame:CGRectMake(5, 7, 70, 31)];
 	[done setTitle:@"Готово" forState:UIControlStateNormal];
-	[done setFont:[UIFont boldSystemFontOfSize:14]];
+	[done.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
 	[done setBackgroundImage:[UIImage imageNamed:@"btnBack.png"] forState:UIControlStateNormal];
 	[done addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside];
 	[_topControl addSubview:done];
@@ -308,6 +308,9 @@
 		{
  
 		}	
+}
+- (void)selectClip:(Clip *)clip{
+	
 }
 
 @end

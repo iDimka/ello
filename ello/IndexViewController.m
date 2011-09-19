@@ -8,6 +8,7 @@
 
 #import "IndexViewController.h"
 
+#import "PrerollViewController.h"
 #import "AdView.h"
 #import "AdViews.h"
 #import "PreviewViewController.h"
@@ -70,8 +71,10 @@
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	
-	_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
-    
+	if (![_slideshowTimer isValid]) {
+		_slideshowTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(slideshow:) userInfo:nil repeats:YES];
+		
+	}
 	[_pageControl setNumberOfPages:[_dataSource count]];
 	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=banner&action=getBanner" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"banners"] delegate:self]; 
 	
@@ -82,6 +85,7 @@
 	if ([_slideshowTimer isValid])
 		{
         [_slideshowTimer invalidate];
+		_slideshowTimer = nil;
 		} 
 }
 
@@ -92,38 +96,7 @@
 - (void)bannerViewDidError:(AdView *)banner{
 	
 }
-/*
-#pragma mark -
-#pragma mark ADBannerViewDelegate Protocol
 
-- (void)bannerViewDidLoadAd:(ADBannerView *)bannerr{ 
-	if (!bannerIsVisible)
-		{
-		bannerr.frame = CGRectMake(0, 317 + 50, 320, 50);
-		[UIView beginAnimations:@"animateAdBannerOn" context:NULL]; 
-		bannerr.frame = CGRectMake(0, 317, 320, 50);
-		[UIView commitAnimations];
-		bannerIsVisible = YES;
-		
-		}
-}
-- (void)hideBanner: (ADBannerView *) bannerr  {
-	
-	if (bannerIsVisible)
-		{
-		[UIView beginAnimations:@"animateAdBannerOff" context:NULL]; 
-		bannerr.frame = CGRectMake(0, 317 + 50, 320, 50);
-		[UIView commitAnimations];
-		bannerIsVisible = NO;
-		}
-	
-}
-- (void)bannerView:(ADBannerView *)bannerr didFailToReceiveAdWithError:(NSError *)error{
-	
-	[self hideBanner:bannerr];
-	
-}
-*/
 #pragma -
 #pragma UIScrolViewDelgate
 
@@ -193,11 +166,28 @@
 		}  
 }
 - (void)touchedInView:(UIView*)view{
-	Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
-//	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithYouTubeVideo:clip];
-	[self.navigationController pushViewController:detailViewController animated:YES];
-	[detailViewController release];
+ 
+	if ([PrerollViewController hasPreroll]) {
+		Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
+		PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:clip]; 
+		[detailViewController setPrerollDelegate:self];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
+	else{
+		Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip]; 
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
+	
+	
+}
+- (void)showClip:(NSInvocationOperation*)inv{
+	PreviewViewController* tmp = (PreviewViewController*)[inv result]; 
+	[self.navigationController pushViewController:tmp animated:YES];
+	[tmp release];
+	
 }
 
 - (void)fake{
@@ -327,11 +317,11 @@
  }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-	NSLog(@"l %@\n\n", objects);
+//	NSLog(@"l %@\n\n", objects);
 	if ([[objects objectAtIndex:0] isKindOfClass:[AdViews class]]) {
 		adView =  [[[[objects objectAtIndex:0] banners] objectAtIndex:0] retain];
 		[[[[objects objectAtIndex:0] banners] objectAtIndex:0] setAddelegate:self];
-		[[[[objects objectAtIndex:0] banners] objectAtIndex:0] load];
+		[[[[objects objectAtIndex:0] banners] objectAtIndex:0] loadAdvert];
 		return;
 	}
 	[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] clips]]; 

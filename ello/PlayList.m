@@ -10,11 +10,13 @@
 
 @implementation PlayList
 
+@synthesize playMode;
+
 @synthesize playListID;
 @synthesize clipsCount;
 @synthesize playlistName;
 @synthesize image;
- 
+@synthesize artistID;
 @synthesize clips;
 @synthesize thumb;
 @synthesize artistName;

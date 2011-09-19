@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PreviewViewController.h"
+
 typedef void (^LoadImages)(BOOL isOK);
 
 @class Clip;
@@ -21,5 +23,11 @@ typedef void (^LoadImages)(BOOL isOK);
 - (void)addClip:(Clip*)clip;
 - (void)removeClip:(Clip*)clip;
 - (void)loadAllImages:(LoadImages)block;
+
+@end
+
+@interface Clips()
+
+@property(nonatomic, assign)PlayMode playMode;
 
 @end

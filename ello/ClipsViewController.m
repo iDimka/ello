@@ -8,9 +8,10 @@
 
 #import "ClipsViewController.h"
 
+#import "PrerollViewController.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/CoreData/CoreData.h>
-
+#import "PrerollViewController.h"
 #import "MKEntryPanel.h"
 #import "PlayList.h"
 #import "PlayLists.h"
@@ -171,14 +172,30 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	    
+	Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
 	
-    Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
-	self.clipToPlaylist = clip;
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:self.clipToPlaylist];
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-	
+	if ([PrerollViewController hasPreroll]) 
+		{
+		PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:clip]; 
+		[detailViewController setPrerollDelegate:self];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
+	else{
+		self.clipToPlaylist = clip;
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:self.clipToPlaylist];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
      
+}
+
+- (void)showClip:(NSInvocationOperation*)inv{
+	PreviewViewController* tmp = (PreviewViewController*)[inv result]; 
+	[self.navigationController pushViewController:tmp animated:YES];
+	[tmp release];
+	
 }
 
 - (void)segmentHeaderTapped:(UISegmentedControl*)segmentedControl{
@@ -197,9 +214,19 @@
 	}
 }
 - (void)repeatClip{	
-	PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:self.clipToPlaylist];
-	[self.navigationController pushViewController:detailViewController animated:YES];
-	[detailViewController release];	
+	
+	if ([PrerollViewController hasPreroll]) {
+
+		PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:self.clipToPlaylist]; 
+		[detailViewController setPrerollDelegate:self];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
+	else{
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:self.clipToPlaylist];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
 }
 - (void)search:(id)sender{
 	SearchViewController *detailViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil mode:kClip]; 

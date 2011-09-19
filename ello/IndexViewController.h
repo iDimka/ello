@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-//#import <iAd/iAd.h>
+#import "AdView.h"
 @class AdView;
  
-@interface IndexViewController : RootViewController <UIScrollViewDelegate, RKObjectLoaderDelegate>{
+@interface IndexViewController : RootViewController <UIScrollViewDelegate, RKObjectLoaderDelegate, AdViewDelegate>{
 	IBOutlet	UIScrollView*	_scrollView;
 	IBOutlet	UIImageView*	_banner; 
 	IBOutlet	UIPageControl*	_pageControl;

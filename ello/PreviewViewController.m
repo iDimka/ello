@@ -10,7 +10,6 @@
 
 #import "Preroll.h"
 #import "Prerolls.h"
-#import "AdView.h"
 #import "AdViews.h"
 #import "PlayList.h"
 #import "Clip.h"
@@ -57,17 +56,17 @@
 - (id)initWithYouTubeVideo:(Clip*)clip{
 	if (self = [self init]) 
 		{		
-		_playMode = kYouTubeClip;; 	
-		_playCountMode = kSingleClip;
+		_playMode = kNormal;; 	
+		_playCountMode = kYouTubeClip;
 		self.currentClip = clip;						
 			
 	}
 	return self;
 }
-- (id)initWithPlaylist:(PlayList*)playlist inPlayMode:(PlayMode)mode {
+- (id)initWithPlaylist:(PlayList*)playlist{
     self = [self init];
     if (self) {
-		_playMode = mode;
+		_playMode = playlist.playMode;
 		_playCountMode = kMultiClips;
         _playlist = [playlist retain]; 
 		
@@ -91,12 +90,7 @@
 	
 	
 	if ([clip.type isEqualToString:@"youtube"]) 
-		{
-//		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.youtube.com/watch?v=lswjfAN6gTE&feature=youtu.be"]];
-													
-													
-
-//		[[clip.clipVideoURL stringByReplacingOccurrencesOfString:@"http" withString:@"youtube"]] ];
+		{ 
 		return [self initWithYouTubeVideo:clip];		
 	}
     self = [self init];
@@ -129,12 +123,17 @@
 		
 		[_buffering setHidden:YES];
 		[sun stopAnimating];
+		
+		UIButton* share = [UIButton buttonWithType:UIButtonTypeCustom];
+		[share setFrame:CGRectMake(100, 10, 33, 37)];
+		[share setImage:[UIImage imageNamed:@"btnShare.png"] forState:UIControlStateNormal];
+		[share addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:share];
 	}
 	if ([self.currentClip.type isEqualToString:@"youtube"]) _youTubeIcn.hidden = NO; 
 	
 	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=banner&action=getBanner" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"banners"] delegate:self]; 
 
-	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=preroll&action=getPreroll" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"prerolls"] delegate:self]; 
 }
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillDisappear:animated];
@@ -168,7 +167,9 @@
 
 - (void)bannerViewDidLoadAd:(AdView *)banner{
 	[banner setFrame:CGRectMake(160, 215, 320, 50)];
-	[self.view addSubview:banner];
+	[UIView animateWithDuration:.4 animations:^{
+		[self.view addSubview:banner];
+	}];
 }
 - (void)bannerViewDidError:(AdView *)banner{
 	
@@ -325,6 +326,18 @@
     [videoView release];
 }
 
+- (void)share:(id)sender{
+	 
+	[[SHK currentHelper] setRootViewController:self];
+	
+	[SHK setUserExclusions:[NSDictionary dictionaryWithObject:@"1" forKey:@"SHKReadItLater"]];
+	SHKItem *item = [SHKItem URL:[NSURL URLWithString:_currentClip.clipVideoURL] title:_currentClip.clipName];
+	
+	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+	
+	[actionSheet showInView:self.view];
+	
+}
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
 	NSLog(@"ldd %@\n\n", objects);
@@ -333,17 +346,9 @@
 		if ([[objects objectAtIndex:0] isKindOfClass:[AdViews class]]) {
 			[[[[objects objectAtIndex:0] banners] objectAtIndex:0] retain];
 			[[[[objects objectAtIndex:0] banners] objectAtIndex:0] setAddelegate:self];
-			[[[[objects objectAtIndex:0] banners] objectAtIndex:0] load];
+			[[[[objects objectAtIndex:0] banners] objectAtIndex:0] loadAdvert];
 			return;
-		} 
-		
-		if ([[objects objectAtIndex:0] isKindOfClass:[Prerolls class]]) 
-			{ 
-				NSURL* url = [NSURL URLWithString:[[[[objects objectAtIndex:0] prerolls] objectAtIndex:0] preollURL]];
-				self.moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:url]; 
-				[_moviePlayer.moviePlayer setControlStyle:MPMovieControlStyleNone];
-				 [self presentMoviePlayerViewControllerAnimated:_moviePlayer];
-			}
+		}
 		}
 	
 }
@@ -354,7 +359,7 @@
 }
 
 
-- (void)dealloc {NSLog(@"%s", __func__);
+- (void)dealloc {//NSLog(@"%s", __func__);
 		
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	self.webPlayer = nil;

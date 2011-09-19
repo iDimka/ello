@@ -24,6 +24,7 @@
 		EE205D631413787B0067EF4E /* 95-equalizer.png in Resources */ = {isa = PBXBuildFile; fileRef = EE205D5F1413787B0067EF4E /* 95-equalizer.png */; };
 		EE205D641413787B0067EF4E /* 194-note-2.png in Resources */ = {isa = PBXBuildFile; fileRef = EE205D601413787B0067EF4E /* 194-note-2.png */; };
 		EE205D66141379440067EF4E /* barInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = EE205D65141379440067EF4E /* barInfo.png */; };
+		EE2237831426165C000480C6 /* PrerollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2237821426165C000480C6 /* PrerollViewController.m */; };
 		EE36A88A13F6B52E00E2D698 /* ClipInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE36A88813F6B52A00E2D698 /* ClipInfoViewController.m */; };
 		EE36A88B13F6B52E00E2D698 /* ClipInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE36A88913F6B52B00E2D698 /* ClipInfoViewController.xib */; };
 		EE36A89213F6BF4900E2D698 /* ArtistInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */; };
@@ -351,6 +352,8 @@
 		EE205D5F1413787B0067EF4E /* 95-equalizer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "95-equalizer.png"; sourceTree = "<group>"; };
 		EE205D601413787B0067EF4E /* 194-note-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "194-note-2.png"; sourceTree = "<group>"; };
 		EE205D65141379440067EF4E /* barInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barInfo.png; sourceTree = "<group>"; };
+		EE2237811426165C000480C6 /* PrerollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrerollViewController.h; sourceTree = "<group>"; };
+		EE2237821426165C000480C6 /* PrerollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrerollViewController.m; sourceTree = "<group>"; };
 		EE36A88713F6B52A00E2D698 /* ClipInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipInfoViewController.h; sourceTree = "<group>"; };
 		EE36A88813F6B52A00E2D698 /* ClipInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipInfoViewController.m; sourceTree = "<group>"; };
 		EE36A88913F6B52B00E2D698 /* ClipInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClipInfoViewController.xib; sourceTree = "<group>"; };
@@ -790,6 +793,8 @@
 				EE6D04FB13CCD7DD0076850F /* PreviewViewController.xib */,
 				EE6D05A013CFAF5E0076850F /* PlayerViewController.h */,
 				EE6D05A113CFAF5F0076850F /* PlayerViewController.m */,
+				EE2237811426165C000480C6 /* PrerollViewController.h */,
+				EE2237821426165C000480C6 /* PrerollViewController.m */,
 				EE36A89013F6BF4700E2D698 /* ArtistInfoView.h */,
 				EE36A89113F6BF4800E2D698 /* ArtistInfoView.m */,
 				EEB3240613EEF256008329F2 /* ClipThumb.h */,
@@ -1556,6 +1561,7 @@
 		EEB8F7E513C5FD0D00B70FDB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = iDimka;
 			};
 			buildConfigurationList = EEB8F7E813C5FD0D00B70FDB /* Build configuration list for PBXProject "ello" */;
@@ -1903,6 +1909,7 @@
 				EED5F4E5141D5CBD006A81AB /* SHKVkontakte.m in Sources */,
 				EE9D37B21421BA0100A61941 /* Prerolls.m in Sources */,
 				EE9D37B51421BA4400A61941 /* Preroll.m in Sources */,
+				EE2237831426165C000480C6 /* PrerollViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1974,7 +1981,7 @@
 				);
 				PROVISIONING_PROFILE = "BCDAA8F5-6BC6-4840-A0B4-1AC5D0346548";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5182A35B-2F23-4DEC-9FFD-832092B8C525";
-				SDKROOT = iphoneos4.3;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -2002,7 +2009,7 @@
 				);
 				PROVISIONING_PROFILE = "A7332872-FD05-4E17-9B57-F7FD9652DE07";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A7332872-FD05-4E17-9B57-F7FD9652DE07";
-				SDKROOT = iphoneos4.3;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -2018,7 +2025,7 @@
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -2029,7 +2036,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F60747C6-A446-40C8-BB70-1438351D46C5";
-				SDKROOT = iphoneos4.3;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
@@ -2047,7 +2054,7 @@
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -2059,7 +2066,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F60747C6-A446-40C8-BB70-1438351D46C5";
-				SDKROOT = iphoneos4.3;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv6 armv7";

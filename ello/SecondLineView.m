@@ -26,7 +26,7 @@
 		_playedTime = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"blueCircle.png"] stretchableImageWithLeftCapWidth:4 topCapHeight:4]];
 		[self addSubview:_playedTime];
 		
-		_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
     
 	}
     return self;

@@ -18,7 +18,7 @@
 @class TimelineViewController;
 @class Clip;
 
-@interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate, PlaylistProtocol, ClipThumbProtocol>{
+@interface PlayerViewController : MPMoviePlayerViewController <UIActionSheetDelegate, ClipThumbProtocol>{
 	UIImageView*			_topControl;
 	UIImageView*			_bottomControl;	
 	id<PlaylistProtocol>	_delegate;
