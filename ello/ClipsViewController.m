@@ -247,8 +247,8 @@
 		[actionSheet addButtonWithTitle:pl.playlistName];
 	}
 	[actionSheet addButtonWithTitle:@"Отмена"];
-	[actionSheet showInView:self.view];
-	[actionSheet release];
+	[actionSheet showFromTabBar:self.tabBarController.tabBar];
+	 [actionSheet release];
 	
 	
 }

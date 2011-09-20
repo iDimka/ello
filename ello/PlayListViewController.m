@@ -262,7 +262,7 @@
 - (void)showAll:(id)sender{
 	if (![_dataSource count] || [[_dataSource objectAtIndex:0] isKindOfClass:[NSNull class]]) return;
 	UIActionSheet* menu = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Просмотреть Все", @"Вперемешку", nil];
-	[menu showInView:self.view];
+	[menu showFromTabBar:self.tabBarController.tabBar];
 	[menu release];
 
 }
