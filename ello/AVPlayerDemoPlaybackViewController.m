@@ -253,12 +253,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
     }
  
 }
- 
-
-- (void)observeValueForKeyPath:(NSString*) path 
-			ofObject:(id)object 
-			change:(NSDictionary*)change 
-			context:(void*)context{
+- (void)observeValueForKeyPath:(NSString*) path	ofObject:(id)object change:(NSDictionary*)change context:(void*)context{
 	/* AVPlayerItem "status" property value observer. */
 	if (context == AVPlayerDemoPlaybackViewControllerStatusObservationContext)
 	{
@@ -285,8 +280,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 	else if (context == AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext)
 	{ 
             [mPlaybackView setPlayer:mPlayer]; 
-            [mPlaybackView setVideoFillMode:AVLayerVideoGravityResizeAspect];
- 
+//            [mPlaybackView setVideoFillMode:AVLayerVideoGravityResizeAspect]; 
 	}
 	else
 	{

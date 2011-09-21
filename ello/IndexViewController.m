@@ -172,7 +172,8 @@
 		
 		Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
 		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
-		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+//		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+		[tmp setURL:[NSURL URLWithString:@"http://s3.amazonaws.com/medibook/video/m1.mp4"]];
 		[tmp setAvdelegate:self]; 
 		[[__delegate window] addSubview:tmp.view]; 
  
