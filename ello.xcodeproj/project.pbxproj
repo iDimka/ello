@@ -12,6 +12,14 @@
 		EE04D5CD140A9086005B9296 /* blueCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = EE04D5CA140A9086005B9296 /* blueCircle.png */; };
 		EE04D5CE140A9086005B9296 /* greyCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = EE04D5CB140A9086005B9296 /* greyCircle.png */; };
 		EE04D5CF140A9086005B9296 /* whiteCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = EE04D5CC140A9086005B9296 /* whiteCircle.png */; };
+		EE1C2EE91429141700CD7CC1 /* AVPlayerDemoPlaybackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1C2EE21429141700CD7CC1 /* AVPlayerDemoPlaybackViewController.m */; };
+		EE1C2EEA1429141700CD7CC1 /* AVPlayerDemoPlaybackView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1C2EE41429141700CD7CC1 /* AVPlayerDemoPlaybackView.m */; };
+		EE1C2EEB1429141700CD7CC1 /* AVPlayerDemoMetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1C2EE61429141700CD7CC1 /* AVPlayerDemoMetadataViewController.m */; };
+		EE1C2EEC1429141700CD7CC1 /* AVPlayerDemoPlaybackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1C2EE71429141700CD7CC1 /* AVPlayerDemoPlaybackView.xib */; };
+		EE1C2EED1429141700CD7CC1 /* AVPlayerDemoMetadataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE1C2EE81429141700CD7CC1 /* AVPlayerDemoMetadataView.xib */; };
+		EE1C2EF0142915B000CD7CC1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1C2EEF142915B000CD7CC1 /* AVFoundation.framework */; };
+		EE1C2EF21429161400CD7CC1 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1C2EF11429161400CD7CC1 /* AssetsLibrary.framework */; };
+		EE1C2EF41429167200CD7CC1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1C2EF31429167200CD7CC1 /* CoreMedia.framework */; };
 		EE1E6C2413E335EF006794C7 /* player_play.png in Resources */ = {isa = PBXBuildFile; fileRef = EE1E6C2313E335EF006794C7 /* player_play.png */; };
 		EE1E6C2613E33764006794C7 /* player_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = EE1E6C2513E33764006794C7 /* player_pause.png */; };
 		EE1E6C2813E3426A006794C7 /* addToPl.png in Resources */ = {isa = PBXBuildFile; fileRef = EE1E6C2713E3426A006794C7 /* addToPl.png */; };
@@ -107,6 +115,7 @@
 		EEA7009413E1EA140017F550 /* Genres.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008D13E1EA140017F550 /* Genres.m */; };
 		EEA7009513E1EA140017F550 /* GanriTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */; };
 		EEA7009613E1EA140017F550 /* GenresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7009113E1EA140017F550 /* GenresViewController.m */; };
+		EEAD621C1429D61C0092EA4A /* ElloInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAD621E1429D61C0092EA4A /* ElloInfoViewController.xib */; };
 		EEB323BD13EEB6D1008329F2 /* tabItemGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = EEB323B813EEB6D1008329F2 /* tabItemGirl.png */; };
 		EEB323BF13EEB6D1008329F2 /* tabItemMore.png in Resources */ = {isa = PBXBuildFile; fileRef = EEB323BA13EEB6D1008329F2 /* tabItemMore.png */; };
 		EEB323C013EEB6D1008329F2 /* tabItemMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEB323BB13EEB6D1008329F2 /* tabItemMore@2x.png */; };
@@ -130,7 +139,6 @@
 		EEB8F80313C5FD0D00B70FDB /* elloAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB8F80213C5FD0D00B70FDB /* elloAppDelegate.m */; };
 		EEB8F80613C5FD0D00B70FDB /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEB8F80413C5FD0D00B70FDB /* MainWindow.xib */; };
 		EEC2A5B5140421B400DEC155 /* ElloInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A5B3140421B400DEC155 /* ElloInfoViewController.m */; };
-		EEC2A5B6140421B400DEC155 /* ElloInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEC2A5B4140421B400DEC155 /* ElloInfoViewController.xib */; };
 		EEC2A5B81404632C00DEC155 /* facebook_like_button1.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC2A5B71404632C00DEC155 /* facebook_like_button1.png */; };
 		EEC2A5BB140465FA00DEC155 /* PSFBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC2A5BA140465F800DEC155 /* PSFBLoginDialog.m */; };
 		EEC2A5C11404856600DEC155 /* followme.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC2A5C01404856400DEC155 /* followme.png */; };
@@ -340,6 +348,17 @@
 		EE04D5CA140A9086005B9296 /* blueCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueCircle.png; sourceTree = "<group>"; };
 		EE04D5CB140A9086005B9296 /* greyCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greyCircle.png; sourceTree = "<group>"; };
 		EE04D5CC140A9086005B9296 /* whiteCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteCircle.png; sourceTree = "<group>"; };
+		EE1C2EE11429141700CD7CC1 /* AVPlayerDemoPlaybackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerDemoPlaybackViewController.h; sourceTree = "<group>"; };
+		EE1C2EE21429141700CD7CC1 /* AVPlayerDemoPlaybackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerDemoPlaybackViewController.m; sourceTree = "<group>"; };
+		EE1C2EE31429141700CD7CC1 /* AVPlayerDemoPlaybackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerDemoPlaybackView.h; sourceTree = "<group>"; };
+		EE1C2EE41429141700CD7CC1 /* AVPlayerDemoPlaybackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerDemoPlaybackView.m; sourceTree = "<group>"; };
+		EE1C2EE51429141700CD7CC1 /* AVPlayerDemoMetadataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayerDemoMetadataViewController.h; sourceTree = "<group>"; };
+		EE1C2EE61429141700CD7CC1 /* AVPlayerDemoMetadataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayerDemoMetadataViewController.m; sourceTree = "<group>"; };
+		EE1C2EE71429141700CD7CC1 /* AVPlayerDemoPlaybackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVPlayerDemoPlaybackView.xib; sourceTree = "<group>"; };
+		EE1C2EE81429141700CD7CC1 /* AVPlayerDemoMetadataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVPlayerDemoMetadataView.xib; sourceTree = "<group>"; };
+		EE1C2EEF142915B000CD7CC1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EE1C2EF11429161400CD7CC1 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		EE1C2EF31429167200CD7CC1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		EE1E6C2313E335EF006794C7 /* player_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_play.png; sourceTree = "<group>"; };
 		EE1E6C2513E33764006794C7 /* player_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_pause.png; sourceTree = "<group>"; };
 		EE1E6C2713E3426A006794C7 /* addToPl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addToPl.png; sourceTree = "<group>"; };
@@ -466,6 +485,7 @@
 		EEA7009113E1EA140017F550 /* GenresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenresViewController.m; sourceTree = "<group>"; };
 		EEA7009213E1EA140017F550 /* GenresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenresViewController.h; sourceTree = "<group>"; };
 		EEA72AD813E07D8900B391D3 /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Entitlements.entitlements; sourceTree = "<group>"; };
+		EEAD621D1429D61C0092EA4A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ElloInfoViewController.xib; sourceTree = "<group>"; };
 		EEB323B813EEB6D1008329F2 /* tabItemGirl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabItemGirl.png; sourceTree = "<group>"; };
 		EEB323BA13EEB6D1008329F2 /* tabItemMore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabItemMore.png; sourceTree = "<group>"; };
 		EEB323BB13EEB6D1008329F2 /* tabItemMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabItemMore@2x.png"; sourceTree = "<group>"; };
@@ -500,7 +520,6 @@
 		EEB8F80513C5FD0D00B70FDB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		EEC2A5B2140421B400DEC155 /* ElloInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElloInfoViewController.h; sourceTree = "<group>"; };
 		EEC2A5B3140421B400DEC155 /* ElloInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElloInfoViewController.m; sourceTree = "<group>"; };
-		EEC2A5B4140421B400DEC155 /* ElloInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ElloInfoViewController.xib; sourceTree = "<group>"; };
 		EEC2A5B71404632C00DEC155 /* facebook_like_button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_like_button1.png; sourceTree = "<group>"; };
 		EEC2A5B9140465F600DEC155 /* PSFBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFBLoginDialog.h; sourceTree = "<group>"; };
 		EEC2A5BA140465F800DEC155 /* PSFBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFBLoginDialog.m; sourceTree = "<group>"; };
@@ -708,6 +727,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE1C2EF41429167200CD7CC1 /* CoreMedia.framework in Frameworks */,
+				EE1C2EF21429161400CD7CC1 /* AssetsLibrary.framework in Frameworks */,
+				EE1C2EF0142915B000CD7CC1 /* AVFoundation.framework in Frameworks */,
 				EEB8F7F713C5FD0D00B70FDB /* CoreGraphics.framework in Frameworks */,
 				EEC7F50613F447CA00818539 /* MessageUI.framework in Frameworks */,
 				EEC7F50413F447BE00818539 /* Security.framework in Frameworks */,
@@ -739,6 +761,21 @@
 				EE04D5CC140A9086005B9296 /* whiteCircle.png */,
 			);
 			name = timeline;
+			sourceTree = "<group>";
+		};
+		EE1C2EEE1429142100CD7CC1 /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				EE1C2EE11429141700CD7CC1 /* AVPlayerDemoPlaybackViewController.h */,
+				EE1C2EE21429141700CD7CC1 /* AVPlayerDemoPlaybackViewController.m */,
+				EE1C2EE31429141700CD7CC1 /* AVPlayerDemoPlaybackView.h */,
+				EE1C2EE41429141700CD7CC1 /* AVPlayerDemoPlaybackView.m */,
+				EE1C2EE51429141700CD7CC1 /* AVPlayerDemoMetadataViewController.h */,
+				EE1C2EE61429141700CD7CC1 /* AVPlayerDemoMetadataViewController.m */,
+				EE1C2EE71429141700CD7CC1 /* AVPlayerDemoPlaybackView.xib */,
+				EE1C2EE81429141700CD7CC1 /* AVPlayerDemoMetadataView.xib */,
+			);
+			name = AVPlayer;
 			sourceTree = "<group>";
 		};
 		EE472F20140C13F00020D651 /* Timeline */ = {
@@ -935,6 +972,9 @@
 		EEB8F7F113C5FD0D00B70FDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EE1C2EF31429167200CD7CC1 /* CoreMedia.framework */,
+				EE1C2EF11429161400CD7CC1 /* AssetsLibrary.framework */,
+				EE1C2EEF142915B000CD7CC1 /* AVFoundation.framework */,
 				EEA7008913E1E9670017F550 /* libRestKitSupport.a */,
 				EEA7008113E1E4C70017F550 /* libRestKitCoreData.a */,
 				EEA7008213E1E4C70017F550 /* libRestKitJSONParserJSONKit.a */,
@@ -972,7 +1012,8 @@
 				EEFB250F13E5BEBC00BA8BD1 /* TabbarViewController.xib */,
 				EEC2A5B2140421B400DEC155 /* ElloInfoViewController.h */,
 				EEC2A5B3140421B400DEC155 /* ElloInfoViewController.m */,
-				EEC2A5B4140421B400DEC155 /* ElloInfoViewController.xib */,
+				EEAD621E1429D61C0092EA4A /* ElloInfoViewController.xib */,
+				EE1C2EEE1429142100CD7CC1 /* AVPlayer */,
 				EEF2274813C7A63C004731BE /* General */,
 				EEF2274913C7A64A004731BE /* Clips */,
 				EE6D054513CE3FC50076850F /* PlayList */,
@@ -1760,7 +1801,7 @@
 				EE90737513FEAC1400658D18 /* logo@2x.png in Resources */,
 				EE90737613FEAC1400658D18 /* playerNavBar.png in Resources */,
 				EE90737713FEAC1400658D18 /* playerNavBar@2x.png in Resources */,
-				EEC2A5B6140421B400DEC155 /* ElloInfoViewController.xib in Resources */,
+				EEAD621C1429D61C0092EA4A /* ElloInfoViewController.xib in Resources */,
 				EEC2A5B81404632C00DEC155 /* facebook_like_button1.png in Resources */,
 				EEC2A5C11404856600DEC155 /* followme.png in Resources */,
 				EED9B05B1406EB9600A45309 /* SVWebViewController.bundle in Resources */,
@@ -1788,6 +1829,8 @@
 				EED5F4D6141D4A41006A81AB /* elloLogo.png in Resources */,
 				EED5F4D7141D4A41006A81AB /* elloLogo@2x.png in Resources */,
 				EED5F4D9141D4F29006A81AB /* youtube.png in Resources */,
+				EE1C2EEC1429141700CD7CC1 /* AVPlayerDemoPlaybackView.xib in Resources */,
+				EE1C2EED1429141700CD7CC1 /* AVPlayerDemoMetadataView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1910,6 +1953,9 @@
 				EE9D37B21421BA0100A61941 /* Prerolls.m in Sources */,
 				EE9D37B51421BA4400A61941 /* Preroll.m in Sources */,
 				EE2237831426165C000480C6 /* PrerollViewController.m in Sources */,
+				EE1C2EE91429141700CD7CC1 /* AVPlayerDemoPlaybackViewController.m in Sources */,
+				EE1C2EEA1429141700CD7CC1 /* AVPlayerDemoPlaybackView.m in Sources */,
+				EE1C2EEB1429141700CD7CC1 /* AVPlayerDemoMetadataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1932,6 +1978,14 @@
 				EE5BB2AC140E1CB3003298C8 /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		EEAD621E1429D61C0092EA4A /* ElloInfoViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EEAD621D1429D61C0092EA4A /* en */,
+			);
+			name = ElloInfoViewController.xib;
 			sourceTree = "<group>";
 		};
 		EEB8F7FB13C5FD0D00B70FDB /* InfoPlist.strings */ = {
@@ -2019,13 +2073,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gusein Suleimanov";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Valery Kurilov (5W44P8WJS4)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -2035,7 +2089,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F60747C6-A446-40C8-BB70-1438351D46C5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E65D3BA9-14F3-4654-ACF9-45CF2ABD4FAB";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
@@ -2049,12 +2103,12 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gusein Suleimanov";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Valery Kurilov (5W44P8WJS4)";
 				COPY_PHASE_STRIP = YES;
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				LIBRARY_SEARCH_PATHS = (
@@ -2065,7 +2119,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F60747C6-A446-40C8-BB70-1438351D46C5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E65D3BA9-14F3-4654-ACF9-45CF2ABD4FAB";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;

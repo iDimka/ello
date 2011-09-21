@@ -47,7 +47,7 @@
 		[_timeLineView addSubview:_thumbOne];
 		
 		[self createGestureRecognizers];
-		_timer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
     }
     return self;
 }

@@ -30,6 +30,7 @@
 	BOOL						_isDid;
 	
 	RKObjectMapping*			_clipsMapping;
+	
 }
 
 - (IBAction)touchedInView:(UIView*)view;

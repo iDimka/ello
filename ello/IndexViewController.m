@@ -8,6 +8,7 @@
 
 #import "IndexViewController.h"
 
+#import "AVPlayerDemoPlaybackViewController.h"
 #import "PrerollViewController.h"
 #import "AdView.h"
 #import "AdViews.h"
@@ -168,11 +169,13 @@
 - (void)touchedInView:(UIView*)view{
  
 	if ([PrerollViewController hasPreroll]) {
+		
 		Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
-		PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:clip]; 
-		[detailViewController setPrerollDelegate:self];
-		[self.navigationController pushViewController:detailViewController animated:YES];
-		[detailViewController release];
+		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
+		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+		[tmp setAvdelegate:self]; 
+		[[__delegate window] addSubview:tmp.view]; 
+ 
 	}
 	else{
 		Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
@@ -185,7 +188,7 @@
 }
 - (void)showClip:(NSInvocationOperation*)inv{
 	PreviewViewController* tmp = (PreviewViewController*)[inv result]; 
-	[self.navigationController pushViewController:tmp animated:YES];
+	[self.navigationController pushViewController:tmp animated:NO];
 	[tmp release];
 	
 }
@@ -229,7 +232,7 @@
 			}  
     
 }
-- (void) SlideToLeft{    
+- (void)SlideToLeft{    
     int leftPage;
     int rightPage;
     
@@ -263,7 +266,7 @@
 	_clipNameLabel.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
     
 }
-- (void) SlideToRight{
+- (void)SlideToRight{
     int leftPage;
     int rightPage;
     
@@ -342,7 +345,6 @@
 	NSLog(@"ERROR %@", tmp);
 	
 }
-
 
 - (void)dealloc{
     [super dealloc];

@@ -221,10 +221,10 @@
 	 
 	if ([PrerollViewController hasPreroll]) {
  
-		PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:clip]; 
-		[detailViewController setPrerollDelegate:self];
-		[self.navigationController pushViewController:detailViewController animated:YES];
-		[detailViewController release];
+		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
+		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+		[tmp setAvdelegate:self]; 
+		[[__delegate window] addSubview:tmp.view]; ;
 	}
 	else{
 		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];

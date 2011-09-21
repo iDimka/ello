@@ -20,9 +20,9 @@
 
 #import "RootViewController.h"
 
+#import "AVPlayerDemoPlaybackViewController.h"
 
 #import <MediaPlayer/MediaPlayer.h>
 #import "Preroll.h"
 #import "Prerolls.h"
-#import <RestKit/RestKit.h>
-//#import <RestKit/CoreData/CoreData.h>
+#import <RestKit/RestKit.h> 
