@@ -123,10 +123,12 @@
 //			detailViewController = [[PreviewViewController alloc] initWithClip:[_dataSource  objectAtIndex:indexPath.row]];
 //			[self.navigationController pushViewController:detailViewController animated:YES];
 //			[detailViewController release];
-			if ([PrerollViewController hasPreroll]) {
+			NSURL* prerollURL = nil;
+			if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) 
+				{
 				Clip* clip = [_dataSource objectAtIndex:[_dataSource  objectAtIndex:indexPath.row]];
 				AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
-				[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+				[tmp setURL:prerollURL];
 				[tmp setAvdelegate:self]; 
 				[[__delegate window] addSubview:tmp.view]; 
 			}

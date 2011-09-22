@@ -124,8 +124,7 @@
 }
 - (void)configCellByPlayList:(PlayList*)object{
 	self.dataObject = object;
-	_title.text = object.playlistName;
-//	_artist.text = object.playlistName;
+	_title.text = object.playlistName; 
 	_viewCount.text = [NSString stringWithFormat:@"%D clips", [object.clipsCount intValue]];
 	[_videoThumb setImage:nil];
 	if (object.thumb)  _videoThumb.image = object.thumb;

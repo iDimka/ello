@@ -5,6 +5,7 @@
 
 @implementation AsyncImageView
 
+@synthesize imageDidLoadBlock;
 @synthesize delegate;
 
 - (void)dealloc {
@@ -54,7 +55,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection*)theConnection {
 	
 	[connection release];
-	connection=nil; 
+	connection = nil; 
 	
 	[_indicator stopAnimating];  
 	self.image = [UIImage imageWithData:data]; 
@@ -66,6 +67,9 @@
 		{
 		[delegate imageDidLoad:self.image];
 		}
+	if (imageDidLoadBlock) {
+		self.imageDidLoadBlock(self.image);
+	}
 }
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	NSLog(@"error async image is%@", error);

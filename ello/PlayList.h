@@ -24,9 +24,9 @@
 	NSString*		name; 
 	NSString*		videoURLString;
 	NSString*		label;
-	NSMutableArray*	clips;
+	NSMutableArray*	clips; 
 }
-
+ 
 @property(nonatomic, retain)NSNumber*		playListID;
 @property(nonatomic, retain)NSNumber*		clipsCount;
 @property(nonatomic, retain)NSString*		playlistName;

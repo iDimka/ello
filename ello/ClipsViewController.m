@@ -175,10 +175,11 @@
 	    
 	Clip* clip = [[[_dataSource objectAtIndex:_segment.selectedSegmentIndex] clips] objectAtIndex:indexPath.row]; 
 	
-	if ([PrerollViewController hasPreroll]) 
-		{
+	NSURL* prerollURL = nil;
+	if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) {
+		
 		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
-		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+		[tmp setURL:prerollURL];
 		[tmp setAvdelegate:self]; 
 		[[__delegate window] addSubview:tmp.view]; 
 	}

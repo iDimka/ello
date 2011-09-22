@@ -123,10 +123,12 @@
 //	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=preroll&action=getPreroll" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"prerolls"] delegate:self]; 
 
 	Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row];
-	if ([PrerollViewController hasPreroll]) {
+	NSURL* prerollURL = nil;
+	if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) {
+		
 		
 		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
-		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+		[tmp setURL:prerollURL];
 		[tmp setAvdelegate:self]; 
 		[[__delegate window] addSubview:tmp.view]; 
 	}
@@ -223,10 +225,11 @@
 		NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
 		
 		Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row];
-		if ([PrerollViewController hasPreroll]) {
+		NSURL* prerollURL = nil;
+		if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) {
 
 			AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
-			[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+			[tmp setURL:prerollURL];
 			[tmp setAvdelegate:self]; 
 			[[__delegate window] addSubview:tmp.view]; 
 		}

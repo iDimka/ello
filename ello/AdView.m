@@ -60,7 +60,7 @@
 - (void)addPin:(UIGestureRecognizer *)gestureRecognizer{ 
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:action]];	
 }
-	- (void)reload:(NSTimer*)timer{ 
+- (void)reload:(NSTimer*)timer{ 
 	
 	[UIView transitionWithView:self duration:.5 options:arc4random() % 4 << 20  animations:^(void) { } completion:^(BOOL finished) { }];
 		

@@ -53,6 +53,7 @@ typedef enum{
 	IBOutlet UIImageView*	_youTubeIcn;
 }
 
+@property(nonatomic, retain)AdView*								banner;
 @property(nonatomic, retain)PlayList*							playlist;
 @property(nonatomic, retain)IBOutlet UIActivityIndicatorView*	sun;
 @property(nonatomic, retain)IBOutlet AsyncImageView*			thumbView;

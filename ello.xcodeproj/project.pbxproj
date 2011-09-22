@@ -97,7 +97,6 @@
 		EE7437A213E213A600FD9509 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379A13E213A600FD9509 /* Icon@2x.png */; };
 		EE7437A313E213A600FD9509 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379B13E213A600FD9509 /* Default@2x.png */; };
 		EE7437A413E213A600FD9509 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EE74379C13E213A600FD9509 /* Default.png */; };
-		EE7437A713E213D200FD9509 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = EE7437A613E213D200FD9509 /* iTunesArtwork */; };
 		EE8759DD13E6F3BA00B38801 /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8759DC13E6F3BA00B38801 /* ArtistViewController.m */; };
 		EE8759E013E71E7D00B38801 /* GenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8759DF13E71E7C00B38801 /* GenreViewController.m */; };
 		EE90737213FEAC1400658D18 /* bgl.png in Resources */ = {isa = PBXBuildFile; fileRef = EE90736C13FEAC1400658D18 /* bgl.png */; };
@@ -116,6 +115,10 @@
 		EEA7009513E1EA140017F550 /* GanriTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7008F13E1EA140017F550 /* GanriTableViewCell.m */; };
 		EEA7009613E1EA140017F550 /* GenresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7009113E1EA140017F550 /* GenresViewController.m */; };
 		EEAD621C1429D61C0092EA4A /* ElloInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAD621E1429D61C0092EA4A /* ElloInfoViewController.xib */; };
+		EEB0CCF7142BC65300D59B12 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = EEB0CCF6142BC65300D59B12 /* iTunesArtwork */; };
+		EEB0CD1B142BE45E00D59B12 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB0CD16142BE45E00D59B12 /* NSObject+SBJSON.m */; };
+		EEB0CD1C142BE45E00D59B12 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB0CD18142BE45E00D59B12 /* NSString+SBJSON.m */; };
+		EEB0CD1D142BE45E00D59B12 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB0CD1A142BE45E00D59B12 /* SBJSON.m */; };
 		EEB323BD13EEB6D1008329F2 /* tabItemGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = EEB323B813EEB6D1008329F2 /* tabItemGirl.png */; };
 		EEB323BF13EEB6D1008329F2 /* tabItemMore.png in Resources */ = {isa = PBXBuildFile; fileRef = EEB323BA13EEB6D1008329F2 /* tabItemMore.png */; };
 		EEB323C013EEB6D1008329F2 /* tabItemMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEB323BB13EEB6D1008329F2 /* tabItemMore@2x.png */; };
@@ -452,7 +455,6 @@
 		EE74379A13E213A600FD9509 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		EE74379B13E213A600FD9509 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		EE74379C13E213A600FD9509 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		EE7437A613E213D200FD9509 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		EE8759DB13E6F3BA00B38801 /* ArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
 		EE8759DC13E6F3BA00B38801 /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistViewController.m; sourceTree = "<group>"; };
 		EE8759DE13E71E7C00B38801 /* GenreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreViewController.h; sourceTree = "<group>"; };
@@ -486,6 +488,14 @@
 		EEA7009213E1EA140017F550 /* GenresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenresViewController.h; sourceTree = "<group>"; };
 		EEA72AD813E07D8900B391D3 /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Entitlements.entitlements; sourceTree = "<group>"; };
 		EEAD621D1429D61C0092EA4A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ElloInfoViewController.xib; sourceTree = "<group>"; };
+		EEB0CCF6142BC65300D59B12 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		EEB0CD14142BE45D00D59B12 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		EEB0CD15142BE45E00D59B12 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		EEB0CD16142BE45E00D59B12 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		EEB0CD17142BE45E00D59B12 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		EEB0CD18142BE45E00D59B12 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		EEB0CD19142BE45E00D59B12 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		EEB0CD1A142BE45E00D59B12 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 		EEB323B813EEB6D1008329F2 /* tabItemGirl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabItemGirl.png; sourceTree = "<group>"; };
 		EEB323BA13EEB6D1008329F2 /* tabItemMore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabItemMore.png; sourceTree = "<group>"; };
 		EEB323BB13EEB6D1008329F2 /* tabItemMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabItemMore@2x.png"; sourceTree = "<group>"; };
@@ -922,8 +932,8 @@
 		EE7437A513E213B100FD9509 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				EEB0CCF6142BC65300D59B12 /* iTunesArtwork */,
 				EE6D05A913CFC2A30076850F /* new_done.png */,
-				EE7437A613E213D200FD9509 /* iTunesArtwork */,
 				EE74379513E213A600FD9509 /* Icon-72.png */,
 				EE74379613E213A600FD9509 /* Icon-Small-50.png */,
 				EE74379713E213A600FD9509 /* Icon-Small.png */,
@@ -934,6 +944,20 @@
 				EE74379C13E213A600FD9509 /* Default.png */,
 			);
 			name = icons;
+			sourceTree = "<group>";
+		};
+		EEB0CD13142BE45500D59B12 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				EEB0CD14142BE45D00D59B12 /* JSON.h */,
+				EEB0CD15142BE45E00D59B12 /* NSObject+SBJSON.h */,
+				EEB0CD16142BE45E00D59B12 /* NSObject+SBJSON.m */,
+				EEB0CD17142BE45E00D59B12 /* NSString+SBJSON.h */,
+				EEB0CD18142BE45E00D59B12 /* NSString+SBJSON.m */,
+				EEB0CD19142BE45E00D59B12 /* SBJSON.h */,
+				EEB0CD1A142BE45E00D59B12 /* SBJSON.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		EEB323D313EED62C008329F2 /* Channels */ = {
@@ -1013,6 +1037,7 @@
 				EEC2A5B2140421B400DEC155 /* ElloInfoViewController.h */,
 				EEC2A5B3140421B400DEC155 /* ElloInfoViewController.m */,
 				EEAD621E1429D61C0092EA4A /* ElloInfoViewController.xib */,
+				EEB0CD13142BE45500D59B12 /* JSON */,
 				EE1C2EEE1429142100CD7CC1 /* AVPlayer */,
 				EEF2274813C7A63C004731BE /* General */,
 				EEF2274913C7A64A004731BE /* Clips */,
@@ -1037,6 +1062,8 @@
 				EED9B0571406EB9600A45309 /* SVWebViewController */,
 				EE5A6C9413F2FA12002BCE57 /* preview */,
 				EEF2270113C651FC004731BE /* images */,
+				EE6D059913CF98170076850F /* asyncimageview.h */,
+				EE6D059A13CF98180076850F /* asyncimageview.m */,
 				EEE8175E14090112007B20E0 /* DDAlertPrompt.h */,
 				EEE8175F14090112007B20E0 /* DDAlertPrompt.m */,
 				EED8C4021408F46D00535FD7 /* Untitled 11.html */,
@@ -1461,8 +1488,6 @@
 				EED9B05D1406FF6C00A45309 /* fb.png */,
 				EED9B05E1406FF6C00A45309 /* tw.png */,
 				EEC2A5B71404632C00DEC155 /* facebook_like_button1.png */,
-				EE6D059913CF98170076850F /* asyncimageview.h */,
-				EE6D059A13CF98180076850F /* asyncimageview.m */,
 				EEE11A1413F308AC0000002F /* cellBg.png.png */,
 				EEE11A1513F308AC0000002F /* cellBg@2x.png */,
 				EE90736C13FEAC1400658D18 /* bgl.png */,
@@ -1742,7 +1767,6 @@
 				EE7437A213E213A600FD9509 /* Icon@2x.png in Resources */,
 				EE7437A313E213A600FD9509 /* Default@2x.png in Resources */,
 				EE7437A413E213A600FD9509 /* Default.png in Resources */,
-				EE7437A713E213D200FD9509 /* iTunesArtwork in Resources */,
 				EE1E6C2413E335EF006794C7 /* player_play.png in Resources */,
 				EE1E6C2613E33764006794C7 /* player_pause.png in Resources */,
 				EE1E6C2813E3426A006794C7 /* addToPl.png in Resources */,
@@ -1831,6 +1855,7 @@
 				EED5F4D9141D4F29006A81AB /* youtube.png in Resources */,
 				EE1C2EEC1429141700CD7CC1 /* AVPlayerDemoPlaybackView.xib in Resources */,
 				EE1C2EED1429141700CD7CC1 /* AVPlayerDemoMetadataView.xib in Resources */,
+				EEB0CCF7142BC65300D59B12 /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1956,6 +1981,9 @@
 				EE1C2EE91429141700CD7CC1 /* AVPlayerDemoPlaybackViewController.m in Sources */,
 				EE1C2EEA1429141700CD7CC1 /* AVPlayerDemoPlaybackView.m in Sources */,
 				EE1C2EEB1429141700CD7CC1 /* AVPlayerDemoMetadataViewController.m in Sources */,
+				EEB0CD1B142BE45E00D59B12 /* NSObject+SBJSON.m in Sources */,
+				EEB0CD1C142BE45E00D59B12 /* NSString+SBJSON.m in Sources */,
+				EEB0CD1D142BE45E00D59B12 /* SBJSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2073,7 +2101,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Valery Kurilov (5W44P8WJS4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gusein Suleimanov";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
@@ -2089,7 +2117,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E65D3BA9-14F3-4654-ACF9-45CF2ABD4FAB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F60747C6-A446-40C8-BB70-1438351D46C5";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";

@@ -164,8 +164,15 @@
 	
 	
 	AsyncImageView* videoThumb = [[AsyncImageView alloc] initWithFrame:CGRectMake(10, 5, 112, 69)];	
-	if (_repeatPlayList.imageURLString)[videoThumb loadImageFromURL:[NSURL URLWithString:_repeatPlayList.imageURLString]];	
-	else if ([_repeatPlayList.clips count]) [videoThumb loadImageFromURL:[NSURL URLWithString:[(Clip*)[_repeatPlayList.clips objectAtIndex:0] clipImageURL]]];
+	[videoThumb setImageDidLoadBlock:^(UIImage* image) {
+		_repeatPlayList.thumb = image;
+	}];
+	if (_repeatPlayList.thumb) {
+		videoThumb.image = _repeatPlayList.thumb;
+	} else {
+		if (_repeatPlayList.imageURLString)[videoThumb loadImageFromURL:[NSURL URLWithString:_repeatPlayList.imageURLString]];	
+		else if ([_repeatPlayList.clips count]) [videoThumb loadImageFromURL:[NSURL URLWithString:[(Clip*)[_repeatPlayList.clips objectAtIndex:0] clipImageURL]]];
+	}
 	[header addSubview:videoThumb];
 	   
 	UIButton* repeat = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -180,7 +187,7 @@
 	[s setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[s setTintColor:[UIColor darkGrayColor]]; 
 	[s insertSegmentWithTitle:@"В Этом Плейлисте"	atIndex:0 animated:NO];
-	[s insertSegmentWithTitle:@"Похожие плейлисты"	atIndex:1 animated:NO];
+//	[s insertSegmentWithTitle:@"Похожие плейлисты"	atIndex:1 animated:NO];
 	[s setSelectedSegmentIndex:0];
 	[s addTarget:self action:@selector(segmentHeaderTapped:) forControlEvents:UIControlEventValueChanged];
 	[header addSubview:s];
@@ -219,10 +226,11 @@
     
 	Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row]; 
 	 
-	if ([PrerollViewController hasPreroll]) {
+	NSURL* prerollURL = nil;
+	if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) {
  
 		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
-		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+		[tmp setURL:prerollURL];
 		[tmp setAvdelegate:self]; 
 		[[__delegate window] addSubview:tmp.view]; ;
 	}
@@ -287,19 +295,18 @@
 		if (buttonIndex == [actionSheet numberOfButtons] - 1) return;
 		if (buttonIndex == 0) {
 			
-			PlayList* playList = [PlayList new];
-			[MKEntryPanel showPanelWithTitle:NSLocalizedString(@"Название листа", @"") 
-									  inView:self.view 
-							   onTextEntered:^(NSString* enteredString)
+			[MKEntryPanel showPanelWithTitle:NSLocalizedString(@"Название листа", @"") inView:self.view  onTextEntered:^(NSString* enteredString)
 			 {
 			 
+			 PlayList* playList = [PlayList new];
 			 playList.playlistName = enteredString;
+			 playList.name = enteredString;
+			 [[playList clips] addObject:clipToPlaylist];
 			 [[__delegate playlists] addPlaylist:playList];
+			 [playList release];
+			self.clipToPlaylist = nil;
 			 
 			 }];
-			[[playList clips] addObject:clipToPlaylist];
-			[playList release];
-			self.clipToPlaylist = nil;
 		}else{
 			PlayList* myPlaylist = [[[__delegate playlists] playlists] objectAtIndex:buttonIndex - 1];
 			self.repeatPlaylist = myPlaylist;
@@ -314,9 +321,23 @@
 		[playlist setPlayMode:(buttonIndex ? kShufle : kNormal)];
 		self.repeatPlaylist = _playList;
 		
-		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist];
-		[self.navigationController pushViewController:detailViewController  animated:YES]; 
-		[detailViewController release];
+//		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist];
+//		[self.navigationController pushViewController:detailViewController  animated:YES]; 
+//		[detailViewController release];
+		
+		NSURL* prerollURL = nil;
+		if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) {
+			
+			AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithPlaylist:playlist];
+			[tmp setURL:prerollURL];
+			[tmp setAvdelegate:self]; 
+			[[__delegate window] addSubview:tmp.view]; ;
+		}
+		else{
+			PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithPlaylist:playlist];
+			[self.navigationController pushViewController:detailViewController animated:YES];
+			[detailViewController release];
+		}
 	}	
 }
 

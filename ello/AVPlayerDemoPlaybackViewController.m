@@ -3,6 +3,7 @@
 #import "AVPlayerDemoPlaybackView.h"
 #import "AVPlayerDemoMetadataViewController.h"
 
+#import "JSON.h"
 #import "PreviewViewController.h"
 #import "Preroll.h"
 #import "Prerolls.h"
@@ -69,9 +70,16 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
  
 
 
-+ (BOOL)hasPreroll{
++ (NSURL*)hasPreroll{
 	NSData* payload = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://50.17.200.31/service.php?service=preroll&action=getPreroll"]] returningResponse:nil error:nil];
-	return payload != nil;
+	
+	NSString* responseString = [[NSString alloc] initWithData:payload encoding:NSUTF8StringEncoding];
+	if ([[[responseString JSONValue] objectForKey:@"prerolls"] count]) { 
+		return [NSURL URLWithString:[[[[[responseString JSONValue] objectForKey:@"prerolls"] objectAtIndex:0] objectForKey:@"preroll"] objectForKey:@"url"]];
+	}
+	
+	
+	return nil;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -177,6 +185,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 #pragma mark Player Item
   
 - (void)playerItemDidReachEnd:(NSNotification *)notification { 
+	self.player = nil;
 	[_previewItiter start];
 	[_previewItiter waitUntilFinished];
 	[self.view removeFromSuperview]; 
@@ -227,10 +236,7 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 	
     /* When the player item has played to its end time we'll toggle
      the movie controller Pause button to be the Play button */
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playerItemDidReachEnd:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:self.mPlayerItem];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.mPlayerItem];
 	
     seekToZeroBeforePlay = NO;
 	

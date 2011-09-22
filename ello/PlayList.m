@@ -11,14 +11,13 @@
 @implementation PlayList
 
 @synthesize playMode;
-
+@synthesize thumb;
 @synthesize playListID;
 @synthesize clipsCount;
 @synthesize playlistName;
 @synthesize image;
 @synthesize artistID;
-@synthesize clips;
-@synthesize thumb;
+@synthesize clips; 
 @synthesize artistName;
 @synthesize imageURLString;
 @synthesize genreID;
@@ -42,6 +41,7 @@
 		{ 
 			clips = [NSMutableArray new];
 			
+			playlistName = [[decoder decodeObjectForKey:@"playlistName"] retain];
 			playListID = [[decoder decodeObjectForKey:@"playListID"] retain];
 			artistID = [[decoder decodeObjectForKey:@"artistID"] retain];
 			artistName = [[decoder decodeObjectForKey:@"artistName"] retain];
@@ -59,9 +59,9 @@
 		}
     return self;
 }
-
 - (void)encodeWithCoder:(NSCoder *)encoder{
 	
+	[encoder encodeObject:playlistName forKey:@"playlistName"];
 	[encoder encodeObject:playListID forKey:@"playListID"];
 	[encoder encodeObject:artistID forKey:@"artistID"];
 	[encoder encodeObject:artistName forKey:@"artistName"];
@@ -77,6 +77,10 @@
 //	[ua encodeObject:clips];
 
 	[encoder encodeObject:clips forKey:@"clips"]; 
+}
+
+- (NSNumber*)clipsCount{
+	return [NSNumber numberWithInt:[clips count]];
 }
 
 - (NSString*)description{

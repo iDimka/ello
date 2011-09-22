@@ -24,6 +24,8 @@
 
 + (BOOL)hasPreroll{
 	NSData* payload = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://50.17.200.31/service.php?service=preroll&action=getPreroll"]] returningResponse:nil error:nil];
+	
+	
 	return payload != nil;
 }
 

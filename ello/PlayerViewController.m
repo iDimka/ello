@@ -26,14 +26,7 @@
 @synthesize playlist;
 
 #pragma mark - View lifecycle
-
-- (id)initWithContentURL:(NSURL*)url {
-    self = [super initWithContentURL:url];
-    if (self) {
-        //////NSLog(@"%s:%d", __func__, self);
-    }
-    return self;
-}
+ 
 - (void)dealloc {//NSLog(@"%s:%d", __func__, self);
     
 	[_timeLineView release];
@@ -50,8 +43,7 @@
 	self.moviePlayer.shouldAutoplay = NO;
 	
 	 _topControl = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 44)];
-	[_topControl setImage:[UIImage imageNamed:@"playerBand.png"]];
-//	[_topControl setAlpha:.8];
+	[_topControl setImage:[UIImage imageNamed:@"playerBand.png"]]; 
 	[_topControl setUserInteractionEnabled:YES];
 	 [self.view addSubview:_topControl];
 	 
@@ -141,8 +133,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil]; 
 	
 }
-- (void)viewWillDisappear:(BOOL)animated{
-//	[_timeLineView setDataSource:nil];
+- (void)viewWillDisappear:(BOOL)animated{ 
 	[super viewWillDisappear:animated];
 	[_timeLineView setDataSource:nil];
 	[_timeLineView release];
@@ -185,23 +176,18 @@
 		{		
 			_stopPlayButton.selected = NO;
 			[self.moviePlayer play];
-			NSLog(@"state N is %d", state);
+//			NSLog(@"state N is %d", state);
 		}
 	else 
 		{
-		NSLog(@"state Y is %d", state);
 		_stopPlayButton.selected = YES;	
 		[self.moviePlayer pause];
-		}
-	return;
- 
+//		NSLog(@"state Y is %d", state);
+		}  
 }
 
 - (void)info{
-//	ClipInfoViewController* info = [[ClipInfoViewController alloc] init];
-//	[[[(UITabBarController*)self.parentViewController viewControllers] objectAtIndex:[[__delegate tabBarController] selectedIndex]] pushViewController:info animated:YES];
-//	[info release];
-//	[self dismissMoviePlayerViewControllerAnimated];
+ 
 	NSArray* arr =[[NSBundle mainBundle] loadNibNamed:@"ArtistInfoView" owner:self options:nil];
  
 	ArtistInfoView* infoView = [arr objectAtIndex:0];

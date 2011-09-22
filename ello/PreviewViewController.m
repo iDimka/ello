@@ -32,6 +32,7 @@
 
 @implementation PreviewViewController
 
+@synthesize banner;
 @synthesize trackPosition;
 @synthesize webPlayer;
 @synthesize moviePlayer = _moviePlayer;
@@ -120,16 +121,16 @@
 	if (_playMode == kYouTubeClip) {
 		[self embedYouTube:_currentClip.clipVideoURL frame:CGRectMake(26, 89, 161, 121)];
 		
-		[_buffering setHidden:YES];
-		[sun stopAnimating];
-		
+		[_buffering setHidden:YES]; [sun stopAnimating];[self.banner setHidden:!_buffering.hidden];
+		 
 		UIButton* share = [UIButton buttonWithType:UIButtonTypeCustom];
 		[share setFrame:CGRectMake(100, 10, 33, 37)];
 		[share setImage:[UIImage imageNamed:@"btnShare.png"] forState:UIControlStateNormal];
 		[share addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:share];
-	}
-	if ([self.currentClip.type isEqualToString:@"youtube"]) _youTubeIcn.hidden = NO; 
+		
+		_youTubeIcn.hidden = NO; 
+	} 
 	
 	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=banner&action=getBanner" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"banners"] delegate:self]; 
 
@@ -141,6 +142,7 @@
 	
 	if ([_currentClip thumb])[self.thumbView setImage:_currentClip.thumb];
 	else [self.thumbView loadImageFromURL:[NSURL URLWithString:[_currentClip clipImageURL]]];
+	
 	[self.artistName setText:_currentClip.artistName];
 	[self.clipName setText:_currentClip.clipName];
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [_currentClip.viewCount intValue]]];
@@ -165,10 +167,12 @@
 }
 
 - (void)bannerViewDidLoadAd:(AdView *)banner{
+	self.banner = banner;
 	[banner setFrame:CGRectMake(160, 215, 320, 50)];
 	[UIView animateWithDuration:.4 animations:^{
 		[self.view addSubview:banner];
 	}];
+	[self.banner setHidden:!_buffering.hidden];
 }
 - (void)bannerViewDidError:(AdView *)banner{
 	
@@ -179,8 +183,7 @@
 	self.moviePlayer = tmp;
 	[tmp release];
 	
-	[_buffering setHidden:NO];
-	[sun startAnimating];
+	[_buffering setHidden:NO]; [sun startAnimating]; [self.banner setHidden:!_buffering.hidden];
 }
  
 - (void)loadStateDidChange:(NSNotification*)notification{
@@ -191,26 +194,28 @@
 		case MPMovieLoadStatePlayable:			
 		case MPMovieLoadStatePlaythroughOK: 
 #warning may be need unkoment		
-//		if (_playCountMode == kMultiClips) 
-			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackDidFinish:)	name:MPMoviePlayerPlaybackDidFinishNotification		object:nil];
+		if (_playCountMode == kMultiClips) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+		
 			[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
-			[sun stopAnimating];
-			[_buffering setHidden:YES];
+			[sun stopAnimating]; [_buffering setHidden:YES];[self.banner setHidden:!_buffering.hidden];
+		
 			if (_playCountMode != kDone) [self presentMoviePlayerViewControllerAnimated:_moviePlayer]; 
 			break; 
 	}
 }
 - (void)playbackDidFinish:(NSNotification*)notification{
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+	 
 	
-	MPMovieFinishReason reason = [[[notification userInfo] valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
-	NSLog(@"reason %d", reason);
-	if (MPMovieFinishReasonPlaybackEnded == reason && _playCountMode != kDone) [self next:nil];;
+	if (MPMovieFinishReasonPlaybackEnded == [[[notification userInfo] valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue] && _playCountMode != kDone) [self next:nil];
+	
+//	NSLog(@"reason %d", reason);
 }
 - (void)done{NSLog(@"%s", __func__);
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
 	_playCountMode = kDone;	
-	[self.navigationController popViewControllerAnimated:NO];
+	
+//	[self.navigationController popViewControllerAnimated:NO];
 }
 - (void)next:(UIButton*)sender{NSLog(@"%s %d", __func__, _index);
 	 
@@ -239,8 +244,8 @@
 		break;
 	}
 
-	[sun startAnimating];
-	[_buffering setHidden:NO];
+	[sun startAnimating]; [_buffering setHidden:NO];[self.banner setHidden:!_buffering.hidden];
+	
 	[_moviePlayer setPlaylist:_playlist];
 	_moviePlayer.delegate = self;
 
@@ -273,8 +278,8 @@
 			[_moviePlayer release];
 			break;
 	}
-	[sun startAnimating];
-	[_buffering setHidden:NO];	
+	[sun startAnimating]; [_buffering setHidden:NO];[self.banner setHidden:!_buffering.hidden];
+	
 	[_moviePlayer setPlaylist:_playlist];
 	_moviePlayer.delegate = self;
 	if (_playCountMode == kMultiClips) 
@@ -287,13 +292,14 @@
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
 	_index = [_playlist.clips indexOfObject:clip];
-									 NSLog(@"%s %d", __func__, _index);
+//									 NSLog(@"%s %d", __func__, _index);
 	[self.moviePlayer.moviePlayer stop]; 
 	self.currentClip = clip;
 	self.moviePlayer = [[PlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[_currentClip clipVideoURL]]];
 	[_moviePlayer release];
-	[sun startAnimating];
-		[_buffering setHidden:NO];
+	
+	[sun startAnimating]; [_buffering setHidden:NO];[self.banner setHidden:!_buffering.hidden];
+	
 	[_moviePlayer setPlaylist:_playlist];
 	_moviePlayer.delegate = self;
 	[self.moviePlayer dismissModalViewControllerAnimated:YES];
@@ -304,7 +310,6 @@
 	[self.artistName setText:_currentClip.artistName];
 	[self.clipName setText:_currentClip.clipName];
 	[self.viewCount setText:[NSString stringWithFormat:@"%d views", [_currentClip.viewCount intValue]]];
- 
 	trackPosition.text = [NSString stringWithFormat:@"%d из %d", _index + 1, [[_playlist clips] count]];
 
 }
@@ -363,6 +368,7 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	self.webPlayer = nil;
     self.sun = nil;
+	self.banner = nil;
 	[_moviePlayer release];
 	
 	[_youTubeIcn release];
@@ -370,17 +376,4 @@
 }
 
 @end
-
-/*
  
- NSString* htmlString = [NSString stringWithFormat:@"<html><head><meta name = \"viewport\" content = \"initial-scale = 1.0, user-scalable = no, width = 320\"/></head><body style=\"background:#000;margin-top:0px;margin-left:0px\">\
- <div><object width=\"320\" height=\"372\">\
- <param name=\"movie\" value=\"http://www.youtube.com/v/oHg5SJYRHA0&f=gdata_videos&c=ytapi-my-clientID&d=nGF83uyVrg8eD4rfEkk22mDOl3qUImVMV6ramM\"></param>\
- <param name=\"wmode\" value=\"transparent\"></param>\
- <embed src=\"%@\"\
- type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"320\" height=\"416\"></embed>\
- </object></div></body></html>", _url];
- 
- [_webView loadHTMLString:htmlString baseURL:_url];
- 
- */

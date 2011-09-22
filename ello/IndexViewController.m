@@ -61,7 +61,7 @@
     
 
  
-	[_scrollView setContentSize:CGSizeMake(320 * 3, 290)];
+	[_scrollView setContentSize:CGSizeMake(320 * 3, 250)];
     [_scrollView setContentOffset:CGPointMake(320, 0) animated:NO];
 	  
 	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=clip&action=getIndexClips" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"clips"] delegate:self];
@@ -141,7 +141,7 @@
 - (void)InesrtViewInCantainer{
     for (int ind = 0; ind < 3; ind++) 
 		{
-	    SlideshowImageView* tmp = [[SlideshowImageView alloc] initWithFrame:CGRectMake(ind * 320, 0, 320, 290)];
+	    SlideshowImageView* tmp = [[SlideshowImageView alloc] initWithFrame:CGRectMake(ind * 320, 0, 320, 250)];
 		tmp.delegate = self;
 		[tmp setUserInteractionEnabled:YES];
         [tmp setBackgroundColor:[UIColor clearColor]] ;//] colorWithRed:(float)(arc4random() % 100 /100) green:(float)(arc4random() % 100 /100) blue:(float)(arc4random() % 100 /100) alpha:1]];
@@ -168,12 +168,12 @@
 }
 - (void)touchedInView:(UIView*)view{
  
-	if ([PrerollViewController hasPreroll]) {
+	NSURL* prerollURL = nil;
+	if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) {
 		
 		Clip* clip = [_dataSource objectAtIndex:_pageControl.currentPage]; 
-		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
-//		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
-		[tmp setURL:[NSURL URLWithString:@"http://s3.amazonaws.com/medibook/video/m1.mp4"]];
+		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip]; 
+		[tmp setURL:prerollURL];
 		[tmp setAvdelegate:self]; 
 		[[__delegate window] addSubview:tmp.view]; 
  

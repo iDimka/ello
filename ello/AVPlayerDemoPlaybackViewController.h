@@ -41,7 +41,8 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *mPlayButton;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *mStopButton;
 @property (nonatomic, retain) IBOutlet UISlider* mScrubber;
- 
+
++ (NSURL*)hasPreroll;
 - (id)initWithYouTubeVideo:(Clip*)clip;
 - (id)initWithClip:(Clip*)clip;
 - (id)initWithPlaylist:(PlayList*)playlist;

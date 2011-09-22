@@ -29,12 +29,14 @@
 		
 		_artistName = [[UILabel alloc] initWithFrame:CGRectMake(17, 75, frame.size.width - 20, 20)];
 		[_artistName setBackgroundColor:[UIColor clearColor]];
+		[_artistName setTextColor:[UIColor whiteColor]];
 		[_artistName setFont:[UIFont boldSystemFontOfSize:14]];
 		[_artistName setText:clip.artistName];
 		[self addSubview:_artistName];
 		
 		_songName = [[UILabel alloc] initWithFrame:CGRectMake(17, 90, frame.size.width - 20, 20)];
 		[_songName setBackgroundColor:[UIColor clearColor]];
+		[_songName setTextColor:[UIColor whiteColor]];
 		[_songName setFont:[UIFont systemFontOfSize:13]];
 		[_songName setText:clip.clipName];
 		[self addSubview:_songName];

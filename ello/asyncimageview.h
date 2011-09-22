@@ -9,6 +9,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^imageDidLoad) (UIImage* image);
+
 @protocol AsyncImageViewProtocol <NSObject>
 
 - (void)imageDidLoad:(UIImage*)image;
@@ -26,6 +28,7 @@
 	
 }
 
+@property(nonatomic, retain)imageDidLoad imageDidLoadBlock;
 @property(nonatomic, assign)id<AsyncImageViewProtocol>	delegate;
 
 - (void)loadImageFromURL:(NSURL*)url; 
