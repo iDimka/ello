@@ -145,6 +145,15 @@ static void *AVPlayerDemoPlaybackViewControllerCurrentItemObservationContext = &
 	}
 }
   
+- (void)viewDidLoad{
+	[super viewDidLoad];
+	
+	
+	[[self view] setBounds:CGRectMake(0, 0, 480, 320)];
+	[[self view] setCenter:CGPointMake(160, 240)];
+	[[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2)];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;
 }

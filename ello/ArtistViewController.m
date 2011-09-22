@@ -120,8 +120,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	
-	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=preroll&action=getPreroll" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"prerolls"] delegate:self]; 
-	
+//	[[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/service.php?service=preroll&action=getPreroll" objectMapping:[[RKObjectManager sharedManager].mappingProvider objectMappingForKeyPath:@"prerolls"] delegate:self]; 
+
+	Clip* clip = [[[_dataSource objectAtIndex:0] clips] objectAtIndex:indexPath.row];
+	if ([PrerollViewController hasPreroll]) {
+		
+		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:clip];
+		[tmp setURL:[NSURL URLWithString:@"http://ia600204.us.archive.org/2/items/Pbtestfilemp4videotestmp4/video_test.mp4"]];
+		[tmp setAvdelegate:self]; 
+		[[__delegate window] addSubview:tmp.view]; 
+	}
+	else{
+		
+		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:clip];
+		[self.navigationController pushViewController:detailViewController animated:YES];
+		[detailViewController release];
+	}
    
 	
 }

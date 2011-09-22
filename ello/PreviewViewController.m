@@ -56,7 +56,7 @@
 - (id)initWithYouTubeVideo:(Clip*)clip{
 	if (self = [self init]) 
 		{		
-		_playMode = kNormal;; 	
+		_playMode = kYouTubeClip; 	
 		_playCountMode = kYouTubeClip;
 		self.currentClip = clip;						
 			
@@ -116,8 +116,7 @@
 	[[self view] setCenter:CGPointMake(160, 240)];
 	[[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2)]; 
 	
-	
-	
+ 	
 	if (_playMode == kYouTubeClip) {
 		[self embedYouTube:_currentClip.clipVideoURL frame:CGRectMake(26, 89, 161, 121)];
 		
