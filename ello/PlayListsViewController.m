@@ -85,6 +85,7 @@
     
 	
 	PlayList* playlist =  nil;
+	NSInteger clipsCount = -1;
 	switch (_segment.selectedSegmentIndex) {
 		case 0:
 			playlist = [[(PlayLists*)[_dataSourceTop objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
@@ -94,10 +95,15 @@
 			break;
 		case 2:
 			playlist = [[(PlayLists*)[_dataSourceMy objectAtIndex:0] playlists] objectAtIndex:indexPath.row]; 
+			clipsCount = [[playlist clips] count];
 			break; 	
 	}
 	[cell configCellByPlayList:playlist];
     
+	if (clipsCount != -1) {
+		[cell.viewCount setText:[NSString stringWithFormat:@"%D clips", clipsCount]];
+	}
+	
     return cell;
 }
 

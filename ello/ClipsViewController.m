@@ -216,12 +216,13 @@
 }
 - (void)repeatClip{	
 	
-	if ([PrerollViewController hasPreroll]) {
-
-		PrerollViewController *detailViewController = [[PrerollViewController alloc] initWithClip:self.clipToPlaylist]; 
-		[detailViewController setPrerollDelegate:self];
-		[self.navigationController pushViewController:detailViewController animated:YES];
-		[detailViewController release];
+	NSURL* prerollURL = nil;
+	if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) {
+		
+		AVPlayerDemoPlaybackViewController* tmp = [[AVPlayerDemoPlaybackViewController alloc] initWithClip:self.clipToPlaylist];
+		[tmp setURL:prerollURL];
+		[tmp setAvdelegate:self]; 
+		[[__delegate window] addSubview:tmp.view]; 
 	}
 	else{
 		PreviewViewController *detailViewController = [[PreviewViewController alloc] initWithClip:self.clipToPlaylist];

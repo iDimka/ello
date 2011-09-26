@@ -79,9 +79,9 @@
 	[encoder encodeObject:clips forKey:@"clips"]; 
 }
 
-- (NSNumber*)clipsCount{
-	return [NSNumber numberWithInt:[clips count]];
-}
+//- (NSNumber*)clipsCount{
+//	return [NSNumber numberWithInt:[clips count]];
+//}
 
 - (NSString*)description{
 	return [NSString stringWithFormat:@"clips count is %d\n\n\n%@", [clips count], clips];

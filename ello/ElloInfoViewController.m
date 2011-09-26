@@ -43,7 +43,7 @@
 //	likeWebView.backgroundColor = [UIColor clearColor];
 //	likeWebView.delegate = self;
 	
-	[webView loadHTMLString:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"info" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:nil];
+	[webView loadHTMLString:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"info" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil] baseURL:[[NSBundle mainBundle] bundleURL]];
 	
 }
 

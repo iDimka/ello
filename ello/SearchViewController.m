@@ -60,7 +60,7 @@
 			[(UITextField *)view setKeyboardAppearance: UIKeyboardAppearanceAlert];
 			}
 		}
-//	[self.searchDisplayController.searchResultsTableView setRowHeight:TBL_V_H];
+	[self.searchDisplayController.searchResultsTableView setRowHeight:TBL_V_H];
 //	[self.searchDisplayController.searchResultsTableView setSeparatorColor:[UIColor clearColor]];
 	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
 	[self.view insertSubview:tmp atIndex:0];
@@ -78,7 +78,7 @@
 - (void)viewDidAppear{
 	[self viewDidAppear];
 	
-		[self.searchDisplayController setActive:YES animated:YES];
+	[self.searchDisplayController setActive:YES animated:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -117,12 +117,10 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//	PreviewViewController *detailViewController = nil;
+	[self.searchDisplayController setActive:NO];
+	
 	switch ((int)mode) {
-		case kClip:;
-//			detailViewController = [[PreviewViewController alloc] initWithClip:[_dataSource  objectAtIndex:indexPath.row]];
-//			[self.navigationController pushViewController:detailViewController animated:YES];
-//			[detailViewController release];
+		case kClip:; 
 			NSURL* prerollURL = nil;
 			if ((prerollURL = [AVPlayerDemoPlaybackViewController hasPreroll])) 
 				{
@@ -161,10 +159,16 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
 }
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-	
+	if ([searchText isEqualToString:@""]) {
+		return;
+	} 
 	UIImageView* tmp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
 	[self.searchDisplayController.searchResultsTableView setBackgroundView:tmp];
 	[tmp release];
+//	[_dataSource removeAllObjects];
+	[self.searchDisplayController.searchResultsTableView setRowHeight:TBL_V_H];
+//	[self.searchDisplayController.searchResultsTableView reloadData];
+//	[_tableView reloadData];
 	
 	[[RKRequestQueue sharedQueue] cancelRequestsWithDelegate:self];
 	switch ((int)mode) {
@@ -180,8 +184,8 @@
 } 
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects {
-	[_dataSource removeAllObjects];
 	if (![objects count]) return;
+	[_dataSource removeAllObjects];
 	switch (mode) {
 		case kClip:
 			[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] clips]];
@@ -191,6 +195,8 @@
 			[_dataSource addObjectsFromArray:[[objects objectAtIndex:0] artists]];
 			break;
 	}
+	
+	NSLog(@"---%@---", [objects objectAtIndex:0]);
 	[_tableView reloadData];
 
 }

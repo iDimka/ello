@@ -17,6 +17,7 @@
 
 @implementation VideoTableViewCell
 
+@synthesize viewCount = _viewCount;
 @synthesize clipDelegate;
 @synthesize clipNumber;
 @synthesize dataObject;

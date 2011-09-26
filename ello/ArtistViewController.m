@@ -58,6 +58,7 @@
 	_artistTweets.textColor = [UIColor whiteColor];
 	[_artistTweets setBackgroundColor:[UIColor clearColor]];  
 	[_contentScroll addSubview:_artistTweets]; 
+	[_artistTweets setEditable:NO];
 	[_artistTweets setFrame:CGRectMake(20, _artistPhoto.frame.origin.y + _artistPhoto.frame.size.height + paggin, 280, _artistTweets.contentSize.height)];
 	NSLog(@"a d %@", _artistTweets);
 	
@@ -182,7 +183,7 @@
 	}
 }
 
-- (NSString *) deleteHTMLTags:(NSString *)str{
+- (NSString *)deleteHTMLTags:(NSString *)str{
     NSMutableString *ms = [NSMutableString stringWithCapacity:[str length]];
 	
     NSScanner *scanner = [NSScanner scannerWithString:str];

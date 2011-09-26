@@ -36,6 +36,7 @@
 	
 }
 
+@property(nonatomic, retain)UILabel*				viewCount;
 @property(nonatomic, assign)id<PlayListProtocol>	clipDelegate;
 @property(nonatomic, assign)NSInteger				clipNumber;
 @property(nonatomic, retain)id						dataObject;

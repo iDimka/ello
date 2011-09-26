@@ -8,6 +8,7 @@
 
 #import "PreviewViewController.h"
 
+#import "TouchSynthesis.h"
 #import "Preroll.h"
 #import "Prerolls.h"
 #import "AdViews.h"
@@ -138,6 +139,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	 
+	
  	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadStateDidChange:) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
 	
 	if ([_currentClip thumb])[self.thumbView setImage:_currentClip.thumb];
@@ -328,8 +330,27 @@
     [videoView loadHTMLString:html baseURL:nil];
     [self.view addSubview:videoView];
     [videoView release];
+	
+	[self performSelector:@selector(touchInView:) withObject:videoView afterDelay:3];
+
 }
 
+
+- (void)touchInView:(UIView*)view{
+	UITouch *touch = [[UITouch alloc] initInView:view];
+    UIEvent *eventDown = [[UIEvent alloc] initWithTouch:touch];
+	
+    [touch.view touchesBegan:[eventDown allTouches] withEvent:eventDown];
+	
+    [touch setPhase:UITouchPhaseEnded];
+    UIEvent *eventUp = [[UIEvent alloc] initWithTouch:touch];
+	
+    [touch.view touchesEnded:[eventUp allTouches] withEvent:eventUp];
+	
+    [eventDown release];
+    [eventUp release];
+    [touch release];
+}
 - (void)share:(id)sender{
 	 
 	[[SHK currentHelper] setRootViewController:self];

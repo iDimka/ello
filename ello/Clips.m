@@ -60,9 +60,10 @@
 		NSError* error = nil;
 		NSData* payload = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[clip clipImageURL]]] returningResponse:&response error:&error];
 		clip.thumb = [UIImage imageWithData:payload]; 
+		[payload writeToFile:[[__delegate applicationDocumentsDirectory] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpg", clip.clipName]] atomically:YES];
 		if (error) {
-			UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:[error localizedFailureReason] delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
-			[alert show];
+			UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:[error localizedFailureReason] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//			[alert show];
 			[alert release];
 			self.loadAllImages(NO);
 		}

@@ -19,9 +19,9 @@
 #import "SearchViewController.h"
 
 #define timerInterval	3
-#define leftFrame		CGRectMake(0, 0, 320, 290)
-#define centrFrame		CGRectMake(320, 0, 320, 290)
-#define rightFrame		CGRectMake(640, 0, 320, 290)
+#define leftFrame		CGRectMake(0, 0, 320, 250)
+#define centrFrame		CGRectMake(320, 0, 320, 250)
+#define rightFrame		CGRectMake(640, 0, 320, 250)
 
 @interface IndexViewController()
 
@@ -252,16 +252,16 @@
     [_ViewDataContainer exchangeObjectAtIndex:0 withObjectAtIndex:1];
     
     tmp = [_ViewDataContainer objectAtIndex:0];
-    [tmp setFrame:CGRectMake(0, 0, 320, 290)];
+    [tmp setFrame:CGRectMake(0, 0, 320, 250)];
     [tmp setImage:[[_dataSource objectAtIndex:leftPage] thumb]];
     
     tmp = [_ViewDataContainer objectAtIndex:1];  
-    [tmp setFrame:CGRectMake(320, 0, 320, 290)];
+    [tmp setFrame:CGRectMake(320, 0, 320, 250)];
     [tmp setImage:[[_dataSource objectAtIndex:_pageControl.currentPage] thumb]];
     
     tmp = [_ViewDataContainer objectAtIndex:2];
     [tmp setImage:[[_dataSource objectAtIndex:rightPage] thumb]];
-    [tmp setFrame:CGRectMake(640, 0, 320, 290)];
+    [tmp setFrame:CGRectMake(640, 0, 320, 250)];
 	
 	_artistName1Label.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] artistName];
 	_clipNameLabel.text = [(Clip*)[_dataSource objectAtIndex:_pageControl.currentPage] clipName];
@@ -285,15 +285,15 @@
     [_ViewDataContainer exchangeObjectAtIndex:1 withObjectAtIndex:2];
     
     tmp = [_ViewDataContainer objectAtIndex:0];
-    [tmp setFrame:CGRectMake(0, 0, 320, 290)];
+    [tmp setFrame:CGRectMake(0, 0, 320, 250)];
     [tmp setImage:[[_dataSource objectAtIndex:leftPage] thumb]];
     
     tmp = [_ViewDataContainer objectAtIndex:2];
-    [tmp setFrame:CGRectMake(320, 0, 320, 290)];
+    [tmp setFrame:CGRectMake(320, 0, 320, 250)];
     [tmp setImage:[[_dataSource objectAtIndex:_pageControl.currentPage] thumb]];
     
     tmp = [_ViewDataContainer objectAtIndex:1];  
-    [tmp setFrame:CGRectMake(640, 0, 320, 290)];
+    [tmp setFrame:CGRectMake(640, 0, 320, 250)];
     [tmp setImage:[[_dataSource objectAtIndex:rightPage] thumb]];
 	
 	
