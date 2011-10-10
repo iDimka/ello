@@ -32,7 +32,7 @@
 @synthesize playlists = _playlists;
 @synthesize reachability;
 @synthesize window=_window; 
-@synthesize tabBarController=_tabBarController;
+@synthesize tabBarController = _tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
  
