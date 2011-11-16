@@ -5,6 +5,7 @@
 //#import <Availability.h>
 
 #ifdef __OBJC__
+
 #ifndef __IPHONE_OS_VERSION_MIN_REQUIRED
 #define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_3_0
 
