@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CACBA1EA1473C74C00BA4E17 /* ci_build.sh in Resources */ = {isa = PBXBuildFile; fileRef = CACBA1E91473C74C00BA4E17 /* ci_build.sh */; };
 		EE001B0F13D04BB100A7D719 /* Clip.m in Sources */ = {isa = PBXBuildFile; fileRef = EE001B0E13D04BB100A7D719 /* Clip.m */; };
 		EE04D5C6140A8E4F005B9296 /* SecondLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE04D5C5140A8E4E005B9296 /* SecondLineView.m */; };
 		EE04D5CD140A9086005B9296 /* blueCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = EE04D5CA140A9086005B9296 /* blueCircle.png */; };
@@ -346,6 +347,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CACBA1E91473C74C00BA4E17 /* ci_build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_build.sh; sourceTree = "<group>"; };
 		EE001B0D13D04BB100A7D719 /* Clip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clip.h; sourceTree = "<group>"; };
 		EE001B0E13D04BB100A7D719 /* Clip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clip.m; sourceTree = "<group>"; };
 		EE04D5C4140A8E4D005B9296 /* SecondLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondLineView.h; sourceTree = "<group>"; };
@@ -1062,6 +1064,7 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CACBA1E91473C74C00BA4E17 /* ci_build.sh */,
 				EEC8F6E0142C942300F9EC9C /* 3 party */,
 				EE5A6C9413F2FA12002BCE57 /* preview */,
 				EEF2270113C651FC004731BE /* images */,
@@ -1881,6 +1884,7 @@
 				EEC8F6DC142C924D00F9EC9C /* facebook.jpg in Resources */,
 				EEC8F6DD142C924D00F9EC9C /* twitter.jpg in Resources */,
 				EEC8F6DE142C924D00F9EC9C /* info.html in Resources */,
+				CACBA1EA1473C74C00BA4E17 /* ci_build.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
