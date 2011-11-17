@@ -347,6 +347,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA6A4A8A147562B5001D06EE /* cruise-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "cruise-Prefix.pch"; path = "../../../testcruise/testCruise/cruise/cruise-Prefix.pch"; sourceTree = "<group>"; };
 		CACBA1ED1473C80C00BA4E17 /* ci_build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_build.sh; sourceTree = SOURCE_ROOT; };
 		EE001B0D13D04BB100A7D719 /* Clip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clip.h; sourceTree = "<group>"; };
 		EE001B0E13D04BB100A7D719 /* Clip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clip.m; sourceTree = "<group>"; };
@@ -529,7 +530,6 @@
 		EEB8F7F613C5FD0D00B70FDB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EEB8F7FA13C5FD0D00B70FDB /* ello-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ello-Info.plist"; sourceTree = "<group>"; };
 		EEB8F7FC13C5FD0D00B70FDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EEB8F7FE13C5FD0D00B70FDB /* ello-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ello-Prefix.pch"; sourceTree = "<group>"; };
 		EEB8F7FF13C5FD0D00B70FDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EEB8F80113C5FD0D00B70FDB /* elloAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = elloAppDelegate.h; sourceTree = "<group>"; };
 		EEB8F80213C5FD0D00B70FDB /* elloAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = elloAppDelegate.m; sourceTree = "<group>"; };
@@ -1064,6 +1064,7 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CA6A4A8A147562B5001D06EE /* cruise-Prefix.pch */,
 				CACBA1ED1473C80C00BA4E17 /* ci_build.sh */,
 				EEC8F6E0142C942300F9EC9C /* 3 party */,
 				EE5A6C9413F2FA12002BCE57 /* preview */,
@@ -1075,7 +1076,6 @@
 				EEA72AD813E07D8900B391D3 /* Entitlements.entitlements */,
 				EEB8F7FA13C5FD0D00B70FDB /* ello-Info.plist */,
 				EEB8F7FB13C5FD0D00B70FDB /* InfoPlist.strings */,
-				EEB8F7FE13C5FD0D00B70FDB /* ello-Prefix.pch */,
 				EEB8F7FF13C5FD0D00B70FDB /* main.m */,
 			);
 			name = "Supporting Files";
