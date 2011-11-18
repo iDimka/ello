@@ -347,7 +347,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CA6A4A8A147562B5001D06EE /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = ../../../testcruise/testCruise/cruise/Prefix.pch; sourceTree = "<group>"; };
 		CACBA1ED1473C80C00BA4E17 /* ci_build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_build.sh; sourceTree = SOURCE_ROOT; };
 		EE001B0D13D04BB100A7D719 /* Clip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clip.h; sourceTree = "<group>"; };
 		EE001B0E13D04BB100A7D719 /* Clip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clip.m; sourceTree = "<group>"; };
@@ -1064,7 +1063,6 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CA6A4A8A147562B5001D06EE /* Prefix.pch */,
 				CACBA1ED1473C80C00BA4E17 /* ci_build.sh */,
 				EEC8F6E0142C942300F9EC9C /* 3 party */,
 				EE5A6C9413F2FA12002BCE57 /* preview */,
