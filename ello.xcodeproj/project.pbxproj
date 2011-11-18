@@ -348,6 +348,7 @@
 
 /* Begin PBXFileReference section */
 		CACBA1ED1473C80C00BA4E17 /* ci_build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_build.sh; sourceTree = SOURCE_ROOT; };
+		CAF1C967147699650062F944 /* ello-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ello-Prefix.pch"; sourceTree = "<group>"; };
 		EE001B0D13D04BB100A7D719 /* Clip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clip.h; sourceTree = "<group>"; };
 		EE001B0E13D04BB100A7D719 /* Clip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clip.m; sourceTree = "<group>"; };
 		EE04D5C4140A8E4D005B9296 /* SecondLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondLineView.h; sourceTree = "<group>"; };
@@ -1063,6 +1064,7 @@
 		EEB8F7F913C5FD0D00B70FDB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CAF1C967147699650062F944 /* ello-Prefix.pch */,
 				CACBA1ED1473C80C00BA4E17 /* ci_build.sh */,
 				EEC8F6E0142C942300F9EC9C /* 3 party */,
 				EE5A6C9413F2FA12002BCE57 /* preview */,
@@ -2134,7 +2136,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ello/Prefix.pch;
+				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -2163,7 +2165,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ello/Prefix.pch;
+				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
