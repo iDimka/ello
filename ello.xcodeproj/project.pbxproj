@@ -2136,7 +2136,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
+				GCC_PREFIX_HEADER = ello/Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
@@ -2165,7 +2165,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_INPUT_FILETYPE = sourcecode.c.objc;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ello/ello-Prefix.pch";
+				GCC_PREFIX_HEADER = ello/Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "ello/ello-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
